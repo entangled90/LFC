@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "integration.h"
+#include "varie.h"
+#include "random.h"
+
+/*
+ * Variabili Globali
+ */
+	double gaussianVariance = 0.5;
+	double gaussianMean = 0;
+	int *nMoment = 0;
+
+	/*
+	 * Funzioni
+	 */
+double integrand (double x ){
+	return(gaussMomentPdf(gaussianVariance,gaussianMean,nMoment,x));
+}
+
+int main (){
+	double integral_flat= 0;
+	double integral_gauss=0;
+	double integral_trap = 0;
+	double min =0 ;
+	double max= 0;
+	int i = 0;
+	printf("Inserisci minimo : \n");
+	scanf("%lf",&min);
+	printf("inserisci massimo : \n");
+	scanf("%lf",&max);
+	printf("\t \t \t \t flat  \t gauss \t trapezi\n");
+	nMoment=&i;
+	for(i=1; i < 5; i++){
+		integral_flat = campionamentoImportanza(1,min,max,1000,integrand);
+		integral_gauss = campionamentoImportanza(2,min,max,1000,integrand);
+		integral_trap = partition(min,max,10000,1,integrand);
+		printf("Il momento  numero %d : %lf \t %lf \t %lf \n", i, integral_flat, integral_gauss, integral_trap);
+
+	}
+	return(EXIT_SUCCESS);
+}

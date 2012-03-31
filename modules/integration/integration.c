@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include "random.h"
 #include "varie.h"
-#include "global.h"
 
 double Simpson ( double min , double max, double (*f) (double) ){
 		return ( (max-min)*( f(min ) + 4.0*f(min + (max-min)/2 ) + f(max) )/6.0);

@@ -48,7 +48,7 @@ rtn_int_var campionamentoImportanza (  double a, double b , int N ,double (*f) (
 	gauss_dble(rd,nRandom);
 		for ( i = 0; i< nRandom; i++){
 			tmp = ( f( rd[i] ) / gaussPdf( 0.5,0,rd[i]));
-			rtn.int_gauss += tmp/(double) N/(N-1);
+			rtn.int_gauss += tmp/(double) N;
 			rtn.var_gauss += (integral_true - tmp)*(integral_true-tmp)/(double )N/(N-1);
 			
 		}
@@ -66,6 +66,7 @@ rtn_int_var campionamentoImportanza (  double a, double b , int N ,double (*f) (
 			}
 		}
 		rtn.int_root*=2;
+	rtn.Npnt = N;
 	free(rd);
 	return (rtn);
 }

@@ -19,7 +19,7 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = importanza buffon
+MAIN = importanza buffon harmonicMetropolis
 
 RANDOM = ranlxs ranlxd gauss pdf
 
@@ -29,15 +29,17 @@ EXTRAS = varie
 
 DERIVATIVE =
 INTEGRATION = integration montecarlo
+HARMONIC = harmonic
 
-MODULES = $(RANDOM) $(START) $(EXTRAS) $(DERIVATIVE) $(INTEGRATION)
+MODULES = $(RANDOM) $(START) $(EXTRAS) $(DERIVATIVE) $(INTEGRATION) $(HARMONIC)
 
 
 # search path for modules
 
 MDIR = ../modules
 
-VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/integration
+VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/integration:$(MDIR)/harmonic
+
 
 
 # additional include directories

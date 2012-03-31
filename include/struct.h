@@ -8,7 +8,18 @@ typedef struct {
 	double var_flat;
 	double var_gauss;
 	double var_root;
+	int Npnt ;
 	} rtn_int_var ;
+
+typedef struct {
+	double noise_flat;
+	double noise_gauss;
+	double noise_root;
+	double noise_flat_scaled;
+	double noise_gauss_scaled;
+	double noise_root_scaled;
+	int Npnt ;
+	} noise ;
 
 
 #endif

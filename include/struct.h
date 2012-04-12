@@ -1,6 +1,7 @@
 #ifndef MYSTRUCT_H
 #define MYSTRUCT_H
 
+#ifndef MY_STRUCT_C
 typedef struct {
 	double int_flat;
 	double int_gauss;
@@ -21,5 +22,6 @@ typedef struct {
 	int Npnt ;
 	} noise ;
 
-
+	void init_int_var( rtn_int_var rtn);
+#endif
 #endif

@@ -21,6 +21,7 @@ extern void rlxd_reset(int state[]);
 #ifndef GAUSS_C
 extern void gauss(float r[],int n);
 extern void gauss_dble(double r[],int n);
+extern void mygauss_dble(double r[],int n);
 #endif
 
 #ifndef PDF_C

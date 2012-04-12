@@ -66,7 +66,7 @@ double partition (double min, double max , int n, int methodNumber , double (*f)
 
 double gaussianQuad ( double min , double max , double (*f) (double)){
 	/*Viene usato un polinomio di grado 5 */
-	double zero[5] = { 			0 ,
+	double zero[5] = { 	0 ,
 						sqrt(245.0 - 14.0*sqrt(70.0))/21.0,
 						-sqrt(245.0 - 14.0*sqrt(70.0))/21.0,
 						sqrt(245.0 + 14.0*sqrt(70.0))/21.0,

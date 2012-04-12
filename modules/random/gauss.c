@@ -78,4 +78,25 @@ void gauss_dble(double rd[],int n)
          rd[k++]=y2;
    }
 }
+/*
+ * n DEVE essere pari per non far casino!
+ */
+void mygauss_dble (double rd[], int n){
+
+	int k;
+	double *r1;
+	double *r2;
+	if ( n%2 != 0){
+		printf("mygauss_dble deve essere chiamata con n pari! \n Exit \n");
+		exit(1);
+	}
+	r1 = malloc(n*sizeof(double)/2);
+	r2 = malloc(n*sizeof(double)/2);
+	ranlxd(r1,n/2);
+	ranlxd(r2,n/2);
+	for (k=0; k<n/2 ; k++){
+		rd[k] = sqrt( - log(1-r2[k]))*sin(PI/2*r1[k]);
+		rd[k+n/2] = sqrt( - log(1-r2[k]))*cos(PI/2*r1[k]);
+	}
+}
 

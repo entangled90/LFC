@@ -25,7 +25,7 @@ RANDOM = ranlxs ranlxd gauss pdf
 
 START = start 
 
-EXTRAS = varie
+EXTRAS = varie my_struct
 
 DERIVATIVE =
 INTEGRATION = integration montecarlo
@@ -56,7 +56,7 @@ LIBPATH =
 
 # scheduling and optimization options (such as -DSSE -DSSE2 -DP4)
  
-CFLAGS = -Wall -O -g
+CFLAGS = -Wall -O -g  -std=gnu99 -pedantic
  
 
 ############################## do not change ###################################

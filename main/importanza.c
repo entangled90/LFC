@@ -9,11 +9,9 @@
 #include "struct.h"
 #include "math.h"
 #include "plot.h"
-#define Nstart 1000
-#define  Ncycle 6
-#define MaxMoment 4
-
-//#include "global.h"
+#define	Nstart 1000
+#define	Ncycle 6
+#define	MaxMoment 4
 /*
  * Variabili Globali
  */
@@ -31,38 +29,35 @@ double integrand (double x ){
 }
 
 int main (){
-	double min =0 ;
-	double max= 0;
-
+	double min =-100 ;
+	double max= 100;
 	int N = Nstart;
-	rtn_int_var result[Ncycle*MaxMoment/2];
-	noise noise_result[Ncycle*MaxMoment/2];
-	int momentIndex = 1;
-
-	/*
-	printf("Inserisci minimo : \n");
-	scanf("%lf",&min);
-	printf("inserisci massimo : \n");
-	scanf("%lf",&max);
-	*/
-	rlxd_init(1,time(NULL));
-	min=-100;
-	max=100;
-	printf("\t \t  \t flat  \t gauss  \t root_exp \n");
 	int i = 0;
 	int j = 0;
+	int momentIndex = 0;
+	rtn_int_var result[Ncycle*MaxMoment/2];
+	noise noise_result[Ncycle*MaxMoment/2];
+	rlxd_init(2,time(NULL));
+	printf("\t \t  \t flat  \t gauss  \t root_exp \n");
 	nMoment=&momentIndex;
+	momentIndex = 2;
 	for ( j=0; j<Ncycle; j++){
 		printf("I punti usati sono %d \n",N);
 		momentIndex = 2;
 		for(i=0; i < MaxMoment/2; i++){
+			
 			result[(MaxMoment/2)*j+i] = campionamentoImportanza(min,max,N,integrand);
-			result[(MaxMoment/2)*j+i].Npnt = N;
+			//result[(MaxMoment/2)*j+i].Npnt = N;
+
 			printf("Il momento  numero %d : %lf \t %lf \t %lf \t \n",momentIndex,
-			result[(MaxMoment/2)*j+i].int_flat, result[(MaxMoment/2)+i].int_gauss,result[(MaxMoment/2)*j+i].int_root);
-			printf("\n Errori: \t");
-			printf("\t %lf \t %lf \t %lf \n",sqrt(result[(MaxMoment/2)*j+i].var_flat),sqrt(result[(MaxMoment/2)*j+i].var_gauss),sqrt(result[(MaxMoment/2)*j+i].var_root));
+					result[(MaxMoment/2)*j+i].int_flat, result[(MaxMoment/2)*j+i].int_gauss,result[(MaxMoment/2)*j+i].int_root);
+
+			printf("Errori: \t");
+
+			printf("\t %lf \t %lf \t %lf \n",sqrt(result[(MaxMoment/2)*j+i].var_flat),sqrt(result[(MaxMoment/2)*j+i].var_gauss),		sqrt(result[(MaxMoment/2)*j+i].var_root));
+
 			printf("\n");
+
 			momentIndex+=2;
 			}
 		N*=2;

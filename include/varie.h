@@ -15,8 +15,8 @@ extern void fprintPlot ( rtn_int_var input[],int, int ,const char* name);
 
 extern noise fitNoise (rtn_int_var input);
 extern void fprintNoisePlot ( noise input[],int Ncycle, int method, const char* name);
-extern void vec_init( double[], int);
-
+extern void vec_init( double *, int);
+//double variance ( double *x, int n);
 #endif
 
 #endif

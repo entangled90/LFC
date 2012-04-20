@@ -159,10 +159,17 @@
 	fclose(fp);
 	}
 
-	void vec_init( double x[], int n){
+	void vec_init( double *x, int n){
 		int i = 0;
 		for(i = 0; i<n ; i++){
 			x[i] = 0.0;
 		}
 	}
+	/*
+	double variance ( double *x, int n){
 
+
+
+
+		}
+	*/

@@ -19,7 +19,8 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = importanza buffon harmonicMetropolis
+MAIN = harmonicMetropolis harmonic_gamma
+# importanza buffon  
 
 RANDOM = ranlxs ranlxd gauss pdf
 
@@ -56,7 +57,7 @@ LIBPATH =
 
 # scheduling and optimization options (such as -DSSE -DSSE2 -DP4)
  
-CFLAGS = -Wall -O -g  -std=gnu99 -pedantic
+CFLAGS = -Wall -O -g  -std=gnu99 -pedantic -DSSE2
  
 
 ############################## do not change ###################################

@@ -3,8 +3,8 @@
 
 #ifndef VARIE_C
 #include "struct.h"
-extern float meanOfFloatArray(float[], int);
-extern double meanOfDoubleArray (double[],int);
+extern float meanOfFloatArray(float*, int);
+extern double meanOfDoubleArray (double*,int);
 extern double flatPdf(double , double, double);
 extern double gaussPdf(double, double,double);
 extern double gaussMomentPdf(double , double , int * , double);
@@ -16,7 +16,8 @@ extern void fprintPlot ( rtn_int_var input[],int, int ,const char* name);
 extern noise fitNoise (rtn_int_var input);
 extern void fprintNoisePlot ( noise input[],int Ncycle, int method, const char* name);
 extern void vec_init( double *, int);
-//double variance ( double *x, int n);
+extern void clusterize( cluster_jk *);
+extern void vector_copy (double * vector_input, double * vector_output, int length);
 #endif
 
 #endif

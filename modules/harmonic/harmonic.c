@@ -5,6 +5,8 @@
 #include "harmonic.h"
 #include "globalharmonic.h"
 #include "random.h"
+#include "struct.h"
+#include <stdio.h>
 
 double potential (double x ){
 	return (M*x*x*W*W/2.0);
@@ -34,26 +36,7 @@ double edelta_action ( double *x_old, double x_new, int position){
 		- elagrangian(x_old[((position+1)%Nx)],x_old[position]) - elagrangian(x_old[position],x_old[((position-1+Nx)%Nx)]);
 	return dS;
 	}
-/*
 
-double 	first_action (double x[], int n){
-	double S = 0.0;
-	int i = 0;
-	for(i=0; i<n ; i++){
-		if(  i == n-1)
-			S+= lagrangian(x[0],x[i]);
-		else
-			S += lagrangian(x[i+1],x[i]);
-		}
-	return S;
-	}
-double delta_action ( double x_old[], double x_new, int position){
-	double dS = 0.0;
-	dS = lagrangian(x_old[position+1], x_new) + lagrangian( x_new,x_old[position-1])
-		- lagrangian(x_old[position+1],x_old[position]) - lagrangian(x_old[position],x_old[position-1]);
-	return dS;
-	}
-*/
 void metropolis( double *x , int position, double x_new){
 	double dS= edelta_action(x,x_new,position);
 	double tmp ;
@@ -72,11 +55,17 @@ double  correlation ( double *x, int dK){
 	sum /= Nx;
 	return sum;
 	}
-
-void DeltaE ( double *O , int k_max , double *deltaE_vec){
-	int k = 0;
-	for( k = 1 ; k < k_max  ; k++){
-		deltaE_vec[k-1] = acosh( (O[(k-1)] + O[(k+1)])/(2*O[k] ));
+/* Energy è un array di dimensione K_MAX - K_START.
+ * input è un array di dimensione K_MAX
+ */ 
+void DeltaE_cluster ( cluster_jk * input , cluster_jk *energy, double *E_vector ){
+	int k,i;
+	for( k = 0 ; k < K_MAX -K_START ; k++){
+	printf("%d \n", k);
+		for(i = 0; i< N_BIN ; i++){
+		energy[k].a[i] = acosh((input[(k)].a[i] + input[(k+2)].a[i])/( 2*input[k+1].a[i] ));
+		}
+	E_vector[k] = acosh((input[(k)].mean + input[(k+2)].mean)/( 2*input[k+1].mean ));
 	}
 	}
 #endif

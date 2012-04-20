@@ -21,7 +21,17 @@ typedef struct {
 	double noise_root_scaled;
 	int Npnt ;
 	} noise ;
+	
+	extern void init_int_var( rtn_int_var rtn);
 
-	void init_int_var( rtn_int_var rtn);
+typedef struct {
+	int n_conf;
+	double mean;
+	double *a;
+	double error;
+	} cluster_jk;
+
+	extern void init_cluster_jk (cluster_jk * c,int n_cluster , int vector_length);
+	
 #endif
 #endif

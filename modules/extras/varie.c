@@ -5,7 +5,7 @@
 #include "stdio.h"
 #define PI  4*atan(1)
 
-	float meanOfFloatArray( float array[], int n){
+	float meanOfFloatArray( float *array, int n){
 	int i = 0;
 	float sum = 0;
 	for (i= 0; i< n; i++){
@@ -15,15 +15,13 @@
 	return ( sum/n);
 	}
 
-
-	double meanOfDoubleArray( double array[] , int n){
+	double meanOfDoubleArray( double *array , int n){
 	int i = 0;
 	double sum = 0;
 	for (i= 0; i< n; i++){
 		sum += array[i];
-		
-		}
-	return ( sum/n);
+	}
+	return ( sum/(double)n);
 	}
 	/* Pdf utilizzate per il campionamento d'importanza */
 	double flatPdf(double min, double max,double x){
@@ -165,11 +163,18 @@
 			x[i] = 0.0;
 		}
 	}
-	/*
-	double variance ( double *x, int n){
-
-
-
-
+	
+	extern void clusterize( cluster_jk *input){
+		int i = 0;
+		input->mean =meanOfDoubleArray( (input->a), input->n_conf);
+		for ( i = 0 ; i < input->n_conf ; i++){
+			(input->a)[i] = input->mean + 1/(double)(input->n_conf-1)*(input->mean - (input->a)[i]);
 		}
-	*/
+	}
+	
+	extern void vector_copy (double *vector_input, double *vector_output, int length){
+		int i;
+		for(i = 0; i<length; i++){
+			vector_output[i] = vector_input[i];
+		}
+	}

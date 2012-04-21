@@ -11,11 +11,6 @@
 double potential (double x ){
 	return (M*x*x*W*W/2.0);
 	}
-/*
-double lagrangian (double x2, double x1){
-	return ( M/2.0*(x2-x1)*(x2-x1) -potential(x1)/2.0 - potential(x2)/2.0);
-	}
-*/
 
 double elagrangian (double x2, double x1){
 	return ( M/2.0*(x2-x1)*(x2-x1) + potential(x1)/2.0 + potential(x2)/2.0);
@@ -55,13 +50,15 @@ double  correlation ( double *x, int dK){
 	sum /= Nx;
 	return sum;
 	}
-/* Energy è un array di dimensione K_MAX - K_START.
- * input è un array di dimensione K_MAX
- */ 
+
+	
+	/*
+	* Energy è un array di dimensione K_MAX - K_START.
+	* input è un array di dimensione K_MAX
+	*/ 
 void DeltaE_cluster ( cluster_jk * input , cluster_jk *energy, double *E_vector ){
 	int k,i;
 	for( k = 0 ; k < K_MAX -K_START ; k++){
-	printf("%d \n", k);
 		for(i = 0; i< N_BIN ; i++){
 		energy[k].a[i] = acosh((input[(k)].a[i] + input[(k+2)].a[i])/( 2*input[k+1].a[i] ));
 		}

@@ -19,8 +19,8 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = harmonicMetropolis harmonic_gamma
-# importanza buffon  
+MAIN = harmonicMetropolis 
+# importanza harmonic_gamma buffon
 
 RANDOM = ranlxs ranlxd gauss pdf
 

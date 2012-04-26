@@ -21,7 +21,8 @@
 	for (i= 0; i< n; i++){
 		sum += array[i];
 	}
-	return ( sum/(double)n);
+	sum /= (double ) n ;
+	return ( sum );
 	}
 	/* Pdf utilizzate per il campionamento d'importanza */
 	double flatPdf(double min, double max,double x){
@@ -32,8 +33,6 @@
 		return  exp(-(mean-x)/(2*variance)*(mean-x))/sqrt(2*PI*variance) ;
 	}
 
-
-	
 	double root_exp_pdf(double x){
 	    return 2/sqrt(PI)*exp(-x)*sqrt(x);
 	}
@@ -163,12 +162,12 @@
 			x[i] = 0.0;
 		}
 	}
-	
-	extern void clusterize( cluster_jk *input){
+	/* NB: la lunghezza di vector deve essere uguale a input->n_conf */
+	extern void clusterize( cluster_jk *input , double *vector){
 		int i = 0;
-		input->mean =meanOfDoubleArray( (input->a), input->n_conf);
+		input->mean =meanOfDoubleArray( vector, input->n_conf);
 		for ( i = 0 ; i < input->n_conf ; i++){
-			(input->a)[i] = input->mean + 1/(double)(input->n_conf-1)*(input->mean - (input->a)[i]);
+			(input->a)[i] = input->mean + ( vector[i]-input->mean )/(double)(input->n_conf-1);
 		}
 	}
 	

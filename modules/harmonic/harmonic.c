@@ -32,12 +32,13 @@ double edelta_action ( double *x_old, double x_new, int position){
 	return dS;
 	}
 
-void metropolis( double *x , int position, double x_new){
-	double dS= edelta_action(x,x_new,position);
+void metropolis( double *x , int position, double *x_new){
+	double dS= edelta_action(x,*x_new,position);
 	double tmp ;
 	ranlxd(&tmp,1);
-	if( tmp < exp(-dS) ){
-		x[position] = x_new;
+	/* (1-dS + dS*dS/2 - dS*dS*dS/6) */
+	if( tmp <  exp(-dS)){
+		x[position] = *x_new;
 	}
 }
 
@@ -55,14 +56,28 @@ double  correlation ( double *x, int dK){
 	/*
 	* Energy è un array di dimensione K_MAX - K_START.
 	* input è un array di dimensione K_MAX
-	*/ 
-void DeltaE_cluster ( cluster_jk * input , cluster_jk *energy, double *E_vector ){
+	*/
+	
+void DeltaE_cluster ( cluster_jk * input , cluster_jk *energy){
 	int k,i;
 	for( k = 0 ; k < K_MAX -K_START ; k++){
-		for(i = 0; i< N_BIN ; i++){
+		for(i = 0; i< input->n_conf ; i++){
 		energy[k].a[i] = acosh((input[(k)].a[i] + input[(k+2)].a[i])/( 2*input[k+1].a[i] ));
 		}
-	E_vector[k] = acosh((input[(k)].mean + input[(k+2)].mean)/( 2*input[k+1].mean ));
+	energy[k].mean  = acosh((input[(k)].mean + input[(k+2)].mean)/( 2*input[k+1].mean ));
 	}
+}
+
+void matrix_element_cluster ( cluster_jk * input_E, cluster_jk * input_corr , cluster_jk *matrix_cluster){
+	int k,i;
+	for( k = 0 ; k < K_MAX -K_START ; k++){
+		for(i = 0; i< input_E->n_conf ; i++){
+		 matrix_cluster[k].a[i] = input_corr[k].a[i]*exp(Nx/2.0*(input_E[k].a[i]))/(cosh((Nx/2.0-(k+K_START))*input_E[k].a[i]))/2.0;
+		 matrix_cluster[k].a[i] = sqrt(matrix_cluster[k].a[i]);
+		}
+	matrix_cluster[k].mean  = sqrt(exp(Nx/2.0*(input_E[k].mean))/(cosh((Nx/2.0-(k+K_START))*input_E[k].mean))/2.0);
 	}
+
+
+}
 #endif

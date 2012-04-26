@@ -33,6 +33,6 @@ typedef struct {
 
 	extern void init_cluster_jk (cluster_jk * c,int n_cluster , int vector_length);
 	extern void free_cluster_jk ( cluster_jk *c, int length);
-	extern double variance_cluster_jk ( cluster_jk *c, double mean);
+	extern double variance_cluster_jk ( cluster_jk *c);
 #endif
 #endif

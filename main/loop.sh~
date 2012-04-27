@@ -1,0 +1,12 @@
+#!/bin/bash
+
+LOOP= 0
+while {1}
+
+do
+	LOOP= LOOP +1
+	echo " $LOOP "
+	./harmonicMetropolis
+
+done
+

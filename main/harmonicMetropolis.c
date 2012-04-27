@@ -62,7 +62,7 @@ int main(){
 		vec_init(variance_bin, Nx);
 	/*Init random generator */
 		rlxd_init(1,time(NULL));
-		printf("[");
+		printf("Metropolis' Progression: \n[");
 		
 	/* Ciclo sugli sweep */
 		for ( j = 0; j< N_SWEEP; j++){
@@ -105,7 +105,7 @@ int main(){
 	 * 	Il valor medio (per ogni tempo) viene salvato nella media della struttura
 	 */
 		DeltaE_cluster ( correlation_clustered , energy_clustered);
-		matrix_element_cluster(energy_clustered, correlation_clustered+K_START, matrix_clustered);
+		matrix_element_cluster(energy_clustered, correlation_clustered, matrix_clustered);
 	/*
 	 *	Calcola il valore   dell'energia Delta E = E_1 - E_0 per le prime quattro correlazioni,
 	 * le uniche per cui si ha segnale.
@@ -116,6 +116,7 @@ int main(){
 		vec_init(matrix_time_clustered->a, matrix_time_clustered->n_conf);
 		/* energy_time_clustered contiene la media tra i tempi markoviani di DeltaE^j*/
 		energy_time_clustered->mean = 0.0;
+		matrix_time_clustered->mean = 0.0;
 		for(i = 0; i< K_MAX - K_START; i++){
 			for( j = 0; j< N_BIN; j++){
 				energy_time_clustered->a[j] += energy_clustered[i].a[j]/(double)(K_MAX-K_START);
@@ -123,25 +124,27 @@ int main(){
 			}
 			energy_time_clustered->mean += energy_clustered[i].mean/(double) (K_MAX -K_START);
 			matrix_time_clustered->mean += matrix_clustered[i].mean/(double) (K_MAX -K_START);
+			printf("Elemento clustered : %e \n", matrix_clustered[i].mean);
 		}
 		deltaE_variance = variance_cluster_jk(energy_time_clustered );
-		matrix_element_variance = variance_cluster_jk ( matrix_clustered);
+		matrix_element_variance = variance_cluster_jk ( matrix_time_clustered);
 		
 	/* Stampa su file i valori medi dell'energia */
 		FILE *fp_energy = fopen("../data/harmonic/energy.dat","a");
 		FILE *fp_energy_variance = fopen("../data/harmonic/energy_variance.dat","a");
 			fprintf(fp_energy,"%14.10e \n", energy_time_clustered->mean);
-			fprintf(fp_energy_variance,"%14.10e \n", sqrt(matrix_element_variance));
+			fprintf(fp_energy_variance,"%14.10e \n", sqrt(deltaE_variance));
 		for ( i = 0 ; i< K_MAX-K_START ; i++){
-			printf("%14.10e \n", energy_clustered[i].mean);
+			printf("Energy clustered : %14.10e \n", energy_clustered[i].mean);
 		}
 		printf("Delta E medio: \t %14.10e \t Dev. std: \t %e \n", energy_time_clustered->mean, sqrt(deltaE_variance));
+		printf("Elemento di matrice medio: %14.10e\tDev. std:%e \n", matrix_time_clustered->mean, sqrt(matrix_element_variance));
 
 		FILE *fp_matrix_element = fopen("../data/harmonic/matrix_element.dat","a");
 		FILE *fp_matrix_variance = fopen("../data/harmonic/matrix_variance.dat","a");
 		fprintf(fp_matrix_element,"%14.10e \n", matrix_clustered->mean);
 		fprintf (fp_matrix_variance,"%14.10e \n", sqrt(matrix_element_variance));
-
+		
 	/* File che contiene i valori della correlazione per i valori | l -k| */
 		FILE *fp = fopen("../data/harmonic/harmonic.dat","w");
 		for(i = 0; i<Nx; i++){

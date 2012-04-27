@@ -62,5 +62,76 @@ void plot_harmonic (const char* data1, const char* out){
 }
 
 
+void binning(const char* string){
+    int i,n=100;
+    double min=0.93,max=0.99,width=(max-min)/n,tmp;
+    int* freq = malloc(n*sizeof(int));
+    for(i=0;i<n;i++)
+        freq[i]=0;
+    FILE* f=fopen(string,"r");
+    while(fscanf(f,"%lf\n",&tmp)==1)
+        for(i=0;i<n;i++)
+            if(tmp>min+i*width && tmp<=min+(i+1)*width)
+                freq[i]++;
+    fclose(f);
+    f=fopen("bin.dat","w");
+    for(i=0;i<n;i++)
+		//if(freq[i]>4)
+            fprintf(f,"%lf\t%d\n",min+(i+0.5)*width,freq[i]);
+    fclose(f);
+    free(freq);
+}
+
+void fit( const char * input ,const char * output, double mean , double sigma){
+    binning(input);
+    double tmp;
+	double max;
+	double min ;
+	
+    FILE *f = fopen ( input , "r");
+	fscanf(f,"%lf \n",&tmp);
+	max = tmp;
+	min = tmp;
+    while(fscanf(f,"%lf \n",&tmp) == 1){
+		if(tmp>max)
+			max = tmp;
+		if ( tmp < min)
+			min = tmp;
+	}
+	FILE *pipe = popen("gnuplot -persist","w");
+	fprintf(pipe, "reset\n");
+	fprintf(pipe, "set border linewidth 1.5\n");
+	fprintf(pipe, "set style line 1 lc rgb '#bf0d23' lt 1 lw 2 pt 7 ps 0.5 # --- red\n");
+	fprintf(pipe, "set grid\n");
+	fprintf(pipe, "set title \"Metropolis\"\n");
+	fprintf(pipe, "set tics out nomirror\n");
+	fprintf(pipe, "set xlabel \"{/Symbol D}E\"\n");
+	fprintf(pipe, "set ylabel \"Frequency\"\n");
+	fprintf(pipe, "set term postscript enhanced color landscape lw 1 \"Verdana,10\"\n");
+	fprintf(pipe, "set output '%s'\n",output);
+	fprintf(pipe, "f(x)=exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
+	fprintf(pipe, "m= %lf\n",mean);
+	fprintf(pipe, "s= %lf\n", sigma);
+	fprintf(pipe, "pi=3.14159265\n");
+	fprintf(pipe, "fit f(x) 'bin.dat' via s,m\n");
+	fprintf(pipe, "n=100\t#number of intervals\n");
+	fprintf(pipe, "max= %lf \t#max value\n", max);
+	fprintf(pipe, "min= %lf \t#min value\n",min);
+	fprintf(pipe, "width=(max-min)/n\t#interval width\n");
+	fprintf(pipe, "hist(x,width)=width*floor(x/width)+width/2.0\n");
+	fprintf(pipe, "set xrange [min:max]\n");
+	fprintf(pipe, "set yrange [0:]\n");
+	fprintf(pipe, "set xtics min,(max-min)/5,max\n");
+	fprintf(pipe, "set boxwidth width\n");
+	fprintf(pipe, "set style fill solid 0.5\t#fillstyle\n");
+	fprintf(pipe, "set tics out nomirror\n");
+	fprintf(pipe, "ti = sprintf(\"Gaussian Fit:\\n { /Symbol m } = %%f; {/Symbol s} = %%f\", m, s)\n");
+	fprintf(pipe, "plot '%s' u (hist($1,width)):(1.0) smooth freq w boxes lc rgb '#00ff00' title 'Binned data',f(x) w l ls 1 title ti\n",input);
+	fclose(pipe);
+    system("rm fit.log");
+    system("rm bin.dat");
+}
+
+
 #endif
 

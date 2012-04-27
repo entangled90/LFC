@@ -233,9 +233,9 @@ void rlxd_init(int level,int seed)
 }
 
 
-void ranlxd(double r[], unsigned long long int n)
+void ranlxd(double r[],int n)
 {
-   unsigned long long int k;
+   int k;
 
    if (init==0)
       rlxd_init(1,1);

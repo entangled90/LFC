@@ -142,8 +142,8 @@ int main(){
 
 		FILE *fp_matrix_element = fopen("../data/harmonic/matrix_element.dat","a");
 		FILE *fp_matrix_variance = fopen("../data/harmonic/matrix_variance.dat","a");
-		fprintf(fp_matrix_element,"%14.10e \n", matrix_clustered->mean);
-		fprintf (fp_matrix_variance,"%14.10e \n", sqrt(matrix_element_variance));
+		fprintf(fp_matrix_element,"%14.10e\n", matrix_time_clustered->mean);
+		fprintf (fp_matrix_variance,"%14.10e\n", sqrt(matrix_element_variance));
 		
 	/* File che contiene i valori della correlazione per i valori | l -k| */
 		FILE *fp = fopen("../data/harmonic/harmonic.dat","w");
@@ -168,5 +168,8 @@ int main(){
 		plot_harmonic("../data/harmonic/harmonic.dat","../data/harmonic/harmonic.eps");
 		plot_harmonic("../data/harmonic/harm_dev_std_bin.dat","../data/harmonic/harm_dev_std_bin.eps");
 		//plot_harmonic("../data/harmonic/energy.dat","../data/harmonic/energy.eps");
+		fit("../data/harmonic/energy.dat", "../data/harmonic/energy_histogram.eps" ,energy_time_clustered->mean, deltaE_variance);
+		fit("../data/harmonic/energy_variance.dat", "../data/harmonic/energy_variance_histogram.eps", deltaE_variance, 1e-5);
+		
 		return(EXIT_SUCCESS);
 	}

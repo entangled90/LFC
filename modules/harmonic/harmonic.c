@@ -72,9 +72,11 @@ void matrix_element_cluster ( cluster_jk * input_E, cluster_jk * input_corr , cl
 	int k,i;
 	for( k = 0 ; k < K_MAX -K_START ; k++){
 		for(i = 0; i< input_E->n_conf ; i++){
-		 matrix_cluster[k].a[i] =  sqrt(input_corr[k].a[i]*exp(Nx/2.0*(input_E[k].a[i]))/(cosh((Nx/2.0-(k+K_START))*input_E[k].a[i]))/2.0);
-		 }
+		matrix_cluster[k].a[i] =  input_corr[k].a[i]*exp(Nx/2.0*(input_E[k].a[i]))/(cosh((Nx/2.0-(k+K_START))*input_E[k].a[i]))/2.0;
+		matrix_cluster[k].a[i]= sqrt(matrix_cluster[k].a[i]);
+		}
 	matrix_cluster[k].mean  = sqrt(input_corr[k].mean*exp(Nx/2.0*(input_E[k].mean))/cosh((Nx/2.0-(k+K_START))*input_E[k].mean)/2.0);
+	matrix_cluster[k].mean= sqrt(matrix_cluster[k].mean);
 	}
 
 

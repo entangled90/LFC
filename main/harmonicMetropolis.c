@@ -12,10 +12,11 @@
 #include "math.h"
 #include "struct.h"
 
-int main(){
+int main(int argc, char *argv[]){
 	int i = 0;
 	int j = 0;
 	int k = 0;
+	int N_SWEEP = 1000000;
 	double x[Nx];
 	double xnew[Nx];
 	double O[Nx];
@@ -25,6 +26,7 @@ int main(){
 	struct winsize w;
 	double deltaE_variance = 0.0;
 	double matrix_element_variance = 0.0;
+	int N_BIN;
 	cluster_jk *correlation_clustered;
 	cluster_jk *energy_clustered;
 	cluster_jk *energy_time_clustered;
@@ -33,8 +35,13 @@ int main(){
 	/*
 	 * Check per non avere problemi con la divisione intera
 	*/
-	if(N_BIN_CHECK != 0){
-		printf("N_BIN_CHECK ERROR!");
+	if( argc == 1)
+		printf("N_SWEEP automatically set to 1e6 \n");
+	else
+		N_SWEEP = atoi(argv[1]); 
+	N_BIN =  ((N_SWEEP)/BIN_WIDTH);
+	if( N_SWEEP % BIN_WIDTH != 0){
+		printf("N_BIN_CHECK ERROR!\n");
 		return(EXIT_FAILURE);
 	}
 	/* Necessario per importare il numero di colonne della finestra di terminale*/
@@ -63,8 +70,16 @@ int main(){
 	/*Init random generator */
 		rlxd_init(1,time(NULL));
 		printf("Metropolis' Progression: \n[");
+	/* Prepara il vettore, facendo THERM_CONST sweep prima di iniziare a calcolare */
 		
-	/* Ciclo sugli sweep */
+		for ( j = 0; j< THERM_CONST; j++){
+			ranlxd(xnew,Nx);
+		/* Esegue uno sweep completo su tutte le coordinate */
+			for ( i = 0 ; i< Nx; i++){
+				xnew[i] = x[i]+ 2*DELTA*(xnew[i]-0.5);
+				metropolis(x,i,xnew+i);
+			}
+		}
 		for ( j = 0; j< N_SWEEP; j++){
 			ranlxd(xnew,Nx);
 		/* Esegue uno sweep completo su tutte le coordinate */
@@ -72,15 +87,13 @@ int main(){
 				xnew[i] = x[i]+ 2*DELTA*(xnew[i]-0.5);
 				metropolis(x,i,xnew+i);
 			}
-		/* Calcola la media delle correlazione su ogni sweep dopo i 200 */
-			if ( j > THERM_CONST){
 			/*Calcola i valori delle correlazioni, la media per ogni bin, su ogni valore di |l-k|*/
 				for(k = 0; k< Nx ; k++){
 					temp =  correlation (x,k);
-					O[k] += temp/(double) (N_SWEEP-THERM_CONST) ;
-					mean_bin[((j-THERM_CONST)/BIN_WIDTH) + k*N_BIN] += temp/(double) BIN_WIDTH ;
+					O[k] += temp/(double) (N_SWEEP) ;
+					mean_bin[((j)/BIN_WIDTH) + k*N_BIN] += temp/(double) BIN_WIDTH ;
 				}
-			}
+		
 	/* Stampa a terminale la progressione del programma tramite una barra  */
 			if ( (int) ((j*1.0)/N_SWEEP*(w.ws_col-1))  != (int) ((j-1)*1.0/N_SWEEP*(w.ws_col-1)) ){
 				printf("=");
@@ -170,6 +183,7 @@ int main(){
 		//plot_harmonic("../data/harmonic/energy.dat","../data/harmonic/energy.eps");
 		fit("../data/harmonic/energy.dat", "../data/harmonic/energy_histogram.eps" ,energy_time_clustered->mean, deltaE_variance);
 		fit("../data/harmonic/energy_variance.dat", "../data/harmonic/energy_variance_histogram.eps", deltaE_variance, 1e-5);
-		
+		fit("../data/harmonic/matrix_element.dat", "../data/harmonic/matrix_element_histogram.eps", matrix_time_clustered->mean, matrix_element_variance);
+		fit("../data/harmonic/matrix_variance.dat", "../data/harmonic/matrix_variance_histogram.eps", matrix_element_variance, 1e-5);
 		return(EXIT_SUCCESS);
 	}

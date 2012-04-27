@@ -19,7 +19,8 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = harmonicMetropolis 
+MAIN = schroedinger
+# harmonicMetropolis harmonic_different_n 
 # importanza harmonic_gamma buffon
 
 RANDOM = ranlxs ranlxd gauss pdf
@@ -45,14 +46,14 @@ VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/i
 
 # additional include directories
 
-INCPATH = ../include
+INCPATH = ../include /usr/include/
 
 
 # additional libraries to be included 
  
-LIBS = m
+LIBS = m 
 
-LIBPATH =
+LIBPATH = 
 
 
 # scheduling and optimization options (such as -DSSE -DSSE2 -DP4)

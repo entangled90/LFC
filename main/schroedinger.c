@@ -17,10 +17,10 @@
 #define D_T 0.0001
 #define R_PDF 0.3
 /* width and heigth of the matrix */
-int w = 500;
-int h = 500;
+const int W = 500;
+const int H = 500;
 /* reticular pass */
-double a = 1;
+double a = 0.01;
 /* matrix for the wave function */
 gsl_matrix_complex * psi ;
 /* for displaying */
@@ -33,7 +33,7 @@ gsl_complex circular_step_pdf( double x , double y ){
 	if ( ( x*x + y*y < R_PDF))
 		return gsl_complex_rect ( sqrt(M_PI * R_PDF* R_PDF), 0);
 	else
-		return gsl_complex_rect(0,0);
+		return GSL_COMPLEX_ZERO;
 	}
 
 double V_step_tunnel (double x , double y ){
@@ -45,37 +45,48 @@ double V_step_tunnel (double x , double y ){
 
 void init_wave_function (gsl_matrix_complex *psi , gsl_complex (*pdf) ( double x , double y ) ) {
 	int i , j ;
+	int w = psi->size1;
+	int h = psi->size2;
+	
 	for ( i = 0 ; i < w ; i++){
 		for ( j = 0 ; j < h ; j++ ) {
-			gsl_matrix_complex_set(psi,i,j, pdf( a*i  , a*j ) );
+			gsl_matrix_complex_set(psi,i,j, pdf( a*(i-w/2)  , a*(j-h/2) ) );
 		}
 	}
 	}
 	
 void compute ( gsl_matrix_complex *input ){
 	int i, j ,status = 0;
-	gsl_complex c1,c2;
-	gsl_complex *increment = &(c1);
-	gsl_complex *tmp = &(c2);
-	gsl_matrix_complex *increment_matrix = gsl_matrix_complex_alloc ( w,h) ;
+	int w = (int) input->size1;
+	int h = (int) input->size2;
+	gsl_complex *increment = malloc(sizeof(gsl_complex));
+	gsl_complex *tmp = malloc(sizeof(gsl_complex));
+	gsl_matrix_complex *increment_matrix = gsl_matrix_complex_alloc (w,h) ;
 	gsl_matrix_complex *psi_old = gsl_matrix_complex_alloc (w,h);
 	gsl_matrix_complex_memcpy(psi_old, input);
-	for ( i = 1 ; i<= w ; i++){
-		for( j = 1 ; j<= h ; j++){
+	printf(" %d \t %d \n", (int) input->size1,(int) input->size2);
+	printf(" %d \t %d \n", (int) increment_matrix->size1,(int) increment_matrix->size2);
+	
+	for ( i = 0 ; i< w ; i++){
+		for( j = 0 ; j< h ; j++){
 			*increment = GSL_COMPLEX_ZERO;
-			if( i > 1)
+			if( i > 0)
 				*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i-1,j)); 
-			if( i < w)
+			if( i < w-1)
 				*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i+1,j));
-			if ( j > 1)
+			if ( j > 0)
 				*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i,j-1));
-			if ( j < h) 
+			if ( j < h-1) 
 				*increment = gsl_complex_add ( * increment , gsl_matrix_complex_get( psi_old, i,j+1));
 			(*tmp) = gsl_matrix_complex_get( psi_old, i,j);
 			*increment = gsl_complex_sub( *increment ,gsl_complex_mul( gsl_complex_rect(4,0),*tmp)); 
-			GSL_SET_COMPLEX(tmp, a*a*H_BAR,0);
+			//GSL_SET_COMPLEX(tmp, a*a*H_BAR,0.0);
+			tmp->dat[0] = a*a*H_BAR;
+			tmp->dat[1] = 0.0;
 			*increment = gsl_complex_div( *increment, *tmp);
-			GSL_SET_COMPLEX(tmp,V_step_tunnel( a*i, a*j)/((double) H_BAR),0);
+			//GSL_SET_COMPLEX(tmp,V_step_tunnel( a*i, a*j)/((double) H_BAR),0);
+			(tmp)->dat[0] = (V_step_tunnel( a*i, a*j))/(double) H_BAR;
+			(tmp)->dat[1] = 0.0;
 			*increment = gsl_complex_sub( *increment , *tmp);
 			*increment = gsl_complex_mul ( *increment, gsl_complex_rect(D_T,1)); 
 			gsl_matrix_complex_set( increment_matrix,i,j, *increment);
@@ -83,12 +94,15 @@ void compute ( gsl_matrix_complex *input ){
 	}
 	gsl_matrix_complex_free(psi_old);
 	gsl_matrix_complex_free(increment_matrix);
+	free(increment);
+	free(tmp);
 	/* the result is stored in input, increment_matrix is unchanged
 	 * → if status is non-zero, an error occurred
 	 */
 	status += gsl_matrix_complex_add( input , increment_matrix);
 	if( status != 0 )
 		printf("An error occurred in compute() \n ");
+
 	}
 
 
@@ -97,19 +111,19 @@ void GLInit()
     glDisable(GL_DEPTH_TEST);
     glClearColor(0.0 ,0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    glOrtho(0,w,0,h,0,1);
+    glOrtho(0,W,0,H,0,1);
 }
 
 void displayF()
 {
-    float* data = (float*)malloc(3*(w*h)*sizeof(float));
+	float* data = (float*)malloc(3*(W*H)*sizeof(float));
 	gsl_complex tmp ;
     if(data == NULL)
         printf("\n\nmalloc fail!!!\n\n");
     rgb_t color;
     int k;
-    for(k = 0; k < w*h; k++){
-		tmp = gsl_matrix_complex_get(psi, k/w,  k%w);
+    for(k = 0; k < W*H; k++){
+		tmp = gsl_matrix_complex_get(psi, k/W,  k%W);
         if(modeView == 1)
             color = d2rgb(gsl_complex_abs( tmp ));
         if(modeView == 2)
@@ -120,8 +134,8 @@ void displayF()
         data[3*k+1] = color.g;
         data[3*k+2] = color.b;
     }
-    glRasterPos2i(0,0);
-    glDrawPixels(w,h,GL_RGB,GL_FLOAT,data);
+	glRasterPos2i(0,0);
+    glDrawPixels(W,H,GL_RGB,GL_FLOAT,data);
     glutSwapBuffers();
     free(data);
 }
@@ -159,11 +173,11 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
     }
 }
 int main (int argc, char *argv[]){
-	psi = gsl_matrix_complex_alloc (w,h);
+	psi = gsl_matrix_complex_alloc((int)W,(int)H);
 	init_wave_function( psi , circular_step_pdf );
 	time = modeView = isActive = 1;
     glutInit(&argc, argv);
-    glutInitWindowSize(w,h); 
+    glutInitWindowSize((int)W,(int)H); 
     glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE );
     glutCreateWindow("Schrodinger"); 
     GLInit();

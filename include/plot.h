@@ -62,43 +62,47 @@ void plot_harmonic (const char* data1, const char* out){
 }
 
 
-void binning(const char* string){
-    int i,n=100;
-    double min=0.93,max=0.99,width=(max-min)/n,tmp;
-    int* freq = malloc(n*sizeof(int));
-    for(i=0;i<n;i++)
+
+void fit( const char * input ,const char * output, double mean , double sigma){
+    double width;
+    int* freq;
+	int n = 100;
+	int i ;
+	double tmp;
+	double max;
+	double min ;
+	int n_events = 1;
+	freq =  malloc(n*sizeof(int));
+	/* EX funzione binning */
+	for(i=0;i<n;i++)
         freq[i]=0;
-    FILE* f=fopen(string,"r");
-    while(fscanf(f,"%lf\n",&tmp)==1)
-        for(i=0;i<n;i++)
-            if(tmp>min+i*width && tmp<=min+(i+1)*width)
+    FILE* f=fopen(input,"r");
+	fscanf(f,"%lf \n",&tmp);
+	max = tmp;
+	min = tmp;
+    while(fscanf(f,"%lf \n",&tmp) == 1){
+		n_events++;
+		if(tmp>max)
+			max = tmp;
+		if ( tmp < min)
+			min = tmp;
+        
+	}
+	width=(max-min)/n,tmp;
+	while(fscanf(f,"%lf \n",&tmp) == 1){
+		for(i=0;i<n;i++)
+			if(tmp>min+i*width && tmp<=min+(i+1)*width)
                 freq[i]++;
-    fclose(f);
+	}
+	fclose(f);
     f=fopen("bin.dat","w");
     for(i=0;i<n;i++)
 		//if(freq[i]>4)
             fprintf(f,"%lf\t%d\n",min+(i+0.5)*width,freq[i]);
     fclose(f);
     free(freq);
-}
-
-void fit( const char * input ,const char * output, double mean , double sigma){
-    binning(input);
-    double tmp;
-	double max;
-	double min ;
-	
-    FILE *f = fopen ( input , "r");
-	fscanf(f,"%lf \n",&tmp);
-	max = tmp;
-	min = tmp;
-    while(fscanf(f,"%lf \n",&tmp) == 1){
-		if(tmp>max)
-			max = tmp;
-		if ( tmp < min)
-			min = tmp;
-	}
-	FILE *pipe = popen("gnuplot -persist","w");
+	/* Fine ex funzione binning */
+    FILE *pipe = popen("gnuplot -persist","w");
 	fprintf(pipe, "reset\n");
 	fprintf(pipe, "set border linewidth 1.5\n");
 	fprintf(pipe, "set style line 1 lc rgb '#bf0d23' lt 1 lw 2 pt 7 ps 0.5 # --- red\n");
@@ -109,10 +113,12 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 	fprintf(pipe, "set ylabel \"Frequency\"\n");
 	fprintf(pipe, "set term postscript enhanced color landscape lw 1 \"Verdana,10\"\n");
 	fprintf(pipe, "set output '%s'\n",output);
-	fprintf(pipe, "f(x)=exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
 	fprintf(pipe, "m= %lf\n",mean);
 	fprintf(pipe, "s= %lf\n", sigma);
 	fprintf(pipe, "pi=3.14159265\n");
+	//fprintf(pipe, "A = %lf \n", n_events*width);
+	fprintf(pipe, "f(x)=exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
+	//printf("A vale %lf \n ", n_events*width);
 	fprintf(pipe, "fit f(x) 'bin.dat' via s,m\n");
 	fprintf(pipe, "n=100\t#number of intervals\n");
 	fprintf(pipe, "max= %lf \t#max value\n", max);

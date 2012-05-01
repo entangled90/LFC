@@ -57,6 +57,10 @@ typedef struct
    (a).im=(((b).im*(c).re-(b).re*(c).im)/((c).re*(c).re+(c).im*(c).im))
 
 
+#define _complex_mod(a) \
+	(a).re*(a).re + (a).im*(a).im
+
+
 #endif
 
 

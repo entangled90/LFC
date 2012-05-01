@@ -19,7 +19,8 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN =  harmonicMetropolis
+MAIN =  schroedinger
+#harmonicMetropolis
 # harmonicMetropolis harmonic_different_n  schroedinger
 # importanza harmonic_gamma buffon
 
@@ -29,11 +30,10 @@ START = start
 
 EXTRAS = varie my_struct
 
-DERIVATIVE =
 INTEGRATION = integration montecarlo
 HARMONIC = harmonic
 
-MODULES = $(RANDOM) $(START) $(EXTRAS) $(DERIVATIVE) $(INTEGRATION) $(HARMONIC)
+MODULES = $(RANDOM) $(START) $(EXTRAS) $(INTEGRATION) $(HARMONIC)
 
 
 # search path for modules
@@ -51,14 +51,14 @@ INCPATH = ../include /usr/include/
 
 # additional libraries to be included 
  
-LIBS = m 
+LIBS = m gsl gslcblas glut GL X11
 
 LIBPATH = 
 
 
 # scheduling and optimization options (such as -DSSE -DSSE2 -DP4)
  
-CFLAGS = -Wall -O -g  -std=gnu89 -pedantic -DSSE2
+CFLAGS = -Wall -O -g -DSSE2
  
 
 ############################## do not change ###################################

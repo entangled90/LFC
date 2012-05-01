@@ -12,21 +12,22 @@
 
 #define R_MIN 0.4
 #define R_MAX 0.5
-#define V_MAX 0.2
-#define H_BAR GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR;
-#define D_T 0.0001
-#define R_PDF 0.3
+#define V_MAX 1e-30
+#define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR);
+#define D_T 1e-30
+#define R_PDF 1e-8
 /* width and heigth of the matrix */
-const int W = 500;
-const int H = 500;
+const int W = 600;
+const int H = 600;
 /* reticular pass */
-double a = 0.01;
+double a = 1e-9;
 /* matrix for the wave function */
 gsl_matrix_complex * psi ;
 /* for displaying */
 int isActive, modeView;
 size_t time;
-
+double m = 1e-31;
+double omega = 1e-20;
 
 
 gsl_complex circular_step_pdf( double x , double y ){
@@ -43,14 +44,19 @@ double V_step_tunnel (double x , double y ){
 		return 0 ;
 	}
 
-void init_wave_function (gsl_matrix_complex *psi , gsl_complex (*pdf) ( double x , double y ) ) {
+double V_parabolic ( double x , double y ){
+	
+	return ( 0.5*m*omega*omega*(x*x+y*y));
+	}
+
+void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double x , double y ) ) {
 	int i , j ;
-	int w = psi->size1;
-	int h = psi->size2;
+	int w = (int) input->size1;
+	int h = (int) input ->size2;
 	
 	for ( i = 0 ; i < w ; i++){
 		for ( j = 0 ; j < h ; j++ ) {
-			gsl_matrix_complex_set(psi,i,j, pdf( a*(i-w/2)  , a*(j-h/2) ) );
+			gsl_matrix_complex_set(input,i,j, pdf( a*(i-w/2)  , a*(j-h/2) ) );
 		}
 	}
 	}
@@ -64,12 +70,10 @@ void compute ( gsl_matrix_complex *input ){
 	gsl_matrix_complex *increment_matrix = gsl_matrix_complex_alloc (w,h) ;
 	gsl_matrix_complex *psi_old = gsl_matrix_complex_alloc (w,h);
 	gsl_matrix_complex_memcpy(psi_old, input);
-	printf(" %d \t %d \n", (int) input->size1,(int) input->size2);
-	printf(" %d \t %d \n", (int) increment_matrix->size1,(int) increment_matrix->size2);
 	
 	for ( i = 0 ; i< w ; i++){
 		for( j = 0 ; j< h ; j++){
-			*increment = GSL_COMPLEX_ZERO;
+			*increment = GSL_COMPLEX_ZERO; 	
 			if( i > 0)
 				*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i-1,j)); 
 			if( i < w-1)
@@ -81,28 +85,30 @@ void compute ( gsl_matrix_complex *input ){
 			(*tmp) = gsl_matrix_complex_get( psi_old, i,j);
 			*increment = gsl_complex_sub( *increment ,gsl_complex_mul( gsl_complex_rect(4,0),*tmp)); 
 			//GSL_SET_COMPLEX(tmp, a*a*H_BAR,0.0);
-			tmp->dat[0] = a*a*H_BAR;
+			tmp->dat[0] = a*a/2.0/m*H_BAR;
 			tmp->dat[1] = 0.0;
 			*increment = gsl_complex_div( *increment, *tmp);
 			//GSL_SET_COMPLEX(tmp,V_step_tunnel( a*i, a*j)/((double) H_BAR),0);
-			(tmp)->dat[0] = (V_step_tunnel( a*i, a*j))/(double) H_BAR;
+			(tmp)->dat[0] = (V_parabolic( a*(i-w/2), a*(j-h/2)))/(double) H_BAR;
 			(tmp)->dat[1] = 0.0;
 			*increment = gsl_complex_sub( *increment , *tmp);
 			*increment = gsl_complex_mul ( *increment, gsl_complex_rect(D_T,1)); 
 			gsl_matrix_complex_set( increment_matrix,i,j, *increment);
 		}
 	}
-	gsl_matrix_complex_free(psi_old);
-	gsl_matrix_complex_free(increment_matrix);
-	free(increment);
-	free(tmp);
 	/* the result is stored in input, increment_matrix is unchanged
 	 * → if status is non-zero, an error occurred
 	 */
 	status += gsl_matrix_complex_add( input , increment_matrix);
-	if( status != 0 )
-		printf("An error occurred in compute() \n ");
-
+	if( status != 0 ){
+		printf("An error occurred in compute(): gsl_matrix_complex_add() \n ");
+		fflush(stdout);
+	}
+	gsl_matrix_complex_free(psi_old);
+	gsl_matrix_complex_free(increment_matrix);
+	free(increment);
+	free(tmp);
+	
 	}
 
 
@@ -123,9 +129,9 @@ void displayF()
     rgb_t color;
     int k;
     for(k = 0; k < W*H; k++){
-		tmp = gsl_matrix_complex_get(psi, k/W,  k%W);
+		tmp = gsl_matrix_complex_get(psi, k/(psi->size1),  k%(psi->size1));
         if(modeView == 1)
-            color = d2rgb(gsl_complex_abs( tmp ));
+            color = d2rgb(gsl_complex_abs( tmp )*gsl_complex_abs(tmp));
         if(modeView == 2)
             color = d2rgb( tmp.dat[0]) ;
         if(modeView == 3)

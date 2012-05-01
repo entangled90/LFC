@@ -14,24 +14,24 @@
 #define R_MAX 0.5
 #define V_MAX 1e-30
 #define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
-#define D_T 1e-40
+#define D_T 1e-20
 #define R_PDF 3
 /* width and heigth of the matrix */
 const int W = 600;
 const int H = 600;
 /* reticular pass */
-double a = 1e-12;
+double a = 1e-3;
 /* matrix for the wave function */
 gsl_matrix_complex * psi ;
 /* for displaying */
 int isActive, modeView;
 size_t time;
 double m = 1e-31;
-double omega = 1e-10;
+double omega = 1e-20;
 
 
 gsl_complex circular_step_pdf( double x , double y ){
-	if ( ( x*x + y*y < R_PDF*a))
+	if ( ( x*x + y*y < a*a))
 		return gsl_complex_rect ( 1, 0);
 	else
 		return GSL_COMPLEX_ZERO;
@@ -72,23 +72,22 @@ void compute ( gsl_matrix_complex *input ){
 	gsl_matrix_complex_memcpy(psi_old, input);
 	for ( i = 0 ; i< w ; i++){
 		for( j = 0 ; j< h ; j++){
-			*increment = GSL_COMPLEX_ZERO; 	
-			if( (i > 0) && (i < w-1) && (j > 0) && (j < h-1)){
-				if( i > 0)
+			*increment = GSL_COMPLEX_ZERO;
+			/* Mi sa che è il laplaciano che fa cagare! */ 	
+			if( (i != 0) && (i != w-1) && (j != 0) && (j != h-1)){
+				if( i != 0)
 					*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i-1,j)); 
-				if( i < w-1)
+				if( i != w-1)
 					*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i+1,j));
-				if ( j > 0)
+				if ( j != 0)
 					*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i,j-1));
-				if ( j < h-1) 
+				if ( j != h-1) 
 					*increment = gsl_complex_add ( * increment , gsl_matrix_complex_get( psi_old, i,j+1));
 				(*tmp) = gsl_matrix_complex_get( psi_old, i,j);
 				*increment = gsl_complex_sub( * increment ,gsl_complex_mul_real( *tmp , 4.0)  ); 
 				*increment = gsl_complex_mul_real( *increment, 1/(a*a*2.0*m)*H_BAR ) ;
 				/* Ora in increment ci sta salvato:
 				 * laplaciano*h_bar/2m (c'è 1 h_bar solo perchè ci divido davanti*/
-				 
-				//GSL_SET_COMPLEX(tmp,V_step_tunnel( a*i, a*j)/((double) H_BAR),0);
 				*tmp = gsl_complex_mul_real(gsl_matrix_complex_get(psi_old,i,j), (
 							(V_parabolic(a*(i-w/2),a*(j-h/2)))/ H_BAR));
 				*increment = gsl_complex_sub (*increment ,*tmp);

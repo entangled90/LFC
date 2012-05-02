@@ -19,7 +19,7 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN =  schroedinger
+MAIN =  schrodinger
 #harmonicMetropolis
 # harmonicMetropolis harmonic_different_n  schroedinger
 # importanza harmonic_gamma buffon

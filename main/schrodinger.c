@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <types.h>
 #include <gsl/gsl_matrix_complex_double.h>
 #include <gsl/gsl_complex.h>
 #include <gsl/gsl_complex_math.h>
@@ -8,37 +7,37 @@
 #include <GL/freeglut.h>
 #include "color.h"
 #include <gsl/gsl_const_mksa.h>
+#include "varie.h"
 
 
-#define R_MIN 0.4
-#define R_MAX 0.5
-#define V_MAX 1e-30
+#define R_MIN 80
+#define R_MAX 100
+#define V_MAX 10
 #define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
-#define D_T 1e-10
-#define R_PDF 20
+#define D_T 1e-5
+#define R_PDF 30
 /* width and heigth of the matrix */
 const int W = 600;
 const int H = 600;
 /* reticular pass */
-double a = 1e-1;
+double a = 1e-3;
 /* matrix for the wave function */
 gsl_matrix_complex * psi ;
 /* for displaying */
 int isActive, modeView;
 size_t time;
-double m = 1e-31;
-double omega = 1e-20;
-
+/* Physical parameters*/
+double m = 1e-28;
+double omega = 1e-4;
+double kinetic_constant; 
+double harmonic_constant; 
 
 gsl_complex circular_step_pdf( double x , double y ){
-	if ( ( x*x + y*y < R_PDF*R_PDF*a*a))
-		return gsl_complex_rect ( 1, 0);
-	else
-		return GSL_COMPLEX_ZERO;
+		return gsl_complex_rect ( gaussPdf(a,200*a,x)*gaussPdf(a,0,y)/100, gaussPdf(a,200*a,x)*gaussPdf(a,0,y)/100);
 	}
 
 double V_step_tunnel (double x , double y ){
-	if ( ( x*x + y*y > R_MIN*R_MIN ) && (x*x +y*y < R_MAX*R_MAX))
+	if ( ( x*x + y*y > R_MIN*R_MIN*a*a) && (x*x +y*y < R_MAX*R_MAX*a*a))
 		return V_MAX;
 	else
 		return 0 ;
@@ -46,7 +45,7 @@ double V_step_tunnel (double x , double y ){
 
 double V_parabolic ( double x , double y ){
 	
-	return ( 0.5*m*omega*omega*(x*x+y*y));
+	return ( harmonic_constant*(x*x+y*y));
 	}
 
 void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double x , double y ) ) {
@@ -85,15 +84,14 @@ void compute ( gsl_matrix_complex *input ){
 					*increment = gsl_complex_add ( * increment , gsl_matrix_complex_get( psi_old, i,j+1));
 				(*tmp) = gsl_matrix_complex_get( psi_old, i,j);
 				*increment = gsl_complex_sub( * increment ,gsl_complex_mul_real( *tmp , 4.0)  ); 
-				*increment = gsl_complex_mul_real( *increment, 1/(a*a*2.0*m)*H_BAR ) ;
+				*increment = gsl_complex_mul_real( *increment, kinetic_constant ) ;
 				/* Ora in increment ci sta salvato:
 				 * laplaciano*h_bar/2m (c'è 1 h_bar solo perchè ci divido davanti*/
-				*tmp = gsl_complex_mul_real(gsl_matrix_complex_get(psi_old,i,j), (
-							(V_parabolic(a*(i-w/2),a*(j-h/2)))/ H_BAR));
-				*increment = gsl_complex_sub (*increment ,*tmp);
-				*increment = gsl_complex_mul (*increment,(gsl_complex_rect(D_T,1)));
+				//*tmp = gsl_complex_mul_real(gsl_matrix_complex_get(psi_old,i,j),(V_step_tunnel(a*(i-w/2),a*(j-h/2))));
+				//*increment = gsl_complex_sub (*increment ,*tmp);
+				*increment = gsl_complex_mul (*increment,(gsl_complex_rect(0,1)));
 			}
-			gsl_matrix_complex_set( increment_matrix,i,j, *increment);
+			gsl_matrix_complex_set( increment_matrix,i,j,*increment);
 		}
 	}
 	/* the result is stored in input, increment_matrix is unchanged
@@ -133,7 +131,7 @@ void displayF()
     for(k = 0; k < w*h; k++){
 		tmp = gsl_matrix_complex_get(psi, k/w,  k%w);
         if(modeView == 1)
-            color = d2rgb(gsl_complex_abs( tmp )*gsl_complex_abs(tmp));
+            color = d2rgb(gsl_complex_abs(tmp));
         if(modeView == 2)
             color = d2rgb( tmp.dat[0]) ;
         if(modeView == 3)
@@ -181,6 +179,8 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
     }
 }
 int main (int argc, char *argv[]){
+	kinetic_constant = 1;
+	harmonic_constant = 5;
 	psi = gsl_matrix_complex_alloc((int)W,(int)H);
 	init_wave_function( psi , circular_step_pdf );
 	time = modeView = isActive = 1;

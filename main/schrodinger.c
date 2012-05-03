@@ -179,7 +179,7 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
     }
 }
 int main (int argc, char *argv[]){
-	kinetic_constant = 1;
+	kinetic_constant = 1e-3;
 	harmonic_constant = 5;
 	psi = gsl_matrix_complex_alloc((int)W,(int)H);
 	init_wave_function( psi , circular_step_pdf );

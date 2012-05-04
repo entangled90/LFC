@@ -5,11 +5,13 @@
 #include <GL/freeglut.h>
 #define H 0.001
 /* Friction coefficient */
-#define Q 1
+#define Q 0.8
 /* Extern force amplitude */
-#define B 1.4
+#define B 2
 #define OMEGA_EXT 0.6667
 #define N_STEPS 100000000
+#define PI 3.14159265
+int N_POINTS_DISPLAYED= 1e4;
 int n_points = 1;
 float a =1 ;
 float ds;
@@ -28,6 +30,22 @@ double t;
 struct point2D b ;
 struct point2D * head ;
 struct point2D * tail;
+/*
+point2D *seek_element ( point2D *previous){
+	if ( previos == tail)
+		return ;
+	return ( seek_element(previos->next));
+	}
+*/
+struct point2D * get_element ( struct point2D head, int position  ) {
+	int i = 0;
+	struct point2D *cursor;
+	cursor = &head;
+	for( i = 0; i< position; i++){
+		cursor = cursor->next;
+	}
+	return ( cursor);
+	}
 
 
 /* Algoritmo per runge-kutta in 2D */
@@ -65,15 +83,32 @@ void compute ( ){
  }
 
 /* OpenGL stuff */
+
+void drawCircle(struct point2D p,double r)
+{
+	int i;
+	rgb_t color;
+	color = d2rgb(fabs( tail->x * tail->y));
+	glColor3d(color.r,color.g,color.b);
+    glBegin(GL_POLYGON);
+    for (i = 0; i < 360; i++)
+        glVertex2d(p.x+r*cos(i*PI/180.0),p.y+r*sin(i*PI/180.0));
+    glEnd();
+}
+
+
 void drawLine( struct point2D *head )
 {
   int i = 0;
 	struct point2D * cursor;
     glBegin(GL_LINE_STRIP);
-	cursor = head;
+	if( n_points < N_POINTS_DISPLAYED)
+		cursor = head;
+	else
+		cursor = get_element( *head, n_points - N_POINTS_DISPLAYED);
 	do{
 		rgb_t color;
-        color = d2rgb((cursor+i)->y );
+        color = d2rgb(fabs( cursor->x * cursor->y));
         glColor3d(color.r,color.g,color.b);
         glVertex2d((cursor+i)->x,(cursor+i)->y);
 		cursor = cursor->next;
@@ -85,7 +120,7 @@ void displayF()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     drawLine(head);
-    //drawCircle(test.pos(),0.01,newPoint(0,1,1));
+    drawCircle(*tail ,0.01);
     glutSwapBuffers();
 }
 
@@ -136,6 +171,12 @@ void keyboardF(unsigned char key, int x, int y)
         case 'r': case 'R':
             init();
             break;
+        case 't':
+			N_POINTS_DISPLAYED *=2;
+			break;
+		case 'e':
+			N_POINTS_DISPLAYED /=2;
+			break;
         case 'q': case 'Q': case 27:
             exit(0);
             break;
@@ -199,10 +240,13 @@ for( i = 0; i< N_STEPS ; i++){
   head =malloc (sizeof(struct point2D));
   head->next = head;
   tail = head;
-  b.x=0;
-  b.y=0;
+  b.x = 0;
+  b.y =0 ;
   t =0;
   scalef=2;
+  n_points =1 ;
+  head->x= 1.5;
+  head->y = 0;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGB);
   glutInitWindowSize(500, 500);

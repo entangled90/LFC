@@ -5,10 +5,10 @@
 #include <GL/freeglut.h>
 #define H 0.001
 /* Friction coefficient */
-#define Q 0.8
+#define Q 1
 /* Extern force amplitude */
-#define B 2
-#define OMEGA_EXT 0.6667
+#define B 1
+#define OMEGA_EXT 3
 #define N_STEPS 100000000
 #define PI 3.14159265
 int N_POINTS_DISPLAYED= 1e4;
@@ -172,10 +172,12 @@ void keyboardF(unsigned char key, int x, int y)
             init();
             break;
         case 't':
-			N_POINTS_DISPLAYED *=2;
+			if ( N_POINTS_DISPLAYED< pow(2,30))
+				N_POINTS_DISPLAYED *=2;
 			break;
 		case 'e':
-			N_POINTS_DISPLAYED /=2;
+			if(N_POINTS_DISPLAYED > 4)
+				N_POINTS_DISPLAYED /=2;
 			break;
         case 'q': case 'Q': case 27:
             exit(0);
@@ -245,7 +247,7 @@ for( i = 0; i< N_STEPS ; i++){
   t =0;
   scalef=2;
   n_points =1 ;
-  head->x= 1.5;
+  head->x= 0;
   head->y = 0;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGB);

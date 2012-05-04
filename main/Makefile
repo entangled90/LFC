@@ -19,12 +19,13 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN =  schrodinger
+MAIN = pendolo-rk
+#schrodinger pendolo-rk
 #harmonicMetropolis
 # harmonicMetropolis harmonic_different_n  schroedinger
 # importanza harmonic_gamma buffon
 
-RANDOM = ranlxs ranlxd gauss pdf
+RANDOM =ranlxs ranlxd gauss pdf
 
 START = start 
 
@@ -51,7 +52,8 @@ INCPATH = ../include /usr/include/
 
 # additional libraries to be included 
  
-LIBS = m gsl gslcblas glut GL X11
+LIBS = m
+#gsl gslcblas glut GL X11
 
 LIBPATH = 
 

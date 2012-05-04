@@ -14,6 +14,7 @@
 #define R_MAX 100
 #define V_MAX 10
 #define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
+
 #define D_T 1e-2
 #define R_PDF 30
 /* width and heigth of the matrix */
@@ -33,7 +34,7 @@ double kinetic_constant;
 double harmonic_constant; 
 
 gsl_complex circular_step_pdf( double x , double y ){
-		return gsl_complex_rect ( gaussPdf(10,0,x)*gaussPdf(10,0,y), 0 );
+		return gsl_complex_rect ( gaussPdf(a,200*a,x)*gaussPdf(a,200*a,y)/100, 0);
 	}
 
 double V_step_tunnel (double x , double y ){
@@ -178,8 +179,8 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
     }
 }
 int main (int argc, char *argv[]){
-	kinetic_constant = 30;
-	harmonic_constant = 1e-2;
+	kinetic_constant = 1e-3;
+	harmonic_constant = 10;
 	psi = gsl_matrix_complex_alloc((int)W,(int)H);
 	init_wave_function( psi , circular_step_pdf );
 	time = modeView = isActive = 1;

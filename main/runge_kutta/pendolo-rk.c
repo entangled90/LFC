@@ -46,7 +46,7 @@ FILE *fp = fopen("../data/differential_equation/runge_kutta.dat","w");
 for( i = 0; i< N_STEPS ; i++){
     kn_fill(k1,k2,x1,x2,t+i*H,f1,f2);
      
-     tmp1 =increment_k(k1);
+    tmp1 =increment_k(k1);
     tmp2 = increment_k(k2);
     if( i%10 == 0)
     fprintf(fp,"%e \t %e\n", x1,x2);

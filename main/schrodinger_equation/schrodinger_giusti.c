@@ -9,17 +9,19 @@
 #include <gsl/gsl_const_mksa.h>
 #include "varie.h"
 
-#define N_SERIES 20
+#define N_SERIES 5
 #define R_MIN 80
 #define R_MAX 100
 #define V_MAX 10
 #define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
+#define NORM 1
+#define PI 3.14159
 
-#define D_T 1e-5
+#define D_T 1e-3
 #define R_PDF 30
 /* width and heigth of the matrix */
-const int W = 200;
-const int H = 200;
+const int W = 300;
+const int H = 300;
 /* reticular pass */
 double a = 1;
 /* matrix for the wave function */
@@ -31,16 +33,28 @@ size_t time;
 double kinetic_constant; 
 double harmonic_constant;
 
-int factorial( int n){
+double factorial( int n){
 	int i ;
-	int result = 1;
+	double result = 1;
 	for( i = 1 ; i < n+1; i++)
-		result *= i;
+		result *=  (double) i;
 	return ( result);
 	}
 
+double matrix_complex_norm ( gsl_matrix_complex *input){
+	int w = (int) input->size1;
+	int h = (int) input ->size2;
+	int i,j;
+	double norm_squared = 0.0;
+	for( i = 0 ; i < w; i++){
+		for(j = 0; j<h; j++){
+			norm_squared += (gsl_complex_mul(gsl_matrix_complex_get(input,i ,j),gsl_complex_conjugate(gsl_matrix_complex_get(input,i,j)))).dat[0];
+		}
+	}
+	return (sqrt(norm_squared));
+}
 gsl_complex circular_step_pdf( double x , double y ){
-		return gsl_complex_rect ( 1000*gaussPdf(100*a,0,x)*gaussPdf(50*a,0,y), 0);
+		return gsl_complex_rect ( 10000*gaussPdf(2500*a,50,x)*gaussPdf(2500*a,-50,y), 1000*gaussPdf(2500*a,50,x)*gaussPdf(2500*a,-50,y));
 	}
 
 double V_step_tunnel (double x , double y ){
@@ -51,8 +65,10 @@ double V_step_tunnel (double x , double y ){
 	}
 
 double potential( int i ,int j  ){
-	
-	return ( harmonic_constant*a*a*(i*i+j*j));
+	//return 0.0;
+	//return( (W/2/PI)*(W/2/PI)*sin( 2*PI/W*i)*sin( 2*PI/W*i)+(H/2/PI)*(H/2/PI)*sin( 2*PI/H*j)*sin( 2*PI/H*j));
+	return ( 5e-2*harmonic_constant*a*a*(i*i+j*j));
+	//return (10);
 	}
 
 void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double x , double y ) ) {
@@ -65,37 +81,50 @@ void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double
 			gsl_matrix_complex_set(input,i,j, pdf( a*(i-w/2),a*(j-h/2) ) );
 		}
 	}
+	//gsl_matrix_complex_scale( input, gsl_complex_rect( 1/matrix_complex_norm(input),0 ));
 	}
 
+/* Set matrix out equal to matrix in */
+	void matrix_equal(gsl_matrix_complex *in , gsl_matrix_complex * out){
+	int i,j ;
+	int w = (int) in->size1;
+	int h = (int) in->size2;
+	int w1 = (int) out->size1;
+	int h1 = (int) out->size2;
+	if( w == w1 && h==h1){
+	for( i = 0 ; i < h ; i++)
+		for( j = 0 ; j < w ; j++)
+			gsl_matrix_complex_set(out, i, j, gsl_matrix_complex_get(in, i, j));
+	}
+	else{
+		printf("Matrix_equal : matrices have different dimensions!\n");
+		exit(EXIT_FAILURE);
+	}
+	}
 	
 void  hamiltonian ( gsl_matrix_complex* in , gsl_matrix_complex * out){
 	int w = (int) in->size1;
 	int h = (int) in ->size2;
 	int i, j ;
 	gsl_complex sum ;
-	for ( i = 0 ; i< w ; i++){
-		for( j = 0 ; j< h ; j++){
+	for ( i = 0 ; i< h ; i++){
+		for( j = 0 ; j< w ; j++){
 			sum = GSL_COMPLEX_ZERO;
 			sum = gsl_complex_sub( sum, gsl_matrix_complex_get(in,i ,(j+1)%w));
 			sum = gsl_complex_sub( sum, gsl_matrix_complex_get(in,i ,(j-1 + w)% w));
 			sum = gsl_complex_sub( sum, gsl_matrix_complex_get(in,(i+1)%h ,j ));
 			sum = gsl_complex_sub( sum, gsl_matrix_complex_get(in,(i-1 +h)%h ,j ));
 			sum = gsl_complex_mul_real(sum , 0.25);
-			sum = gsl_complex_sub( sum , gsl_matrix_complex_get(in , i , j) );
-			gsl_matrix_complex_set(out, i, j, gsl_complex_add_real(gsl_complex_mul_real(sum,kinetic_constant), potential(i,j)));
+			sum = gsl_complex_add( sum , gsl_matrix_complex_get(in , i , j) );
+			gsl_matrix_complex_set(out, i, j, gsl_complex_add(gsl_complex_mul_real(sum,kinetic_constant), gsl_complex_mul_real(gsl_matrix_complex_get(in,i,j),potential((i)%h -h/2,(j)%w-w/2) ) ) );
 		}
 	}
+	/*
+	matrix_equal(in,out);
+	gsl_matrix_complex_scale(out, gsl_complex_rect(2*3.1415,0));
+	*/
 	}
-	/* Set matrix out equal to matrix in */
-	void matrix_equal(gsl_matrix_complex *in , gsl_matrix_complex * out){
-	int i,j ;
-	int w = (int) in->size1;
-	int h = (int) in->size2;
-	for( i = 0 ; i < w ; i++)
-		for( j = 0 ; j < h ; j++)
-			gsl_matrix_complex_set(out, i, j, gsl_matrix_complex_get(in, i, j));
-
-	}
+	
 	
 void compute ( gsl_matrix_complex *input ){
 	int i;
@@ -104,15 +133,29 @@ void compute ( gsl_matrix_complex *input ){
 	gsl_matrix_complex *temp = gsl_matrix_complex_alloc (w,h) ;
 	gsl_matrix_complex *matrix_sum = gsl_matrix_complex_alloc(w,h);
 	gsl_matrix_complex *step = gsl_matrix_complex_alloc(w,h);
-	
-		matrix_equal( input, matrix_sum);
+	gsl_matrix_complex *sub_psi = gsl_matrix_complex_alloc(w,h);
+	gsl_matrix_complex *ham_psi = gsl_matrix_complex_alloc(w,h);
+	matrix_equal( input, matrix_sum);
+	matrix_equal(input, temp);
 		for (i = 1; i < N_SERIES ; i++ ){
+		/* hamiltonian calcola H |temp > e la salva in step */
 			hamiltonian(temp,step);
-			matrix_equal(temp,step);
-			gsl_matrix_complex_scale(step,gsl_complex_mul_real(gsl_complex_pow_real(gsl_complex_rect(0,D_T),i),factorial(i)));
+		gsl_matrix_complex_scale(step,gsl_complex_div_real( gsl_complex_rect(0,-D_T), (double) i));
+		/* salva step in temp */
+			matrix_equal(step ,temp);
+		/* Viene moltiplicata per ( i * D_T)^n*/
 			gsl_matrix_complex_add( matrix_sum, step);
 			}
-		gsl_matrix_complex_add( input, matrix_sum);
+	/* Calcola se la differenza di psi è uguale all'hamiltoniana */
+	matrix_equal(input,sub_psi);
+	gsl_matrix_complex_sub( sub_psi,matrix_sum);
+	gsl_matrix_complex_scale(sub_psi, gsl_complex_rect(1.0/ (double) D_T,0 ));
+	hamiltonian(input, ham_psi);
+	gsl_matrix_complex_add(sub_psi, ham_psi);
+	//printf("%e\n", matrix_complex_norm(sub_psi));
+	matrix_equal( matrix_sum, input);
+	//printf("%e \n", matrix_complex_norm(input));
+	
 	}
 
 void GLInit()
@@ -136,11 +179,11 @@ void displayF()
     for(k = 0; k < w*h; k++){
 		tmp = gsl_matrix_complex_get(psi, k/w,  k%w);
         if(modeView == 1)
-            color = d2rgb(gsl_complex_abs(tmp));
+            color = d2rgb(gsl_complex_abs(tmp)/ NORM);
         if(modeView == 2)
-            color = d2rgb( tmp.dat[0]) ;
+            color = d2rgb( tmp.dat[0]/NORM) ;
         if(modeView == 3)
-            color = d2rgb( tmp.dat[1]);
+            color = d2rgb( tmp.dat[1]/NORM);
         data[3*k+0] = color.r;
         data[3*k+1] = color.g;
         data[3*k+2] = color.b;
@@ -184,12 +227,12 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
     }
 }
 int main (int argc, char *argv[]){
-	kinetic_constant = 1e-2;
-	harmonic_constant = 100;
+	kinetic_constant = 2;
+	harmonic_constant = 1;
 	psi = gsl_matrix_complex_alloc(W,H);
 	init_wave_function( psi , circular_step_pdf );
 	time = modeView = isActive = 1;
-	printf("%d \n", factorial(4));
+	//printf("%e \n", factorial(4.0));
 		glutInit(&argc, argv);
     glutInitWindowSize((int)W,(int)H);
     glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE );

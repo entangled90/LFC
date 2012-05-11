@@ -23,7 +23,7 @@ const int H = 600;
 /* reticular pass */
 double a = 1;
 /* matrix for the wave function */
-gsl_matrix_complex * psi ;	
+gsl_complex* psi ;	
 /* for displaying */
 int isActive, modeView;
 size_t time;
@@ -60,6 +60,11 @@ void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double
 		}
 	}
 	}
+
+
+
+
+	
 	
 void compute ( gsl_matrix_complex *input ){
 	int i, j ,status = 0;
@@ -74,6 +79,7 @@ void compute ( gsl_matrix_complex *input ){
 		for( j = 0 ; j< h ; j++){
 			*increment = GSL_COMPLEX_ZERO;
 			if( (i != 0) && (i != w-1) && (j != 0) && (j != h-1)){
+/*
 				if( i != 0)
 					*increment = gsl_complex_add ( *increment , gsl_matrix_complex_get( psi_old, i-1,j)); 
 				if( i != w-1)
@@ -86,12 +92,13 @@ void compute ( gsl_matrix_complex *input ){
 				*increment = gsl_complex_sub( *increment ,gsl_complex_mul_real( gsl_matrix_complex_get( psi_old, i,j), 4.0)); 
 				//*increment = gsl_complex_mul_real( *increment, kinetic_constant ) ;
 				/* Ora in increment ci sta salvato:
-				 * laplaciano*h_bar/2m (c'è 1 h_bar solo perchè ci divido davanti*/
+				 * laplaciano*h_bar/2m (c'è 1 h_bar solo perchè ci divido davanti
 				// *tmp = gsl_complex_mul_real(gsl_matrix_complex_get(psi_old,i,j),(V_parabolic(a*(i-w/2),a*(j-h/2))));
 				//*increment = gsl_complex_sub (*increment ,*tmp);
 				*increment = gsl_complex_mul_imag(*increment,D_T);
+	*/
 			}
-			gsl_matrix_complex_set( increment_matrix,i,j,*increment);
+			//gsl_matrix_complex_set( increment_matrix,i,j,*increment);
 			//printf("%d, %d \t %e\n", i,j, gsl_matrix_complex_get(psi_old,i,j).dat[1] );
 		}
 	}
@@ -181,7 +188,7 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
 int main (int argc, char *argv[]){
 	kinetic_constant = 1e-3;
 	harmonic_constant = 10;
-	psi = gsl_matrix_complex_alloc((int)W,(int)H);
+	psi = malloc((int)W*(int)H*sizeof( gsl_complex );
 	init_wave_function( psi , circular_step_pdf );
 	time = modeView = isActive = 1;
     glutInit(&argc, argv);

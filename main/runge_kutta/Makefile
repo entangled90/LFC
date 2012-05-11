@@ -19,27 +19,26 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = pendolo-rk_openGL
-#schrodinger pendolo-rk
+MAIN = pendolo-rk_openGL pendolo-rk
 #harmonicMetropolis
 # harmonicMetropolis harmonic_different_n  schroedinger
 # importanza harmonic_gamma buffon
 
-RANDOM =ranlxs ranlxd gauss pdf
+#RANDOM =ranlxs ranlxd gauss pdf
 
-START = start 
+#START = start 
 
-EXTRAS = varie my_struct
+#EXTRAS = varie my_struct
 
-INTEGRATION = integration montecarlo
-HARMONIC = harmonic
+#INTEGRATION = integration montecarlo
+#HARMONIC = harmonic
 
 MODULES = $(RANDOM) $(START) $(EXTRAS) $(INTEGRATION) $(HARMONIC)
 
 
 # search path for modules
 
-MDIR = ../modules
+MDIR = ../../modules
 
 VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/integration:$(MDIR)/harmonic
 
@@ -47,19 +46,19 @@ VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/i
 
 # additional include directories
 
-INCPATH = ../include /usr/include/
+INCPATH = ../../include
 
 
 # additional libraries to be included 
  
-LIBS = m gsl gslcblas glut GL X11
+LIBS = m glut GL X11
 
 LIBPATH = 
 
 
 # scheduling and optimization options (such as -DSSE -DSSE2 -DP4)
  
-CFLAGS = -Wall -O -g -DSSE2
+CFLAGS = -Wall -O -g
  
 
 ############################## do not change ###################################

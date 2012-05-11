@@ -19,27 +19,22 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN =  schroedinger
-#harmonicMetropolis
-# harmonicMetropolis harmonic_different_n  schroedinger
-# importanza harmonic_gamma buffon
-
-RANDOM = ranlxs ranlxd gauss pdf
+MAIN =  harmonicMetropolis harmonic_different_n
+RANDOM =ranlxs ranlxd gauss pdf
 
 START = start 
 
 EXTRAS = varie my_struct
 
-DERIVATIVE =
-INTEGRATION = integration montecarlo
+# INTEGRATION = integration montecarlo
 HARMONIC = harmonic
 
-MODULES = $(RANDOM) $(START) $(EXTRAS) $(DERIVATIVE) $(INTEGRATION) $(HARMONIC)
+MODULES = $(RANDOM) $(START) $(EXTRAS) $(INTEGRATION) $(HARMONIC)
 
 
 # search path for modules
 
-MDIR = ../modules
+MDIR = ../../modules
 
 VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/integration:$(MDIR)/harmonic
 
@@ -47,19 +42,18 @@ VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/i
 
 # additional include directories
 
-INCPATH = ../include /usr/include/
-
+INCPATH = ../..//include 
 
 # additional libraries to be included 
  
-LIBS = m gsl gslcblas
+LIBS = m 
 
 LIBPATH = 
 
 
 # scheduling and optimization options (such as -DSSE -DSSE2 -DP4)
  
-CFLAGS = -Wall -O -g  -DSSE2
+CFLAGS = -Wall -O -g -DSSE2
  
 
 ############################## do not change ###################################

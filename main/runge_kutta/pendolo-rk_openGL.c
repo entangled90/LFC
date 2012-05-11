@@ -5,10 +5,10 @@
 #include <GL/freeglut.h>
 #define H 0.001
 /* Friction coefficient */
-#define Q 1
+#define Q 0.1
 /* Extern force amplitude */
-#define B 1
-#define OMEGA_EXT 3
+#define B -0.5
+#define OMEGA_EXT (2.0/3.0)
 #define N_STEPS 100000000
 #define PI 3.14159265
 int N_POINTS_DISPLAYED= 1e4;
@@ -46,7 +46,18 @@ struct point2D * get_element ( struct point2D head, int position  ) {
 	}
 	return ( cursor);
 	}
-
+void free_list ( struct point2D *head , struct point2D *tail, int n){
+	struct point2D cursor, *tmp;
+	int i ;
+	cursor = *head;
+	tmp = head;
+	for ( i = 0 ; i<n ; i++){
+		cursor = *(tmp);
+		free(tmp);
+		tmp=cursor.next;
+		
+	}
+	}
 
 /* Algoritmo per runge-kutta in 2D */
 void kn_fill (double *k1_vec, double *k2_vec, struct point2D p , double t , double (*f1) (double ,double,double ), double (*f2) (double, double,double)){
@@ -63,7 +74,8 @@ void kn_fill (double *k1_vec, double *k2_vec, struct point2D p , double t , doub
 }
 
 double f2 ( double x1, double x2, double time){
-  return ( -sin(x1) -Q*x2+B*cos(OMEGA_EXT*time));
+  return ( 4*(1-x1*x1)*x2-x1);
+  //-sin(x1) -Q*x2+B*cos(OMEGA_EXT*time));
 }
 double f1 ( double x1, double x2, double time){
   return (x2);
@@ -108,7 +120,7 @@ void drawLine( struct point2D *head )
 		cursor = get_element( *head, n_points - N_POINTS_DISPLAYED);
 	do{
 		rgb_t color;
-        color = d2rgb(fabs( cursor->x * cursor->y));
+        color = d2rgb(fabs( cursor->y*cursor->y));
         glColor3d(color.r,color.g,color.b);
         glVertex2d((cursor+i)->x,(cursor+i)->y);
 		cursor = cursor->next;
@@ -247,8 +259,8 @@ for( i = 0; i< N_STEPS ; i++){
   t =0;
   scalef=2;
   n_points =1 ;
-  head->x= 0;
-  head->y = 0;
+  head->x= 0.5;
+  head->y = 1;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGB);
   glutInitWindowSize(500, 500);
@@ -261,6 +273,7 @@ for( i = 0; i< N_STEPS ; i++){
     //glutMouseFunc(mouseF);
   glutReshapeFunc(reshapeF);
   glutMainLoop();
+  free_list(head,tail,n_points);
     return(EXIT_SUCCESS);
 
 }

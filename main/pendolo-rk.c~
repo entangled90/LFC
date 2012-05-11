@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <math.h>
+#define H 0.01
+void kn_fill (double * k1_vec, double *k2_vec, double x1, double x2, double time , double (*f1) (double var1 ,double var2,  double t )){
+  k1_vec[0]= H*f(x1,x2,t);
+  k2_vec[0]= k1_vec[0];
+  k1_vec[1]= H*f(x1+k_vec[0]/2, ) 
+  k_vec[1]= H*f(x1+k_vec[0]/2, ) 
+    
+}
+
+int main (int argc, char* argv[]){
+
+
+
+
+}

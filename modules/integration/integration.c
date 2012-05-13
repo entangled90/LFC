@@ -13,11 +13,33 @@ double trapezio ( double min , double max, double (*f) (double) ){
 	return ((max-min)*( f( min ) + f(max) )/2.0 ) ;
 	}
 
+double gaussianQuad ( double min , double max , double (*f) (double)){
+	/*Viene usato un polinomio di grado 5 */
+	double zero[5] = { 	0 ,
+						sqrt(245.0 - 14.0*sqrt(70.0))/21.0,
+						-sqrt(245.0 - 14.0*sqrt(70.0))/21.0,
+						sqrt(245.0 + 14.0*sqrt(70.0))/21.0,
+						-sqrt(245.0 + 14.0*sqrt(70.0))/21.0};
+	double weight[5] = { 			(double)128.0/225.0,
+						(double)1/900.0*(322.0 + 13*sqrt(70.0)),
+						(double)1/900.0*(322.0 + 13*sqrt(70.0)),
+						(double)1/900.0*(322.0 - 13*sqrt(70.0)),
+						(double)1/900.0*(322.0 - 13*sqrt(70.0))} ;
+	double integral =  0;
+	/* Porto [min,max] in [-1,1] */
+	int i = 0;
+	for (i = 0 ; i< 5 ; i++){
+		integral += weight[i]*f((max-min)/2.0*zero[i]+(max+min)/2.0);
+	}
+	return integral*(max-min)/2.0 ;
+}
+
+
 /*
  *  MethodNumber:
  * 	1 -> Trapezi
  *  2 -> Simpson
- *
+ *  3 -> Quadrature gaussiane
  * 	*f = integrand Function
  *  n = Number of sub intervals
  */
@@ -34,6 +56,9 @@ double partition (double min, double max , int n, int methodNumber , double (*f)
 			break;
 		case 2 :
 			method = Simpson;
+			break;
+		case 3 :
+			method = gaussianQuad;
 			break;
 		default:
 			printf("Bad integration method!");
@@ -63,26 +88,5 @@ double partition (double min, double max , int n, int methodNumber , double (*f)
 
 }
 
-
-double gaussianQuad ( double min , double max , double (*f) (double)){
-	/*Viene usato un polinomio di grado 5 */
-	double zero[5] = { 	0 ,
-						sqrt(245.0 - 14.0*sqrt(70.0))/21.0,
-						-sqrt(245.0 - 14.0*sqrt(70.0))/21.0,
-						sqrt(245.0 + 14.0*sqrt(70.0))/21.0,
-						-sqrt(245.0 + 14.0*sqrt(70.0))/21.0};
-	double weight[5] = { 			(double)128.0/225.0,
-						(double)1/900.0*(322.0 + 13*sqrt(70.0)),
-						(double)1/900.0*(322.0 + 13*sqrt(70.0)),
-						(double)1/900.0*(322.0 - 13*sqrt(70.0)),
-						(double)1/900.0*(322.0 - 13*sqrt(70.0))} ;
-	double integral =  0;
-	/* Porto [min,max] in [-1,1] */
-	int i = 0;
-	for (i = 0 ; i< 5 ; i++){
-		integral += weight[i]*f((max-min)/2.0*zero[i]+(max+min)/2.0);
-	}
-	return integral*(max-min)/2.0 ;
-}
 
 

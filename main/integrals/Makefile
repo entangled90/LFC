@@ -19,7 +19,7 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = integral gauss_quad importanza  buffon
+MAIN = integral importanza  buffon
 
 RANDOM =ranlxs ranlxd gauss pdf
 

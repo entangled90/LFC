@@ -32,7 +32,12 @@ size_t time;
 /* Physical parameters*/
 double kinetic_constant; 
 double harmonic_constant;
-
+gsl_matrix_complex *temp;
+gsl_matrix_complex *matrix_sum;
+gsl_matrix_complex *step;
+gsl_matrix_complex *sub_psi;
+gsl_matrix_complex *ham_psi;
+	
 double factorial( int n){
 	int i ;
 	double result = 1;
@@ -130,17 +135,12 @@ void compute ( gsl_matrix_complex *input ){
 	int i;
 	int w = (int) input->size1;
 	int h = (int) input->size2;
-	gsl_matrix_complex *temp = gsl_matrix_complex_alloc (w,h) ;
-	gsl_matrix_complex *matrix_sum = gsl_matrix_complex_alloc(w,h);
-	gsl_matrix_complex *step = gsl_matrix_complex_alloc(w,h);
-	gsl_matrix_complex *sub_psi = gsl_matrix_complex_alloc(w,h);
-	gsl_matrix_complex *ham_psi = gsl_matrix_complex_alloc(w,h);
 	matrix_equal( input, matrix_sum);
 	matrix_equal(input, temp);
 		for (i = 1; i < N_SERIES ; i++ ){
 		/* hamiltonian calcola H |temp > e la salva in step */
 			hamiltonian(temp,step);
-		gsl_matrix_complex_scale(step,gsl_complex_div_real( gsl_complex_rect(0,-D_T), (double) i));
+		gsl_matrix_complex_scale(step,gsl_complex_div_real( gsl_complex_rect(-D_T,0), (double) i));
 		/* salva step in temp */
 			matrix_equal(step ,temp);
 		/* Viene moltiplicata per ( i * D_T)^n*/
@@ -229,6 +229,11 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
 int main (int argc, char *argv[]){
 	kinetic_constant = 2;
 	harmonic_constant = 1;
+	temp = gsl_matrix_complex_alloc (W,H) ;
+	matrix_sum = gsl_matrix_complex_alloc(W,H);
+	step = gsl_matrix_complex_alloc(W,H);
+	sub_psi = gsl_matrix_complex_alloc(W,H);
+	ham_psi = gsl_matrix_complex_alloc(W,H);
 	psi = gsl_matrix_complex_alloc(W,H);
 	init_wave_function( psi , circular_step_pdf );
 	time = modeView = isActive = 1;
@@ -244,5 +249,10 @@ int main (int argc, char *argv[]){
     glutKeyboardFunc(keyboardF);
     glutMainLoop();
 	gsl_matrix_complex_free(psi);
-	return(EXIT_SUCCESS);
+	gsl_matrix_complex_free(temp);
+	gsl_matrix_complex_free(matrix_sum);
+	gsl_matrix_complex_free(step);
+	gsl_matrix_complex_free(sub_psi);
+	gsl_matrix_complex_free(ham_psi);
+		return(EXIT_SUCCESS);
 	}

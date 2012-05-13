@@ -19,7 +19,7 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN =  harmonicMetropolis harmonic_different_n
+MAIN =  harmonicMetropolis harmonic_different_n harmonic_gamma
 RANDOM =ranlxs ranlxd gauss pdf
 
 START = start 

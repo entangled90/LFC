@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.8)  13 MAY 2012 18:16
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.8)  16 MAY 2012 00:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -463,45 +463,101 @@ fontencoding LGR patched
 )
 runsystem(pygmentize -S default -f latex > relazioni.pyg)...executed.
 
- (./relazioni.pyg)
+ (./relazioni.pyg) (/usr/share/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 14.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 14.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 14.
+
+(/usr/share/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
 \openout3 = `relazioni.pyg'.
 
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
 
-! FancyVerb Error:
-  Extraneous input `{minted}' between \begin{minted}[<key=value>] and line end
-.
-\FV@Error ... {FancyVerb Error:
-\space \space #1
-}
-                                                  
-l.15 \end{minted}
-                 
-This input will be discarded. Hit <return> to continue.
-
+ (./relazioni.out.pyg
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
 )
-Runaway argument?
-! File ended while scanning use of \FancyVerbGetLine.
-<inserted text> 
-                \par 
-<*> relazioni.tex
-                 
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
+runsystem(rm relazioni.out.pyg)...executed.
 
-! Emergency stop.
-<*> relazioni.tex
-                 
-*** (job aborted, no legal \end found)
+runsystem(rm relazioni.pyg)...executed.
 
- 
+ [1
+Non-PDF special ignored!
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+
+(./relazioni.out.pyg)
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+ (./relazioni.out.pyg [2])
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
+
+ []
+
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+(./relazioni.out.pyg)
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+ [3] (./relazioni.aux) ) 
 Here is how much of TeX's memory you used:
- 5333 strings out of 493629
- 74732 string characters out of 3148779
- 152527 words of memory out of 3000000
- 8540 multiletter control sequences out of 15000+200000
- 5150 words of font info for 19 fonts, out of 3000000 for 9000
+ 5922 strings out of 493629
+ 81242 string characters out of 3148779
+ 158527 words of memory out of 3000000
+ 9085 multiletter control sequences out of 15000+200000
+ 11813 words of font info for 48 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 37i,1n,37p,355b,148s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 37i,5n,37p,415b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on relazioni.pdf (3 pages, 144329 bytes).
+PDF statistics:
+ 66 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

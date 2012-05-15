@@ -48,7 +48,7 @@ double partition (double min, double max , int n, int methodNumber , double (*f)
 	double h  = 0;
 	int i = 0;
 	double Sum = 0;
-	int swap = 0;
+	//int swap = 0;
 	double (*method) (double ,double , double (*) (double));
 	switch(methodNumber){
 		case 1:
@@ -65,17 +65,20 @@ double partition (double min, double max , int n, int methodNumber , double (*f)
 			exit(EXIT_FAILURE);
 			break;
 	}
+	/*
 	if ( max < min){
 		h = min;
 		min = max;
 		max = h;
 		swap = 1;
 	}
+	* */
 	h = (max-min)/n;
 	for (i = 0; i< n; i++){
 		Sum += method( min + i*h, min + (1+i)*h, f);
 		}
-		
+	return Sum;
+	/*	
 	if ( swap == 0)	
 		return Sum;
 	
@@ -85,7 +88,7 @@ double partition (double min, double max , int n, int methodNumber , double (*f)
 	else{
 		exit(1);
 	}
-
+	*/
 }
 
 

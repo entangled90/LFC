@@ -32,14 +32,12 @@ int main(int argc, char *argv[]){
 	cluster_jk *energy_time_clustered;
 	cluster_jk *matrix_clustered;
 	cluster_jk *matrix_time_clustered;
-	/*
-	 * Check per non avere problemi con la divisione intera
-	*/
 	if( argc == 1)
 		printf("N_SWEEP automatically set to 1e6 \n");
 	else
 		N_SWEEP = atoi(argv[1]); 
 	N_BIN =  ((N_SWEEP)/BIN_WIDTH);
+	/*Check per non avere problemi con la divisione intera */
 	if( N_SWEEP % BIN_WIDTH != 0){
 		printf("N_BIN_CHECK ERROR!\n");
 		return(EXIT_FAILURE);

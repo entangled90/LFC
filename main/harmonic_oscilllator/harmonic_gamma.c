@@ -35,6 +35,8 @@ int main(){
 			O_mix[i][j] = 0.0;
 		}
 	}
+	for( i = 0; i< Nx; i++)
+	  x[i] = 0.0;
 	action[0]=efirst_action(x,Nx);
 	for ( j = 0; j< N_SWEEP; j++){
 		ranlxd(xnew,Nx);

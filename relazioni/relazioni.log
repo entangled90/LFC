@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.8)  16 MAY 2012 00:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.8)  18 MAY 2012 02:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -364,41 +364,65 @@ runsystem(which pygmentize && touch relazioni.aex)...executed.
 runsystem(rm relazioni.aex)...executed.
 
 
-(./relazioni.aux)
+(/usr/share/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+\@enLab=\toks37
+)
+(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen133
+\lightrulewidth=\dimen134
+\cmidrulewidth=\dimen135
+\belowrulesep=\dimen136
+\belowbottomsep=\dimen137
+\aboverulesep=\dimen138
+\abovetopsep=\dimen139
+\cmidrulesep=\dimen140
+\cmidrulekern=\dimen141
+\defaultaddspace=\dimen142
+\@cmidla=\count125
+\@cmidlb=\count126
+\@aboverulesep=\dimen143
+\@belowrulesep=\dimen144
+\@thisruleclass=\count127
+\@lastruleclass=\count128
+\@thisrulewidth=\dimen145
+) (./relazioni.aux)
 \openout1 = `relazioni.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 6.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 6.
- (/usr/share/texmf-dist/tex/generic/babel/lgrcmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 7.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 7.
+
+(/usr/share/texmf-dist/tex/generic/babel/lgrcmr.fd
 File: lgrcmr.fd 2008/06/17 v2.3 Greek Computer Modern
 )
-LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    ... okay on input line 7.
 
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
-\scratchdimen=\dimen133
+\scratchcounter=\count129
+\scratchdimen=\dimen146
 \scratchbox=\box58
-\nofMPsegments=\count126
-\nofMParguments=\count127
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count128
-\MPscratchDim=\dimen134
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
-\everyMPtoPDFconversion=\toks38
+\nofMPsegments=\count130
+\nofMParguments=\count131
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count132
+\MPscratchDim=\dimen147
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
+\everyMPtoPDFconversion=\toks39
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -494,33 +518,21 @@ runsystem(rm relazioni.out.pyg)...executed.
 
 runsystem(rm relazioni.pyg)...executed.
 
- [1
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+[1
 Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-\openout3 = `relazioni.pyg'.
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
-runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
- -o relazioni.out.pyg relazioni.pyg)...executed.
-
-
-(./relazioni.out.pyg)
-runsystem(rm relazioni.out.pyg)...executed.
-
-runsystem(rm relazioni.pyg)...executed.
-
-\openout3 = `relazioni.pyg'.
-
-runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
- -o relazioni.out.pyg relazioni.pyg)...executed.
-
- (./relazioni.out.pyg [2])
-runsystem(rm relazioni.out.pyg)...executed.
-
-runsystem(rm relazioni.pyg)...executed.
+ []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--123
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
@@ -529,20 +541,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--123
 runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
  -o relazioni.out.pyg relazioni.pyg)...executed.
 
-(./relazioni.out.pyg)
+(./relazioni.out.pyg [2])
 runsystem(rm relazioni.out.pyg)...executed.
 
 runsystem(rm relazioni.pyg)...executed.
 
- [3] (./relazioni.aux) ) 
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+ (./relazioni.out.pyg)
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+ (./relazioni.out.pyg [3])
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+
+[4]
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+ (./relazioni.out.pyg [5])
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+\openout3 = `relazioni.pyg'.
+
+runsystem(pygmentize -l c -f latex -F tokenmerge             -P "verboptions= "
+ -o relazioni.out.pyg relazioni.pyg)...executed.
+
+ (./relazioni.out.pyg)
+runsystem(rm relazioni.out.pyg)...executed.
+
+runsystem(rm relazioni.pyg)...executed.
+
+ [6] (./relazioni.aux) ) 
 Here is how much of TeX's memory you used:
- 5922 strings out of 493629
- 81242 string characters out of 3148779
- 158527 words of memory out of 3000000
- 9085 multiletter control sequences out of 15000+200000
+ 6004 strings out of 493629
+ 82321 string characters out of 3148779
+ 163713 words of memory out of 3000000
+ 9157 multiletter control sequences out of 15000+200000
  11813 words of font info for 48 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 37i,5n,37p,415b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,8n,37p,415b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-
@@ -554,10 +608,10 @@ pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
 ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on relazioni.pdf (3 pages, 144329 bytes).
+Output written on relazioni.pdf (6 pages, 160638 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

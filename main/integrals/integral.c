@@ -68,7 +68,7 @@ int main (int argc, char *argv[]) {
 	}
 	double integral_trap = partition(xMin,xMax, n, 1, integrand );
 	double integral_simp = partition(xMin,xMax, n, 2, integrand );
-	double integral_quad = gaussianQuad(xMin,xMax, integrand);
+	double integral_quad = partition(xMin,xMax, n,3,integrand);
 	double integral_true = realIntegration(primitive , xMin,xMax);
 	printf("Valore esatto \t Trapezi \t Simpson \t gaussQuad\n");
 	printf("%e \t %e \t %e \t %e\n", integral_true , integral_trap, integral_simp,integral_quad );
@@ -80,12 +80,15 @@ int main (int argc, char *argv[]) {
 		FILE *fp_simp = fopen("../../data/integral/simp.dat","w");
 		FILE *fp_gauss = fopen("../../data/integral/gauss.dat","w");
 		FILE *fp_true = fopen("../../data/integral/true.dat","w");
+		FILE *fp_total = fopen("../../data/integral/total.dat","w");
 		int i = 0;
 		for ( i = n; i< n_loops; i*=2 ){
-			fprintf(fp_trap,"%d\t%e\n",i,partition(xMin,xMax, i, 1, integrand ));
-			fprintf(fp_simp,"%d\t%e\n",i,partition(xMin,xMax, i, 2, integrand ));
-			fprintf(fp_gauss,"%d\t%e\n",i,gaussianQuad(xMin,xMax,integrand ));
+			fprintf(fp_trap,"%d\t%e\n",i,integral_true - partition(xMin,xMax, i, 1, integrand ));
+			fprintf(fp_simp,"%d\t%e\n",i,integral_true -partition(xMin,xMax, i, 2, integrand ));
+			fprintf(fp_gauss,"%d\t%e\n",i,integral_true -partition(xMin,xMax,i,3,integrand ));
 			fprintf(fp_true,"%d\t%e\n",i,realIntegration(primitive,xMin,xMax));
+			fprintf(fp_total,"%d\t%e\t%e\t%e\n",i,integral_true - partition(xMin,xMax, i, 1, integrand ),integral_true - partition(xMin,xMax, i, 2, integrand ),integral_true - partition(xMin,xMax, i, 3, integrand ));
+			
 			printf("Numero di intervalli: %d\n",i);
 		}
 		fclose(fp_trap);

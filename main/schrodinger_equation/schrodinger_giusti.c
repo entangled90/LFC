@@ -58,8 +58,9 @@ double matrix_complex_norm ( gsl_matrix_complex *input){
 	}
 	return (sqrt(norm_squared));
 }
+/* Ho aggiunto un E^ikx */
 gsl_complex circular_step_pdf( double x , double y ){
-		return gsl_complex_rect ( 10000*gaussPdf(2500*a,50,x)*gaussPdf(2500*a,-50,y), 1000*gaussPdf(2500*a,50,x)*gaussPdf(2500*a,-50,y));
+		return gsl_complex_rect ( 10000*sin(100000*x)*gaussPdf(2500*a,50,x)*gaussPdf(2500*a,-50,y), 10000*cos(2*y)*gaussPdf(2500*a,50,x)*gaussPdf(2500*a,-50,y));
 	}
 
 double V_step_tunnel (double x , double y ){
@@ -72,7 +73,7 @@ double V_step_tunnel (double x , double y ){
 double potential( int i ,int j  ){
 	//return 0.0;
 	//return( (W/2/PI)*(W/2/PI)*sin( 2*PI/W*i)*sin( 2*PI/W*i)+(H/2/PI)*(H/2/PI)*sin( 2*PI/H*j)*sin( 2*PI/H*j));
-	return ( 5e-2*harmonic_constant*a*a*(i*i+j*j));
+	return ( 5e-3*harmonic_constant*a*a*(i*i+j*j));
 	//return (10);
 	}
 
@@ -80,13 +81,12 @@ void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double
 	int i , j ;
 	int w = (int) input->size1;
 	int h = (int) input ->size2;
-	
 	for ( i = 0 ; i < w ; i++){
 		for ( j = 0 ; j < h ; j++ ) {
-			gsl_matrix_complex_set(input,i,j, pdf( a*(i-w/2),a*(j-h/2) ) );
+		    gsl_matrix_complex_set(input,i,j, pdf(a*(i-w/2),a*(j-h/2) ) );
 		}
 	}
-	//gsl_matrix_complex_scale( input, gsl_complex_rect( 1/matrix_complex_norm(input),0 ));
+	//gsl_matrix_complex_scale( input,gsl_complex_rect(matrix_complex_norm(input),0));
 	}
 
 /* Set matrix out equal to matrix in */
@@ -133,14 +133,14 @@ void  hamiltonian ( gsl_matrix_complex* in , gsl_matrix_complex * out){
 	
 void compute ( gsl_matrix_complex *input ){
 	int i;
-	int w = (int) input->size1;
-	int h = (int) input->size2;
+	//int w = (int) input->size1;
+	//int h = (int) input->size2;
 	matrix_equal( input, matrix_sum);
 	matrix_equal(input, temp);
 		for (i = 1; i < N_SERIES ; i++ ){
 		/* hamiltonian calcola H |temp > e la salva in step */
 			hamiltonian(temp,step);
-		gsl_matrix_complex_scale(step,gsl_complex_div_real( gsl_complex_rect(-D_T,0), (double) i));
+		gsl_matrix_complex_scale(step,gsl_complex_div_real(gsl_complex_rect(0,-D_T), (double) i));
 		/* salva step in temp */
 			matrix_equal(step ,temp);
 		/* Viene moltiplicata per ( i * D_T)^n*/
@@ -149,7 +149,7 @@ void compute ( gsl_matrix_complex *input ){
 	/* Calcola se la differenza di psi è uguale all'hamiltoniana */
 	matrix_equal(input,sub_psi);
 	gsl_matrix_complex_sub( sub_psi,matrix_sum);
-	gsl_matrix_complex_scale(sub_psi, gsl_complex_rect(1.0/ (double) D_T,0 ));
+	gsl_matrix_complex_scale(sub_psi, gsl_complex_rect(1.0/ (double) D_T,0));
 	hamiltonian(input, ham_psi);
 	gsl_matrix_complex_add(sub_psi, ham_psi);
 	//printf("%e\n", matrix_complex_norm(sub_psi));

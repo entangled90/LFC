@@ -6,7 +6,7 @@
 \usepackage{multicol} % Allows for multiple columns
 \usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}
  % Sets margins and page size
-\pagestyle{empty} % Removes page numbers
+%\pagestyle{empty} % Removes page numbers
 \makeatletter % Need for anything that contains an @ command 
 \renewcommand{\maketitle} % Redefine maketitle to conserve space
 { \begingroup \vskip 10pt \begin{center} \large {\bf \@title}
@@ -63,3 +63,8 @@
 \newcommand{\navg}[2]{\left< #1 ^{#2} \right>} %media di ``arg''^n
 \newcommand{\con}[1]{\overline{#1}} %coniugato con la barra
 \newcommand{\ih}{\frac{i}{\hbar}} % i/h tagliato
+\newenvironment{sistema}%
+{\left\lbrace\begin{array}{@{}l@{}}}%
+{\end{array}\right.}
+
+

@@ -1,19 +1,32 @@
-\documentclass[11pt]{article} 
+\documentclass[a4paper,11pt]{report} 
+\usepackage[utf8x]{inputenc}
 \usepackage{amsmath} % AMS Math Package
 \usepackage{amsthm} % Theorem Formatting
 \usepackage{amssymb}	% Math symbols such as \mathbb
 \usepackage{graphicx} % Allows for eps images
-\usepackage{multicol} % Allows for multiple columns
+%\usepackage{multicol} % Allows for multiple columns
 \usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{longtable}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+\fancyfoot[C]{\thepage}
+\titleformat{\chapter}%
+[display]{\vspace{2cm}\Large\bfseries}{\Huge\thechapter \ \hrulefill}{0pt}{\vspace{4mm}}%
+{\Large\bfseries\filcenter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+						      %Mathematical Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Sets margins and page size
 %\pagestyle{empty} % Removes page numbers
 \makeatletter % Need for anything that contains an @ command 
-\renewcommand{\maketitle} % Redefine maketitle to conserve space
-{ \begingroup \vskip 10pt \begin{center} \large {\bf \@title}
-	\vskip 10pt \large \@author \hskip 20pt \@date \end{center}
-  \vskip 10pt \endgroup \setcounter{footnote}{0} }
-\makeatother % End of region containing @ commands
-\renewcommand{\labelenumi}{(\alph{enumi})} % Use letters for enumerate
 % \DeclareMathOperator{\Sample}{Sample}
 \let\vaccent=\v % rename builtin command \v{} to \vaccent{}
 \renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % for vectors
@@ -50,7 +63,6 @@
 \newtheorem{dfn}{Definition}
 \theoremstyle{remark}
 \newtheorem*{rmk}{Remark}
-\usepackage[utf8x]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{graphicx}
 \usepackage{latexsym}
@@ -63,7 +75,7 @@
 \newcommand{\navg}[2]{\left< #1 ^{#2} \right>} %media di ``arg''^n
 \newcommand{\con}[1]{\overline{#1}} %coniugato con la barra
 \newcommand{\ih}{\frac{i}{\hbar}} % i/h tagliato
-\newenvironment{sistema}%
+\newenvironment{sistem}%
 {\left\lbrace\begin{array}{@{}l@{}}}%
 {\end{array}\right.}
 

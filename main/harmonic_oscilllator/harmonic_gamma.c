@@ -15,7 +15,7 @@ int main(){
 	int k = 0;
 	int l = 0;
 	int length = N_SWEEP*Nx;
-	double *action;
+	double action;
 	double *x;
 	double *xnew;
 	double O[Nx-1];
@@ -23,8 +23,10 @@ int main(){
 	double O_mix[Nx-1][CORR_SIZE];
 	double GammaT[Nx-1][CORR_SIZE];
 	rlxd_init(1,time(NULL)%100000);
+	FILE *fp = fopen("../data/harmonic/action.dat","w");
+	printf("Inserire \"1\" per azione fredda, \"2\" per azione calda\n");
+	scanf("%d",&l);
 	/* Cold initialisation */
-	action= malloc((N_SWEEP+1)*sizeof(double));
 	x=  malloc(length*sizeof(double));
 	xnew =  malloc(Nx*sizeof(double));
 	/*Inizializzazione a zero degli array */
@@ -35,18 +37,32 @@ int main(){
 			O_mix[i][j] = 0.0;
 		}
 	}
-	for( i = 0; i< Nx; i++)
-	  x[i] = 0.0;
-	action[0]=efirst_action(x,Nx);
+	switch(l){
+	  case 1:
+	    for( i = 0; i< Nx; i++)
+	      x[i] = 0.0;
+	    break;
+	  case 2:
+	    ranlxd(x,Nx);
+	    for( i = 0; i< Nx; i++)
+	      x[i] = x[i]*1000 -500;
+	    break;
+	  default:
+	    printf("Valore inserito non corretto\n");
+	    exit(EXIT_FAILURE);
+	}
+	action=efirst_action(x,Nx);
 	for ( j = 0; j< N_SWEEP; j++){
 		ranlxd(xnew,Nx);
 		/*Sweep completo */
 		for ( i = 0 ; i< Nx; i++){
 			xnew[i] = x[j*Nx+i]+ 2*DELTA*(xnew[i]-0.5);
-			action[j+1] += edelta_action(x,xnew[i],i);
+			action += edelta_action(x,xnew[i],i);
 			metropolis(x +j*Nx,i,xnew+i);
 		}
-		
+		if( j < 500)
+			  fprintf(fp,"%d \t %e\n", j , action );
+			
 		if( j != N_SWEEP-1){
 			for (i = 0 ; i<Nx;i++){
 				*(x+(j+1)*Nx+i) =*(x+j*Nx+i);
@@ -66,16 +82,13 @@ int main(){
 		}
 		
 	}
+	fclose(fp);
 	for ( l = 0; l<CORR_SIZE ; l++){
 			for (k = 0; k<Nx-1;k++){
 			GammaT[k][l] = (O_mix[k][l] - O[k]*O[k])/(-O[k]*O[k]+O2[k]);
 			}
 		}
-	FILE *action_fp= fopen("../../data/harmonic/action.dat","w");
-		for ( i= 0; i< N_SWEEP+1;i++)
-			fprintf(action_fp,"%d\t%e\n",i,action[i]);
-			
-	FILE *fp = fopen("../../data/harmonic/gamma_t.dat","w");
+	fp = fopen("../../data/harmonic/gamma_t.dat","w");
 		for ( j = 0 ; j< Nx-1; j++){
 			for ( i = 0 ; i < CORR_SIZE-1 ; i++){
 				fprintf(fp," %d \t %lf \n", i+1, GammaT[j][i]);
@@ -87,10 +100,8 @@ int main(){
 	}
 	fclose(fp);
 	fclose(fp1);
-	fclose(action_fp);
 	free(x);
 	free(xnew);
-	free(action);
 	plot_harmonic("../../data/harmonic/harmonic2.dat","../../data/harmonic/harmonic2.eps");
 	plot_harmonic("../../data/harmonic/gamma_t.dat","../../data/harmonic/gamma_t.eps");
 	return(EXIT_SUCCESS);

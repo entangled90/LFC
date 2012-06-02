@@ -36,6 +36,7 @@ int main (int argc, char *argv[]) {
 	double xMax ;
 	int n ;
 	int choice = 0;
+	double maxf1,maxf4;
 	if ( argc < 4 ){
 		n = N_BIN_DEFAULT;
 		printf("ATTENZIONE: il programma va lanciato con la sintassi: integral xMin xMax N_Bin\n");
@@ -56,10 +57,15 @@ int main (int argc, char *argv[]) {
 		case 1 :
 			integrand = (integrandLog);	 //, double xMin, double xMax);
 			primitive = primitiveLog;
+			maxf1= 0.5;
+			maxf4 = -0.0740742;
+			
 		break;
 		case 2 : 
 			integrand = (integrandPoly);
 			primitive = primitivePoly;
+			maxf1 = 1856;
+			maxf4 = 90048;
 		break;		
 		default:
 			printf("Inserisci 1 o 2 ");
@@ -83,8 +89,8 @@ int main (int argc, char *argv[]) {
 		FILE *fp_total = fopen("../../data/integral/total.dat","w");
 		int i = 0;
 		for ( i = n; i< n_loops; i*=2 ){
-			fprintf(fp_trap,"%d\t%e\n",i,integral_true - partition(xMin,xMax, i, 1, integrand ));
-			fprintf(fp_simp,"%d\t%e\n",i,integral_true -partition(xMin,xMax, i, 2, integrand ));
+			fprintf(fp_trap,"%d &\t & %e & \t & %e \\ \\  \n",i,integral_true - partition(xMin,xMax, i, 1, integrand),pow((xMax-xMin)/i,2)*(xMax-xMin)/12*maxf1);
+			fprintf(fp_simp,"%d & \t & %e & \t & %e \\ \\  \n",i,integral_true -partition(xMin,xMax, i, 2, integrand),pow((xMax-xMin)/i,4)*(xMax-xMin)/90*maxf4);
 			fprintf(fp_gauss,"%d\t%e\n",i,integral_true -partition(xMin,xMax,i,3,integrand ));
 			fprintf(fp_true,"%d\t%e\n",i,realIntegration(primitive,xMin,xMax));
 			fprintf(fp_total,"%d\t%e\t%e\t%e\n",i,integral_true - partition(xMin,xMax, i, 1, integrand ),integral_true - partition(xMin,xMax, i, 2, integrand ),integral_true - partition(xMin,xMax, i, 3, integrand ));

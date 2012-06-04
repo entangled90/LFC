@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 void plot(const char* data1,const char* data2,const char* data3 ){
     FILE *pipe = popen("gnuplot -persist","w");
@@ -87,7 +88,7 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 			min = tmp;
         
 	}
-	width=(max-min)/n,tmp;
+	width=(max-min)/(double)n;
 	while(fscanf(f,"%lf \n",&tmp) == 1){
 		for(i=0;i<n;i++)
 			if(tmp>min+i*width && tmp<=min+(i+1)*width)
@@ -96,8 +97,7 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 	fclose(f);
     f=fopen("bin.dat","w");
     for(i=0;i<n;i++)
-		//if(freq[i]>4)
-            fprintf(f,"%lf\t%d\n",min+(i+0.5)*width,freq[i]);
+            fprintf(f,"%lf\t%d\t%lf\n",min+(i+0.5)*width,freq[i],sqrt((double)freq[i]));
     fclose(f);
     free(freq);
 	/* Fine ex funzione binning */
@@ -114,11 +114,12 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 	fprintf(pipe, "set output '%s'\n",output);
 	fprintf(pipe, "m= %lf\n",mean);
 	fprintf(pipe, "s= %lf\n", sigma);
+	fprintf(pipe, "a =%lf\n",n_events*width);
 	fprintf(pipe, "pi=3.14159265\n");
 	//fprintf(pipe, "A = %lf \n", n_events*width);
-	fprintf(pipe, "f(x)=exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
-	//printf("A vale %lf \n ", n_events*width);
-	fprintf(pipe, "fit f(x) 'bin.dat' via s,m\n");
+	fprintf(pipe, "f(x)=a*exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
+// 	//printf("A vale %lf \n ", n_events*width);
+	fprintf(pipe, "fit f(x) 'bin.dat' via s,m,a\n");
 	fprintf(pipe, "n=100\t#number of intervals\n");
 	fprintf(pipe, "max= %lf \t#max value\n", max);
 	fprintf(pipe, "min= %lf \t#min value\n",min);

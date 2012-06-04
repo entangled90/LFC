@@ -484,11 +484,11 @@ $$
 $$
 e il correlatore fra due operatori di posizione è uguale a:
 $$
- \langle x_l \ x_k \rangle  \ = \  \frac{ \int \prod_{i=1}^{N-1} dx_i \ x_l \ x_k \ e^{-S_E}}{Z_a}
+ C( | l -k|) \ = \ \langle x_l \ x_k \rangle  \ = \  \frac{ \int \prod_{i=1}^{N-1} dx_i \ x_l \ x_k \ e^{-S_E}}{Z_a}
 $$
 Si dimostra che:
 $$
- \langle x_l \ x_k \rangle \ = \ 2 | \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  |^2 \ \ \exp{\left( - \frac{N a}{2} \left( \tilde{E_1}-\tilde{E_0} \right) x \right)} \cosh \left[ a \left( \frac{N}{2} - | l - k | \right) (\tilde{E_0} -\tilde{E_1}) \right]  
+ C( | l -k|) \ = \  \langle x_l \ x_k \rangle \ = \ 2 | \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  |^2 \ \ \exp{\left( - \frac{N a}{2} \left( \tilde{E_1}-\tilde{E_0} \right) x \right)} \cosh \left[ a \left( \frac{N}{2} - | l - k | \right) (\tilde{E_0} -\tilde{E_1}) \right]  
 $$
 $$ 
 \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  = \frac{1}{\sqrt{2  m \bar{\omega}}}
@@ -551,16 +551,42 @@ Come si vede nel grafico, l'azione parte da zero e cresce velocemente. Dopo circ
 All'interno del programma è stato scelto come tempo di termalizzazione 200. Gli \emph{sweeps} di termalizzazione non sono stati utilizzati per calcolare alcune grandezza.
 
 \subsection{Analisi risultati: binning e cluster Jackknife}
-
-
-
+Data la natura dell'algoritmo Metropolis, durante l'analisi dati è necessario considerare che le diverse configurazioni estratte non sono scorrelate l'una dall'altra.
+Per tenere conto di questo fenomeno, è stato necessario dividere l'insieme delle configurazioni in intervalli tali
+che la loro ``lunghezza'' in tempo markoviano sia molto maggiore del tempo di decorrelazione $\tau_{corr}$. Esso viene ricavato da una stima approssimativa
+della funzione di autocorrelazione così definita:
+$$
+\Gamma(t) \ = \  \frac{ \sum_{i=0}^t <O(t_i)O(t_i + t)> - <O(t_i)><O(t_i + t)>}{\sum_{i=0}^t <{O(t_i)}^2> - <O(t_i)>^2} \ \simeq \ \exp{\left(-\frac{t}{\tau_{corr}}\right)}
+$$
 \begin{figure}[ht]
   \includegraphics[width= 0.7\columnwidth,angle = -90]{gamma_t.eps}
   \caption{Funzione di autocorellazione per ogni valore di $|l-k|$}
 \end{figure}
+Dal grafico si può stimare $\tau_{corr}$ approssimativamente: esso risulta essere circa $4-5$. La larghezza degli intervalli è stata scelta pari a cento.\\
+Per ogni intervallo è stata calcolata la media e la varianza del correlatore per ogni valore di $|l-k|$. In questo modo esse risultano essere scorrelate fra gli intervalli ed è così possibile utilizzare
+la tecnica del \emph{cluster jackknife} per calcolare gli errori sulle grandezze derivate.\\
+Definiamo $ a_i$ come il valore della grandezza primaria nell'intervallo $i$. Indicando con $\bar{a}$ la media tra tutti gli $a_i$, definiamo $a_i$ \emph{clusterized} come:
+$$
+a^i \ = \ \bar{a} + \frac{1}{N_{bin} -1} \left( \bar{a} - a_i\right) 
+$$
+Si può vedere come il valore medio degli $a^i$ (\emph{clusterized}) sia uguale al valor medio degli $a_i$.\\
+L'utilità del \emph{cluster Jackknife} si palesa nel calcolo della varianza di grandezze che sono funzione degli $a_i$ precedentemente definiti.\\
+Di nuovo, per una funzione $ f  =  f(a)$, definiamo $ \bar{f}  =  f(\bar{a})$ e $ f^i  =  f( a^i)$. Grazie a queste definizioni si può
+dimostrare:
+$$
+ \sigma_f^2 \simeq \frac{ N_{bin} - 1}{N_{bin}} \sum_i \left( f^i - \bar{f} \right)^2
+$$
+nel limite in cui $N_{bin} \rightarrow \infty$. Inoltre, è possibile calcolare la varianza di un'altra funzione secondaria, dipendente da $f(a)$.
+Nel programma, abbiamo considerato dapprima $ a = C( | l -k|) $ e $f(a) = \Delta E$.
+In seguito, per calcolare l'elemento di matrice $ W_{01} =\langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle $, abbiamo posto $a = \Delta E$ e $f(a) = W_{01}$.
+Con questo metodo  è stato possibile, dunque, calcolare le incertezze anche sulle grandezze che ci eravamo posti l'obiettivo di misurare con questa simulazione numerica.
+Come ulteriore test dell'algoritmo, sono state eseguite circa 4000 simulazioni.
+Così facendo è stato possibile avere un'idea della distribuzione di $\Delta E$, $\sigma_{\Delta E}$, $W_{01}$, $\sigma_{W_{01}}$
 
-Si analizza ora la tecnica utilizzata per stimare gli errori su grandezze derivate dal correlatore:
-$\langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle $ e $ \Delta \tilde{E}$. 
+
+
+
+
 
 \chapter{Runge-Kutta IV}
 % Ci va una introduzione
@@ -575,17 +601,21 @@ $$
 	\dot{x_2} \ = \ f(x,t)\\
 	\end{sistem}
 $$
-Il sistema risolto in questo caso è un pendolo smorzato con forzante esterna sinusoidale, ossia
-risolvente la seguente equazione differenziale:
-%%%%%%%%%%%%%%
-%                                 SISTEMARE
-%%%%%%%
+L'algoritmo è implementato, sostanzialmente in questa funzione. Essendo un'implementazione in dimensione due, riceve come argomento 2 vettori in cui saranno salvati gli incrementi, le due variabili spaziali, e le due funzioni date dal sistema di equazioni differenziali.
+Nel nostro caso avremo:
+Nella funzione è utilizzata la variabile di preprocessore $H$ che rappresenta il passo dell'incremento
+infinitesimo nel tempo.
+
+Un'ultima funzione, infine, valuta l'incremento effettivo della variabile, a seconda dei valori calcolati
+dalla funzione riportata sopra e immagazzinati in uno dei due vettori $k1$ o $k2$.\\
+I pesi sono definiti dal metodo Runge-Kutta IV.
+
 
 $$
 	\ddot{\theta} = f(\theta,\dot{\theta},t) \ - \frac{g}{R} \ \theta - b \ \dot{\theta} + Q \cos ( \omega t )
 $$
-L'algoritmo è implementato, sostanzialmente in questa funzione. Essendo un'implementazione in dimensione due, riceve come argomento 2 vettori in cui saranno salvati gli incrementi, le due variabili spaziali, e le due funzioni date dal sistema di equazioni differenziali.
-Nel nostro caso avremo:
+
+
 $$
 	\begin{sistem}
 	x_1 = \theta\\
@@ -593,10 +623,5 @@ $$
 	\end{sistem}
 	\quad \Longrightarrow \quad f_1 = x_2  \qquad f_2 = f(x_1,x_2,t)	
 $$
-Nella funzione è utilizzata la variabile di preprocessore $H$ che rappresenta il passo dell'incremento
-infinitesimo nel tempo.
 
-Un'ultima funzione, infine, valuta l'incremento effettivo della variabile, a seconda dei valori calcolati
-dalla funzione riportata sopra e immagazzinati in uno dei due vettori $k1$ o $k2$.\\
-I pesi sono definiti dal metodo Runge-Kutta IV.
 \end{document}

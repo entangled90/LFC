@@ -71,14 +71,14 @@ int main (){
 	 * printplot per il valore del'integrale con errore
 	 * fprintnoiseplot per il valore del rumore
 	 */
-	fprintStruct(result,Ncycle*MaxMoment/2,"../data/plot.dat");
-	fprintPlot(result,Ncycle*MaxMoment/2,1,"../data/flat.dat");
-	fprintPlot(result,Ncycle*MaxMoment/2,2,"../data/gauss.dat");
-	fprintPlot(result,Ncycle*MaxMoment/2,3,"../data/root.dat");
-	fprintNoisePlot(noise_result,Ncycle*MaxMoment/2,1,"../data/flat_scaled.dat");
-	fprintNoisePlot(noise_result,Ncycle*MaxMoment/2,2,"../data/gauss_scaled.dat");
-	fprintNoisePlot(noise_result,Ncycle*MaxMoment/2,3,"../data/root_scaled.dat");
-	plot("../data/flat.dat","../data/gauss.dat","../data/root.dat");
-	plot_noise("../data/flat_scaled.dat","../data/gauss_scaled.dat","../data/root_scaled.dat");
+	fprintStruct(result,Ncycle*MaxMoment/2,"../../data/plot.dat");
+	fprintPlot(result,Ncycle*MaxMoment/2,1,"../../data/flat.dat");
+	fprintPlot(result,Ncycle*MaxMoment/2,2,"../../data/gauss.dat");
+	fprintPlot(result,Ncycle*MaxMoment/2,3,"../../data/root.dat");
+	fprintNoisePlot(noise_result,Ncycle*MaxMoment/2,1,"../../data/flat_scaled.dat");
+	fprintNoisePlot(noise_result,Ncycle*MaxMoment/2,2,"../../data/gauss_scaled.dat");
+	fprintNoisePlot(noise_result,Ncycle*MaxMoment/2,3,"../../data/root_scaled.dat");
+	plot("../../data/flat.dat","../../data/gauss.dat","../../data/root.dat");
+	plot_noise("../../data/flat_scaled.dat","../../data/gauss_scaled.dat","../../data/root_scaled.dat");
 	return(EXIT_SUCCESS);
 }

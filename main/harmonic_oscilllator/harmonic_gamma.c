@@ -23,7 +23,7 @@ int main(){
 	double O_mix[Nx-1][CORR_SIZE];
 	double GammaT[Nx-1][CORR_SIZE];
 	rlxd_init(1,time(NULL)%100000);
-	FILE *fp = fopen("../data/harmonic/action.dat","w");
+	FILE *fp = fopen("../../data/harmonic/action.dat","w");
 	printf("Inserire \"1\" per azione fredda, \"2\" per azione calda\n");
 	scanf("%d",&l);
 	/* Cold initialisation */
@@ -57,11 +57,11 @@ int main(){
 		/*Sweep completo */
 		for ( i = 0 ; i< Nx; i++){
 			xnew[i] = x[j*Nx+i]+ 2*DELTA*(xnew[i]-0.5);
-			action += edelta_action(x,xnew[i],i);
+			//action += edelta_action(x,xnew[i],i);
 			metropolis(x +j*Nx,i,xnew+i);
 		}
-		if( j < 500)
-			  fprintf(fp,"%d \t %e\n", j , action );
+		if( j < 2000)
+			  fprintf(fp,"%d \t %e\n", j , efirst_action(x,Nx));
 			
 		if( j != N_SWEEP-1){
 			for (i = 0 ; i<Nx;i++){

@@ -58,7 +58,7 @@ $$
 però, non viene calcolato dalla routine d'integrazione. Ciò deriva dal fatto che esso è stimabile analiticamente,
 essendo necessario solo calcolare la derivata dell'integranda e valutarne il massimo nell'intervallo.
 
-\subsubsection*{Newton-Cotes:1°ordine}
+\subsubsection{Newton-Cotes:1°ordine}
 Questo metodo consiste nell'approssimare la funzione fra due punti $a_i$ e $a_{i+1}$ con un segmento.
 L'area si ottiene calcolando l'area del trapezio sotteso da questo segmento, oppure applicando le formule di Newton-Cotes, ponendo $ n = 1$: 
 $$
@@ -72,7 +72,7 @@ Questa formula vale nel caso venga considerato un solo intervallo. Nel nostro ca
 $$
 | E_1(f) |  \ \leq \ \frac{h^2}{12}\left( x_{max} - x_{min} \right) \max \left[ f''(x), x \in [x_{min},x_{max}] \right]
 $$
-\subsection*{Newton-Cotes:2°ordine}
+\subsection{Newton-Cotes:2°ordine}
 In questo caso, l'approssimazione viene fatta con polinomi di grado 2, ossia parabole.
 I "pesi" $\omega_i$ valgono:
 $$
@@ -87,7 +87,7 @@ $$
 |E_2 (f) | \ \leq \ \frac{h^4}{90} \left( x_{max} - x_{min} \right) \ max \left[ f^4( x), x \in [x_{min},x_{max}] \right]
 $$
 
-\subsection*{Quadrature gaussiane}
+\subsection{Quadrature gaussiane}
 Nel caso delle quadrature gaussiane, i punti della partizione non vengono più scelti equidistanti,
 ma vengono scelti in maniera più opportuna: sono gli zeri del polinomio ortogonale scelto.\\
 E' fondamentale l'uso di polinomi ortogonali in un certo intervallo $[a,b]$ con il peso $\omega(x)$:
@@ -110,7 +110,7 @@ Tale cambio di variabile è:
 $$
 	x' \ = \ 2 \frac{x - x_{min} }{x_{max}-x_{min}} - 1 \qquad dx'  \ = \ 2 \frac{dx}{x_{max}-x_{min}}
 $$
-\subsection*{Utilizzo}
+\subsection{Utilizzo}
 Il programma ``integral'' si occupa di utilizzare le librerie appena discusse per stimare il valore dell'integrale di una funzione, confrontando i
 tre metodi discussi sopra. Per testare le routine ho utilizzato come funzioni da integrare:
 $$
@@ -136,9 +136,12 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 \end{longtable}
 \end{center}
 
+%%%
+%%% MANCANO LE DIDASCALIE AI GRAFICI!
+
 %%% CERCA COME RIPORTARE L' INTESTAZIONE SE CAMBI Pagina
-%%% LOGARITMO!
-\subsubsection*{Newton-Cotes I: Logaritmo}
+%%% LOgaritmo
+\subsubsection{Newton-Cotes I: Logaritmo}
 \begin{center}
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
 \end{center}
@@ -168,7 +171,7 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{center}
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
-\subsubsection*{Newton-Cotes II: Logaritmo}
+\subsubsection{Newton-Cotes II: Logaritmo}
 \begin{center}
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_log.eps}
 \end{center}
@@ -200,7 +203,7 @@ Numero intervalli & Newton-Cotes II & Stima analitica errore  \\
 in questo caso invece l'errore scala correttamente fino a quando raggiunge il valore di $ 10^{-15}/ 10^{-16}$. A quel punto smette di
 diminuire all'aumentare degli intervalli considerati ed inizia ad oscillare, cambiando anche di segno.
 
-\subsubsection*{Quadrature gaussiane: Logaritmo}
+\subsubsection{Quadrature gaussiane: Logaritmo}
 \begin{center}
 % LOG GAUSSIANA
 \begin{longtable}[h]{lr}
@@ -227,7 +230,7 @@ Numero intervalli & quadratura gaussiana \\
 \bottomrule
 \end{longtable}
 \end{center}
-\subsubsection*{Newton-Cotes I: Polinomio}
+\subsubsection{Newton-Cotes I: Polinomio}
 \begin{center}
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
 \end{center}
@@ -262,7 +265,7 @@ in questo caso l'andamento è simile al caso della funzione logaritmica interpol
 Si può notare che in questo caso la differenza fra l'errore stimato e l'errore di integrazione è molto piccola.
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
-\subsubsection*{Newton-Cotes II: Polinomio}
+\subsubsection{Newton-Cotes II: Polinomio}
 \begin{center}
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
 \end{center}
@@ -293,7 +296,7 @@ Numero intervalli & Newton-Cotes II & Stima analitica errore  \\
 \end{longtable}
 \end{center}
 anche in questo caso l'andamento è simile alla funzione logaritmica, anche se l'errore inizia ad oscillare ad un valore di $10^{-13}/10^{-14}$.  
-\subsubsection*{Quadrature gaussiane: Polinomio}
+\subsubsection{Quadrature gaussiane: Polinomio}
 \begin{center}
 \begin{longtable}[h]{lr}
 \toprule
@@ -359,47 +362,146 @@ $$
 $$
 si deduce così che nel caso $ g(x) \ \simeq \ \frac{f(x)}{I}$ la varianza tende a zero.
 La difficoltà risiede, però, nel riuscire a creare un generatore di numeri \emph{pseudocasuali} secondo una distribuzione di probabilità a piacere.
-\subsubsection*{Momenti gaussiani}
-Nel nostro caso ci occuperemo di calcolare il valore dei momenti gaussiani attraverso la tecnica esposta precedentemente. 
+\subsubsection{Generatori di numeri pseudocasuali}
+Nel nostro caso ci occuperemo di calcolare il valore dei momenti gaussiani attraverso la tecnica esposta precedentemente. \\
+Nel programma ``importanza'' sono confrontate tre diverse distribuzioni di probabilità per calcolare il secondo e il quarto momento gaussiano:
+\begin{align*}
+\nonumber
+P_{flat}(x) &= 1 \quad \mbox{per} \quad x_{min} < x < x_{max}\\
+\nonumber
+P_{root}(x) &= \frac{2}{\sqrt{\pi}} e^{-x} \sqrt{x}\\
+\nonumber
+P_{gauss}(x) &= \frac{2}{\sqrt{\pi}} e^{-x^2}
+\end{align*}
+La prima distribuzione è generata dalle funzioni in \emph{ranlxd.h} ed è stata assunta come corretta. Questa assunzione è necessaria visto che le altre
+due distribuzioni saranno generate a partire da essa. La distribuzione $P_{gauss}(x)$ è generate con il seguente cambio di variabile, a partire
+da due variabili casuali ``piatte'':
+$$
+\hat{x_1} \, , \hat{x_2} \qquad 0 \leq x_1 , x_2 \leq 1
+$$
+\begin{align*}
+ \nonumber
+ {y_1}^2 \ &= \ - \log(1-x_2) \sin^2\left(\frac{\pi}{2} x_1 \right) \\ 
+ \nonumber
+ {y_2}^2 \ &= \ - \log(1-x_2) \cos^2\left(\frac{\pi}{2}x_1 \right) 
+\end{align*}
+La distribuzione $P_{root}(x)$ invece si ottiene con il seguente cambio di variabile:
+\begin{align*}
+ \nonumber
+ \hat{x_1} \quad P(x_1) \ &= \frac{2}{\pi} e^{-x_1^2} \\
+ \hat{x_2} \quad P(x_2) \ &= e^{-x_2}
+\end{align*}
+\begin{align*}
+ y_1 \ &= x_1^2 + x_2 \\
+ y_2 &= x_2
+\end{align*}
+A questo punto la distribuzione di probabilità ottenuta è:
+$$
+P(y_1,y_2) \ = \ \frac{2}{\sqrt{\pi}} e^{-\left(y_1^2 + y_1\right)}\frac{1}{2\sqrt{y_1 -y_2}} 
+$$
+La distribuzione ricercata si ottiene integrando sulla seconda variabile. Ciò equivale ad utilizzare esclusivamente la prima variabile $y_1$
+come variabile casuale.
+\subsubsection{Confronto tra le distribuzioni}
+Le diverse distribuzioni sono state confrontate nel calcolare il secondo e il quarto momento gaussiano:
+\begin{align*}
+\mu_2(x) \ &= \ \int_{-\infty}^{+\infty} x^2 \frac{1}{\sqrt{\pi}} e^{-x^2}  = \frac{1}{2}\\
+\mu_4(x) \ &= \ \int_{-\infty}^{+\infty} x^4  \frac{1}{\sqrt{\pi}} e^{-x^2} = \frac{3}{4}
+\end{align*}
+Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dato che è più simile alle funzioni integrande.\\
+
+\begin{figure}[h]
+\includegraphics[width=0.6\columnwidth,angle=-90]{importanza_integrale.eps}
+\caption{Confronto tra il valore dell'integrale con le diverse distribuzioni.}
+\end{figure}
+\begin{center}
+ \begin{longtable}[htb]{lccr}
+  \toprule
+  Valore $\mu_2$ & 0.5 & & \\
+  \midrule
+  N & $P_{flat}$ & $P_{gauss} $  & $P_{root}$ \\
+  \midrule
+1000   & 0.402414	& 0.509921 	& 0.520847  \\
+2000   & 0.478750	& 0.500909 	& 0.503343 \\
+4000   & 0.559025	& 0.516745 	& 0.493403 \\
+8000   & 0.529128	& 0.508603 	& 0.496762 \\
+16000  & 0.528902	& 0.497904 	& 0.500056 \\
+32000  & 0.527839	& 0.500956 	& 0.501474 \\
+  \bottomrule
+  \end{longtable}
+\end{center}
+
+\begin{center}
+ \begin{longtable}[ht]{lccr}
+  \toprule
+  Valore $\mu_2$ & 0.75 & & \\
+  \midrule
+  N & $P_{flat}$ & $P_{gauss} $  & $P_{root}$ \\
+  \midrule
+1000   & 0.819771 & 	0.639290&0.761542    \\
+2000   & 0.734319 & 	0.679399&0.735870   \\
+4000   & 0.710013 & 	0.771816&0.742201   \\
+8000   & 0.824491 & 	0.719916&0.741778   \\
+16000  & 0.788585 & 	0.748977&0.748735   \\
+32000  & 0.718003 & 	0.743117&0.751811   \\
+  \bottomrule
+  \end{longtable}
+\end{center}
+
+Da questo grafico si nota come l'utilizzo di distribuzioni non piatte porti a una significativa diminuizione dell'errore. Inoltre, come ci aspettavamo,
+la distribuzione $P_{root}$ è quella che fornisce una stima migliore dell'integrale, a parità di numeri estratti.
+È necessario controllare che l'algoritmo fornisca risultati con l'andamento asintotico atteso analiticamente come verifica della sua correttezza.
+Si può dimostrare che l'errore di integrazione è asintotico a $ \frac{1}{\sqrt{n}}$. In ordinata è stato quindi posto:
+$$
+ \frac{ \sigma}{I} \simeq  \ \frac{A}{\sqrt{n}} \quad  \longrightarrow \quad y = \frac{ \sigma}{I} \sqrt{n}\simeq \ A 
+$$
+ Per questo motivo ci aspettiamo che nel grafico i punti siano allineati all'incirca su rette orizzontali. Il valore dell'ordinata indica, dunque,
+ il coefficiente dell'andamento asintotico dell'errore. Da ciò possiamo dedurre che la distribuzione $P_{root}$, avendo come valore di $A$ minore,
+ è quella che fornisce un valore dell'integrale più preciso.
+\begin{figure}[h]
+\includegraphics[width=0.6\columnwidth,angle=-90]{importanza_noise.eps}
+\caption{Andamento asintotico del ``rumore''.}
+\end{figure}
 
 
-
-
-\chapter{Integrali di cammino nell'oscillatore armonico}
+\chapter{Oscillatore armonico}
 Si è risolto l'oscillatore armonico quantistico monodimensionale attraverso l'utilizzo degli integrali di cammino sul reticolo.
 È stato scelto un approccio non-determnistico attraverso l'integrazione Monte Carlo.\\
 Il tempo è stato discretizzato in $N$ istanti e, ponendo $T$ come istante finale e $0$ come istante iniziale,
 abbiamo il passo reticolare temporale $ a = \frac{T}{N}$ .
-\section*{Integrali di cammino}
+\section{Integrali di cammino}
 Nel formalismo del \emph{path integral} sul reticolo è fondamentale introdurre il concetto di azione.
 Nel nostro caso sarà importante la definizione di azione euclidea:
 $$
- S_E  \ = \ a \sum_{i=0}^{n-1} \mathcal{L}(x_i,x_{i+1})
+ S_E  \ = \ a \sum_{i=0}^{n-1} \mathcal{L}_E(x_i,x_{i+1})
 $$
 dove
 $$
-\mathcal{L}(x_i,x_{i+1}) \ = \ \frac{m}{2} \left( \frac{x_{i+1} -x_{i}}{a} \right)^2 + V(x)  
+\mathcal{L}_E(x_i,x_{i+1}) \ = \ \frac{m}{2} \left( \frac{x_{i+1} -x_{i}}{a} \right)^2 + \frac{1}{2}V(x_i)  +\frac{1}{2}V(x_{i+1})
 $$
  Si ricava un equivalente alla funzione di partizione classica definita come: 
 $$
- Z_a (0,T) =  \ \left( \frac{m}{2 \pi a}\right)^{N/2} \int \prod_{i=1}^{n-1} dx_i \ e^{-S_E}
+ Z_a (0,T) =  \ \left( \frac{m}{2 \pi a}\right)^{N/2} \int \prod_{i=1}^{N-1} dx_i \ e^{-S_E}
 $$
 e il correlatore fra due operatori di posizione è uguale a:
 $$
- \langle x_l \ x_k \rangle  \ = \  \frac{ \int \prod_{i=1}^{n-1} dx_i \ x_l \ x_k \ e^{-S_E}}{Z_a}
+ \langle x_l \ x_k \rangle  \ = \  \frac{ \int \prod_{i=1}^{N-1} dx_i \ x_l \ x_k \ e^{-S_E}}{Z_a}
 $$
 Si dimostra che:
 $$
- \langle x_l \ x_k \rangle \ = \ 2 | \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  |^2 \exp{\left( - \frac{N\ a}{2} \left( \tilde{E_1}-\tilde{E_0} \right) x \right)} \cosh \left[ a \left( \frac{N}{2} - | l - k | \right) (\tilde{E_0} -\tilde{E_1}) \right]  
+ \langle x_l \ x_k \rangle \ = \ 2 | \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  |^2 \ \ \exp{\left( - \frac{N a}{2} \left( \tilde{E_1}-\tilde{E_0} \right) x \right)} \cosh \left[ a \left( \frac{N}{2} - | l - k | \right) (\tilde{E_0} -\tilde{E_1}) \right]  
 $$
 $$ 
-\langle E_0 | \hat{x} | E_1 \rangle  = \frac{1}{\sqrt{2  m \tilde{\omega}}}
+\langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  = \frac{1}{\sqrt{2  m \bar{\omega}}}
+$$
+dove è stato posto
+$$
+ \bar{\omega}^2  \ = \  \omega^2 \left(1 + \frac{a^2 \omega^2}{4} \right) \qquad a \tilde{\omega} \ = \ ln \left( 1 + a \bar{\omega} + \frac{a^2 \omega^2}{2} \right) \qquad \tilde{E_n} \ = \  \tilde{\omega}\left( n + \frac{1}{2} \right) 
 $$
 Nel nostro caso, si è posto $ N \ = \ 32 $, ma l'algoritmo è indipendente da $N$.\\
 Ciò che viene calcolato dall'algoritmo sono i valor medi $\langle x_l \ x_k \rangle $ per ogni valore di $ | l - k| $ e i relativi errori.
 Da essi siamo in grado di estrarre il valore di $ \langle E_0 | \hat{x} | E_1 \rangle $ e $ \tilde{E_1}-\tilde{E_0} $.
 Gli errori sulle grandezze secondarie sono stati calcolati con il metodo \emph{cluster jackknife}.
-\section*{Algoritmo Metropolis}
+\section{Algoritmo Metropolis}
 Per calcolare $\langle x_l \ x_k \rangle $ con un metodo Monte Carlo è necessario riuscire ad estrarre numeri casuali secondo la \emph{pdf} $ e^{-S_E}$.
 L'algoritmo \emph{Metropolis-Hastings} permette di estrarre numeri casuali secondo una \emph{pdf} qualsiasi a partire da un generatore ``piatto''.\\
 Più in generale esso permette, dato uno spazio di configurazioni $S$ e una \emph{pdf} $ P(s) : S \rightarrow \mathbb{R}$, di estrarre
@@ -408,13 +510,57 @@ di coordinate che permette di ottenere la distribuzione voluta a partire da una 
 come è stato fatto nell'integrazione Monte Carlo discussa in \ref{sec:Monte Carlo}.\\
 L'algoritmo si basa sul metodo del rigetto. Poniamo di avere uno stato $s$ nello spazio delle configurazioni. A questo punto:
 \begin{itemize}
-\item si estrae una nuova configurazione del sistema $s'$ con il generatore di numeri random ``piatto''.
-\item si calcola il rapporto $ \frac{P(s')}{P(s)}$.
-\item si accetta il nuovo stato estratto $s'$ con probabilità pari a $ min\left[ 1,\frac{P(s')}{P(s)} \right]$.
+  \item si estrae una nuova configurazione del sistema $s'$ con il generatore di numeri random ``piatto''.
+  \item si calcola il rapporto $ \frac{P(s')}{P(s)}$.
+  \item si accetta il nuovo stato estratto $s'$ con probabilità pari a $ min\left[ 1,\frac{P(s')}{P(s)} \right]$.
 \end{itemize}
 Si dimostra che gli stati del sistema vengono estratti con la \emph{pdf} da noi cercata,
-a patto di attendere che il sistema si termalizzi. Questo è dovuto al fatto che la \emph{pdf} di estrazione delle configurazioni approssima la distribuzione $P$ solo in regime asintotico.
+a patto di attendere che il sistema si termalizzi.
+Questo è dovuto al fatto che la \emph{pdf} di estrazione delle configurazioni approssima la distribuzione $P$ solo in regime asintotico.
+\subsubsection{Implementazione dell'algoritmo Metropolis all'oscillatore armonico}
+Nel caso dell'oscillatore armonico la \emph{pdf} ricercata è $ e^{-S_E}$, opportunamente normalizzata.
+Inoltre, lo spazio delle configurazioni coincide con $\mathbb{R}^N$, dove $N$ è il numero di coordinate. D'ora in poi per $\hat{e_i}$ si intenderà l'$i$-esimo vettore
+della base canonica in $\mathbb{R}^N$.
+In questo caso, grazie alla presenza dell'esponenziale nella \emph{pdf},
+il rapporto $ \frac{P(s')}{P(s)}$ si semplifica ulteriormente, e l'algoritmo diventa:
+\begin{itemize}
+ \item si estrae una nuova configurazione del sistema $\vec{x'}$: esso corrisponde a $\vec{x} + \left(\delta \ rand() - \frac{\delta}{2}\right)\hat{e_i}$.
+  \\
+  $rand()$ è un numero casuale fra 0 e 1, $\delta$ è un parametro per regolare la traslazione (in questo caso è uguale a 2).
+  È importante notare che viene cambiata una coordinata alla volta per ogni passo del Metropolis.
+ \item si calcola $\Delta S_E \ = \ S_E(\vec{x}') -S_E(\vec{x})$
+%  \item si accetta il nuovo stato con probabilità $ min \ \left[1,e^{- \Delta S_E}\right]$
+\end{itemize}
+Dato che ad ogni passo del Metropolis viene modificata solo una coordinata, è possibile valutare $\Delta S_E$ in una forma più efficiente come costo computazionale.
+\begin{equation*}
+\Delta S_E \ = \ a[\mathcal{L}(x_{i-1},x'_{i})+\mathcal{L}(x'_{i},x_{i+1})-\mathcal{L}(x_{i-1},x_{i})-\mathcal{L}(x_{i},x_{i+1})]    
+\end{equation*}
+
+\subsubsection{Inizializzazione e termalizzaione dell'algoritmo}
+Prima che l'algoritmo Metropolis riesca a generare configurazioni del sistema con la \emph{pdf} voluta, è necessario che entri in regime asintotico.
 È possibile stimare il tempo di termalizzazione dell'algoritmo graficando l'andamento dell'azione euclidea $S_E$ in funzione del tempo markoviano.\\
+In questo caso si è scelto di inizializzare il la configurazione di partenza in modo che tutte le variabili fossero inizializzate a zero: ossia è stato fatta una
+\emph{cold start}.
+\begin{center}
+  \begin{figure}[h]
+    \includegraphics[width=0.6\columnwidth,angle = -90]{action_cold.eps}
+    \caption{Andamento dell'azione euclidea in funzione del numero di sweeps.}
+  \end{figure}
+\end{center}
+Come si vede nel grafico, l'azione parte da zero e cresce velocemente. Dopo circa cento \emph{sweeps} si può vedere come l'algoritmo sia già in un regime asintotico.
+All'interno del programma è stato scelto come tempo di termalizzazione 200. Gli \emph{sweeps} di termalizzazione non sono stati utilizzati per calcolare alcune grandezza.
+
+\subsection{Analisi risultati: binning e cluster Jackknife}
+
+
+
+\begin{figure}[ht]
+  \includegraphics[width= 0.7\columnwidth,angle = -90]{gamma_t.eps}
+  \caption{Funzione di autocorellazione per ogni valore di $|l-k|$}
+\end{figure}
+
+Si analizza ora la tecnica utilizzata per stimare gli errori su grandezze derivate dal correlatore:
+$\langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle $ e $ \Delta \tilde{E}$. 
 
 \chapter{Runge-Kutta IV}
 % Ci va una introduzione
@@ -432,16 +578,7 @@ $$
 Il sistema risolto in questo caso è un pendolo smorzato con forzante esterna sinusoidale, ossia
 risolvente la seguente equazione differenziale:
 %%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%
 %                                 SISTEMARE
-%%%
-%%%%
-%%%%%
-%%%%%%
-%%%%%%%
 %%%%%%%
 
 $$

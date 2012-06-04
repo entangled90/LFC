@@ -47,8 +47,7 @@
 	 */
 	
 	void fprintStruct (rtn_int_var input[],int nStruct, const char *name ){
-	FILE *fp;
-	fp = fopen(name,"w");
+	FILE *fp = fopen(name,"w");
 	int i=0;
 	/*Gnuplot supporta i commenti con le righe che iniziano con "#"*/
 	fprintf(fp,"# N \t NTFlat \t NT Gauss \t NT root\tDev Flat\tDev Gauss\t Dev Root \n");	

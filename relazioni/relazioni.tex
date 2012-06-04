@@ -10,10 +10,9 @@ $$
  	I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx
 $$
 %% BRUTTO
-Sono stati implementati diversi metodi di integrazione numerica, deterministici e MonteCarlo, che verranno poi confrontati fra di loro.
+I metodo di integrazione numerica implementati si suddividono in metodi deterministici e  metodi Monte Carlo.
 \section{Metodi deterministici}
-Le prime routine di integrazione che sono state scritte sono un'implementazione delle formule di Newton-Cotes (al primo e secondo ordine)
-e del metodo delle quadrature gaussiane.\\
+Le prime routine di integrazione deterministica sono un'implementazione delle formule di Newton-Cotes (al primo e secondo ordine) e del metodo delle quadrature gaussiane.\\
 Per aumentare la precisione del calcolo, il dominio di integrazione viene suddiviso in sottointervalli.
 La larghezza di ogni intervallo è uniforme ed è possibile scegliere il numero di intervalli in cui
 si vuole dividere il dominio di integrazione prima di chiamare le funzioni.
@@ -69,6 +68,10 @@ In questo caso la stima analitica dell'errore diventa:
 $$
 | E_1(f) |  \ = \ \frac{h^3}{12} \ f''(\xi) \leq \  \frac{h^3}{12} \max \left[ f''(x), x \in [x_{min},x_{max}] \right]
 $$
+Questa formula vale nel caso venga considerato un solo intervallo. Nel nostro caso, l'intervallo è stato suddiviso in $n$ sottointervalli. Una buona sovrastima dell'errore è dunque:
+$$
+| E_1(f) |  \ \leq \ \frac{h^2}{12}\left( x_{max} - x_{min} \right) \max \left[ f''(x), x \in [x_{min},x_{max}] \right]
+$$
 \subsection*{Newton-Cotes:2°ordine}
 In questo caso, l'approssimazione viene fatta con polinomi di grado 2, ossia parabole.
 I "pesi" $\omega_i$ valgono:
@@ -79,6 +82,11 @@ La stima dell'errore si può scrivere come:
 $$
 |E_2 (f) | \ = \  \frac{h^5}{90} \ f^4(\xi) \leq \ \frac{h^5}{90} \ max \left[ f^4( x), x \in [x_{min},x_{max}] \right]
 $$
+Come nel caso precedente, nel caso di $n$ sottointervalli, la sovrastima corretta diviene:
+$$
+|E_2 (f) | \ \leq \ \frac{h^4}{90} \left( x_{max} - x_{min} \right) \ max \left[ f^4( x), x \in [x_{min},x_{max}] \right]
+$$
+
 \subsection*{Quadrature gaussiane}
 Nel caso delle quadrature gaussiane, i punti della partizione non vengono più scelti equidistanti,
 ma vengono scelti in maniera più opportuna: sono gli zeri del polinomio ortogonale scelto.\\
@@ -86,7 +94,6 @@ E' fondamentale l'uso di polinomi ortogonali in un certo intervallo $[a,b]$ con 
 $$
 	\int_a^b \omega(x)\ P_n{(x)} \ P_m{(x)} \ = \ \delta_{m,n}
 $$
-
 Si può dimostrare che la stima dell'integrale è:
 $$
  I \ = \  \int_a^b f(x) \ = \ \sum_{i=0}^n \omega_i f(x_i)
@@ -131,10 +138,14 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 
 %%% CERCA COME RIPORTARE L' INTESTAZIONE SE CAMBI Pagina
 %%% LOGARITMO!
+\subsubsection*{Newton-Cotes I: Logaritmo}
+\begin{center}
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
+\end{center}
 \begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
-Log &  & \\
+Log &  \\
 \midrule
 Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \midrule
@@ -157,8 +168,13 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{center}
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
+\subsubsection*{Newton-Cotes II: Logaritmo}
 \begin{center}
-\begin{longtable}[h]{lcr}
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_log.eps}
+\end{center}
+
+  \begin{center}
+  \begin{longtable}[h]{lcr}
 \toprule
 Log & & \\
 \midrule
@@ -183,6 +199,8 @@ Numero intervalli & Newton-Cotes II & Stima analitica errore  \\
 \end{center}
 in questo caso invece l'errore scala correttamente fino a quando raggiunge il valore di $ 10^{-15}/ 10^{-16}$. A quel punto smette di
 diminuire all'aumentare degli intervalli considerati ed inizia ad oscillare, cambiando anche di segno.
+
+\subsubsection*{Quadrature gaussiane: Logaritmo}
 \begin{center}
 % LOG GAUSSIANA
 \begin{longtable}[h]{lr}
@@ -209,10 +227,12 @@ Numero intervalli & quadratura gaussiana \\
 \bottomrule
 \end{longtable}
 \end{center}
+\subsubsection*{Newton-Cotes I: Polinomio}
+\begin{center}
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
+\end{center}
 
 \begin{center}
- 
-
 % POLI 111111111111111111
 \begin{longtable}[h]{lcr}
 \toprule
@@ -242,8 +262,12 @@ in questo caso l'andamento è simile al caso della funzione logaritmica interpol
 Si può notare che in questo caso la differenza fra l'errore stimato e l'errore di integrazione è molto piccola.
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
+\subsubsection*{Newton-Cotes II: Polinomio}
 \begin{center}
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
+\end{center}
 
+\begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
 Poly & & \\
@@ -269,7 +293,7 @@ Numero intervalli & Newton-Cotes II & Stima analitica errore  \\
 \end{longtable}
 \end{center}
 anche in questo caso l'andamento è simile alla funzione logaritmica, anche se l'errore inizia ad oscillare ad un valore di $10^{-13}/10^{-14}$.  
-
+\subsubsection*{Quadrature gaussiane: Polinomio}
 \begin{center}
 \begin{longtable}[h]{lr}
 \toprule
@@ -296,24 +320,54 @@ Numero intervalli & quadratura gaussiana  \\
 \end{longtable}
  
 \end{center}
-Dall'analisi di questi dati è possibile trarre alcune conclusioni riguardo i diversi metodi di integrazione deterministica utilizzati.\\
-È banale notare come la precisione dell'integrazione con le formule di Newton-Cotes al II° ordine sia molto maggiore di quelle al I° ordine.
+Dall'analisi di questi dati è possibile trarre alcune conclusioni riguardo i diversi metodi di integrazione deterministica utilizzati.
+È banale notare come la precisione dell'integrazione con le formule di Newton-Cotes al II° ordine sia molto maggiore di quelle al I° ordine, al prezzo di un costo computazionale ovviamente maggiore.
 Inoltre, si nota come l'errore scali nella maniera prevista fino a quando diventa troppo ``piccolo'' e inizia ad oscillare attorno a zero.
-Questo può essere dovuto alla precisione con cui sono salvati i numeri nel calcolatore, nonostante siano state usate variabili di tipo \emph{double} in tutto il programma.
-Ciò si verifica quando è necessario sommare numeri molto piccoli, in questo caso il valore del'integrale in ogni bin, a numeri molto più grandi,
-ossia l'integrale vero e proprio.
+Questo può essere dovuto alla precisione con cui sono salvati i numeri nel calcolatore, nonostante siano state usate variabili di tipo \emph{double} in tutto il codice.
+In ogni caso, si può notare come gli errori abbiano un andamento asintotico in accordo con la previsione teorica prima che si facciano sentire gli errori di approssimazione del calcolatore.
+ 
+%%
+%% COMPLETA LA RIFLESSIONE
+%% 
 
-\section{Metodi MonteCarlo}
-\label{sec:montecarlo}
-
-
+\section{Metodi Monte Carlo}
+\label{sec:Monte Carlo}
+Per metodi Monte Carlo si intendono algoritmi basati sulla generazione di dati in modo non deterministico.
+Generalmente vengono utilizzate sequenze di numeri \emph{casuali} o \emph{pseudocasuali} che verranno analizzate e 
+manipolate opportunamente all'interno dell'algoritmo in modo da ottenere una risposta statisticamente significativa al problema.\\
+Il metodo più generale per l'integrazione Monte Carlo consiste nell'utilizzare un generatore di numeri \emph{pseudocasuali} con distribuzione
+di probabilità piatta. La formula che restituisce il valore dell'integrale è:
+$$
+    I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx \ \simeq \ \frac{1}{n} \sum_i \ f(x_i) \ + \ o\left(\frac{1}{\sqrt{n}}\right)
+$$
+dove gli $x_i$ sono estratti tra $x_{min}$ e $x_{max}$. $n$ indica il numero di numeri pseudocasuali estratti.\\
+Questo metodo ha lo svantaggio di ritornare valori poco precisi nel caso la funzione integranda sia estremamente piccata intorno a un punto e
+zero nel resto dell'intervallo. Questo deriva dal fatto che il generatore estrae numeri in maniera ``cieca'', senza tenere conto della funzione.\\
+È possibile migliorare questo aspetto, attraverso il metodo del campionamento di importanza. Esso consiste nel generare numeri secondo una distribuzione
+di probabilità nota e il più possibile simile alla funzione integranda. 
+$$
+ I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx \ = \ \int \frac{f(x)}{g(x)} \left( g(x) dx \right) \ \simeq \ \frac{1}{n} \sum_i \ \frac{f(x_i)}{g(x_i)} 
+$$
+Data la natura probabilistica dell'algoritmo, è necessario utilizzare un approccio statistico per ottenere un errore associato al valore dell'integrale.
+Abbiamo quindi:
+$$
+  \sigma^2 = <{f(x)}^2> - <{f(x)}>^2 = \int (f(x) - I)^2 \ dx  
+$$
+Nel caso utilizziamo il metodo campionamento di importanza:
+$$
+\sigma^2 \ = \ <{\left(\frac{f(x)}{g(x)}\right)}^2> - <{\frac{f(x)}{g(x)}}>^2 = \int \left(\frac{f(x)}{g(x)} - I\right)^2 \ dx  
+$$
+si deduce così che nel caso $ g(x) \ \simeq \ \frac{f(x)}{I}$ la varianza tende a zero.
+La difficoltà risiede, però, nel riuscire a creare un generatore di numeri \emph{pseudocasuali} secondo una distribuzione di probabilità a piacere.
+\subsubsection*{Momenti gaussiani}
+Nel nostro caso ci occuperemo di calcolare il valore dei momenti gaussiani attraverso la tecnica esposta precedentemente. 
 
 
 
 
 \chapter{Integrali di cammino nell'oscillatore armonico}
 Si è risolto l'oscillatore armonico quantistico monodimensionale attraverso l'utilizzo degli integrali di cammino sul reticolo.
-È stato scelto un approccio non-determnistico attraverso l'integrazione MonteCarlo.\\
+È stato scelto un approccio non-determnistico attraverso l'integrazione Monte Carlo.\\
 Il tempo è stato discretizzato in $N$ istanti e, ponendo $T$ come istante finale e $0$ come istante iniziale,
 abbiamo il passo reticolare temporale $ a = \frac{T}{N}$ .
 \section*{Integrali di cammino}
@@ -346,12 +400,12 @@ Ciò che viene calcolato dall'algoritmo sono i valor medi $\langle x_l \ x_k \ra
 Da essi siamo in grado di estrarre il valore di $ \langle E_0 | \hat{x} | E_1 \rangle $ e $ \tilde{E_1}-\tilde{E_0} $.
 Gli errori sulle grandezze secondarie sono stati calcolati con il metodo \emph{cluster jackknife}.
 \section*{Algoritmo Metropolis}
-Per calcolare $\langle x_l \ x_k \rangle $ con un metodo MonteCarlo è necessario riuscire ad estrarre numeri casuali secondo la \emph{pdf} $ e^{-S_E}$.
+Per calcolare $\langle x_l \ x_k \rangle $ con un metodo Monte Carlo è necessario riuscire ad estrarre numeri casuali secondo la \emph{pdf} $ e^{-S_E}$.
 L'algoritmo \emph{Metropolis-Hastings} permette di estrarre numeri casuali secondo una \emph{pdf} qualsiasi a partire da un generatore ``piatto''.\\
 Più in generale esso permette, dato uno spazio di configurazioni $S$ e una \emph{pdf} $ P(s) : S \rightarrow \mathbb{R}$, di estrarre
 configurazioni del sistema compatibili con la \emph{pdf} voluta.Ciò è particolarmente utile in quanto non è sempre possibile trovare un cambio
 di coordinate che permette di ottenere la distribuzione voluta a partire da una distribuzione piatta,
-come è stato fatto nell'integrazione MonteCarlo discussa in \ref{sec:montecarlo}.\\
+come è stato fatto nell'integrazione Monte Carlo discussa in \ref{sec:Monte Carlo}.\\
 L'algoritmo si basa sul metodo del rigetto. Poniamo di avere uno stato $s$ nello spazio delle configurazioni. A questo punto:
 \begin{itemize}
 \item si estrae una nuova configurazione del sistema $s'$ con il generatore di numeri random ``piatto''.

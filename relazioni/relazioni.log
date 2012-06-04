@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  2 JUN 2012 17:00
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  4 JUN 2012 10:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -445,65 +445,135 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3]
-Underfull \vbox (badness 10000) detected at line 129
+Underfull \vbox (badness 10000) detected at line 136
+ []
+
+Package epstopdf Info: Source file: <plot_trap_log.eps>
+(epstopdf)                    date: 2012-06-03 18:19:50
+(epstopdf)                    size: 23529 bytes
+(epstopdf)             Output file: <plot_trap_log-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-06-03 18:26:14
+(epstopdf)                    size: 7867 bytes
+(epstopdf)             Command: <repstopdf --outfile=plot_trap_log-eps-converte
+d-to.pdf plot_trap_log.eps>
+(epstopdf)             \includegraphics on input line 143.
+Package epstopdf Info: Output file is already uptodate.
+<plot_trap_log-eps-converted-to.pdf, id=28, 505.89pt x 722.7pt>
+File: plot_trap_log-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plot_trap_log-eps-converted-to.pdf>
+Package pdftex.def Info: plot_trap_log-eps-converted-to.pdf used on input line 
+143.
+(pdftex.def)             Requested size: 354.12144pt x 505.89757pt.
+ [4]
+Underfull \vbox (badness 10000) detected at line 166
+ []
+
+Package epstopdf Info: Source file: <plot_simp_log.eps>
+(epstopdf)                    date: 2012-06-03 18:19:52
+(epstopdf)                    size: 22921 bytes
+(epstopdf)             Output file: <plot_simp_log-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-06-03 18:33:06
+(epstopdf)                    size: 6932 bytes
+(epstopdf)             Command: <repstopdf --outfile=plot_simp_log-eps-converte
+d-to.pdf plot_simp_log.eps>
+(epstopdf)             \includegraphics on input line 173.
+Package epstopdf Info: Output file is already uptodate.
+<plot_simp_log-eps-converted-to.pdf, id=33, 505.89pt x 722.7pt>
+File: plot_simp_log-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plot_simp_log-eps-converted-to.pdf>
+Package pdftex.def Info: plot_simp_log-eps-converted-to.pdf used on input line 
+173.
+(pdftex.def)             Requested size: 354.12144pt x 505.89757pt.
+ [5 <./plot_trap_log-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) detected at line 198
+ []
+
+[6 <./plot_simp_log-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) detected at line 228
+ []
+
+Package epstopdf Info: Source file: <plot_trap_poly.eps>
+(epstopdf)                    date: 2012-06-03 18:20:30
+(epstopdf)                    size: 23518 bytes
+(epstopdf)             Output file: <plot_trap_poly-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-06-03 18:33:07
+(epstopdf)                    size: 7583 bytes
+(epstopdf)             Command: <repstopdf --outfile=plot_trap_poly-eps-convert
+ed-to.pdf plot_trap_poly.eps>
+(epstopdf)             \includegraphics on input line 232.
+Package epstopdf Info: Output file is already uptodate.
+<plot_trap_poly-eps-converted-to.pdf, id=51, 505.89pt x 722.7pt>
+File: plot_trap_poly-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plot_trap_poly-eps-converted-to.pdf>
+Package pdftex.def Info: plot_trap_poly-eps-converted-to.pdf used on input line
+ 232.
+(pdftex.def)             Requested size: 354.12144pt x 505.89757pt.
+ [7]
+Underfull \vbox (badness 10000) detected at line 259
  []
 
 
-Underfull \vbox (badness 10000) detected at line 155
- []
-
-[4]
-Underfull \vbox (badness 10000) detected at line 182
- []
-
-
-Underfull \vbox (badness 10000) detected at line 210
- []
-
-[5]
-Underfull \vbox (badness 10000) detected at line 239
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--245
+Underfull \hbox (badness 10000) in paragraph at lines 261--265
 
  []
 
+[8 <./plot_trap_poly-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <plot_simp_poly.eps>
+(epstopdf)                    date: 2012-06-03 18:20:32
+(epstopdf)                    size: 22896 bytes
+(epstopdf)             Output file: <plot_simp_poly-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-06-03 18:33:08
+(epstopdf)                    size: 7396 bytes
+(epstopdf)             Command: <repstopdf --outfile=plot_simp_poly-eps-convert
+ed-to.pdf plot_simp_poly.eps>
+(epstopdf)             \includegraphics on input line 267.
+Package epstopdf Info: Output file is already uptodate.
 
-Underfull \vbox (badness 10000) detected at line 269
+<plot_simp_poly-eps-converted-to.pdf, id=63, 505.89pt x 722.7pt>
+File: plot_simp_poly-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plot_simp_poly-eps-converted-to.pdf>
+Package pdftex.def Info: plot_simp_poly-eps-converted-to.pdf used on input line
+ 267.
+(pdftex.def)             Requested size: 354.12144pt x 505.89757pt.
+
+Underfull \vbox (badness 10000) detected at line 293
  []
 
-[6]
-Underfull \vbox (badness 10000) detected at line 296
+[9 <./plot_simp_poly-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) detected at line 320
  []
 
-[7]
+[10] [11]
 Capitolo 2.
-[8
+[12
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 357.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 414.
 
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 357.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 414.
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--364
+Underfull \hbox (badness 10000) in paragraph at lines 418--421
 
  []
 
-[9]
+[13]
 Capitolo 3.
-[10
+[14
 
 ] (./relazioni.aux) ) 
 Here is how much of TeX's memory you used:
- 5121 strings out of 493629
- 69380 string characters out of 3148778
- 144652 words of memory out of 3000000
- 8314 multiletter control sequences out of 15000+200000
+ 5142 strings out of 493629
+ 70083 string characters out of 3148778
+ 140968 words of memory out of 3000000
+ 8330 multiletter control sequences out of 15000+200000
  12782 words of font info for 50 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  38i,11n,43p,367b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -521,10 +591,10 @@ pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on relazioni.pdf (11 pages, 197642 bytes).
+Output written on relazioni.pdf (15 pages, 222188 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 141 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

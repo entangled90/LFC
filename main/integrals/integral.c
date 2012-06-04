@@ -89,8 +89,8 @@ int main (int argc, char *argv[]) {
 		FILE *fp_total = fopen("../../data/integral/total.dat","w");
 		int i = 0;
 		for ( i = n; i< n_loops; i*=2 ){
-			fprintf(fp_trap,"%d &\t & %e & \t & %e \\ \\  \n",i,integral_true - partition(xMin,xMax, i, 1, integrand),pow((xMax-xMin)/i,2)*(xMax-xMin)/12*maxf1);
-			fprintf(fp_simp,"%d & \t & %e & \t & %e \\ \\  \n",i,integral_true -partition(xMin,xMax, i, 2, integrand),pow((xMax-xMin)/i,4)*(xMax-xMin)/90*maxf4);
+			fprintf(fp_trap,"%d\t%e\t%e\n",i,fabs(integral_true - partition(xMin,xMax, i, 1, integrand)),fabs(pow((xMax-xMin)/i,2)*(xMax-xMin)/12*maxf1));
+			fprintf(fp_simp,"%d\t%e\t%e\n",i,fabs(integral_true -partition(xMin,xMax, i, 2, integrand)),fabs(pow((xMax-xMin)/i,4)*(xMax-xMin)/90*maxf4));
 			fprintf(fp_gauss,"%d\t%e\n",i,integral_true -partition(xMin,xMax,i,3,integrand ));
 			fprintf(fp_true,"%d\t%e\n",i,realIntegration(primitive,xMin,xMax));
 			fprintf(fp_total,"%d\t%e\t%e\t%e\n",i,integral_true - partition(xMin,xMax, i, 1, integrand ),integral_true - partition(xMin,xMax, i, 2, integrand ),integral_true - partition(xMin,xMax, i, 3, integrand ));

@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {2.1}Integrali di cammino}{17}
 \contentsline {section}{\numberline {2.2}Algoritmo Metropolis}{18}
 \contentsline {subsubsection}{Implementazione dell'algoritmo Metropolis all'oscillatore armonico}{18}
-\contentsline {subsubsection}{Inizializzazione e termalizzaione dell'algoritmo}{19}
+\contentsline {subsubsection}{Inizializzazione e termalizzazione dell'algoritmo}{19}
 \contentsline {subsection}{\numberline {2.2.1}Analisi risultati: binning e cluster Jackknife}{20}
 \contentsline {chapter}{\numberline {3}Equazioni differenziali}{22}
 \contentsline {section}{\numberline {3.1}Runge-Kutta IV}{22}
@@ -29,3 +29,5 @@
 \contentsline {subsection}{\numberline {3.2.1}Cenni teorici}{25}
 \contentsline {subsubsection}{Algoritmo}{26}
 \contentsline {subsubsection}{Particella libera}{26}
+\contentsline {subsubsection}{Muro di potenziale sferico}{28}
+\contentsline {subsection}{\numberline {3.2.2}Buca di potenziale sferico}{28}

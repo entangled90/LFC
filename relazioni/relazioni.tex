@@ -535,7 +535,7 @@ Dato che ad ogni passo del Metropolis viene modificata solo una coordinata, è p
 \Delta S_E \ = \ a[\mathcal{L}(x_{i-1},x'_{i})+\mathcal{L}(x'_{i},x_{i+1})-\mathcal{L}(x_{i-1},x_{i})-\mathcal{L}(x_{i},x_{i+1})]    
 \end{equation*}
 
-\subsubsection{Inizializzazione e termalizzaione dell'algoritmo}
+\subsubsection{Inizializzazione e termalizzazione dell'algoritmo}
 Prima che l'algoritmo Metropolis riesca a generare configurazioni del sistema con la \emph{pdf} voluta, è necessario che entri in regime asintotico.
 È possibile stimare il tempo di termalizzazione dell'algoritmo graficando l'andamento dell'azione euclidea $S_E$ in funzione del tempo markoviano.\\
 In questo caso si è scelto di inizializzare il la configurazione di partenza in modo che tutte le variabili fossero inizializzate a zero: ossia è stato fatta una
@@ -564,6 +564,11 @@ $$
 Dal grafico si può stimare $\tau_{corr}$ approssimativamente: esso risulta essere circa $4-5$. La larghezza degli intervalli è stata scelta pari a cento.\\
 Per ogni intervallo è stata calcolata la media e la varianza del correlatore per ogni valore di $|l-k|$. In questo modo esse risultano essere scorrelate fra gli intervalli ed è così possibile utilizzare
 la tecnica del \emph{cluster jackknife} per calcolare gli errori sulle grandezze derivate.\\
+\begin{figure}[h]
+ \centering
+ \includegraphics[width= 0.5\columnwidth,angle= -90]{harmonic_giusto.eps}
+\end{figure}
+
 Definiamo $ a_i$ come il valore della grandezza primaria nell'intervallo $i$. Indicando con $\bar{a}$ la media tra tutti gli $a_i$, definiamo $a_i$ \emph{clusterized} come:
 $$
 a^i \ = \ \bar{a} + \frac{1}{N_{bin} -1} \left( \bar{a} - a_i\right) 
@@ -720,9 +725,10 @@ Si è raggiunto un compromesso fra velocità dell'evoluzione della funzione d'on
 Le unità di misura utilizzate nel sistema sono sostanzialmente arbitrarie, e sono state inglobate in una costante unica.
 Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
 Si è valutata inoltre l'unitarietà dell'operatore di evoluzione temporale ad ogni passo dell'algoritmo stampando su terminale il valore della norma
-della matrice. Esso risulta unitario, nel senso che dopo una decina di minuti di simulazione, la norma della funzione rimane inalterata (con un errore superiore a $ 10^-5$).
+della matrice. La norma della funzione d'onda è stata inizialmente posta uguale ad uno. L'operatore di evoluzione temporale risulta unitario, nel senso che dopo una decina di minuti di simulazione,
+la norma della funzione rimane inalterata: la norma differisce dall'unità a meno di fattori pari a $10^{-15/16}$. 
 
-  \begin{figure*}[h]
+  \begin{figure*}[hp]
   \centering
     \subfigure[$\psi(0)$: il pacchetto è gaussiano e monocromatico, con momento diretto verticalmente verso il basso.]{\includegraphics{free1.png}}
     \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
@@ -732,7 +738,56 @@ della matrice. Esso risulta unitario, nel senso che dopo una decina di minuti di
     \subfigure{\includegraphics{free5.png}}
     \caption{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}
   \end{figure*}
-\subsubsection{Buca di potenziale sferico}
+  \pagebreak
+\subsubsection{Muro di potenziale sferico}
+In questo caso l'hamiltoniana utilizzata è quella completa, fornita all'inizio del capitolo. Anche in questo caso valgono le considerazioni precedenti e sono stati utilizzati gli stessi parametri di prima.
+In questo caso il potenziale utilizzato è il seguente:
+$$
+V(x,y) \ = \ \begin{sistem}
+              1 \quad \mbox{se} \quad  0< r < 10 \\
+              0 \quad \mbox{altrimenti}
+             \end{sistem}
+$$
+dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (o elemeti della matrice).
 
-
+\begin{figure}[hp]
+ \centering
+ \subfigure[Pacchetto d'onda gaussiano distante dalla buca]{\includegraphics[width=0.4\columnwidth]{scattering1.png}}
+ \subfigure[Pacchetto si scontra con la buca]{\includegraphics[width=0.4\columnwidth]{scattering2.png}}
+ \caption{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.} 
+ \end{figure}
+ In questo caso, si intende visualizzare lo scattering del pacchetto d'onda contro questo potenziale sferico.
+Per questo motivo, è stato necessario utilizzare un griglia più grande, rispetto a prima,
+che passa da 200x200 a 600x600. Così facendo l'algoritmo diventa più lento di un fattore dieci circa.
+Questa scelta è stata necessaria per poter
+valutare l'andamento della funzione d'onda quando si è molto distanti dalla buca, in modo da poter considerarla ``all'infinito''. 
+Ciò è dovuto anche alle condizioni al bordo utilizzate: utilizzando la periodicità al bordo, la funzione d'onda interferisce poco dopo lo scattering
+con sè stessa. Inoltre, non è possibile diminuire le dimensioni del pacchetto e della buca, perchè così facendo,
+gli errori di discretizzazione darebbero problemi.
+\begin{figure}[h]
+ \centering
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering3.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering5.png}}
+ \caption{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.(continua)} 
+ \end{figure}
+\subsection{Buca di potenziale sferico}
+Il problema è simile al caso precedente, ma ora trattiamo una buca di potenziale invece che un ``muro''.
+$$
+V(x,y) \ = \ \begin{sistem}
+             -1 \quad \mbox{se} \quad  0< r < 20 \\
+              0 \quad \mbox{altrimenti}
+             \end{sistem}
+$$
+Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la simulazione.
+\begin{figure}[hp]
+ \centering
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca1.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca2.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca3.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca4.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca5.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca6.png}}
+ \caption{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.(continua)} 
+ \end{figure}
 \end{document}

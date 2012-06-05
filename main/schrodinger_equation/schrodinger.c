@@ -11,8 +11,8 @@
 
 #define N_SERIES 25
 #define R_MIN 0
-#define R_MAX 70
-#define V_MAX -5
+#define R_MAX 20
+#define V_MAX -1
 //#define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
 #define NORM  0.1
 #define PI 3.14159
@@ -24,8 +24,8 @@
  * width and heigth of the matrix 
  * ad ogni elemento della matrice corrisponde un pixel
  */
-const int W = 200;
-const int H = 200;
+const int W = 150;
+const int H = 150;
 /* reticular pass */
 double a = 1;
 /* matrix for the wave function */
@@ -76,14 +76,14 @@ double V_step_tunnel (double x , double y ){
 double potential( int i ,int j  ){
 	//return 0.0;
 	//return( (W/2/PI)*(W/2/PI)*sin( 2*PI/W*i)*sin( 2*PI/W*i)+(H/2/PI)*(H/2/PI)*cos( 2*PI/H*j)*cos( 2*PI/H*j));
-	//return ( 1e-3*harmonic_constant*a*a*(i*i+j*j));
+	return ( harmonic_constant*a*a*(i*i+j*j));
 	//return (10);
-	
-	if ( i < R_MAX && j < R_MAX)
-		return -V_MAX;
+	/*
+	if ( i*i + j*j < R_MAX*R_MAX )
+		return V_MAX;
 	else
 		return 0.0 ;
-	
+	*/
 }
 
 void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double x , double y ) ) {
@@ -170,7 +170,7 @@ void compute ( gsl_matrix_complex *input ){
 	*/
 	//matrix_equal(matrix_sum,input);
 	//gsl_matrix_complex_scale(input, gsl_complex_rect(1.0/matrix_complex_norm(input),0));
-	//printf("%e \n", matrix_complex_norm(input));
+	//printf("%e \n", matrix_complex_norm(input) - 1);
 	}
 
  
@@ -248,7 +248,7 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
 }
 int main (int argc, char *argv[]){
 	kinetic_constant = 2;
-	harmonic_constant = 1;
+	harmonic_constant = 5e-4;
 	temp = gsl_matrix_complex_alloc (W,H) ;
 	//matrix_sum = gsl_matrix_complex_alloc(W,H);
 	step = gsl_matrix_complex_alloc(W,H);

@@ -19,7 +19,7 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN =  schrodinger_giusti 
+MAIN =  schrodinger
 #RANDOM =ranlxs ranlxd gauss pdf
 
 #START = start 

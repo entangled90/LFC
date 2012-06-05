@@ -19,7 +19,7 @@ all: rmxeq mkdep mkxeq rmpmk
 
 # main programs and required modules 
 
-MAIN = pendolo-rk_openGL pendolo-rk
+MAIN = rk_openGL rk
 #harmonicMetropolis
 # harmonicMetropolis harmonic_different_n  schroedinger
 # importanza harmonic_gamma buffon

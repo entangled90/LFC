@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  4 JUN 2012 18:32
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  5 JUN 2012 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -263,17 +263,33 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count113
 \LT@p@ftn=\toks36
 )
+(/usr/share/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip64
+\subfigcapskip=\skip65
+\subfigcaptopadj=\dimen141
+\subfigbottomskip=\skip66
+\subfigcapmargin=\dimen142
+\subfiglabelskip=\skip67
+\c@subfigure=\count114
+\c@lofdepth=\count115
+\c@subtable=\count116
+\c@lotdepth=\count117
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip68
+\subfig@bottom=\skip69
+)
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 18.
+less on input line 20.
 
-
-Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 19.
-
-\c@prop=\count114
-\c@thm=\count115
-\c@dfn=\count116
+\c@prop=\count118
+\c@thm=\count119
+\c@dfn=\count120
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/08 v3.8m The Babel package
 
@@ -282,8 +298,8 @@ Language: italian 2008/03/14 v1.2t Italian support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count117
-\U@D=\dimen141
+\babel@savecnt=\count121
+\U@D=\dimen143
 )
 Package babel Info: Making " an active character on input line 94.
 ))
@@ -321,16 +337,16 @@ File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 fontencoding LGR patched
 ) (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
-\scratchdimen=\dimen142
+\scratchcounter=\count122
+\scratchdimen=\dimen144
 \scratchbox=\box33
-\nofMPsegments=\count119
-\nofMParguments=\count120
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks37
-\MPscratchCnt=\count121
-\MPscratchDim=\dimen143
-\MPnumerator=\count122
-\makeMPintoPDFobject=\count123
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen145
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks38
 ) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
@@ -513,7 +529,7 @@ Package pdftex.def Info: plot_trap_poly-eps-converted-to.pdf used on input line
  235.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
  [8]
-Underfull \vbox (badness 10000) detected at line 262
+Underfull \vbox (badness 10000) detected at line 261
  []
 
 
@@ -521,7 +537,7 @@ Overfull \vbox (5.81557pt too high) has occurred while \output is active []
 
 
 [9 <./plot_trap_poly-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 264--268
+Underfull \hbox (badness 10000) in paragraph at lines 263--267
 
  []
 
@@ -533,25 +549,25 @@ Package epstopdf Info: Source file: <plot_simp_poly.eps>
 (epstopdf)                    size: 7396 bytes
 (epstopdf)             Command: <repstopdf --outfile=plot_simp_poly-eps-convert
 ed-to.pdf plot_simp_poly.eps>
-(epstopdf)             \includegraphics on input line 270.
+(epstopdf)             \includegraphics on input line 269.
 Package epstopdf Info: Output file is already uptodate.
 <plot_simp_poly-eps-converted-to.pdf, id=66, 505.89pt x 722.7pt>
 File: plot_simp_poly-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plot_simp_poly-eps-converted-to.pdf>
 Package pdftex.def Info: plot_simp_poly-eps-converted-to.pdf used on input line
- 270.
+ 269.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
 
-Underfull \vbox (badness 10000) detected at line 296
+Underfull \vbox (badness 10000) detected at line 295
  []
 
 [10 <./plot_simp_poly-eps-converted-to.pdf>]
-Underfull \vbox (badness 10000) detected at line 323
+Underfull \vbox (badness 10000) detected at line 322
  []
 
 [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 409--411
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
 
  []
 
@@ -565,17 +581,17 @@ Package epstopdf Info: Source file: <importanza_integrale.eps>
 (epstopdf)                    size: 9071 bytes
 (epstopdf)             Command: <repstopdf --outfile=importanza_integrale-eps-c
 onverted-to.pdf importanza_integrale.eps>
-(epstopdf)             \includegraphics on input line 413.
+(epstopdf)             \includegraphics on input line 412.
 Package epstopdf Info: Output file is already uptodate.
  <importanza_integrale-eps-converted-to.pdf, id=86, 505.89pt x 722.7pt>
 File: importanza_integrale-eps-converted-to.pdf Graphic file (type pdf)
 
 <use importanza_integrale-eps-converted-to.pdf>
 Package pdftex.def Info: importanza_integrale-eps-converted-to.pdf used on inpu
-t line 413.
+t line 412.
 (pdftex.def)             Requested size: 250.95476pt x 358.51505pt.
 
-Underfull \vbox (badness 10000) detected at line 430
+Underfull \vbox (badness 10000) detected at line 429
  []
 
 
@@ -583,7 +599,7 @@ Overfull \vbox (19.52809pt too high) has occurred while \output is active []
 
 
 [14 <./importanza_integrale-eps-converted-to.pdf>]
-Underfull \vbox (badness 10000) detected at line 447
+Underfull \vbox (badness 10000) detected at line 446
  []
 
 Package epstopdf Info: Source file: <importanza_noise.eps>
@@ -594,14 +610,14 @@ Package epstopdf Info: Source file: <importanza_noise.eps>
 (epstopdf)                    size: 8968 bytes
 (epstopdf)             Command: <repstopdf --outfile=importanza_noise-eps-conve
 rted-to.pdf importanza_noise.eps>
-(epstopdf)             \includegraphics on input line 461.
+(epstopdf)             \includegraphics on input line 460.
 Package epstopdf Info: Output file is already uptodate.
 <importanza_noise-eps-converted-to.pdf, id=96, 505.89pt x 722.7pt>
 File: importanza_noise-eps-converted-to.pdf Graphic file (type pdf)
 
 <use importanza_noise-eps-converted-to.pdf>
 Package pdftex.def Info: importanza_noise-eps-converted-to.pdf used on input li
-ne 461.
+ne 460.
 (pdftex.def)             Requested size: 250.95476pt x 358.51505pt.
 
 
@@ -610,7 +626,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [15] [16 <./importanza_noise-eps-converted-to.pdf>]
 Capitolo 2.
 
-Overfull \hbox (50.45251pt too wide) detected at line 492
+Overfull \hbox (50.45251pt too wide) detected at line 491
 \OML/cmm/m/it/10.95 C\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.
 95 l \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 k\OMS/cmsy/m/n/10.95 j\OT1/cmr
 /m/n/10.95 )  =  \OMS/cmsy/m/n/10.95 h\OML/cmm/m/it/10.95 x[] x[]\OMS/cmsy/m/n/
@@ -621,15 +637,15 @@ Overfull \hbox (50.45251pt too wide) detected at line 492
 [17
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 513.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 512.
 
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 513.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 512.
 
-Overfull \hbox (26.72336pt too wide) in paragraph at lines 527--531
+Overfull \hbox (26.72336pt too wide) in paragraph at lines 526--530
 []\OT1/cmr/m/n/10.95 si estrae una nuo-va con-fi-gu-ra-zio-ne del si-ste-ma $[]
 $: es-so cor-ri-spon-de a $[] + [] []$. 
  []
@@ -643,14 +659,14 @@ Package epstopdf Info: Source file: <action_cold.eps>
 (epstopdf)                    size: 30832 bytes
 (epstopdf)             Command: <repstopdf --outfile=action_cold-eps-converted-
 to.pdf action_cold.eps>
-(epstopdf)             \includegraphics on input line 546.
+(epstopdf)             \includegraphics on input line 545.
 Package epstopdf Info: Output file is already uptodate.
  <action_cold-eps-converted-to.pdf, id=118, 505.89pt x 722.7pt>
 File: action_cold-eps-converted-to.pdf Graphic file (type pdf)
 
 <use action_cold-eps-converted-to.pdf>
 Package pdftex.def Info: action_cold-eps-converted-to.pdf used on input line 54
-6.
+5.
 (pdftex.def)             Requested size: 250.95476pt x 358.51505pt.
  [19 <./action_cold-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <gamma_t.eps>
@@ -661,47 +677,79 @@ Package epstopdf Info: Source file: <gamma_t.eps>
 (epstopdf)                    size: 24486 bytes
 (epstopdf)             Command: <repstopdf --outfile=gamma_t-eps-converted-to.p
 df gamma_t.eps>
-(epstopdf)             \includegraphics on input line 562.
+(epstopdf)             \includegraphics on input line 561.
 Package epstopdf Info: Output file is already uptodate.
  <gamma_t-eps-converted-to.pdf, id=128, 505.89pt x 722.7pt>
 File: gamma_t-eps-converted-to.pdf Graphic file (type pdf)
 
 <use gamma_t-eps-converted-to.pdf>
-Package pdftex.def Info: gamma_t-eps-converted-to.pdf used on input line 562.
+Package pdftex.def Info: gamma_t-eps-converted-to.pdf used on input line 561.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
  [20 <./gamma_t-eps-converted-to.pdf>]
 [21]
 Capitolo 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 618--620
+
+ []
+
 [22
 
-] (./relazioni.aux) ) 
+] <pendolo_limite.png, id=143, 376.40625pt x 375.65344pt>
+File: pendolo_limite.png Graphic file (type png)
+
+<use pendolo_limite.png>
+Package pdftex.def Info: pendolo_limite.png used on input line 640.
+(pdftex.def)             Requested size: 209.12683pt x 208.71367pt.
+ [23 <./pendolo_limite.png>]
+<sovra1.png, id=147, 376.40625pt x 375.65344pt>
+File: sovra1.png Graphic file (type png)
+ <use sovra1.png>
+Package pdftex.def Info: sovra1.png used on input line 667.
+(pdftex.def)             Requested size: 292.77629pt x 292.21175pt.
+
+<van_der_pol.png, id=148, 376.40625pt x 376.40625pt>
+File: van_der_pol.png Graphic file (type png)
+ <use van_der_pol.png>
+Package pdftex.def Info: van_der_pol.png used on input line 676.
+(pdftex.def)             Requested size: 250.95476pt x 250.96176pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[24 <./sovra1.png>] [25 <./van_der_pol.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 713--718
+
+ []
+
+[26] (./relazioni.aux) ) 
 Here is how much of TeX's memory you used:
- 5167 strings out of 493629
- 70863 string characters out of 3148778
- 141963 words of memory out of 3000000
- 8351 multiletter control sequences out of 15000+200000
+ 5330 strings out of 493629
+ 73237 string characters out of 3148778
+ 143777 words of memory out of 3000000
+ 8504 multiletter control sequences out of 15000+200000
  13687 words of font info for 53 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  38i,11n,43p,367b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pf
-b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbo
-ls/msbm10.pfb>
-Output written on relazioni.pdf (23 pages, 315179 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb>
+Output written on relazioni.pdf (27 pages, 337119 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
+ 216 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

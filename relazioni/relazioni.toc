@@ -1,0 +1,31 @@
+\select@language {italian}
+\contentsline {chapter}{\numberline {1}Integrazione numerica}{2}
+\contentsline {section}{\numberline {1.1}Metodi deterministici}{2}
+\contentsline {subsection}{\numberline {1.1.1}Newton-Cotes}{2}
+\contentsline {subsubsection}{Newton-Cotes:1\IeC {\textdegree }ordine}{3}
+\contentsline {subsection}{\numberline {1.1.2}Newton-Cotes:2\IeC {\textdegree }ordine}{4}
+\contentsline {subsection}{\numberline {1.1.3}Quadrature gaussiane}{4}
+\contentsline {subsection}{\numberline {1.1.4}Utilizzo}{5}
+\contentsline {subsubsection}{Newton-Cotes I: Logaritmo}{6}
+\contentsline {subsubsection}{Newton-Cotes II: Logaritmo}{7}
+\contentsline {subsubsection}{Quadrature gaussiane: Logaritmo}{8}
+\contentsline {subsubsection}{Newton-Cotes I: Polinomio}{9}
+\contentsline {subsubsection}{Newton-Cotes II: Polinomio}{10}
+\contentsline {subsubsection}{Quadrature gaussiane: Polinomio}{11}
+\contentsline {section}{\numberline {1.2}Metodi Monte Carlo}{12}
+\contentsline {subsubsection}{Generatori di numeri pseudocasuali}{13}
+\contentsline {subsubsection}{Confronto tra le distribuzioni}{14}
+\contentsline {chapter}{\numberline {2}Oscillatore armonico}{17}
+\contentsline {section}{\numberline {2.1}Integrali di cammino}{17}
+\contentsline {section}{\numberline {2.2}Algoritmo Metropolis}{18}
+\contentsline {subsubsection}{Implementazione dell'algoritmo Metropolis all'oscillatore armonico}{18}
+\contentsline {subsubsection}{Inizializzazione e termalizzaione dell'algoritmo}{19}
+\contentsline {subsection}{\numberline {2.2.1}Analisi risultati: binning e cluster Jackknife}{20}
+\contentsline {chapter}{\numberline {3}Equazioni differenziali}{22}
+\contentsline {section}{\numberline {3.1}Runge-Kutta IV}{22}
+\contentsline {subsubsection}{Pendolo smorzato con forzante}{23}
+\contentsline {subsubsection}{Oscillatore di van der Pol}{24}
+\contentsline {section}{\numberline {3.2}Equazione di Schr\"{o}dinger}{25}
+\contentsline {subsection}{\numberline {3.2.1}Cenni teorici}{25}
+\contentsline {subsubsection}{Algoritmo}{26}
+\contentsline {subsubsection}{Conclusioni}{26}

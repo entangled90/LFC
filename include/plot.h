@@ -119,7 +119,7 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 	//fprintf(pipe, "A = %lf \n", n_events*width);
 	fprintf(pipe, "f(x)=a*exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
 // 	//printf("A vale %lf \n ", n_events*width);
-	fprintf(pipe, "fit f(x) 'bin.dat' via s,m,a\n");
+	fprintf(pipe, "fit f(x) 'bin.dat' usign 1:2:3 via s,m,a\n");
 	fprintf(pipe, "n=100\t#number of intervals\n");
 	fprintf(pipe, "max= %lf \t#max value\n", max);
 	fprintf(pipe, "min= %lf \t#min value\n",min);

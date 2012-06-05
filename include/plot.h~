@@ -88,7 +88,7 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 			min = tmp;
         
 	}
-	width=(max-min)/n;
+	width=(max-min)/(double)n;
 	while(fscanf(f,"%lf \n",&tmp) == 1){
 		for(i=0;i<n;i++)
 			if(tmp>min+i*width && tmp<=min+(i+1)*width)

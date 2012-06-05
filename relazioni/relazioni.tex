@@ -257,7 +257,6 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 20480 &	  3.683565e-07  	 & 3.687541e-07 \\  
 40960 &	  9.208941e-08  	 & 9.218852e-08 \\  
 81920 &	  2.302234e-08  	 & 2.304713e-08 \\  
-
 \bottomrule
 \end{longtable}
 \end{center}
@@ -588,11 +587,41 @@ Così facendo è stato possibile avere un'idea della distribuzione di $\Delta E$
 
 
 
-\chapter{Runge-Kutta IV}
-% Ci va una introduzione
+\chapter{Equazioni differenziali}
+La maggior parte delle equazioni differenziali è difficilmente risolubile, in alcuni casi è possibile trovare la soluzione come sviluppo in serie di potenze o
+in serie di Fourier, ma raramente si è in grado di conoscere la formula analitica della soluzione. Questo vale per equazioni differenziali ordinarie (ODE)
+e la situazione è addirittura peggiore per equazioni differenziali alle derivate parziali (PDE).\\
+In questo capitolo ci si occuperà della soluzione numerica di equazioni differenziali ordinarie, a partire da condizioni iniziali note.\\
+Storicamente il primo metodo studiato è quello di Eulero, che si rivela essere poco preciso, ma soprattutto facilmente migliorabile con 
+il metodo \emph{ Runge-Kutta IV}.
+\section{Runge-Kutta IV}
+
+Questo metodo di soluzione numeri prevede che si discretizzi il tempo con un passo $h$.È possibile dimostrare che l'errore,
+inteso come scostamento tra la soluzione esatta dell'equazione e la soluzione numerica ad un dato istante temporale $n$, ha un andamento asintotico
+pari a $h^5 n$.
+L'algoritmo permette di calcolare la soluzione al tempo $t_{n+1}$ a partire dall'istante $t_n$. Da ciò deriva la necessità di avere come condizione
+iniziale il valore della soluzione ad un dato istante per poterla evolvere nel tempo.
+\begin{align}
+y_{n+1} \ &= \ y_n + \tfrac{1}{6} \left(k_1 + 2k_2 + 2k_3 + k_4 \right)\\
+t_{n+1} \ &= \ t_n + h
+\end{align}
+dove $y_{n+1}$ è l'approssimazione di $y(t_{n+1})$, e
+\begin{align}
+k_1 \ &= \ hf(t_n, y_n),\\
+k_2 \ &= \ hf(t_n + \tfrac{1}{2}h , y_n + \tfrac{1}{2} k_1),\\
+k_3 \ &= \ hf(t_n + \tfrac{1}{2}h , y_n + \tfrac{1}{2} k_2),\\
+k_4 \ &= \ hf(t_n + h , y_n + k_3).
+\end{align}
+
+
 
 L'implementazione di questo metodo di risoluzione delle equazioni differenziali ordinarie è valida
 per sistemi di equazioni differenziali di ordine 2: ossia riconducibili a un sistema di 2 equazioni differenziali.\\
+$$\begin{sistem}
+	\dot{x_1} \ = \ f_1(x_1,x_2,t) \\
+	\dot{x_2} \ = \ f_2(x_1,x_2,t)\\
+  \end{sistem}
+$$
 Nel nostro caso è stata risolta un'equazione newtoniana, ossia della forma
 $$
 	\ddot{x} \ = \ f(x,t) \Longleftrightarrow  
@@ -601,27 +630,91 @@ $$
 	\dot{x_2} \ = \ f(x,t)\\
 	\end{sistem}
 $$
-L'algoritmo è implementato, sostanzialmente in questa funzione. Essendo un'implementazione in dimensione due, riceve come argomento 2 vettori in cui saranno salvati gli incrementi, le due variabili spaziali, e le due funzioni date dal sistema di equazioni differenziali.
-Nel nostro caso avremo:
-Nella funzione è utilizzata la variabile di preprocessore $H$ che rappresenta il passo dell'incremento
-infinitesimo nel tempo.
+Sono state risolte le equazioni del pendolo smorzato, con una forzante sinusoidale e l'oscillatore di van der Pol.\\
+L'algoritmo è stato implementato in due programmi diversi: il primo si limita a stampare su file i valori di $x$,$\dot x$ per ogni istante, mentre
+il secondo utilizza le librerie \emph{openGL} per stampare direttamente a schermo la soluzione in tempo reale.
+Nell'ultimo programma, inoltre è possibile aumentare o diminuire la lunghezza della ``scia'' per velocizzare l'esecuzione del programma.
+\subsubsection{Pendolo smorzato con forzante}
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width = 0.5\columnwidth]{pendolo_limite.png}
+  \caption{Pendolo smorzato con forzante esterna nel caso di ciclo limite. $B = 0.5$, $Q= 0.5$ $\omega_{ext} = \tfrac{2}{3}$}
+ \end{figure*}
 
-Un'ultima funzione, infine, valuta l'incremento effettivo della variabile, a seconda dei valori calcolati
-dalla funzione riportata sopra e immagazzinati in uno dei due vettori $k1$ o $k2$.\\
-I pesi sono definiti dal metodo Runge-Kutta IV.
 
-
+Come detto precedentemente, si è risolto questo sistema newtoniano analiticamente non integrabile. L'equazione del moto è la seguente:
 $$
-	\ddot{\theta} = f(\theta,\dot{\theta},t) \ - \frac{g}{R} \ \theta - b \ \dot{\theta} + Q \cos ( \omega t )
+  \ddot{\theta} \ = \ -sin(\theta) -Q \dot{\theta}+B cos(\omega_{ext} t)
 $$
+Che equivale al sistema newtoniano associato, ponendo $ x_1 = \theta $ e $x_2 = \dot{\theta}$.
+
+In questo caso i coefficienti sono i seguenti:
+\begin{align*}
+B \ & = 0.5\\
+Q & = 0.5 \\
+\omega_{ext} &= \tfrac{2}{3}
+\end{align*}
+Questa scelta di coefficienti impedisce al sistema di uscire dall'intervallo $ -\tfrac{\pi}{2} \leq \theta \leq \tfrac{\pi}{2}$ e il sistema dopo un transiente iniziale,
+si porta sull' orbita del ciclo limite.
+Diverso è il caso in cui si aumenta il coefficiente della forzante:
+\begin{align*}
+B \ & = 0.3\\
+Q & = 1.4 \\
+\omega_{ext} &= \tfrac{2}{3}
+\end{align*}
+\begin{figure*}[!h]
+\centering
+\includegraphics[width=0.7\columnwidth]{sovra1.png}
+% \subfigure{\includegraphics[width=0.5\columnwidth]{Q=2_lungo.eps}}
+ %\includegraphics[width=0.3\columnwidth]{B=3_lungo-lungo.eps}
+\end{figure*}
 
 
+\subsubsection{Oscillatore di van der Pol}
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width = 0.6\columnwidth]{van_der_pol.png}
+  \caption{Oscillatore di van der Pol. Si può notare il ciclo limite}
+\end{figure*}
+
+Un'altro sistema studiato è l'oscillatore di \emph{van der Pol}.
 $$
-	\begin{sistem}
-	x_1 = \theta\\
-	x_2 = \dot{\theta}\\
-	\end{sistem}
-	\quad \Longrightarrow \quad f_1 = x_2  \qquad f_2 = f(x_1,x_2,t)	
+\frac{d^2x}{dt^2}-\mu(1-x^2)\frac{dx}{dt}+x = 0
 $$
+nella simulazione è stato posto $\mu = 4$.
+\pagebreak
+\section{Equazione di Schr\"{o}dinger}
+L'equazione di Schr\"{o}dinger per una particella in un potenziale armonico è un problema molto più complicato dei precedenti già trattati.
+In primo luogo si ha a che fare con equazioni differenziali alle derivate parziali invece che con equazioni differenziali ordinarie.
+Inoltre, si passa da un sistema che ha un basso numero di gradi di libertà (nel caso precedente 2) a un sistema che (teoricamente) ha infiniti gradi di libertà.
+Nella pratica ovviamente, si è scelto di discretizzare lo spazio (bidimensionale in questo caso) e confinare il problema in una regione finita di spazio.
+\subsection{Cenni teorici}
+Nel nostro caso si è trattata l'equazione di Schr\"odinger indipendente dal tempo. L'hamiltoniana scelta è stata quella dell'oscillatore armonico.
+$$
+\mathcal{H} = \frac{\hat{p}^2}{2m} + \tfrac{1}{2}m \omega^2 \quad \longrightarrow \quad i \p{}{t}\ket{\psi(t)} \ = \ \mathcal{H} \ket{\psi(t)}
+$$
+L'algoritmo, però, è indipendente dal potenziale scelto e non presenta alcuna scelta specifica per il potenziale di tipo armonico.
+È noto che si può ricavare la soluzione dell'equazione come esponenziale dell'hamiltoniana:
+$$
+\ket{\psi(t)} = e^{ -i \mathcal{H} t} \ket{\psi(0)}
+$$
+La difficoltà però risiede nel calcolare l'esponenziale dell'hamiltoniana,tenendo presente che gli autovettori dell'hamiltoniana non sono noti.
+\subsubsection{Algoritmo}
+L'algoritmo consiste sostanzialmente nel cercare di risolvere l'equazione precedente, approssimando in maniera opportuna l'esponenziale.
+In questo caso, abbiamo discretizzato lo spazio, creando un reticolo. È naturale ora associare alla funzione d'onda $ \braket{x,y}{\Psi(t)}$ una
+matrice complessa. Ad ogni entrata della matrice corrisponderà il valore della funzione d'onda in quel punto del reticolo.\\
+Si decide di approssimare l'esponenziale, usandone la definizio di sviluppo in serie, ma fermandosi ad un certo ordine. È possibile scegliere l'ordine a cui fermarsi nello sviluppo,
+stimando l'autovalore massimo dell'hamiltoniana $ \lambda_{max}$. Così facendo, infatti si ha che:
+$$
+\left| exp \left( - i \mathcal{H} \delta t \right) - \sum_{i=0}^n \frac{\lambda_{max} \delta t)^{n}}{n!} \right| \ \simeq \frac{\left(\lambda_{max} \delta t\right)^{n+1}}{(n+1)!} 
+$$
+in questo modo, si può cercare un compromesso fra l'ordine dello sviluppo in serie e il valore del passo reticolare temporale $\delta t$.
+\subsubsection{Conclusioni}
+Si è valutato il comportamento dell'algoritmo, imponendo come condizione iniziale alla funzione d'onda la periodicità al bordo e scegliendo
+un pacchetto gaussiano monocromatico nel momento. L'algoritmo risulta essere molto sensibile rispetto ai parametri utilizzati: massa $m$, $\omega$ del potenziale,
+$\delta t$ considerato. Per questo motivo è necessario considerare $ \delta t$ molto piccoli, per mantenere l'unitarietà dell'operatore di evoluzione temporale.
+Inoltre esso dipende in modo polinomiale dalla dimensione della matrice considerata: per questo motivo, per avere una evoluzione apprezzabile del sistema
+è necessario considerare un reticolo piccolo (100x100, 200x200,300x300).\\
+
 
 \end{document}

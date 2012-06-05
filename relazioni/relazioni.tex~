@@ -687,13 +687,12 @@ nella simulazione è stato posto $\mu = 4$.
 L'equazione di Schr\"{o}dinger per una particella in un potenziale armonico è un problema molto più complicato dei precedenti già trattati.
 In primo luogo si ha a che fare con equazioni differenziali alle derivate parziali invece che con equazioni differenziali ordinarie.
 Inoltre, si passa da un sistema che ha un basso numero di gradi di libertà (nel caso precedente 2) a un sistema che (teoricamente) ha infiniti gradi di libertà.
-Nella pratica ovviamente, si è scelto di discretizzare lo spazio (bidimensionale in questo caso) e confinare il problema in una regione finita di spazio.
+Nella risoluzione di questo problema si è scelto di discretizzare lo spazio (bidimensionale in questo caso) e confinare il problema in una regione finita di spazio.
 \subsection{Cenni teorici}
-Nel nostro caso si è trattata l'equazione di Schr\"odinger indipendente dal tempo. L'hamiltoniana scelta è stata quella dell'oscillatore armonico.
+Nel nostro caso si è trattata l'equazione di Schr\"odinger indipendente dal tempo. L'hamiltoniana è quella ``standard'' bidimensionale.
 $$
-\mathcal{H} = \frac{\hat{p}^2}{2m} + \tfrac{1}{2}m \omega^2 \quad \longrightarrow \quad i \p{}{t}\ket{\psi(t)} \ = \ \mathcal{H} \ket{\psi(t)}
+\mathcal{H} = \frac{\hat{p_x}^2+\hat{p_y}^2}{2m} + V(x,y) \quad \longrightarrow \quad i \p{}{t}\ket{\psi(t)} \ = \ \mathcal{H} \ket{\psi(t)}
 $$
-L'algoritmo, però, è indipendente dal potenziale scelto e non presenta alcuna scelta specifica per il potenziale di tipo armonico.
 È noto che si può ricavare la soluzione dell'equazione come esponenziale dell'hamiltoniana:
 $$
 \ket{\psi(t)} = e^{ -i \mathcal{H} t} \ket{\psi(0)}
@@ -708,13 +707,30 @@ stimando l'autovalore massimo dell'hamiltoniana $ \lambda_{max}$. Così facendo,
 $$
 \left| exp \left( - i \mathcal{H} \delta t \right) - \sum_{i=0}^n \frac{\lambda_{max} \delta t)^{n}}{n!} \right| \ \simeq \frac{\left(\lambda_{max} \delta t\right)^{n+1}}{(n+1)!} 
 $$
-in questo modo, si può cercare un compromesso fra l'ordine dello sviluppo in serie e il valore del passo reticolare temporale $\delta t$.
-\subsubsection{Conclusioni}
-Si è valutato il comportamento dell'algoritmo, imponendo come condizione iniziale alla funzione d'onda la periodicità al bordo e scegliendo
-un pacchetto gaussiano monocromatico nel momento. L'algoritmo risulta essere molto sensibile rispetto ai parametri utilizzati: massa, $\omega$ del potenziale,
-$\delta t$ considerato. Per questo motivo è necessario considerare $ \delta t$ molto piccoli, per mantenere l'unitarietà dell'operatore di evoluzione temporale.
-Inoltre esso dipende in modo polinomiale dalla dimensione della matrice considerata: per questo motivo, per avere una evoluzione apprezzabile del sistema
-è necessario considerare un reticolo piccolo (100x100, 200x200,300x300).\\
+in questo modo, si può cercare un compromesso fra l'ordine dello sviluppo in serie e il valore del passo reticolare temporale $\delta t$.\\
+Ad ogni passo dell'algoritmo, si calcola l'approssimazione di $ exp \left( -i \mathcal{H} \delta t \right)$ fino all'ordine desiderato e poi si
+sostituisce $ \psi(t)$ con $\psi(t+\delta t) = exp \left( -i \mathcal{H} \delta t \right) \psi(t)$.
+\subsubsection{Particella libera}
+In questo caso l'hamiltoniana diventa semplicemente:
+$$
+\mathcal{H} = \frac{\hat{p_x}^2+\hat{p_y}^2}{2m}
+$$
+Nonostante si conoscano gli autovettori di questa hamiltoniana, si è analizzato questo problema anche per vagliare la correttezza dell'algoritmo.
+Si è raggiunto un compromesso fra velocità dell'evoluzione della funzione d'onda e precisione dell'evoluzione, arrestando la serie all'ordine 25, con un $\delta t$ pari a 0.5.
+Le unità di misura utilizzate nel sistema sono sostanzialmente arbitrarie, e sono state inglobate in una costante unica.
+Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
+Si è valutata inoltre l'unitarietà dell'operatore di evoluzione temporale ad ogni passo dell'algoritmo stampando su terminale il valore della norma
+della matrice. Esso risulta unitario, nel senso che dopo una decina di minuti di simulazione, la norma della funzione rimane inalterata (con un errore superiore a $ 10^-5$).
 
-
+  \begin{figure*}[h]
+  \centering
+    \subfigure[$\psi(0)$: il pacchetto è gaussiano e monocromatico, con momento diretto verticalmente verso il basso.]{\includegraphics{free1.png}}
+    \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
+    \subfigure[Lo ``spread'' aumenta ancora. Si notano gli effetti delle condizioni al bordo]{\includegraphics{free3.png}}
+    \subfigure[La funzione d'onda inizia a intereferire con sè stessa.]{\includegraphics{free4.png}}
+    \subfigure{\includegraphics{free_crystal.png}}
+    \subfigure{\includegraphics{free5.png}}
+    \caption{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}
+  \end{figure*}
+\subsubsection{Buca di potenziale sferico}
 \end{document}

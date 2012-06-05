@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  5 JUN 2012 11:49
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  5 JUN 2012 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -718,38 +718,85 @@ Package pdftex.def Info: van_der_pol.png used on input line 676.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [24 <./sovra1.png>] [25 <./van_der_pol.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 713--718
+<free1.png, id=158, 149.05687pt x 149.8097pt>
+File: free1.png Graphic file (type png)
+ <use free1.png>
+Package pdftex.def Info: free1.png used on input line 727.
+(pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
+Underfull \hbox (badness 1215) in paragraph at lines 727--727
+[]\OT1/cmr/m/n/9 (a) $\OML/cmm/m/it/9  \OT1/cmr/m/n/9 (0)$: il pac-chet-to ^^Re
+ gaus-sia-
  []
 
-[26] (./relazioni.aux) ) 
+<free2.png, id=159, 149.05687pt x 149.8097pt>
+File: free2.png Graphic file (type png)
+ <use free2.png>
+Package pdftex.def Info: free2.png used on input line 728.
+(pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
+
+<free3.png, id=160, 151.3153pt x 150.5625pt>
+File: free3.png Graphic file (type png)
+ <use free3.png>
+Package pdftex.def Info: free3.png used on input line 729.
+(pdftex.def)             Requested size: 151.31493pt x 150.56212pt.
+
+<free4.png, id=161, 150.5625pt x 150.5625pt>
+File: free4.png Graphic file (type png)
+ <use free4.png>
+Package pdftex.def Info: free4.png used on input line 730.
+(pdftex.def)             Requested size: 150.56212pt x 150.56212pt.
+
+Underfull \hbox (badness 4556) in paragraph at lines 730--730
+[]\OT1/cmr/m/n/9 (d) La fun-zio-ne d'on-da ini-zia a
+ []
+
+<free_crystal.png, id=162, 149.05687pt x 149.8097pt>
+File: free_crystal.png Graphic file (type png)
+ <use free_crystal.png>
+Package pdftex.def Info: free_crystal.png used on input line 731.
+(pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
+
+<free5.png, id=163, 149.8097pt x 149.8097pt>
+File: free5.png Graphic file (type png)
+ <use free5.png>
+Package pdftex.def Info: free5.png used on input line 732.
+(pdftex.def)             Requested size: 149.80931pt x 149.80931pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[26] [27 <./free1.png> <./free2.png> <./free3.png> <./free4.png> <./free_crysta
+l.png> <./free5.png>] (./relazioni.aux) ) 
 Here is how much of TeX's memory you used:
- 5330 strings out of 493629
- 73237 string characters out of 3148778
+ 5379 strings out of 493629
+ 73832 string characters out of 3148778
  143777 words of memory out of 3000000
- 8504 multiletter control sequences out of 15000+200000
- 13687 words of font info for 53 fonts, out of 3000000 for 9000
+ 8539 multiletter control sequences out of 15000+200000
+ 16089 words of font info for 64 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  38i,11n,43p,367b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
-b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
-.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb>
-Output written on relazioni.pdf (27 pages, 337119 bytes).
+</usr/share/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
+fb>
+Output written on relazioni.pdf (28 pages, 466674 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 148 compressed objects within 2 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

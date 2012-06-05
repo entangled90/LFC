@@ -28,4 +28,4 @@
 \contentsline {section}{\numberline {3.2}Equazione di Schr\"{o}dinger}{25}
 \contentsline {subsection}{\numberline {3.2.1}Cenni teorici}{25}
 \contentsline {subsubsection}{Algoritmo}{26}
-\contentsline {subsubsection}{Conclusioni}{26}
+\contentsline {subsubsection}{Particella libera}{26}

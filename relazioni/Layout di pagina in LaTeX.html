@@ -1,0 +1,1683 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div style="background:#fff;border:1px solid #999;margin:-1px -1px 0;padding:0;"><div style="background:#ddd;border:1px solid #999;color:#000;font:13px arial,sans-serif;font-weight:normal;margin:12px;padding:8px;text-align:left">Questa è la versione .html del file contenuto in <a href="ftp://ftp.tex.ac.uk/tex-archive/info/italian/fancyhdr/itfancyhdr.pdf" style="text-decoration:underline;color:#00c">ftp://ftp.tex.ac.uk/tex-archive/info/italian/fancyhdr/itfancyhdr.pdf</a>.<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> crea automaticamente la versione .html dei documenti durante la scansione del Web.</div></div><div style="position:relative">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Author" content="Piet van Oostrum">
+<meta name="Title" content="Layout di pagina in LaTeX">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX13.d">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX13.d">
+<meta name="CreationDate" content="D:20010402090000">
+<title>Layout di pagina in LaTeX</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:398;left:317"><nobr>Layout di pagina in L<font style="font-size:15px">A</font>TEX</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:453;left:384"><nobr>Piet van Oostrum<font style="font-size:9px">∗</font></nobr></div>
+<div style="position:absolute;top:474;left:349"><nobr>Dept. of Computer Science</nobr></div>
+<div style="position:absolute;top:495;left:381"><nobr>Utrecht University</nobr></div>
+<div style="position:absolute;top:536;left:397"><nobr>23 marzo 2001</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:11px;font-family:Times">
+<div style="position:absolute;top:614;left:417"><nobr>Sommario</nobr></div>
+<div style="position:absolute;top:638;left:193"><nobr>Questo articolo spiega come personalizzare l’aspetto della pagina nei documenti LaTeX,</nobr></div>
+<div style="position:absolute;top:655;left:172"><nobr>ossia come modificarne le dimensioni e i margini, le intestazioni e le righe a pi`e di pagina, il</nobr></div>
+<div style="position:absolute;top:671;left:172"><nobr>corretto posizionamento di figure e tabelle (collettivamente chiamate oggetti flottanti). Origi-</nobr></div>
+<div style="position:absolute;top:687;left:172"><nobr>nariamente, questa era la documentazione del pacchetto fancyheadings, ma conteneva anche</nobr></div>
+<div style="position:absolute;top:704;left:172"><nobr>altre informazioni relative, per esempio, all’uso avanzato delle marche. In seguito sono stati</nobr></div>
+<div style="position:absolute;top:720;left:172"><nobr>aggiunti ulteriori argomenti, come il trattamento degli oggetti flottanti. La documentazione</nobr></div>
+<div style="position:absolute;top:737;left:172"><nobr>di fancyheadings `e stata aggiornata per adattarla alla versione 2 di questo pacchetto<font color="#ff0000" style="font-size:6px"><a href="#1">1</a></font><a href="#1"></a>. Per</nobr></div>
+<div style="position:absolute;top:753;left:172"><nobr>ragioni di compatibilit`a con alcuni sistemi operativi, il nome del pacchetto `e stato cambiato</nobr></div>
+<div style="position:absolute;top:770;left:172"><nobr>in fancyhdr.</nobr></div>
+<div style="position:absolute;top:786;left:193"><nobr>Sebbene in questo articolo si utilizzino comandi L<font style="font-size:6px">A</font>TEX 2ε, la maggior parte delle tecniche</nobr></div>
+<div style="position:absolute;top:803;left:172"><nobr>pu`o essere utilizzata, con le appropriate modifiche, anche su versioni pi`u vecchie di L<font style="font-size:6px">A</font>TEX.</nobr></div>
+<div style="position:absolute;top:819;left:193"><nobr>Traduzione italiana di Giulio Agostini e Mileto Rigido.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:869;left:135"><nobr>Indice</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:913;left:157"><nobr>1</nobr></div>
+<div style="position:absolute;top:913;left:192"><nobr>Introduzione . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:913;left:762"><nobr><a href="#2">2</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:937;left:157"><nobr>2</nobr></div>
+<div style="position:absolute;top:937;left:192"><nobr>Intestazioni e pi`e di pagina . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:937;left:762"><nobr><a href="#4">4</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:962;left:157"><nobr>3</nobr></div>
+<div style="position:absolute;top:962;left:192"><nobr>Cosa `e fancyhdr . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:962;left:762"><nobr><a href="#5">5</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:986;left:157"><nobr>4</nobr></div>
+<div style="position:absolute;top:986;left:192"><nobr>Uso basilare di fancyhdr . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:986;left:762"><nobr><a href="#5">5</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1010;left:157"><nobr>5</nobr></div>
+<div style="position:absolute;top:1010;left:192"><nobr>Un semplice esempio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1010;left:762"><nobr><a href="#6">6</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1035;left:157"><nobr>6</nobr></div>
+<div style="position:absolute;top:1035;left:192"><nobr>Un esempio di stampa fronte/retro . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1035;left:762"><nobr><a href="#6">6</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1059;left:157"><nobr>7</nobr></div>
+<div style="position:absolute;top:1059;left:192"><nobr>Ridefinire lo stile plain . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1059;left:762"><nobr><a href="#8">8</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1083;left:157"><nobr>8</nobr></div>
+<div style="position:absolute;top:1083;left:192"><nobr>Il layout predefinito . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1083;left:762"><nobr><a href="#8">8</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1108;left:157"><nobr>9</nobr></div>
+<div style="position:absolute;top:1108;left:192"><nobr>Lo scoop sulle marche di L<font style="font-size:8px">A</font>TEX . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1108;left:762"><nobr><a href="#9">9</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1132;left:157"><nobr>10</nobr></div>
+<div style="position:absolute;top:1132;left:192"><nobr>Intestazioni stile dizionario . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1132;left:755"><nobr><a href="#11">11</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1156;left:157"><nobr>11</nobr></div>
+<div style="position:absolute;top:1156;left:192"><nobr>Layout fantasiosi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1156;left:755"><nobr><a href="#12">12</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1181;left:157"><nobr>12</nobr></div>
+<div style="position:absolute;top:1181;left:192"><nobr>Due esempi di libri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1181;left:755"><nobr><a href="#13">13</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1205;left:157"><nobr>13</nobr></div>
+<div style="position:absolute;top:1205;left:192"><nobr>Layout di pagina speciale per le pagine di soli oggetti flottanti . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1205;left:755"><nobr><a href="#15">15</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1230;left:157"><nobr>14</nobr></div>
+<div style="position:absolute;top:1230;left:192"><nobr>Quelle pagine vuote... . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1230;left:755"><nobr><a href="#15">15</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:1252;left:151"><nobr>*<font style="font-size:9px">Una parte considerevole di questo articolo `e stata scritta da George Grätzer (University of Manitoba) in Notices</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:1269;left:135"><nobr>Amer. Math. Soc. Grazie George!</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:1281;left:152"><nobr>1<font style="font-size:9px">Questa versione dovrebbe essere rilasciata molto presto.</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1338;left:449"><nobr>1</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1437;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1605;left:157"><nobr>15</nobr></div>
+<div style="position:absolute;top:1605;left:192"><nobr>Numeri di pagina nella forma “m di n” . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1605;left:755"><nobr><a href="#16">16</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1629;left:157"><nobr>16</nobr></div>
+<div style="position:absolute;top:1629;left:192"><nobr>Numeri di pagina legati ai capitoli o alle sezioni . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1629;left:755"><nobr><a href="#16">16</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1654;left:157"><nobr>17</nobr></div>
+<div style="position:absolute;top:1654;left:192"><nobr>Quando cambiare intestazione e pi`e di pagina? . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1654;left:755"><nobr><a href="#17">17</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1678;left:157"><nobr>18</nobr></div>
+<div style="position:absolute;top:1678;left:192"><nobr>Intestazioni e pi`e di pagina indotti dal testo . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1678;left:755"><nobr><a href="#18">18</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1702;left:157"><nobr>19</nobr></div>
+<div style="position:absolute;top:1702;left:192"><nobr>Animazioni . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1702;left:755"><nobr><a href="#20">20</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1727;left:157"><nobr>20</nobr></div>
+<div style="position:absolute;top:1727;left:192"><nobr>Indici stile rubrica . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1727;left:755"><nobr><a href="#21">21</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1751;left:157"><nobr>21</nobr></div>
+<div style="position:absolute;top:1751;left:192"><nobr>Posizionamento degli oggetti flottanti . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1751;left:755"><nobr><a href="#21">21</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1775;left:157"><nobr>22</nobr></div>
+<div style="position:absolute;top:1775;left:192"><nobr>Oggetti flottanti su pi`u pagine . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1775;left:755"><nobr><a href="#24">24</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1800;left:157"><nobr>22.1 Tabelle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1800;left:755"><nobr><a href="#25">25</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1824;left:157"><nobr>22.2 Figure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1824;left:755"><nobr><a href="#25">25</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1848;left:157"><nobr>23</nobr></div>
+<div style="position:absolute;top:1848;left:192"><nobr>Contatti . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1848;left:755"><nobr><a href="#27">27</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1894;left:135"><nobr>Nota alla traduzione italiana</nobr></div>
+<div style="position:absolute;top:1928;left:135"><nobr>Una copia di questo documento e altre traduzioni in italiano di manuali su L<font style="font-size:8px">A</font>TEX sono reperibili</nobr></div>
+<div style="position:absolute;top:1946;left:135"><nobr>presso</nobr></div>
+<div style="position:absolute;top:1981;left:157"><nobr>• <font color="#ec008c"><a href="http://guild.prato.linux.it">http://guild.prato.linux.it</a></font></nobr></div>
+<div style="position:absolute;top:2010;left:157"><nobr>• <font color="#ec008c"><a href="ftp://lorien.prato.linux.it/pub/guild">ftp://lorien.prato.linux.it/pub/guild</a></font></nobr></div>
+<div style="position:absolute;top:2040;left:157"><nobr>• <font color="#ec008c"><a href="ftp://ftp.unina.it/pub/TeX/info/italian">ftp://ftp.unina.it/pub/TeX/info/italian</a></font></nobr></div>
+<div style="position:absolute;top:2077;left:135"><nobr>e su ogni sito CTAN, per esempio <font color="#ec008c"><a href="ftp://ftp.tex.ac.uk/tex-archive/info/italian">ftp://ftp.tex.ac.uk/tex-archive/info/italian</a></font>.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2128;left:135"><nobr>1 Introduzione</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2172;left:135"><nobr>La pagina di un documento L<font style="font-size:8px">A</font>TEX `e costituita da vari elementi, come mostra la figura <font color="#ff0000"><a href="#3">1</a></font><a href="#3"></a>. Il corpo</nobr></div>
+<div style="position:absolute;top:2190;left:135"><nobr>contiene il testo principale assieme ai cosiddetti oggetti flottanti (tabelle e figure).</nobr></div>
+<div style="position:absolute;top:2214;left:135"><nobr>Le pagine sono costruite con la routine di output di L<font style="font-size:8px">A</font>TEX, la quale `e abbastanza complicata</nobr></div>
+<div style="position:absolute;top:2232;left:135"><nobr>e pertanto non dovrebbe essere modificata dall’utente. Alcuni dei pacchetti descritti in questo</nobr></div>
+<div style="position:absolute;top:2250;left:135"><nobr>articolo contengono delle piccole modifiche alla routine di output finalizzate al compimento di</nobr></div>
+<div style="position:absolute;top:2268;left:135"><nobr>operazioni che non potrebbero essere realizzate in altro modo. Per ottenere i risultati desiderati `e</nobr></div>
+<div style="position:absolute;top:2286;left:135"><nobr>preferibile utilizzare questi pacchetti piuttosto che modificare direttamente la routine di output.</nobr></div>
+<div style="position:absolute;top:2310;left:135"><nobr>Ci sono un certo numero di cose delle quali si deve essere a conoscenza:</nobr></div>
+<div style="position:absolute;top:2346;left:153"><nobr>1. I margini sulla sinistra non si chiamano \leftmargin, ma \evensidemargin (nelle pagine</nobr></div>
+<div style="position:absolute;top:2364;left:172"><nobr>con numerazione pari) e \oddsidemargin (nelle pagine dispari). Nei documenti a una facciata</nobr></div>
+<div style="position:absolute;top:2382;left:172"><nobr>si usa \oddsidemargin per entrambe. Anche \leftmargin `e un parametro L<font style="font-size:8px">A</font>TEX valido ma</nobr></div>
+<div style="position:absolute;top:2400;left:172"><nobr>ha un utilizzo differente (vale a dire per il rientro delle liste).</nobr></div>
+<div style="position:absolute;top:2430;left:153"><nobr>2. La maggior parte dei parametri non dovrebbe essere cambiata nel mezzo di un documento</nobr></div>
+<div style="position:absolute;top:2448;left:172"><nobr>poiché alcune modifiche potrebbero avere effetto dopo un’interruzione di pagina. Se si vuole</nobr></div>
+<div style="position:absolute;top:2466;left:172"><nobr>cambiare l’altezza di una sola pagina, si pu`o usare il comando \enlargethispage.</nobr></div>
+<div style="position:absolute;top:2501;left:135"><nobr>L’area delle note a margine contiene brevi informazioni create col comando \marginpar. Nei</nobr></div>
+<div style="position:absolute;top:2519;left:135"><nobr>documenti a due facciate le note a margine appaiono alternativamente a sinistra e a destra. Le note</nobr></div>
+<div style="position:absolute;top:2537;left:135"><nobr>a margine non sono collocate in un posto fisso rispetto al foglio, ma approssimativamente alla stessa</nobr></div>
+<div style="position:absolute;top:2555;left:135"><nobr>altezza del paragrafo a cui si riferiscono. Sfortunatamente, a causa dell’algoritmo usato per decidere</nobr></div>
+<div style="position:absolute;top:2600;left:449"><nobr>2</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2699;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:2950;left:429"><nobr>Intestazione</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3212;left:442"><nobr>Corpo</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3473;left:426"><nobr>Pi`e di pagina</nobr></div>
+<div style="position:absolute;top:3207;left:631"><nobr>Note a</nobr></div>
+<div style="position:absolute;top:3220;left:627"><nobr>margine</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3409;left:462"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3420;left:460"><nobr>8</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3420;left:304"><nobr> </nobr></div>
+<div style="position:absolute;top:3420;left:606"><nobr>-</nobr></div>
+<div style="position:absolute;top:3205;left:555"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3216;left:552"><nobr>7</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3458;left:555"><nobr>?</nobr></div>
+<div style="position:absolute;top:2990;left:555"><nobr>6</nobr></div>
+<div style="position:absolute;top:3476;left:264"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3487;left:261"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3488;left:237"><nobr> </nobr></div>
+<div style="position:absolute;top:3488;left:276"><nobr>-</nobr></div>
+<div style="position:absolute;top:3337;left:304"><nobr> </nobr></div>
+<div style="position:absolute;top:3337;left:276"><nobr>-</nobr></div>
+<div style="position:absolute;top:3326;left:268"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3337;left:266"><nobr>3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3303;left:649"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3315;left:644"><nobr>10</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3315;left:629"><nobr>  -</nobr></div>
+<div style="position:absolute;top:3293;left:606"><nobr> -</nobr></div>
+<div style="position:absolute;top:3281;left:598"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3292;left:596"><nobr>9</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3495;left:344"><nobr>6</nobr></div>
+<div style="position:absolute;top:3458;left:344"><nobr>?</nobr></div>
+<div style="position:absolute;top:3424;left:344"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:3435;left:338"><nobr>11</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2909;left:645"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:2920;left:643"><nobr>2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2947;left:645"><nobr>?</nobr></div>
+<div style="position:absolute;top:2909;left:645"><nobr>6</nobr></div>
+<div style="position:absolute;top:2962;left:344"><nobr>6</nobr></div>
+<div style="position:absolute;top:2947;left:344"><nobr>?</nobr></div>
+<div style="position:absolute;top:2913;left:344"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:2925;left:341"><nobr>4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2971;left:383"><nobr>6</nobr></div>
+<div style="position:absolute;top:2947;left:383"><nobr>?</nobr></div>
+<div style="position:absolute;top:2913;left:383"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:2925;left:381"><nobr>5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2990;left:423"><nobr>6</nobr></div>
+<div style="position:absolute;top:2956;left:423"><nobr>?</nobr></div>
+<div style="position:absolute;top:2986;left:423"><nobr>i</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:5px;font-family:Times">
+<div style="position:absolute;top:2997;left:420"><nobr>6</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3541;left:272"><nobr>1</nobr></div>
+<div style="position:absolute;top:3541;left:296"><nobr>un pollice + \hoffset</nobr></div>
+<div style="position:absolute;top:3541;left:466"><nobr>2</nobr></div>
+<div style="position:absolute;top:3541;left:490"><nobr>un pollice + \voffset</nobr></div>
+<div style="position:absolute;top:3555;left:272"><nobr>3</nobr></div>
+<div style="position:absolute;top:3555;left:296"><nobr>\oddsidemargin = 18pt</nobr></div>
+<div style="position:absolute;top:3555;left:466"><nobr>4</nobr></div>
+<div style="position:absolute;top:3555;left:490"><nobr>\topmargin = 0pt</nobr></div>
+<div style="position:absolute;top:3569;left:272"><nobr>5</nobr></div>
+<div style="position:absolute;top:3569;left:296"><nobr>\headheight = 12pt</nobr></div>
+<div style="position:absolute;top:3569;left:466"><nobr>6</nobr></div>
+<div style="position:absolute;top:3569;left:490"><nobr>\headsep = 25pt</nobr></div>
+<div style="position:absolute;top:3583;left:272"><nobr>7</nobr></div>
+<div style="position:absolute;top:3583;left:296"><nobr>\textheight = 646pt</nobr></div>
+<div style="position:absolute;top:3583;left:466"><nobr>8</nobr></div>
+<div style="position:absolute;top:3583;left:490"><nobr>\textwidth = 424pt</nobr></div>
+<div style="position:absolute;top:3597;left:272"><nobr>9</nobr></div>
+<div style="position:absolute;top:3597;left:296"><nobr>\marginparsep = 11pt</nobr></div>
+<div style="position:absolute;top:3597;left:460"><nobr>10</nobr></div>
+<div style="position:absolute;top:3597;left:490"><nobr>\marginparwidth = 54pt</nobr></div>
+<div style="position:absolute;top:3612;left:266"><nobr>11</nobr></div>
+<div style="position:absolute;top:3612;left:296"><nobr>\footskip = 30pt</nobr></div>
+<div style="position:absolute;top:3612;left:490"><nobr>\marginparpush = 5pt (non visibile)</nobr></div>
+<div style="position:absolute;top:3626;left:296"><nobr>\hoffset = 0pt</nobr></div>
+<div style="position:absolute;top:3626;left:490"><nobr>\voffset = 0pt</nobr></div>
+<div style="position:absolute;top:3640;left:296"><nobr>\paperwidth = 597pt</nobr></div>
+<div style="position:absolute;top:3640;left:490"><nobr>\paperheight = 845pt</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3748;left:135"><nobr>Figura 1: Elementi della pagina. I valori indicati sono quelli usati in questo documento, non quelli</nobr></div>
+<div style="position:absolute;top:3766;left:135"><nobr>predefiniti.</nobr></div>
+<div style="position:absolute;top:3862;left:449"><nobr>3</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3961;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4129;left:135"><nobr>il loro posizionamento, in un documento a due facciate potrebbero apparire sul lato sbagliato se</nobr></div>
+<div style="position:absolute;top:4147;left:135"><nobr>sono collocate nei pressi di un’interruzione di pagina. Se invece si vuole che le informazioni appaiano</nobr></div>
+<div style="position:absolute;top:4165;left:135"><nobr>in posti prefissati ai margini della pagina, si pu`o usare la tecnica descritta nelle sezioni <font color="#ff0000"><a href="#20">19 </a></font>e <font color="#ff0000"><a href="#21">20</a></font>.</nobr></div>
+<div style="position:absolute;top:4189;left:135"><nobr>La prima parte di questo articolo descrive come modificare le aree dell’intestazione e del pi`e di</nobr></div>
+<div style="position:absolute;top:4207;left:135"><nobr>pagina. L’ultima parte descrive come collocare gli oggetti flottanti nel punto desiderato.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:4258;left:135"><nobr>2 Intestazioni e pi`e di pagina</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4302;left:135"><nobr>In L<font style="font-size:8px">A</font>TEX le intestazioni e i pi`e di pagina sono definiti dai comandi \pagestyle e \pagenumbering.</nobr></div>
+<div style="position:absolute;top:4321;left:135"><nobr>\pagestyle definisce il contenuto generale delle intestazioni e dei pi`e di pagina (per esempio dove</nobr></div>
+<div style="position:absolute;top:4338;left:135"><nobr>sar`a stampato il numero della pagina), mentre \pagenumbering definisce il formato del numero</nobr></div>
+<div style="position:absolute;top:4356;left:135"><nobr>della pagina. L<font style="font-size:8px">A</font>TEX ha quattro stili di pagina predefiniti:</nobr></div>
+<div style="position:absolute;top:4381;left:144"><nobr>empty</nobr></div>
+<div style="position:absolute;top:4379;left:240"><nobr>nessuna intestazione o pi`e di pagina</nobr></div>
+<div style="position:absolute;top:4399;left:144"><nobr>plain</nobr></div>
+<div style="position:absolute;top:4397;left:240"><nobr>nessuna intestazione, il pi`e di pagina contiene al centro il numero</nobr></div>
+<div style="position:absolute;top:4415;left:240"><nobr>della pagina</nobr></div>
+<div style="position:absolute;top:4434;left:144"><nobr>headings</nobr></div>
+<div style="position:absolute;top:4433;left:240"><nobr>nessun pi`e di pagina, l’intestazione contiene il nome del</nobr></div>
+<div style="position:absolute;top:4451;left:240"><nobr>capitolo/sezione e/o subsezione e il numero della pagina</nobr></div>
+<div style="position:absolute;top:4470;left:144"><nobr>myheadings nessun pi`e di pagina, l’intestazione contiene il numero della pagina</nobr></div>
+<div style="position:absolute;top:4487;left:240"><nobr>e altre informazioni fornite dall’utente.</nobr></div>
+<div style="position:absolute;top:4511;left:135"><nobr>Questi stili, sebbene utili, sono abbastanza limitati. Si possono definire degli stili di pagina aggiun-</nobr></div>
+<div style="position:absolute;top:4529;left:135"><nobr>tivi attraverso comandi del tipo \ps@xxx. Questo comando `e eseguito quando un \pagestyle{xxx}</nobr></div>
+<div style="position:absolute;top:4547;left:135"><nobr>`e dato nel documento. Il comando \ps@xxx dovrebbe definire i seguenti comandi per il contenuto</nobr></div>
+<div style="position:absolute;top:4565;left:135"><nobr>delle intestazioni e dei pi`e di pagina:</nobr></div>
+<div style="position:absolute;top:4589;left:144"><nobr>\@oddhead</nobr></div>
+<div style="position:absolute;top:4588;left:240"><nobr>intestazione delle pagine dispari nei documenti a due facciate</nobr></div>
+<div style="position:absolute;top:4606;left:240"><nobr>(valido per tutte le pagine nei documenti a facciata singola)</nobr></div>
+<div style="position:absolute;top:4625;left:144"><nobr>\@evenhead intestazione delle pagine pari nei documenti a due facciate</nobr></div>
+<div style="position:absolute;top:4643;left:144"><nobr>\@oddfoot</nobr></div>
+<div style="position:absolute;top:4642;left:240"><nobr>pi`e di pagina delle pagine dispari nei documenti a due facciate</nobr></div>
+<div style="position:absolute;top:4660;left:240"><nobr>(valido per tutte le pagine nei documenti a facciata singola)</nobr></div>
+<div style="position:absolute;top:4679;left:144"><nobr>\@evenfoot pi`e di pagina delle pagine pari nei documenti a due facciate</nobr></div>
+<div style="position:absolute;top:4701;left:135"><nobr>Questi non sono comandi utente, ma piuttosto “variabili” utilizzate dalla routine di output di</nobr></div>
+<div style="position:absolute;top:4719;left:135"><nobr>L<font style="font-size:8px">A</font>TEX. Poiché i nomi dei comandi contengono il carattere ’@’, dovrebbero essere definiti all’interno</nobr></div>
+<div style="position:absolute;top:4737;left:135"><nobr>di un pacchetto, o altrimenti essere inseriti tra i comandi \makeatletter e \makeatother.</nobr></div>
+<div style="position:absolute;top:4761;left:135"><nobr>Il comando \pagenumbering definisce l’aspetto del numero della pagina e accetta uno dei seguenti</nobr></div>
+<div style="position:absolute;top:4779;left:135"><nobr>parametri:</nobr></div>
+<div style="position:absolute;top:4804;left:144"><nobr>arabic numeri arabi</nobr></div>
+<div style="position:absolute;top:4822;left:144"><nobr>roman</nobr></div>
+<div style="position:absolute;top:4821;left:209"><nobr>numeri romani a caratteri minuscoli</nobr></div>
+<div style="position:absolute;top:4840;left:144"><nobr>Roman</nobr></div>
+<div style="position:absolute;top:4839;left:209"><nobr>numeri romani a caratteri maiuscoli</nobr></div>
+<div style="position:absolute;top:4858;left:144"><nobr>alph</nobr></div>
+<div style="position:absolute;top:4857;left:209"><nobr>lettere minuscole</nobr></div>
+<div style="position:absolute;top:4876;left:144"><nobr>Alph</nobr></div>
+<div style="position:absolute;top:4874;left:209"><nobr>lettere maiuscole</nobr></div>
+<div style="position:absolute;top:4899;left:135"><nobr>\pagenumbering{xxx} fa in modo che il comando \thepage sia l’espansione del numero di pagina</nobr></div>
+<div style="position:absolute;top:4916;left:135"><nobr>nella forma xxx. Il comando pagestyle include quindi \thepage nel posto appropriato. Inoltre il</nobr></div>
+<div style="position:absolute;top:4934;left:135"><nobr>comando \pagenumbering resetta il numero di pagina riportandolo a 1. \pagestyle e \page-</nobr></div>
+<div style="position:absolute;top:4953;left:135"><nobr>numbering hanno effetto sulla pagina corrente, quindi dovrebbero essere collocati in un punto del</nobr></div>
+<div style="position:absolute;top:4970;left:135"><nobr>documento in cui sia chiaro a quale pagina vengono applicati (vd. sezione <font color="#ff0000"><a href="#17">17</a></font><a href="#17"></a>).</nobr></div>
+<div style="position:absolute;top:5124;left:449"><nobr>4</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:5223;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5386;left:135"><nobr>3 Cosa `e fancyhdr</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5430;left:135"><nobr>Il pacchetto di macro fancyhdr permette di personalizzare in modo facile le intestazioni e i pi`e di</nobr></div>
+<div style="position:absolute;top:5448;left:135"><nobr>pagina in L<font style="font-size:8px">A</font>TEX. Si possono definire:</nobr></div>
+<div style="position:absolute;top:5483;left:157"><nobr>• intestazioni e pi`e di pagina divisi in tre parti</nobr></div>
+<div style="position:absolute;top:5513;left:157"><nobr>• linee decorative nelle intestazioni e nei pi`e di pagina</nobr></div>
+<div style="position:absolute;top:5543;left:157"><nobr>• intestazioni e pi`e di pagina pi`u larghi del testo</nobr></div>
+<div style="position:absolute;top:5573;left:157"><nobr>• intestazioni e pi`e di pagina su pi`u linee</nobr></div>
+<div style="position:absolute;top:5603;left:157"><nobr>• intestazioni e pi`e di pagina distinti per le pagine pari e dispari</nobr></div>
+<div style="position:absolute;top:5633;left:157"><nobr>• intestazioni e pi`e di pagina diversi per le pagine in cui inizia un capitolo</nobr></div>
+<div style="position:absolute;top:5663;left:157"><nobr>• intestazioni e pi`e di pagina diversi sulle pagine con oggetti flottanti</nobr></div>
+<div style="position:absolute;top:5700;left:135"><nobr>Ovviamente si pu`o anche avere completo controllo sui font, sull’uso di caratteri maiuscoli o</nobr></div>
+<div style="position:absolute;top:5718;left:135"><nobr>minuscoli, eccetera.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5769;left:135"><nobr>4 Uso basilare di fancyhdr</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5813;left:135"><nobr>Per usare questo pacchetto in un documento L<font style="font-size:8px">A</font>TEX 2ε, si deve installare il file fancyhdr.sty in</nobr></div>
+<div style="position:absolute;top:5831;left:135"><nobr>una directory/cartella dove TEX possa trovarlo (normalmente nella directory/cartella di input) e</nobr></div>
+<div style="position:absolute;top:5849;left:135"><nobr>includere nel preambolo del documento, dopo</nobr></div>
+<div style="position:absolute;top:5889;left:135"><nobr>\documentclass{...}</nobr></div>
+<div style="position:absolute;top:5927;left:135"><nobr>i commandi<a href="#5"></a><font color="#ff0000" style="font-size:8px"><a href="#5">2</a></font>:</nobr></div>
+<div style="position:absolute;top:5965;left:135"><nobr>\usepackage{fancyhdr}</nobr></div>
+<div style="position:absolute;top:5983;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:6018;left:135"><nobr>Possiamo rappresentare il layout di pagina che pu`o essere ottenuto con fancyhdr in questo modo:</nobr></div>
+<div style="position:absolute;top:6056;left:140"><nobr>Intestazione S.</nobr></div>
+<div style="position:absolute;top:6056;left:402"><nobr>Intestazione C.</nobr></div>
+<div style="position:absolute;top:6056;left:666"><nobr>Intestazione D.</nobr></div>
+<div style="position:absolute;top:6110;left:392"><nobr>corpo della pagina</nobr></div>
+<div style="position:absolute;top:6163;left:140"><nobr>Pi`e di pagina S.</nobr></div>
+<div style="position:absolute;top:6163;left:398"><nobr>Pi`e di pagina C.</nobr></div>
+<div style="position:absolute;top:6163;left:657"><nobr>Pi`e di pagina D.</nobr></div>
+<div style="position:absolute;top:6202;left:135"><nobr>Intestazione S. e Pi`e di pagina S. sono giustificati a sinistra; Intestazione C. e Pi`e di pagina C.</nobr></div>
+<div style="position:absolute;top:6220;left:135"><nobr>sono centrati; Intestazione D. e Pi`e di pagina D. sono giustificati a sinistra.</nobr></div>
+<div style="position:absolute;top:6244;left:135"><nobr>Ognuno dei sei “campi” e le due linee decorative sono definiti separatamente.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:6267;left:152"><nobr>2<font style="font-size:9px">Con LaTeX2.09 si deve specificare [fancyhdr] in \documentstyle anziché usare il comando \usepackage.</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6386;left:449"><nobr>5</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6485;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6648;left:135"><nobr>5 Un semplice esempio</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6692;left:135"><nobr>K. Grant scrive una relazione per Dean A. Smith, su “Il rendimento dei neolaureati” con il seguente</nobr></div>
+<div style="position:absolute;top:6710;left:135"><nobr>layout di pagina:</nobr></div>
+<div style="position:absolute;top:6748;left:545"><nobr>Il rendimento dei neolaureati</nobr></div>
+<div style="position:absolute;top:6802;left:392"><nobr>corpo della pagina</nobr></div>
+<div style="position:absolute;top:6856;left:140"><nobr>Da parte di: K. Grant</nobr></div>
+<div style="position:absolute;top:6856;left:388"><nobr>Per: Dean A. Smith</nobr></div>
+<div style="position:absolute;top:6856;left:757"><nobr>3</nobr></div>
+<div style="position:absolute;top:6894;left:135"><nobr>dove “3” `e il numero della pagina. Il titolo: “Il rendimento dei neolaureati” `e in grassetto.</nobr></div>
+<div style="position:absolute;top:6918;left:135"><nobr>Il tutto `e realizzato con \pagestyle{fancy} seguito da questi comandi<font color="#ff0000" style="font-size:8px"><a href="#6">3</a></font>:</nobr></div>
+<div style="position:absolute;top:6954;left:135"><nobr>\lhead{}</nobr></div>
+<div style="position:absolute;top:6972;left:135"><nobr>\chead{}</nobr></div>
+<div style="position:absolute;top:6990;left:135"><nobr>\rhead{\bfseries Il rendimento dei neolaureati}</nobr></div>
+<div style="position:absolute;top:7008;left:135"><nobr>\lfoot{Da parte di: K. Grant}</nobr></div>
+<div style="position:absolute;top:7026;left:135"><nobr>\cfoot{Per: Dean A. Smith}</nobr></div>
+<div style="position:absolute;top:7044;left:135"><nobr>\rfoot{\thepage}</nobr></div>
+<div style="position:absolute;top:7062;left:135"><nobr>\renewcommand{\headrulewidth}{0.4pt}</nobr></div>
+<div style="position:absolute;top:7079;left:135"><nobr>\renewcommand{\footrulewidth}{0.4pt}</nobr></div>
+<div style="position:absolute;top:7113;left:135"><nobr>(La macro \thepage mostra il numero della pagina corrente, \bfseries `e il comando di</nobr></div>
+<div style="position:absolute;top:7131;left:135"><nobr>L<font style="font-size:8px">A</font>TEX 2εper selezionare i caratteri in grassetto).</nobr></div>
+<div style="position:absolute;top:7155;left:135"><nobr>In questo modo le impostazioni sono quasi del tutto corrette, l’unico problema `e che la prima</nobr></div>
+<div style="position:absolute;top:7173;left:135"><nobr>pagina non ha bisogno di intestazioni e pi`e di pagina. Per eliminare tutto tranne il numero della</nobr></div>
+<div style="position:absolute;top:7191;left:135"><nobr>pagina centrato si usa il comando</nobr></div>
+<div style="position:absolute;top:7229;left:135"><nobr>\thispagestyle{plain}</nobr></div>
+<div style="position:absolute;top:7265;left:135"><nobr>dopo i comandi \begin{document} e \maketitle.</nobr></div>
+<div style="position:absolute;top:7289;left:135"><nobr>In alternativa, si pu`o usare</nobr></div>
+<div style="position:absolute;top:7325;left:135"><nobr>\thispagestyle{empty}</nobr></div>
+<div style="position:absolute;top:7358;left:135"><nobr>se non si vogliono intestazioni o pi`e di pagina di alcun tipo.</nobr></div>
+<div style="position:absolute;top:7382;left:135"><nobr>Infatti le classi standard di L<font style="font-size:8px">A</font>TEX definiscono il comando \maketitle in modo tale da utiliz-</nobr></div>
+<div style="position:absolute;top:7400;left:135"><nobr>zare automaticamente \thispagestyle{plain}, quindi se si vuole il layout fancy in una pa-</nobr></div>
+<div style="position:absolute;top:7418;left:135"><nobr>gina contenente \maketitle si deve mettere \thispagestyle{fancy} subito dopo il comando</nobr></div>
+<div style="position:absolute;top:7437;left:135"><nobr>\maketitle.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:7487;left:135"><nobr>6 Un esempio di stampa fronte/retro</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7531;left:135"><nobr>Alcune classi di documenti, come book.cls, sono predefinite per la stampa fronte/retro: le pagine</nobr></div>
+<div style="position:absolute;top:7549;left:135"><nobr>pari e quelle dispari hanno quindi un aspetto differente. Altre classi di documenti, invece, richiedono</nobr></div>
+<div style="position:absolute;top:7567;left:135"><nobr>l’opzione twoside per la stampa fronte/retro.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:7589;left:152"><nobr>3<font style="font-size:9px">Notare che la versione 1 di fancyheadings usava il comando \setlength per cambiare i parametri di</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:7606;left:135"><nobr>\...rulewidth.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7648;left:449"><nobr>6</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7747;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7913;left:386"><nobr>E</nobr></div>
+<div style="position:absolute;top:7913;left:416"><nobr>Pagina pari</nobr></div>
+<div style="position:absolute;top:7931;left:386"><nobr>O</nobr></div>
+<div style="position:absolute;top:7931;left:416"><nobr>Pagina dispari</nobr></div>
+<div style="position:absolute;top:7950;left:386"><nobr>L</nobr></div>
+<div style="position:absolute;top:7950;left:416"><nobr>Campo sinistro</nobr></div>
+<div style="position:absolute;top:7967;left:386"><nobr>C</nobr></div>
+<div style="position:absolute;top:7967;left:416"><nobr>Campo centrale</nobr></div>
+<div style="position:absolute;top:7985;left:386"><nobr>R</nobr></div>
+<div style="position:absolute;top:7985;left:416"><nobr>Campo destro</nobr></div>
+<div style="position:absolute;top:8004;left:386"><nobr>H</nobr></div>
+<div style="position:absolute;top:8004;left:416"><nobr>Intestazione</nobr></div>
+<div style="position:absolute;top:8022;left:386"><nobr>F</nobr></div>
+<div style="position:absolute;top:8022;left:416"><nobr>Pi`e di pagina</nobr></div>
+<div style="position:absolute;top:8070;left:391"><nobr>Figura 2: Selettori.</nobr></div>
+<div style="position:absolute;top:8117;left:135"><nobr>Proviamo adesso a stampare la nostra relazione su due facciate. Il layout precedente sar`a usato</nobr></div>
+<div style="position:absolute;top:8135;left:135"><nobr>per le pagine dispari (sul lato destro) e il seguente per le pagine pari (sul lato sinistro).</nobr></div>
+<div style="position:absolute;top:8174;left:140"><nobr>Il rendimento dei neolaureati</nobr></div>
+<div style="position:absolute;top:8228;left:392"><nobr>corpo della pagina</nobr></div>
+<div style="position:absolute;top:8282;left:140"><nobr>4</nobr></div>
+<div style="position:absolute;top:8282;left:380"><nobr>Da parte di: K. Grant</nobr></div>
+<div style="position:absolute;top:8282;left:635"><nobr>Per: Dean A. Smith</nobr></div>
+<div style="position:absolute;top:8314;left:135"><nobr>dove “4” `e il numero della pagina.</nobr></div>
+<div style="position:absolute;top:8338;left:135"><nobr>Ecco i comandi:</nobr></div>
+<div style="position:absolute;top:8379;left:135"><nobr>\fancyhead{} % cancella tutti i campi</nobr></div>
+<div style="position:absolute;top:8396;left:135"><nobr>\fancyhead[RO,LE]{\bfseries Il rendimento dei neolaureati}</nobr></div>
+<div style="position:absolute;top:8414;left:135"><nobr>\fancyfoot[LE,RO]{\thepage}</nobr></div>
+<div style="position:absolute;top:8432;left:135"><nobr>\fancyfoot[LO,CE]{Da parte di: K. Grant}</nobr></div>
+<div style="position:absolute;top:8450;left:135"><nobr>\fancyfoot[CO,RE]{Per: Dean A. Smith}</nobr></div>
+<div style="position:absolute;top:8468;left:135"><nobr>\renewcommand{\headrulewidth}{0.4pt}</nobr></div>
+<div style="position:absolute;top:8486;left:135"><nobr>\renewcommand{\footrulewidth}{0.4pt}</nobr></div>
+<div style="position:absolute;top:8524;left:135"><nobr>Sono stati usati i comandi, pi`u generici, \fancyhead e \fancyfoot. Questi prevedono un para-</nobr></div>
+<div style="position:absolute;top:8542;left:135"><nobr>metro addizionale tra parentesi quadre che specifica a quali pagine e/o parti dell’intestazione/pi`e</nobr></div>
+<div style="position:absolute;top:8560;left:135"><nobr>di pagina si applicano. Questo parametro `e stato omesso nel primo comando \fancyhead, che</nobr></div>
+<div style="position:absolute;top:8578;left:135"><nobr>pertanto si applica a tutti i campi dell’intestazione: in generale questo `e utile solo per sbaraz-</nobr></div>
+<div style="position:absolute;top:8596;left:135"><nobr>zarsi di una definizione precedente, come in questo caso. I selettori che possono essere usati tra</nobr></div>
+<div style="position:absolute;top:8614;left:135"><nobr>parentesi quadre sono indicati nella figura <font color="#ff0000"><a href="#7">2</a></font><a href="#7"></a>. I selettori possono essere combinati insieme, cos`ı</nobr></div>
+<div style="position:absolute;top:8633;left:135"><nobr>\fancyhead[LE,RO]{text} definir`a il campo sia per l’intestazione sinistra sulle pagine pari, sia</nobr></div>
+<div style="position:absolute;top:8650;left:135"><nobr>per l’intestazione destra sulle pagine dispari; se non si specifica E o O, la definizione si applica a</nobr></div>
+<div style="position:absolute;top:8668;left:135"><nobr>tutte. Un discorso analogo vale per LRC. Quindi l’uso di \lhead nella sezione precedente non `e</nobr></div>
+<div style="position:absolute;top:8686;left:135"><nobr>che un’abbreviazione di \fancyhead[L]. I selettori possono essere indicati indifferentemente con</nobr></div>
+<div style="position:absolute;top:8704;left:135"><nobr>le lettere maiuscole o minuscole.</nobr></div>
+<div style="position:absolute;top:8728;left:135"><nobr>C’`e anche un pi`u generico comando \fancyhf che pu`o essere usato per specificare contempora-</nobr></div>
+<div style="position:absolute;top:8746;left:135"><nobr>neamente le intestazioni e i pi`e di pagina. Questo comando ammette i selettori generali H (intesta-</nobr></div>
+<div style="position:absolute;top:8764;left:135"><nobr>zione) e F (pi`e di pagina), infatti \fancyhead e \fancyfoot non sono che \fancyhf con H e F gi`a</nobr></div>
+<div style="position:absolute;top:8782;left:135"><nobr>specificati.</nobr></div>
+<div style="position:absolute;top:8806;left:135"><nobr>Inoltre si pu`o usare \thispagestyle{plain} per ottenere un layout adatto alla prima pagina.</nobr></div>
+<div style="position:absolute;top:8910;left:449"><nobr>7</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9009;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:9172;left:135"><nobr>7 Ridefinire lo stile plain</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9216;left:135"><nobr>Alcuni comandi L<font style="font-size:8px">A</font>TEX, come \chapter, usano il comando \thispagestyle per selezionare auto-</nobr></div>
+<div style="position:absolute;top:9234;left:135"><nobr>maticamente lo stile di pagina plain, ignorando cos`ı quello attualmente in uso. Per personalizzare</nobr></div>
+<div style="position:absolute;top:9252;left:135"><nobr>anche queste pagine, si deve ridefinire lo stile di pagina plain. Come `e stato indicato precedente-</nobr></div>
+<div style="position:absolute;top:9270;left:135"><nobr>mente, questo pu`o essere fatto ridefinendo il comando \ps@plain, ma fancyhdr fornisce un modo</nobr></div>
+<div style="position:absolute;top:9288;left:135"><nobr>pi`u facile attraverso il comando \fancypagestyle. Questo comando pu`o essere usato per ridefinire</nobr></div>
+<div style="position:absolute;top:9306;left:135"><nobr>gli stili di pagina esistenti (come plain), o per definirne di nuovi, ad esempio se una parte del</nobr></div>
+<div style="position:absolute;top:9324;left:135"><nobr>documento deve usare uno stile di pagina differente. Questo comando ha due parametri: uno `e il</nobr></div>
+<div style="position:absolute;top:9342;left:135"><nobr>nome dello stile di pagina che si vuole definire, l’altro `e costituito dai comandi che cambiano le</nobr></div>
+<div style="position:absolute;top:9359;left:135"><nobr>intestazioni e/o i pi`e di pagina, ad esempio fancyhead eccetera. Sono anche ammesse delle modi-</nobr></div>
+<div style="position:absolute;top:9377;left:135"><nobr>fiche a \headrulewidth e \footrulewidth. Come esempio, si pu`o ridefinire lo stile plain per la</nobr></div>
+<div style="position:absolute;top:9395;left:135"><nobr>relazione della sezione <font color="#ff0000"><a href="#6">6</a></font>, mettendo il numero di pagina in grassetto.</nobr></div>
+<div style="position:absolute;top:9431;left:135"><nobr>\fancypagestyle{plain}{%</nobr></div>
+<div style="position:absolute;top:9448;left:135"><nobr>\fancyhf{} % cancella tutti i campi di intestazione e pi\‘e di pagina</nobr></div>
+<div style="position:absolute;top:9466;left:135"><nobr>\fancyfoot[C]{\bfseries \thepage} % tranne il centro</nobr></div>
+<div style="position:absolute;top:9484;left:135"><nobr>\renewcommand{\headrulewidth}{0pt}</nobr></div>
+<div style="position:absolute;top:9502;left:135"><nobr>\renewcommand{\footrulewidth}{0pt}}</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:9551;left:135"><nobr>8 Il layout predefinito</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9595;left:135"><nobr>Usiamo la classe book.cls e le impostazioni predefinite di fancyhdr, cos`ı da dare soltanto i comandi</nobr></div>
+<div style="position:absolute;top:9630;left:135"><nobr>\usepackage{fancyhdr}</nobr></div>
+<div style="position:absolute;top:9648;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:9681;left:135"><nobr>e lasciamo che fancyhdr si occupi di tutto: nelle pagine in cui inizia un nuovo capitolo, avremo al</nobr></div>
+<div style="position:absolute;top:9699;left:135"><nobr>centro del pi`e di pagina il numero della pagina stessa, non ci sar`a nessuna intestazione e nessuna</nobr></div>
+<div style="position:absolute;top:9717;left:135"><nobr>linea decorativa.</nobr></div>
+<div style="position:absolute;top:9741;left:135"><nobr>Sulle pagine pari, otterremo il layout:</nobr></div>
+<div style="position:absolute;top:9779;left:140"><nobr>1.2 VALUTAZIONE</nobr></div>
+<div style="position:absolute;top:9779;left:542"><nobr>CAPITOLO 1. INTRODUZIONE</nobr></div>
+<div style="position:absolute;top:9833;left:392"><nobr>corpo della pagina</nobr></div>
+<div style="position:absolute;top:9887;left:449"><nobr>4</nobr></div>
+<div style="position:absolute;top:9922;left:135"><nobr>Sulle pagine dispari, avremo il layout:</nobr></div>
+<div style="position:absolute;top:9960;left:140"><nobr>CAPITOLO 1. INTRODUZIONE</nobr></div>
+<div style="position:absolute;top:9960;left:631"><nobr>1.2 VALUTAZIONE</nobr></div>
+<div style="position:absolute;top:10014;left:392"><nobr>corpo della pagina</nobr></div>
+<div style="position:absolute;top:10068;left:449"><nobr>3</nobr></div>
+<div style="position:absolute;top:10103;left:135"><nobr>dove il testo dell’intestazione `e a caratteri maiuscoli inclinati.</nobr></div>
+<div style="position:absolute;top:10127;left:135"><nobr>Questo layout predefinito `e prodotto dai seguenti comandi:</nobr></div>
+<div style="position:absolute;top:10172;left:449"><nobr>8</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10271;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10440;left:135"><nobr>\fancyhead[LE,RO]{\slshape \rightmark}</nobr></div>
+<div style="position:absolute;top:10458;left:135"><nobr>\fancyhead[LO,RE]{\slshape \leftmark}</nobr></div>
+<div style="position:absolute;top:10476;left:135"><nobr>\fancyfoot[C]{\thepage}</nobr></div>
+<div style="position:absolute;top:10511;left:135"><nobr>Le impostazioni seguenti sono usate per le linee decorative:</nobr></div>
+<div style="position:absolute;top:10552;left:140"><nobr>\headrulewidth</nobr></div>
+<div style="position:absolute;top:10550;left:339"><nobr>0.4pt</nobr></div>
+<div style="position:absolute;top:10570;left:140"><nobr>\footrulewidth</nobr></div>
+<div style="position:absolute;top:10568;left:339"><nobr>0 pt</nobr></div>
+<div style="position:absolute;top:10608;left:135"><nobr>In book.cls il testo delle intestazioni appare in caratteri maiuscoli.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:10659;left:135"><nobr>9 Lo scoop sulle marche di L<font style="font-size:12px">A</font>TEX</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10703;left:135"><nobr>Di solito, per i documenti delle classi book e report, `e preferibile includere le informazioni sul</nobr></div>
+<div style="position:absolute;top:10720;left:135"><nobr>capitolo e la sezione nelle intestazioni (solo il capitolo se si stampa su una sola facciata) e per i</nobr></div>
+<div style="position:absolute;top:10738;left:135"><nobr>documenti della classe article, le informazioni sulla sezione e sulla sottosezione (solo la sezione</nobr></div>
+<div style="position:absolute;top:10756;left:135"><nobr>se si stampa su una facciata). L<font style="font-size:8px">A</font>TEX usa un meccanismo basato sulle marche per ricordare le</nobr></div>
+<div style="position:absolute;top:10774;left:135"><nobr>informazioni relative al capitolo e alla sezione (o alla sezione e alla sottosezione) per una pagina.</nobr></div>
+<div style="position:absolute;top:10792;left:135"><nobr>Questo argomento `e discusso in dettaglio nella sezione 4.3.1 del L<font style="font-size:8px">A</font>TEX Companion.</nobr></div>
+<div style="position:absolute;top:10817;left:135"><nobr>Si possono utilizzare due modi per cambiare le informazioni di alto e basso livello accessibili all’u-</nobr></div>
+<div style="position:absolute;top:10834;left:135"><nobr>tente. Le macro: \leftmark (alto livello) e \rightmark (basso livello) contengono le informazioni</nobr></div>
+<div style="position:absolute;top:10852;left:135"><nobr>processate da L<font style="font-size:8px">A</font>TEX e possono essere utilizzati direttamente come mostrato nella sezione <font color="#ff0000"><a href="#8">8</a></font><a href="#8"></a>.</nobr></div>
+<div style="position:absolute;top:10878;left:135"><nobr>\leftmark contiene l’argomento di sinistra dell’ultimo comando \markboth nella pagina, mentre</nobr></div>
+<div style="position:absolute;top:10896;left:135"><nobr>\rightmark contiene l’argomento di destra del primo comando \markboth o l’unico argomento</nobr></div>
+<div style="position:absolute;top:10913;left:135"><nobr>del primo comando \markright nella pagina. Se in una pagina non ci sono marche, esse sono</nobr></div>
+<div style="position:absolute;top:10931;left:133"><nobr>“ereditate” dalla pagina precedente.</nobr></div>
+<div style="position:absolute;top:10955;left:135"><nobr>Si pu`o influenzare il modo in cui le informazioni relative a capitolo, sezione e sottosezione (solo</nobr></div>
+<div style="position:absolute;top:10973;left:135"><nobr>due di questi!) sono mostrate ridefinendo i comandi \chaptermark, \sectionmark e \subsec-</nobr></div>
+<div style="position:absolute;top:10992;left:135"><nobr>tionmark<font color="#ff0000" style="font-size:8px"><a href="#9">4</a></font>. La ridefinizione deve essere messa dopo la prima dichiarazione di \pagestyle{fancy},</nobr></div>
+<div style="position:absolute;top:11009;left:135"><nobr>poiché questo imposta i valori predefiniti.</nobr></div>
+<div style="position:absolute;top:11033;left:135"><nobr>Si pu`o illustrare quanto detto finora prendendo come esempio le informazioni relative al capitolo,</nobr></div>
+<div style="position:absolute;top:11051;left:135"><nobr>le quali sono composte da tre parti:</nobr></div>
+<div style="position:absolute;top:11087;left:157"><nobr>• il numero (ad esempio, 2), mostrato dalla macro \thechapter</nobr></div>
+<div style="position:absolute;top:11116;left:157"><nobr>• il nome (Capitolo), mostrato dalla macro \chaptername</nobr></div>
+<div style="position:absolute;top:11146;left:157"><nobr>• il titolo, contenuto nell’argomento di \chaptermark.</nobr></div>
+<div style="position:absolute;top:11183;left:135"><nobr>La figura <font color="#ff0000"><a href="#10">3 </a></font>mostra alcune varianti di “Capitolo 2. Tutto e subito” (l’ultimo esempio `e appropriato</nobr></div>
+<div style="position:absolute;top:11201;left:135"><nobr>per alcune lingue diverse dall’inglese). I segni % alla fine delle righe servono a evitare degli spazi</nobr></div>
+<div style="position:absolute;top:11219;left:135"><nobr>indesiderati: si potrebbero togliere questi segni e continuare su una sola riga<font color="#ff0000" style="font-size:8px"><a href="#9">5</a></font><a href="#9"></a>.</nobr></div>
+<div style="position:absolute;top:11244;left:135"><nobr>Per le informazioni sul sezionamento di basso livello si pu`o fare lo stesso con \markright.</nobr></div>
+<div style="position:absolute;top:11268;left:135"><nobr>Cos`ı se “Sezione 2.2. Primi passi” `e la sezione corrente, allora</nobr></div>
+<div style="position:absolute;top:11309;left:135"><nobr>\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:11331;left:152"><nobr>4<font style="font-size:9px">Ci sono dei comandi simili per paragraph e subparagraph ma sono usati raramente.</font></nobr></div>
+<div style="position:absolute;top:11345;left:152"><nobr>5<font style="font-size:9px">Il comando \MakeUppercase `e usato in L</font>A<font style="font-size:9px">TEX 2ε per generare del testo a caratteri maiuscoli, mentre in L</font>A<font style="font-size:9px">TEX</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:11361;left:135"><nobr>2.09 si usa \uppercase. La differenza `e che \MakeUppercase si occupa anche di lettere non ASCII. Fancyhdr fa in</nobr></div>
+<div style="position:absolute;top:11375;left:135"><nobr>modo che \MakeUppercase, se non `e definito, sia un alias di \uppercase.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11434;left:449"><nobr>9</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:11533;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:11px;font-family:Times">
+<div style="position:absolute;top:11702;left:135"><nobr>Codice:</nobr></div>
+<div style="position:absolute;top:11736;left:135"><nobr>\renewcommand{\chaptermark}[1]{%</nobr></div>
+<div style="position:absolute;top:11752;left:142"><nobr>\markboth{\chaptername</nobr></div>
+<div style="position:absolute;top:11769;left:142"><nobr>\ \thechapter.\ #1}{}}</nobr></div>
+<div style="position:absolute;top:11802;left:135"><nobr>\renewcommand{\chaptermark}[1]{%</nobr></div>
+<div style="position:absolute;top:11818;left:142"><nobr>\markboth{\MakeUppercase{%</nobr></div>
+<div style="position:absolute;top:11835;left:142"><nobr>\chaptername}\ \thechapter.%</nobr></div>
+<div style="position:absolute;top:11851;left:142"><nobr>\ #1}{}}</nobr></div>
+<div style="position:absolute;top:11884;left:135"><nobr>\renewcommand{\chaptermark}[1]{%</nobr></div>
+<div style="position:absolute;top:11900;left:142"><nobr>\markboth{\MakeUppercase{%</nobr></div>
+<div style="position:absolute;top:11917;left:142"><nobr>\chaptername\ \thechapter.%</nobr></div>
+<div style="position:absolute;top:11933;left:142"><nobr>\ #1}}{}}</nobr></div>
+<div style="position:absolute;top:11966;left:135"><nobr>\renewcommand{\chaptermark}[1]{%</nobr></div>
+<div style="position:absolute;top:11982;left:142"><nobr>\markboth{#1}{}}</nobr></div>
+<div style="position:absolute;top:12015;left:135"><nobr>\renewcommand{\chaptermark}[1]{%</nobr></div>
+<div style="position:absolute;top:12032;left:142"><nobr>\markboth{\thechapter.\ #1}{}}</nobr></div>
+<div style="position:absolute;top:12065;left:135"><nobr>\renewcommand{\chaptermark}[1]{%</nobr></div>
+<div style="position:absolute;top:12081;left:142"><nobr>\markboth{\thechapter.%</nobr></div>
+<div style="position:absolute;top:12098;left:142"><nobr>\ \chaptername.\ #1}{}}</nobr></div>
+<div style="position:absolute;top:11702;left:467"><nobr>Stampa:</nobr></div>
+<div style="position:absolute;top:11735;left:467"><nobr>Capitolo 2. Tutto e subito</nobr></div>
+<div style="position:absolute;top:11801;left:467"><nobr>CAPITOLO 2. Tutto e subito</nobr></div>
+<div style="position:absolute;top:11883;left:467"><nobr>CAPITOLO 2. TUTTO E SUBITO</nobr></div>
+<div style="position:absolute;top:11965;left:467"><nobr>Tutto e subito</nobr></div>
+<div style="position:absolute;top:12014;left:467"><nobr>2. Tutto e subito</nobr></div>
+<div style="position:absolute;top:12064;left:467"><nobr>2. Capitolo. Tutto e subito</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12146;left:357"><nobr>Figura 3: Varianti di marche.</nobr></div>
+<div style="position:absolute;top:12194;left:135"><nobr>dar`a “2.2. Primi passi”.</nobr></div>
+<div style="position:absolute;top:12218;left:135"><nobr>La ridefinizione dei comandi \chaptermark e \sectionmark potrebbe non eliminare tutte le ma-</nobr></div>
+<div style="position:absolute;top:12236;left:135"><nobr>iuscole, ad esempio la bibliografia avr`a il titolo bibliografia nell’intestazione, poiché \MakeUp-</nobr></div>
+<div style="position:absolute;top:12255;left:135"><nobr>percase `e dato esplicitamente nella definizione di \thebibliography. Lo stesso discorso vale per</nobr></div>
+<div style="position:absolute;top:12275;left:135"><nobr>Indice Analitico eccetera. Se non si vogliono ridefinire questi comandi, si pu`o usare il comando</nobr></div>
+<div style="position:absolute;top:12291;left:135"><nobr>\nouppercase che fancyhdr mette a disposizione nei campi dell’intestazione e del pi`e di pagina. Si</nobr></div>
+<div style="position:absolute;top:12308;left:135"><nobr>noti che questo potrebbe dare problemi in altri casi, come per i numerali romani maiuscoli nelle</nobr></div>
+<div style="position:absolute;top:12326;left:135"><nobr>intestazioni, quindi dovrebbe essere usato con cautela. Essenzialmente, questo comando compo-</nobr></div>
+<div style="position:absolute;top:12344;left:135"><nobr>ne il suo argomento in un ambiente in cui \MakeUppercase e \uppercase sono trasformati in</nobr></div>
+<div style="position:absolute;top:12362;left:135"><nobr>operazioni nulle.</nobr></div>
+<div style="position:absolute;top:12402;left:135"><nobr>\lhead{\nouppercase{\rightmark}}</nobr></div>
+<div style="position:absolute;top:12420;left:135"><nobr>\rhead{\nouppercase{\leftmark}}</nobr></div>
+<div style="position:absolute;top:12458;left:135"><nobr>Si dovrebbe tener presente che il meccanismo delle marche di L<font style="font-size:8px">A</font>TEX funziona bene con i capitoli</nobr></div>
+<div style="position:absolute;top:12476;left:135"><nobr>(che cominciano sempre su una nuova pagina) e le sezioni (che sono ragionevolmente lunghe),</nobr></div>
+<div style="position:absolute;top:12494;left:135"><nobr>ma non funziona altrettanto bene nel caso di sezioni brevi e di sottosezioni. Ma questo problema</nobr></div>
+<div style="position:absolute;top:12512;left:135"><nobr>riguarda L<font style="font-size:8px">A</font>TEX, non fancyhdr.</nobr></div>
+<div style="position:absolute;top:12536;left:135"><nobr>Come esempio si consideri un layout di pagina in cui i \leftmark sono generati dalle sezioni e i</nobr></div>
+<div style="position:absolute;top:12556;left:135"><nobr>\rightmark dalle sottosezioni (com’`e predefinito nella classe article). Si ipotizzi una pagina con</nobr></div>
+<div style="position:absolute;top:12572;left:135"><nobr>alcune brevi sezioni, ad esempio</nobr></div>
+<div style="position:absolute;top:12597;left:135"><nobr>Sezione 1.</nobr></div>
+<div style="position:absolute;top:12615;left:135"><nobr>sottosezione 1.1</nobr></div>
+<div style="position:absolute;top:12633;left:135"><nobr>sottosezione 1.2</nobr></div>
+<div style="position:absolute;top:12650;left:135"><nobr>Sezione 2.</nobr></div>
+<div style="position:absolute;top:12696;left:445"><nobr>10</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12795;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12963;left:135"><nobr>Poiché il \leftmark contiene l’ultima marca della pagina, esso sar`a “Sezione 2.”, mentre il \right-</nobr></div>
+<div style="position:absolute;top:12982;left:135"><nobr>mark sar`a “sottosezione 1.1”, dato che conterr`a la prima marcha della pagina. Cos`ı l’informazione</nobr></div>
+<div style="position:absolute;top:12999;left:135"><nobr>dell’intestazione di pagina combiner`a la sezione 2 con la sottosezione 1.1, il che non `e molto coe-</nobr></div>
+<div style="position:absolute;top:13017;left:135"><nobr>rente. La miglior cosa da fare in questa situazione `e usare solo i \rightmark e ridefinire \section-</nobr></div>
+<div style="position:absolute;top:13036;left:135"><nobr>mark di conseguenza. Un comando L<font style="font-size:8px">A</font>TEX \firstleftmark sarebbe auspicabile (vd. il pacchetto</nobr></div>
+<div style="position:absolute;top:13053;left:135"><nobr>extramarks nella sezione <font color="#ff0000"><a href="#18">18</a></font>).</nobr></div>
+<div style="position:absolute;top:13077;left:135"><nobr>Un altro problema con le marche nelle classi standard di L<font style="font-size:8px">A</font>TEX `e che i comandi di sezionamento</nobr></div>
+<div style="position:absolute;top:13095;left:135"><nobr>di alto livello (ad esempio \chapter) invocano \markboth con un argomento destro vuoto. Questo</nobr></div>
+<div style="position:absolute;top:13113;left:135"><nobr>significa che sulla prima pagina di un capitolo (o di una sezione nello stile article) \rightmark sar`a</nobr></div>
+<div style="position:absolute;top:13131;left:135"><nobr>vuoto. Se questo `e un problema si devono inserire manualmente dei comandi \markright aggiuntivi</nobr></div>
+<div style="position:absolute;top:13149;left:135"><nobr>oppure ridefinire i comandi \chaptermark (e \sectionmark) per dare il comando \markboth con</nobr></div>
+<div style="position:absolute;top:13167;left:135"><nobr>due parametri accettabili.</nobr></div>
+<div style="position:absolute;top:13191;left:135"><nobr>Come osservazione finale si noti che la forma asteriscata dei comandi di sezionamento non invoca</nobr></div>
+<div style="position:absolute;top:13209;left:135"><nobr>i comandi di marchio. Quindi, se si vuole che la prefazione imposti le informazioni dell’intesta-</nobr></div>
+<div style="position:absolute;top:13227;left:135"><nobr>zione ma non sia numerata e non compaia nell’indice, si deve invocare manualmente il comando</nobr></div>
+<div style="position:absolute;top:13246;left:135"><nobr>\markboth, ad esempio</nobr></div>
+<div style="position:absolute;top:13285;left:135"><nobr>\chapter*{Prefazione\markboth{Prefazione}{}}</nobr></div>
+<div style="position:absolute;top:13323;left:135"><nobr>L’inserimento del comando \markboth dentro \chapter* assicura che la marca non sia separata dal</nobr></div>
+<div style="position:absolute;top:13341;left:135"><nobr>titolo del capitolo da un’interruzione di pagina. Ovviamente con \chapter* non c’`e, questo rischio,</nobr></div>
+<div style="position:absolute;top:13359;left:135"><nobr>anche mettendo il comando di marca dopo il titolo del capitolo, poiché il comando \chapter*</nobr></div>
+<div style="position:absolute;top:13377;left:135"><nobr>comincia su una nuova pagina. Tuttavia con \section* potrebbe essere pericoloso dare:</nobr></div>
+<div style="position:absolute;top:13418;left:135"><nobr>\section*{Prefazione}</nobr></div>
+<div style="position:absolute;top:13436;left:135"><nobr>\markboth{Prefazione}{}</nobr></div>
+<div style="position:absolute;top:13474;left:135"><nobr>poiché potrebbe verificarsi un’interruzione di pagina tra i due comandi.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:13525;left:135"><nobr>10 Intestazioni stile dizionario</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:13569;left:135"><nobr>I dizionari hanno, solitamente, un’intestazione contenente la prima (oppure la prima e l’ultima)</nobr></div>
+<div style="position:absolute;top:13587;left:135"><nobr>voce definita nella pagina. Questo pu`o essere facilmente realizzato utilizzando fancyhdr e il mec-</nobr></div>
+<div style="position:absolute;top:13604;left:135"><nobr>canismo delle marche di L<font style="font-size:8px">A</font>TEX. Ovviamente, se si usano le marche per ottenere delle intestazioni</nobr></div>
+<div style="position:absolute;top:13622;left:135"><nobr>stile dizionario, non le si pu`o usare per le informazioni relative al capitolo e alla sezione. Perci`o,</nobr></div>
+<div style="position:absolute;top:13640;left:135"><nobr>qualora nel documento siano presenti anche capitoli e sezioni, bisogna ridefinire \chaptermark e</nobr></div>
+<div style="position:absolute;top:13660;left:135"><nobr>\sectionmark al fine di renderli innocui.</nobr></div>
+<div style="position:absolute;top:13699;left:135"><nobr>\renewcommand{\chaptermark}[1]{}</nobr></div>
+<div style="position:absolute;top:13717;left:135"><nobr>\renewcommand{\sectionmark}[1]{}</nobr></div>
+<div style="position:absolute;top:13755;left:135"><nobr>Basta ora invocare un comando \markboth{#1}{#1} per ogni voce #1 del dizionario e usare</nobr></div>
+<div style="position:absolute;top:13774;left:135"><nobr>\rightmark per la prima voce definita nella pagina e \leftmark per l’ultima.</nobr></div>
+<div style="position:absolute;top:13797;left:135"><nobr>Se si vuole avere un’intestazione del tipo prima voce–ultima voce sarebbe bene che questa assuma</nobr></div>
+<div style="position:absolute;top:13815;left:135"><nobr>semplicemente la forma prima voce se le due voci coincidono, cosa che pu`o accadere quando una</nobr></div>
+<div style="position:absolute;top:13833;left:135"><nobr>sola voce occupa tutta la pagina. In questo caso si dovrebbe compiere una verifica per controllare</nobr></div>
+<div style="position:absolute;top:13851;left:135"><nobr>se le due marche sono identiche, tuttavia le marche di TEX sono brutte bestie e non possono essere</nobr></div>
+<div style="position:absolute;top:13869;left:135"><nobr>messe a confronto con i comandi \if del plain TEX. Fortunatamente, il pacchetto ifthen funziona</nobr></div>
+<div style="position:absolute;top:13887;left:135"><nobr>bene:</nobr></div>
+<div style="position:absolute;top:13958;left:445"><nobr>11</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:14057;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=12><b>Page 12</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:11px;font-family:Times">
+<div style="position:absolute;top:14221;left:135"><nobr>% fixmarks.sty:</nobr></div>
+<div style="position:absolute;top:14238;left:135"><nobr>% Patch LaTeX’s output routine to handle marks correctly with two columns.</nobr></div>
+<div style="position:absolute;top:14254;left:135"><nobr>% Joe Pallas &lt;pallas@edu.stanford.neon&gt;</nobr></div>
+<div style="position:absolute;top:14271;left:135"><nobr>% Corrected by Piet van Oostrum &lt;piet@cs.ruu.nl&gt; on Feb 5, 1993, Oct 5, 1994</nobr></div>
+<div style="position:absolute;top:14304;left:135"><nobr>\def\@outputdblcol{\if@firstcolumn \global\@firstcolumnfalse</nobr></div>
+<div style="position:absolute;top:14320;left:135"><nobr>% Remember the marks from the first column</nobr></div>
+<div style="position:absolute;top:14336;left:163"><nobr>\global\setbox\@leftcolumn\copy\@outputbox</nobr></div>
+<div style="position:absolute;top:14353;left:163"><nobr>\splitmaxdepth=\maxdimen \cbaddness=10000</nobr></div>
+<div style="position:absolute;top:14369;left:163"><nobr>\setbox\@outputbox\vsplit\@outputbox to\maxdimen</nobr></div>
+<div style="position:absolute;top:14386;left:163"><nobr>\xdef\@firstcoltopmark{\topmark}%</nobr></div>
+<div style="position:absolute;top:14402;left:163"><nobr>\xdef\@firstcolfirstmark{\splitfirstmark}%</nobr></div>
+<div style="position:absolute;top:14419;left:163"><nobr>\ifx\@firstcolfirstmark\empty\global\let\@setmarks\relax\else</nobr></div>
+<div style="position:absolute;top:14435;left:177"><nobr>\gdef\@setmarks{\let\firstmark\@firstcolfirstmark</nobr></div>
+<div style="position:absolute;top:14452;left:191"><nobr>\let\topmark\@firstcoltopmark}%</nobr></div>
+<div style="position:absolute;top:14468;left:163"><nobr>\fi</nobr></div>
+<div style="position:absolute;top:14484;left:135"><nobr>% End of change</nobr></div>
+<div style="position:absolute;top:14501;left:149"><nobr>\else \global\@firstcolumntrue</nobr></div>
+<div style="position:absolute;top:14517;left:163"><nobr>\setbox\@outputbox\vbox{\hbox to\textwidth{\hbox to\columnwidth</nobr></div>
+<div style="position:absolute;top:14534;left:177"><nobr>{\box\@leftcolumn \hss}\hfil \vrule width\columnseprule\hfil</nobr></div>
+<div style="position:absolute;top:14550;left:184"><nobr>\hbox to\columnwidth{\box\@outputbox \hss}}}\@combinedblfloats</nobr></div>
+<div style="position:absolute;top:14567;left:135"><nobr>% Override current first and top with those of first column if necessary</nobr></div>
+<div style="position:absolute;top:14583;left:184"><nobr>\@setmarks</nobr></div>
+<div style="position:absolute;top:14599;left:135"><nobr>% End of change</nobr></div>
+<div style="position:absolute;top:14616;left:184"><nobr>\@outputpage \begingroup \@dblfloatplacement \@startdblcolumn</nobr></div>
+<div style="position:absolute;top:14632;left:184"><nobr>\@whilesw\if@fcolmade \fi{\@outputpage\@startdblcolumn}\endgroup</nobr></div>
+<div style="position:absolute;top:14649;left:163"><nobr>\fi}</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:14694;left:193"><nobr>Figura 4: Correzione del comportamento delle marche nello stile a due colonne.</nobr></div>
+<div style="position:absolute;top:14743;left:135"><nobr>\newcommand{\mymarks}{</nobr></div>
+<div style="position:absolute;top:14761;left:151"><nobr>\ifthenelse{\equal{\leftmark}{\rightmark}}</nobr></div>
+<div style="position:absolute;top:14779;left:166"><nobr>{\rightmark} % se uguali</nobr></div>
+<div style="position:absolute;top:14797;left:166"><nobr>{\rightmark--\leftmark}} % se non uguali</nobr></div>
+<div style="position:absolute;top:14815;left:135"><nobr>\fancyhead[LE,RO]{\mymarks}</nobr></div>
+<div style="position:absolute;top:14833;left:135"><nobr>\fancyhead[LO,RE]{\thepage}</nobr></div>
+<div style="position:absolute;top:14871;left:135"><nobr>I dizionari sono spesso impostati su due colonne. Sfortunatamente c’`e un bug nell’opzione twoco-</nobr></div>
+<div style="position:absolute;top:14889;left:135"><nobr>lumn di L<font style="font-size:8px">A</font>TEX che provoca la perdita di alcune marche. Si pu`o risolvere questo problema usando</nobr></div>
+<div style="position:absolute;top:14907;left:135"><nobr>il pacchetto illustrato nella figura <font color="#ff0000"><a href="#12">4</a></font><font color="#ff0000" style="font-size:8px"><a href="#12">6</a></font><a href="#12"></a>.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:14958;left:135"><nobr>11 Layout fantasiosi</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:15004;left:135"><nobr>Si pu`o creare un campo multilinea con il comando \\. `E anche possibile mettere dello spazio ag-</nobr></div>
+<div style="position:absolute;top:15022;left:135"><nobr>giuntivo in un campo con il comando \vspace. Si noti che, se si fa questo, si dovr`a probabilmente</nobr></div>
+<div style="position:absolute;top:15040;left:135"><nobr>aumentare l’altezza dell’intestazione (\headheight) e/o del pi`e di pagina (\footskip), altri-</nobr></div>
+<div style="position:absolute;top:15058;left:135"><nobr>menti si potrebbero ottenere dei messaggi di errore Overfull \vbox ...has occurred while</nobr></div>
+<div style="position:absolute;top:15077;left:135"><nobr>\output is active <font color="#ff0000" style="font-size:8px"><a href="#12">7</a></font>. Si veda la sezione 4.1 del L<font style="font-size:8px">A</font>TEX Companion per i dettagli.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:15099;left:152"><nobr>6<font style="font-size:9px">Si tratta, in realt`a, di una semplificazione del codice del pacchetto vero e proprio, il quale pu`o essere scaricato</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:15115;left:135"><nobr>da un sito del CTAN. Il pacchetto multicol usa una tecnica simile.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:15127;left:152"><nobr>7<font style="font-size:9px">Probabilmete questo accorgimento sar`a necessario anche se si usa 11pt o 12pt, perché i valori predefiniti di</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:15144;left:135"><nobr>L<font style="font-size:6px">A</font>TEX sono abbastanza piccoli.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:15220;left:445"><nobr>12</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:15319;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=13><b>Page 13</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:15487;left:135"><nobr>Per esempio, il codice seguente metter`a su due righe, nell’angolo in alto a destra, il titolo della</nobr></div>
+<div style="position:absolute;top:15505;left:135"><nobr>sezione e della sottosezione di un articolo:</nobr></div>
+<div style="position:absolute;top:15544;left:135"><nobr>\documentclass{article}</nobr></div>
+<div style="position:absolute;top:15562;left:135"><nobr>\usepackage{fancyhdr}</nobr></div>
+<div style="position:absolute;top:15580;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:15598;left:135"><nobr>\addtolength{\headheight}{\baselineskip}</nobr></div>
+<div style="position:absolute;top:15616;left:135"><nobr>\renewcommand{\sectionmark}[1]{\markboth{#1}{}}</nobr></div>
+<div style="position:absolute;top:15634;left:135"><nobr>\renewcommand{\subsectionmark}[1]{\markright{#1}}</nobr></div>
+<div style="position:absolute;top:15652;left:135"><nobr>\rhead{\leftmark\\\rightmark}</nobr></div>
+<div style="position:absolute;top:15688;left:135"><nobr>Si possono anche personalizzare le lineee decorative, rendendole molto sottili con</nobr></div>
+<div style="position:absolute;top:15727;left:135"><nobr>\renewcommand{\headrulewidth}{0.6pt}</nobr></div>
+<div style="position:absolute;top:15764;left:135"><nobr>oppure si possono far scomparire le linee decorative nell’intestazione e nel pi`e di pagina con</nobr></div>
+<div style="position:absolute;top:15800;left:135"><nobr>\renewcommand{\footrulewidth}{0pt}</nobr></div>
+<div style="position:absolute;top:15834;left:135"><nobr>Le linee decorative sono definite nelle due macro \headrule e \footrule. Per esempio, se nell’in-</nobr></div>
+<div style="position:absolute;top:15852;left:135"><nobr>testazione si vuole una linea punteggiata anziché intera, si pu`o ridefinire il comando \headrule:</nobr></div>
+<div style="position:absolute;top:15891;left:135"><nobr>\renewcommand{\headrule}{\vbox to 0pt{\hbox</nobr></div>
+<div style="position:absolute;top:15909;left:166"><nobr>to\headwidth{\dotfill}\vss}}</nobr></div>
+<div style="position:absolute;top:15946;left:135"><nobr>Si pu`o inoltre impostare un parametro addizionale \footruleskip che definisce la distanza tra</nobr></div>
+<div style="position:absolute;top:15964;left:135"><nobr>la linea decorativa e la parte superiore della riga di testo del pi`e di pagina. L’impostazione pre-</nobr></div>
+<div style="position:absolute;top:15982;left:135"><nobr>definita `e pari al 30% della normale distanza tra le righe. Se nel pi`e di pagina si usano dei font</nobr></div>
+<div style="position:absolute;top:16000;left:135"><nobr>particolarmente grandi o particolarmente piccoli, potrebbe essere opportuno ridimensionarla con</nobr></div>
+<div style="position:absolute;top:16019;left:135"><nobr>\renewcommand.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:16069;left:135"><nobr>12 Due esempi di libri</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:16112;left:135"><nobr>Le definizioni seguenti forniscono approssimativamente lo stile usato nel libro di L<font style="font-size:8px">A</font>TEX di L. Lam-</nobr></div>
+<div style="position:absolute;top:16130;left:135"><nobr>port.</nobr></div>
+<div style="position:absolute;top:16155;left:135"><nobr>L’intestazione di Lamport sporge sul margine, vediamo come si ottiene questo effetto.</nobr></div>
+<div style="position:absolute;top:16179;left:135"><nobr>L’ampiezza dell’intestazione e del pi`e di pagina `e \headwidth, il cui valore predefinito `e pari alla lar-</nobr></div>
+<div style="position:absolute;top:16197;left:135"><nobr>ghezza del testo (\textwidth). Si pu`o allargare o stringere questa misura ridefinendo \headwidth</nobr></div>
+<div style="position:absolute;top:16215;left:135"><nobr>con i comandi \setlength e \addtolength. Per far sporgere l’intestazione sull’area dove vengono</nobr></div>
+<div style="position:absolute;top:16233;left:135"><nobr>stampate le note al margine, si aggiunga \marginparsep e \marginparwidth a \headwidth con</nobr></div>
+<div style="position:absolute;top:16251;left:135"><nobr>i comandi:</nobr></div>
+<div style="position:absolute;top:16290;left:135"><nobr>\addtolength{\headwidth}{\marginparsep}</nobr></div>
+<div style="position:absolute;top:16308;left:135"><nobr>\addtolength{\headwidth}{\marginparwidth}</nobr></div>
+<div style="position:absolute;top:16344;left:135"><nobr>Bisogna inserire questi comandi dopo il primo comando \pagestyle{fancy}, perché</nobr></div>
+<div style="position:absolute;top:16362;left:135"><nobr>quest’ultimo ripristiner`a il valore predefinito di \headwidth<a href="#13"></a><font color="#ff0000" style="font-size:8px"><a href="#13">8</a></font>.</nobr></div>
+<div style="position:absolute;top:16400;left:135"><nobr>Ed ora una definizione completa dello stile del libro di Lamport:</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:16423;left:152"><nobr>8<font style="font-size:9px">Nella versione 2 di fancyhdr, generalmente, funziona anche se li si mette prima, ma si consiglia comunque di</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:16439;left:135"><nobr>metterli dopo.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:16482;left:445"><nobr>13</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:16581;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=14><b>Page 14</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:16750;left:135"><nobr>\documentclass{book}</nobr></div>
+<div style="position:absolute;top:16768;left:135"><nobr>\usepackage{fancyhdr}</nobr></div>
+<div style="position:absolute;top:16786;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:16804;left:135"><nobr>\addtolength{\headwidth}{\marginparsep}</nobr></div>
+<div style="position:absolute;top:16822;left:135"><nobr>\addtolength{\headwidth}{\marginparwidth}</nobr></div>
+<div style="position:absolute;top:16840;left:135"><nobr>\renewcommand{\chaptermark}[1]{\markboth{#1}{}}</nobr></div>
+<div style="position:absolute;top:16858;left:135"><nobr>\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}</nobr></div>
+<div style="position:absolute;top:16876;left:135"><nobr>\fancyhf{}</nobr></div>
+<div style="position:absolute;top:16894;left:135"><nobr>\fancyhead[LE,RO]{\bfseries\thepage}</nobr></div>
+<div style="position:absolute;top:16911;left:135"><nobr>\fancyhead[LO]{\bfseries\rightmark}</nobr></div>
+<div style="position:absolute;top:16929;left:135"><nobr>\fancyhead[RE]{\bfseries\leftmark}</nobr></div>
+<div style="position:absolute;top:16947;left:135"><nobr>\fancypagestyle{plain}{%</nobr></div>
+<div style="position:absolute;top:16965;left:158"><nobr>\fancyhead{} % leva l’intestazione</nobr></div>
+<div style="position:absolute;top:16983;left:158"><nobr>\renewcommand{\headrulewidth}{0pt} % e la linea</nobr></div>
+<div style="position:absolute;top:17001;left:135"><nobr>}</nobr></div>
+<div style="position:absolute;top:17038;left:135"><nobr>Si noti che i comandi \chaptermark e \sectionmark sono stati ridefiniti per eliminare i numeri</nobr></div>
+<div style="position:absolute;top:17056;left:135"><nobr>di capitolo e le maiuscole.</nobr></div>
+<div style="position:absolute;top:17080;left:135"><nobr>Come secondo esempio, consideriamo il libro di <font style="font-size:9px">AMS</font>-L<font style="font-size:8px">A</font>TEX.</nobr></div>
+<div style="position:absolute;top:17105;left:135"><nobr>Le pagine in cui iniziano i capitoli sono prive di intestazione e pi`e di pagina. Si dichiari perci`o</nobr></div>
+<div style="position:absolute;top:17142;left:135"><nobr>\thispagestyle{empty}</nobr></div>
+<div style="position:absolute;top:17176;left:135"><nobr>per ogni pagina di questo tipo, cos`ı non c’e’ bisogno di ridefinire plain.</nobr></div>
+<div style="position:absolute;top:17200;left:135"><nobr>I titoli dei capitoli e delle sezioni appaiono nella forma: 2. TUTTO E SUBITO, quindi bisogna</nobr></div>
+<div style="position:absolute;top:17218;left:135"><nobr>ridefinire \chaptermark e \sectionmark come segue (si veda la sezione <font color="#ff0000"><a href="#9">9</a></font>):</nobr></div>
+<div style="position:absolute;top:17258;left:135"><nobr>\renewcommand{\chaptermark}[1]%</nobr></div>
+<div style="position:absolute;top:17276;left:158"><nobr>{\markboth{\MakeUppercase{\thechapter.\ #1}}{}}</nobr></div>
+<div style="position:absolute;top:17293;left:135"><nobr>\renewcommand{\sectionmark}[1]%</nobr></div>
+<div style="position:absolute;top:17311;left:158"><nobr>{\markright{\MakeUppercase{\thesection.\ #1}}}</nobr></div>
+<div style="position:absolute;top:17348;left:135"><nobr>In un’intestazione “pari”, il numero di pagina viene stampato nell’intestazione a sinistra, e le infor-</nobr></div>
+<div style="position:absolute;top:17366;left:135"><nobr>mazioni relative al capitolo nell’intestazione a destra; in un’intestazione “dispari”, le informazioni</nobr></div>
+<div style="position:absolute;top:17384;left:135"><nobr>relative alla sezione sono stampate nell’intestazione a sinistra e il numero di pagina nell’intestazione</nobr></div>
+<div style="position:absolute;top:17402;left:135"><nobr>a destra. Le parti centrali delle intestazioni sono vuote. Non ci sono pi`e di pagina.</nobr></div>
+<div style="position:absolute;top:17427;left:135"><nobr>C’`e una linea decorativa nell’intestazione. `E alta 0.5pt, quindi bisogna inserire i comandi:</nobr></div>
+<div style="position:absolute;top:17466;left:135"><nobr>\renewcommand{\headrulewidth}{0.5pt}</nobr></div>
+<div style="position:absolute;top:17484;left:135"><nobr>\renewcommand{\footrulewidth}{0pt}</nobr></div>
+<div style="position:absolute;top:17521;left:135"><nobr>Il font usato nell’intestazione `e lo Helvetica, grassetto, 9 pt. Il sistema PSNFSS ideato da Seba-</nobr></div>
+<div style="position:absolute;top:17539;left:135"><nobr>stian Rahtz usa il nome abbreviato (Karl Berry) phv per indicare Helvetica, quindi questo font `e</nobr></div>
+<div style="position:absolute;top:17557;left:135"><nobr>selezionato con i comandi:</nobr></div>
+<div style="position:absolute;top:17594;left:135"><nobr>\fontfamily{phv}\fontseries{b}\fontsize{9}{11}\selectfont</nobr></div>
+<div style="position:absolute;top:17628;left:135"><nobr>(Si vedano le sezioni 7.6.1 e 11.9.1 del L<font style="font-size:8px">A</font>TEX Companion.) Definiamo una scorciatoia per questa</nobr></div>
+<div style="position:absolute;top:17646;left:135"><nobr>selezione:</nobr></div>
+<div style="position:absolute;top:17683;left:135"><nobr>\newcommand{\helv}{%</nobr></div>
+<div style="position:absolute;top:17701;left:158"><nobr>\fontfamily{phv}\fontseries{b}\fontsize{9}{11}\selectfont}</nobr></div>
+<div style="position:absolute;top:17744;left:445"><nobr>14</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:17843;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=15><b>Page 15</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:18011;left:135"><nobr>Ora tutto `e pronto per l’intero layout:</nobr></div>
+<div style="position:absolute;top:18048;left:135"><nobr>\documentclass{book}</nobr></div>
+<div style="position:absolute;top:18066;left:135"><nobr>\usepackage{fancyhdr}</nobr></div>
+<div style="position:absolute;top:18084;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:18101;left:135"><nobr>\renewcommand{\chaptermark}[1]%</nobr></div>
+<div style="position:absolute;top:18119;left:158"><nobr>{\markboth{\MakeUppercase{\thechapter.\ #1}}{}}</nobr></div>
+<div style="position:absolute;top:18137;left:135"><nobr>\renewcommand{\sectionmark}[1]%</nobr></div>
+<div style="position:absolute;top:18155;left:158"><nobr>{\markright{\MakeUppercase{\thesection.\ #1}}}</nobr></div>
+<div style="position:absolute;top:18173;left:135"><nobr>\renewcommand{\headrulewidth}{0.5pt}</nobr></div>
+<div style="position:absolute;top:18191;left:135"><nobr>\renewcommand{\footrulewidth}{0pt}</nobr></div>
+<div style="position:absolute;top:18209;left:135"><nobr>\newcommand{\helv}{%</nobr></div>
+<div style="position:absolute;top:18227;left:158"><nobr>\fontfamily{phv}\fontseries{b}\fontsize{9}{11}\selectfont}</nobr></div>
+<div style="position:absolute;top:18245;left:135"><nobr>\fancyhf{}</nobr></div>
+<div style="position:absolute;top:18263;left:135"><nobr>\fancyhead[LE,RO]{\helv \thepage}</nobr></div>
+<div style="position:absolute;top:18281;left:135"><nobr>\fancyhead[LO]{\helv \rightmark}</nobr></div>
+<div style="position:absolute;top:18299;left:135"><nobr>\fancyhead[RE]{\helv \leftmark}</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:18348;left:135"><nobr>13 Layout di pagina speciale per le pagine di soli oggetti</nobr></div>
+<div style="position:absolute;top:18375;left:183"><nobr>flottanti</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:18419;left:135"><nobr>Alcuni preferiscono conferire un aspetto particolare alle pagine che raccolgono solo oggetti flottanti</nobr></div>
+<div style="position:absolute;top:18437;left:135"><nobr>(float pages). Dato che queste pagine sono generate automaticamente da L<font style="font-size:8px">A</font>TEX, l’utente non ha</nobr></div>
+<div style="position:absolute;top:18455;left:135"><nobr>alcun controllo su di esse. Non esiste un comando \thispagestyle per le pagine di soli oggetti</nobr></div>
+<div style="position:absolute;top:18472;left:135"><nobr>flottanti, e qualsiasi cambiamento di stile influenzer`a almeno anche la pagina che le precede. Con</nobr></div>
+<div style="position:absolute;top:18490;left:135"><nobr>fancyhdr, comunque, nei campi dell’intestazione e del pi`e di pagina, si pu`o specificare</nobr></div>
+<div style="position:absolute;top:18516;left:135"><nobr>\iffloatpage{testo per pagine di oggetti flottanti}{testo per le altre pagine}</nobr></div>
+<div style="position:absolute;top:18539;left:135"><nobr>Si pu`o usare questo sistema anche per sbarazzarsi della linea decorativa, basta definire:</nobr></div>
+<div style="position:absolute;top:18576;left:135"><nobr>\renewcommand{\headrulewidth}{\iffloatpage{0pt}{0.4pt}}</nobr></div>
+<div style="position:absolute;top:18610;left:135"><nobr>Se si desidera cambiare il layout anche per pagine che contengono un oggetto flottante in cima o in</nobr></div>
+<div style="position:absolute;top:18628;left:135"><nobr>fondo alla pagina, fancyhdr fornisce i comandi \iftopfloat e \ifbotfloat, simili a \iffloatpage.</nobr></div>
+<div style="position:absolute;top:18652;left:135"><nobr>Nota: le marche negli oggetti flottanti non saranno visibili nella routine di output di L<font style="font-size:8px">A</font>TEX, perci`o</nobr></div>
+<div style="position:absolute;top:18670;left:135"><nobr>`e inutile mettercele. Attualmente non `e possibile far s`ı che un oggetto flottante (ad esempio una</nobr></div>
+<div style="position:absolute;top:18688;left:135"><nobr>didascalia di una figura) influenzi l’intestazione o il pi`e di pagina.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:18739;left:135"><nobr>14 Quelle pagine vuote. . .</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:18783;left:135"><nobr>Nella classe book, quando non si fornisce l’opzione openany, o nella classe report, quando si</nobr></div>
+<div style="position:absolute;top:18801;left:135"><nobr>fornisce l’opzione openright, i capitoli iniziano nelle pagine dispari, causando nella met`a dei casi</nobr></div>
+<div style="position:absolute;top:18819;left:135"><nobr>l’inserimento di una pagina vuota. Alcuni preferiscono che queste pagine siano completamente</nobr></div>
+<div style="position:absolute;top:18836;left:135"><nobr>vuote, cio`e senza intestazione e pi`e di pagina. Questo non si pu`o ottenere con \thispagestyle,</nobr></div>
+<div style="position:absolute;top:18854;left:135"><nobr>in quanto sarebbe necessario invocare questo comando nella pagina precedente. Non `e necessaria</nobr></div>
+<div style="position:absolute;top:18872;left:135"><nobr>alcuna magia per ottenere questo effetto, comunque:</nobr></div>
+<div style="position:absolute;top:18909;left:135"><nobr>\clearpage{\pagestyle{empty}\cleardoublepage}</nobr></div>
+<div style="position:absolute;top:18943;left:135"><nobr>Dal momento che il comando \pagestyle{empty} `e contenuto in un gruppo, ha effetto solo sulla</nobr></div>
+<div style="position:absolute;top:18961;left:135"><nobr>pagina che potrebbe essere generata da \cleardoublepage. Si pu`o ovviamente definire tutto ci`o in</nobr></div>
+<div style="position:absolute;top:19006;left:445"><nobr>15</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:19105;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=16><b>Page 16</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:19273;left:135"><nobr>un comando “privato”. Se si vuole che questo sia fatto automaticamente all’inizio di ogni capitolo</nobr></div>
+<div style="position:absolute;top:19291;left:135"><nobr>o quando si vuole che compaia del testo in quelle pagine, allora bisogna ridefinire il comando</nobr></div>
+<div style="position:absolute;top:19310;left:135"><nobr>\cleardoublepage.</nobr></div>
+<div style="position:absolute;top:19342;left:135"><nobr>\makeatletter</nobr></div>
+<div style="position:absolute;top:19360;left:135"><nobr>\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else</nobr></div>
+<div style="position:absolute;top:19378;left:151"><nobr>\hbox{}</nobr></div>
+<div style="position:absolute;top:19396;left:151"><nobr>\vspace*{\fill}</nobr></div>
+<div style="position:absolute;top:19414;left:151"><nobr>\begin{center}</nobr></div>
+<div style="position:absolute;top:19432;left:166"><nobr>Questa pagina contiene intenzionalmente solo questa frase.</nobr></div>
+<div style="position:absolute;top:19450;left:151"><nobr>\end{center}</nobr></div>
+<div style="position:absolute;top:19468;left:151"><nobr>\vspace{\fill}</nobr></div>
+<div style="position:absolute;top:19486;left:151"><nobr>\thispagestyle{empty}</nobr></div>
+<div style="position:absolute;top:19504;left:151"><nobr>\newpage</nobr></div>
+<div style="position:absolute;top:19521;left:151"><nobr>\if@twocolumn\hbox{}\newpage\fi\fi\fi}</nobr></div>
+<div style="position:absolute;top:19539;left:135"><nobr>\makeatother</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:19589;left:135"><nobr>15 Numeri di pagina nella forma “m di n”</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:19632;left:135"><nobr>Alcuni autori adottano una nuerazione delle pagine nella forma “m di n”, dove m `e il numero di</nobr></div>
+<div style="position:absolute;top:19650;left:135"><nobr>pagine nel documento. `E disponibile un pacchetto chiamato nofm.sty, ma alcune versioni sono</nobr></div>
+<div style="position:absolute;top:19668;left:135"><nobr>difettose, e perlopi`u non funzionano con fancyhdr perché prendono il controllo dell’intero layout di</nobr></div>
+<div style="position:absolute;top:19686;left:135"><nobr>pagina. C’`e un pacchetto per L<font style="font-size:8px">A</font>TEX 2ε chiamato lastpage, che pu`o essere usato con fancyhdr come</nobr></div>
+<div style="position:absolute;top:19704;left:135"><nobr>segue:</nobr></div>
+<div style="position:absolute;top:19739;left:135"><nobr>\usepackage{lastpage}</nobr></div>
+<div style="position:absolute;top:19757;left:135"><nobr>...</nobr></div>
+<div style="position:absolute;top:19775;left:135"><nobr>\cfoot{\thepage\ di \pageref{LastPage}}</nobr></div>
+<div style="position:absolute;top:19808;left:135"><nobr>Se si utilizza il vecchio L<font style="font-size:8px">A</font>TEX2.09 e non si pu`o passare a L<font style="font-size:8px">A</font>TEX 2ε, bisogna usarne una versione</nobr></div>
+<div style="position:absolute;top:19826;left:135"><nobr>compatibile con L<font style="font-size:8px">A</font>TEX2.09, lastpage209.sty, che `e definita di seguito:</nobr></div>
+<div style="position:absolute;top:19861;left:135"><nobr>\let\origenddocument=\enddocument</nobr></div>
+<div style="position:absolute;top:19879;left:135"><nobr>\def\enddocument{\clearpage\if@filesw</nobr></div>
+<div style="position:absolute;top:19897;left:151"><nobr>{\addtocounter{page}{-1} \immediate\write\@mainaux</nobr></div>
+<div style="position:absolute;top:19915;left:166"><nobr>{\string\newlabel{LastPage}{{}{\thepage}}}}\origenddocument}</nobr></div>
+<div style="position:absolute;top:19948;left:135"><nobr>Il valore dell’etichetta LastPage pu`o essere usato per ottenere intestazioni o pi`e di pagina differenti</nobr></div>
+<div style="position:absolute;top:19966;left:135"><nobr>per l’ultima pagina del documento. Ad esempio, se si vuole che il pi`e di pagina in ogni pagina</nobr></div>
+<div style="position:absolute;top:19984;left:135"><nobr>dispari, eccetto l’ultima, contenga il testo “voltare pagina, prego”, lo si pu`o fare in questo modo<font color="#ff0000" style="font-size:8px"><a href="#16">9</a></font>:</nobr></div>
+<div style="position:absolute;top:20019;left:135"><nobr>\usepackage{lastpage}</nobr></div>
+<div style="position:absolute;top:20037;left:135"><nobr>\usepackage{ifthen}</nobr></div>
+<div style="position:absolute;top:20055;left:135"><nobr>...</nobr></div>
+<div style="position:absolute;top:20073;left:135"><nobr>\rfoot{\ifthenelse{\isodd{\value{page}} \and \not</nobr></div>
+<div style="position:absolute;top:20091;left:166"><nobr>\value{page}=\pageref{LastPage}{voltare pagina, prego}{}}</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:20140;left:135"><nobr>16 Numeri di pagina legati ai capitoli o alle sezioni</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:20184;left:135"><nobr>Nella documentazione tecnica molto spesso le pagine sono numerate nella forma “2-10”, dove il</nobr></div>
+<div style="position:absolute;top:20202;left:135"><nobr>primo numero `e il numero del capitolo e il secondo `e il numero di pagina relativo al capitolo. A</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:20223;left:152"><nobr>9<font style="font-size:9px">Per questo `e necessaria una versione ragionevolmente recente del pacchetto ifthen.</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:20268;left:445"><nobr>16</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:20367;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=17><b>Page 17</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:20535;left:135"><nobr>volte si usa il numero di sezione al posto di quello del capitolo. Il pacchetto chappg pu`o essere usato</nobr></div>
+<div style="position:absolute;top:20553;left:135"><nobr>per ottenere questo effetto. Se si desidera cambiare il layout, ad esempio per usare un punto invece</nobr></div>
+<div style="position:absolute;top:20571;left:135"><nobr>di un trattino, o le sezioni invece dei capitoli, bisogna fare una copia del pacchetto e modificarla.</nobr></div>
+<div style="position:absolute;top:20595;left:135"><nobr>Esso ridefinisce \thepage cos`ı: \arabic{chapter}-\arabic{page}. Sfortunatamente questo</nobr></div>
+<div style="position:absolute;top:20613;left:135"><nobr>fornisce numeri, e non lettere, per le appendici. Una definizione migliore potrebbe essere</nobr></div>
+<div style="position:absolute;top:20632;left:135"><nobr>\thechapter-\arabic{page}, ma si pu`o comunque dare questa definizione dopo il comando</nobr></div>
+<div style="position:absolute;top:20650;left:135"><nobr>\usepackage{chappg}. Il pacchetto, inoltre, riporta il numero di pagina a 1 all’inizio di ogni</nobr></div>
+<div style="position:absolute;top:20667;left:135"><nobr>capitolo.</nobr></div>
+<div style="position:absolute;top:20691;left:135"><nobr>C’`e una differenza fondamentale tra la numerazione del tipo “m di n” descritta nella sezione pre-</nobr></div>
+<div style="position:absolute;top:20709;left:135"><nobr>cedente e quella appena esposta. Lo stile “m di n” si usa solo nell’intestazione o nel pi`e di pagina,</nobr></div>
+<div style="position:absolute;top:20727;left:135"><nobr>ma non nell’indice, nell’indice analitico, o nei riferimenti, come “Vedi pagina m”. Perci`o il coman-</nobr></div>
+<div style="position:absolute;top:20745;left:135"><nobr>do \thepage non viene alterato. Lo stile di numerazione “2-10”, invece, va utilizzato in tutti i</nobr></div>
+<div style="position:absolute;top:20763;left:135"><nobr>riferimenti al numero di pagina, quindi il comando \thepage va ridefinito.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:20814;left:135"><nobr>17 Quando cambiare intestazione e pi`e di pagina?</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:20858;left:135"><nobr>A volte si vuole cambiare il layout dell’intestazione e del pi`e di pagina all’interno del documento.</nobr></div>
+<div style="position:absolute;top:20876;left:135"><nobr>Alcuni di questi cambiamenti possono essere realizzati usando il meccanismo delle marche come si</nobr></div>
+<div style="position:absolute;top:20894;left:135"><nobr>`e visto nelle sezioni <font color="#ff0000"><a href="#9">9 </a></font>e <font color="#ff0000"><a href="#18">18</a></font><a href="#18"></a>. Comunque, in alcuni casi sono necessari cambiamenti pi`u drastici, ad</nobr></div>
+<div style="position:absolute;top:20912;left:135"><nobr>esempio cambiare la numerazione della pagina da romana ad araba (con \pagenumbering), cam-</nobr></div>
+<div style="position:absolute;top:20930;left:135"><nobr>biare uno dei campi di fancyhdr o impostare un altro stile di pagina. A volte si potrebbe rimanere</nobr></div>
+<div style="position:absolute;top:20948;left:135"><nobr>sorpresi del fatto che i cambiamenti hanno effetto troppo presto. Generalmente i cambiamenti sum-</nobr></div>
+<div style="position:absolute;top:20965;left:135"><nobr>menzionati hanno effetto immediato, cio`e nella pagina che il sistema sta analizzando attualmente.</nobr></div>
+<div style="position:absolute;top:20983;left:135"><nobr>Se l’intenzione `e quella di attuare i cambiamenti nella pagina successiva bisogna assicurarsi che</nobr></div>
+<div style="position:absolute;top:21001;left:135"><nobr>la pagina corrente sia finita. Nella maggior parte dei casi, questo pu`o essere ottenuto utilizzando</nobr></div>
+<div style="position:absolute;top:21019;left:135"><nobr>il comando \clearpage prima di questi cambiamenti. Se questo non `e possibile, si pu`o usare il</nobr></div>
+<div style="position:absolute;top:21037;left:135"><nobr>pacchetto afterpage cos`ı:</nobr></div>
+<div style="position:absolute;top:21056;left:135"><nobr>\afterpage{\lhead{nuovo valore}} oppure \afterpage{\pagenumbering{roman}. Non si pu`o</nobr></div>
+<div style="position:absolute;top:21073;left:135"><nobr>usare \afterpage per cambiare il \pagestyle, in quanto i comandi invocati da \afterpage sono</nobr></div>
+<div style="position:absolute;top:21091;left:135"><nobr>locali al gruppo, e il comando \pagestyle effettua solo cambiamenti locali. Il comando \pagenum-</nobr></div>
+<div style="position:absolute;top:21110;left:135"><nobr>bering e i comandi del pacchetto fancyhdr effettuano cambiamenti globali, e perci`o funzioneranno,</nobr></div>
+<div style="position:absolute;top:21127;left:135"><nobr>cos`ı come il comando \thispagestyle.</nobr></div>
+<div style="position:absolute;top:21151;left:135"><nobr>Si noti che, sebbene i comandi di fancyhdr, come \fancyhead, abbiano effetto immediato, questo</nobr></div>
+<div style="position:absolute;top:21169;left:135"><nobr>non significa che qualsiasi “variabile” usata all’interno di questi comandi prenda il valore che ha nel</nobr></div>
+<div style="position:absolute;top:21187;left:135"><nobr>punto in cui `e stata invocata. Ad esempio, se si scrive \fancyfoot[C]{\thepage}, il numero di</nobr></div>
+<div style="position:absolute;top:21205;left:135"><nobr>pagina che sar`a inserito nel pi`e di pagina non `e il numero della pagina dove questo comando viene</nobr></div>
+<div style="position:absolute;top:21223;left:135"><nobr>invocato, ma piuttosto il numero della pagina dove effettivamente il pi`e di pagina viene costruito.</nobr></div>
+<div style="position:absolute;top:21241;left:135"><nobr>Naturalmente per il numero di pagina questo `e ci`o che ci si aspetta, ma questo `e anche vero per</nobr></div>
+<div style="position:absolute;top:21259;left:135"><nobr>altri comandi.</nobr></div>
+<div style="position:absolute;top:21283;left:135"><nobr>Perci`o, se in un libro ogni capitolo `e stato scritto da un autore diverso, e si vuole che il suo nome</nobr></div>
+<div style="position:absolute;top:21301;left:135"><nobr>appaia nell’angolo in basso a sinistra, si possono usare i seguanti comandi:</nobr></div>
+<div style="position:absolute;top:21342;left:135"><nobr>\newcommand{\TheAuthor}{}</nobr></div>
+<div style="position:absolute;top:21360;left:135"><nobr>\newcommand{\Author}[1]{\renewcommand{\TheAuthor}{#1}}</nobr></div>
+<div style="position:absolute;top:21378;left:135"><nobr>\lfoot{\TheAuthor}</nobr></div>
+<div style="position:absolute;top:21416;left:135"><nobr>e cominciare ogni capitolo con \Author{Nome Cognome}. Se, comunque, il nome dell’autore cam-</nobr></div>
+<div style="position:absolute;top:21433;left:135"><nobr>biasse prima del completamento di una pagina, nel pi`e di pagina comparirebbe il nome sbagliato.</nobr></div>
+<div style="position:absolute;top:21451;left:135"><nobr>Questo succede se si invoca il comando prima del comando \chapter, invece che dopo. Un’altra</nobr></div>
+<div style="position:absolute;top:21469;left:135"><nobr>fonte di problemi `e il fatto che la routine di output di TEX elabora i comandi in anticipo, quindi</nobr></div>
+<div style="position:absolute;top:21530;left:445"><nobr>17</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:21629;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=18><b>Page 18</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:21797;left:135"><nobr>potrebbe aver gi`a elaborato qualche comando che produce testo che appare nella pagina successiva.</nobr></div>
+<div style="position:absolute;top:21815;left:135"><nobr>Nella prossima sezione viene fornito un esempio.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:21866;left:135"><nobr>18 Intestazioni e pi`e di pagina indotti dal testo</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:21910;left:135"><nobr>Si `e visto come si possono usare le marche di L<font style="font-size:8px">A</font>TEX per visualizzare informazioni relative al</nobr></div>
+<div style="position:absolute;top:21928;left:135"><nobr>contenuto del documento nelle intestazioni e nei pi`e di pagina. Quello delle marche `e l’unico</nobr></div>
+<div style="position:absolute;top:21946;left:135"><nobr>meccanismo affidabile che si pu`o usare per ottenere informazioni dinamiche in queste parti di</nobr></div>
+<div style="position:absolute;top:21964;left:135"><nobr>pagina. Questo `e perché L<font style="font-size:8px">A</font>TEX potrebbe impaginare il documento prima di decidere di interrompere</nobr></div>
+<div style="position:absolute;top:21981;left:135"><nobr>la pagina.</nobr></div>
+<div style="position:absolute;top:22006;left:135"><nobr>A volte le due marcature che L<font style="font-size:8px">A</font>TEX offre non sono sufficienti. Ad esempio:</nobr></div>
+<div style="position:absolute;top:22042;left:172"><nobr>Se la soluzione di un esercizio supera la lunghezza della pagina, si desidera avere “Se-</nobr></div>
+<div style="position:absolute;top:22060;left:172"><nobr>gue nella pagina successiva. . . ” in fondo alla prima pagina e “Seguito. . . ” nel margine</nobr></div>
+<div style="position:absolute;top:22078;left:172"><nobr>superiore della pagina successiva.</nobr></div>
+<div style="position:absolute;top:22114;left:135"><nobr>Non si pu`o usare il meccanismo di marcatura di L<font style="font-size:8px">A</font>TEX in questo caso, se si vogliono anche usare</nobr></div>
+<div style="position:absolute;top:22132;left:135"><nobr>informazioni relative a capitoli e sezioni.</nobr></div>
+<div style="position:absolute;top:22156;left:135"><nobr>Il codice della figura <font color="#ff0000"><a href="#19">5 </a></font>costituisce un pacchetto che fornisce altre due marche che possono essere</nobr></div>
+<div style="position:absolute;top:22174;left:135"><nobr>utilizzate in queste situazioni<a href="#18"></a><font color="#ff0000" style="font-size:8px"><a href="#18">10</a></font>. Ecco un modo di usare questo pacchetto:</nobr></div>
+<div style="position:absolute;top:22215;left:135"><nobr>\usepackage{extramarks}</nobr></div>
+<div style="position:absolute;top:22233;left:135"><nobr>...</nobr></div>
+<div style="position:absolute;top:22251;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:22269;left:135"><nobr>\lhead{\firstxmark}</nobr></div>
+<div style="position:absolute;top:22286;left:135"><nobr>\rfoot{\lastxmark}</nobr></div>
+<div style="position:absolute;top:22304;left:135"><nobr>...</nobr></div>
+<div style="position:absolute;top:22322;left:135"><nobr>\extramarks{}{Segue nella pagina successiva\ldots}</nobr></div>
+<div style="position:absolute;top:22340;left:135"><nobr>Il testo pu\‘o attraversare l’interruzione di pagina oppure no\ldots</nobr></div>
+<div style="position:absolute;top:22358;left:135"><nobr>\extramarks{Seguito\ldots}{}</nobr></div>
+<div style="position:absolute;top:22396;left:135"><nobr>Si noti che i comandi \extramarks devono trovarsi attaccati al testo, ovvero senza linee vuote in</nobr></div>
+<div style="position:absolute;top:22414;left:135"><nobr>mezzo, altrimenti la pagina potrebbe spezzarsi proprio l`ı, e le “extramarks” apparirebbero nella</nobr></div>
+<div style="position:absolute;top:22432;left:135"><nobr>pagina sbagliata.</nobr></div>
+<div style="position:absolute;top:22456;left:135"><nobr>Ci sono due nuove marche che possono essere usate nel layout della pagina con questo pacchetto. Se</nobr></div>
+<div style="position:absolute;top:22474;left:135"><nobr>si invocano i comandi nella forma \extramarks{m<font style="font-size:8px">1</font>}{m<font style="font-size:8px">2</font>} \firstxmark fornisce il primo valore</nobr></div>
+<div style="position:absolute;top:22492;left:135"><nobr>di m<font style="font-size:8px">1 </font>e \lastxmark fornisce l’ultimo valore di m<font style="font-size:8px">2 </font>nella pagina corrente. Il pacchetto fornisce</nobr></div>
+<div style="position:absolute;top:22510;left:135"><nobr>inoltre i comandi \firstleftmark e \lastrightmark, che complementano le marche standard di</nobr></div>
+<div style="position:absolute;top:22528;left:135"><nobr>L<font style="font-size:8px">A</font>TEX.</nobr></div>
+<div style="position:absolute;top:22552;left:135"><nobr>Per sottolineare il fatto che usare le marche `e il modo corretto di procedere, si vuole esporre una</nobr></div>
+<div style="position:absolute;top:22570;left:133"><nobr>“soluzione” che non funziona<a href="#18"></a><font color="#ff0000" style="font-size:8px"><a href="#18">11</a></font>:</nobr></div>
+<div style="position:absolute;top:22611;left:135"><nobr>\lhead{Seguito\ldots}</nobr></div>
+<div style="position:absolute;top:22629;left:135"><nobr>\rfoot{Segue nella pagina successiva\ldots}</nobr></div>
+<div style="position:absolute;top:22647;left:135"><nobr>Il testo pu\‘o attraversare l’interruzione di pagina oppure no\ldots</nobr></div>
+<div style="position:absolute;top:22665;left:135"><nobr>\lhead{}</nobr></div>
+<div style="position:absolute;top:22683;left:135"><nobr>\rfoot{}</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:22705;left:146"><nobr>10<font style="font-size:9px">Dopo aver realizzato questo pacchetto ho scoperto il paccheto secret.sty, che fa una cosa simile, marcando</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:22721;left:135"><nobr>paragrafi confidenziali se attraversano un’interruzione di pagina. Lo fa, comunque, cambiando la routine di output.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:22733;left:146"><nobr>11<font style="font-size:9px">In effetti c’`e un altro modo, ma richiede due passate di L</font>A<font style="font-size:9px">TEX: si possono mettere comandi \label prima e dopo</font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:22749;left:135"><nobr>il testo e confrontare le \pageref.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:22792;left:445"><nobr>18</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:22891;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=19><b>Page 19</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:11px;font-family:Times">
+<div style="position:absolute;top:23055;left:135"><nobr>% extramarks.sty</nobr></div>
+<div style="position:absolute;top:23072;left:135"><nobr>\def\@leftmark#1#2#3#4{#1}</nobr></div>
+<div style="position:absolute;top:23088;left:135"><nobr>\def\@rightmark#1#2#3#4{#2}</nobr></div>
+<div style="position:absolute;top:23121;left:135"><nobr>\def\markboth#1#2{{\def\protect{\noexpand\protect\noexpand}</nobr></div>
+<div style="position:absolute;top:23138;left:170"><nobr>\let\label\relax \let\index\relax \let\glossary\relax</nobr></div>
+<div style="position:absolute;top:23154;left:170"><nobr>\expandafter\@markboth\@themark{#1}{#2}</nobr></div>
+<div style="position:absolute;top:23170;left:170"><nobr>\mark{\@themark}}\if@nobreak\ifvmode\nobreak\fi\fi}</nobr></div>
+<div style="position:absolute;top:23187;left:135"><nobr>\def\markright#1{{\def\protect{\noexpand\protect\noexpand}</nobr></div>
+<div style="position:absolute;top:23203;left:170"><nobr>\let\label\relax \let\index\relax \let\glossary\relax</nobr></div>
+<div style="position:absolute;top:23220;left:170"><nobr>\expandafter\@markright\@themark</nobr></div>
+<div style="position:absolute;top:23236;left:170"><nobr>{#1}\mark{\@themark}}\if@nobreak\ifvmode\nobreak\fi\fi}</nobr></div>
+<div style="position:absolute;top:23253;left:135"><nobr>\def\@markright#1#2#3#4#5{\gdef\@themark{{#1}{#5}{#3}{#4}}}</nobr></div>
+<div style="position:absolute;top:23269;left:135"><nobr>\def\@markboth#1#2#3#4#5#6{\gdef\@themark{{#5}{#6}{#3}{#4}}}</nobr></div>
+<div style="position:absolute;top:23286;left:135"><nobr>\def\leftmark{\expandafter\@leftmark\botmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23302;left:135"><nobr>\def\rightmark{\expandafter\@rightmark\firstmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23318;left:135"><nobr>\def\firstleftmark{\expandafter\@leftmark\firstmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23335;left:135"><nobr>\def\lastrightmark{\expandafter\@rightmark\botmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23368;left:135"><nobr>\def\@themark{{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23401;left:135"><nobr>\def\extramarks#1#2{{\def\protect{\noexpand\protect\noexpand}</nobr></div>
+<div style="position:absolute;top:23417;left:170"><nobr>\let\label\relax \let\index\relax \let\glossary\relax</nobr></div>
+<div style="position:absolute;top:23433;left:170"><nobr>\expandafter\@markextra\@themark{#1}{#2}</nobr></div>
+<div style="position:absolute;top:23450;left:170"><nobr>\mark{\@themark}}\if@nobreak\ifvmode\nobreak\fi\fi}</nobr></div>
+<div style="position:absolute;top:23466;left:135"><nobr>\def\@markextra#1#2#3#4#5#6{\gdef\@themark{{#1}{#2}{#5}{#6}}}</nobr></div>
+<div style="position:absolute;top:23483;left:135"><nobr>\def\firstxmark{\expandafter\@firstxmark\firstmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23499;left:135"><nobr>\def\topxmark{\expandafter\@firstxmark\topmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23516;left:135"><nobr>\def\lastxmark{\expandafter\@lastxmark\botmark{}{}{}{}}</nobr></div>
+<div style="position:absolute;top:23532;left:135"><nobr>\def\@firstxmark#1#2#3#4{#3}</nobr></div>
+<div style="position:absolute;top:23549;left:135"><nobr>\def\@lastxmark#1#2#3#4{#4}</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:23594;left:281"><nobr>Figura 5: Pacchetto per marche aggiuntive in L<font style="font-size:8px">A</font>TEX.</nobr></div>
+<div style="position:absolute;top:23642;left:135"><nobr>Si potrebbe essere tentati di pensare che i primi \lhead e \rfoot saranno attivi quando TEX</nobr></div>
+<div style="position:absolute;top:23660;left:135"><nobr>interrompe la pagina nel mezzo del testo, e che gli ultimi lo saranno quando la pagina si interrompe</nobr></div>
+<div style="position:absolute;top:23677;left:135"><nobr>dopo il testo. Questo non `e vero, in quanto l’intero paragrafo (incluse le ultime definizioni) sar`a</nobr></div>
+<div style="position:absolute;top:23695;left:135"><nobr>processato prima che TEX consideri l’interruzione di pagina, perci`o quando effettivamente avviene</nobr></div>
+<div style="position:absolute;top:23713;left:135"><nobr>l’interruzione, le ultime definizioni sono attive, sia che l’interruzione di pagina capiti all’interno</nobr></div>
+<div style="position:absolute;top:23731;left:135"><nobr>del testo che al di fuori di esso. Nemmeno mettere una interruzione di paragrafo tra il testo e le</nobr></div>
+<div style="position:absolute;top:23749;left:135"><nobr>ultime definizioni funzioner`a, perch`e non si desidera che le prime definizioni siano attive quando</nobr></div>
+<div style="position:absolute;top:23767;left:135"><nobr>TEX decide di interrompere la pagina esattamente in quel punto. A dire il vero, il meccanismo</nobr></div>
+<div style="position:absolute;top:23785;left:135"><nobr>delle marche `e stato inventato per sbarazzarsi di questo tipo di problemi.</nobr></div>
+<div style="position:absolute;top:23809;left:135"><nobr>Nell’esempio precedente, “Seguito. . . ” compare nell’intestazione. Potrebbe essere preferibile met-</nobr></div>
+<div style="position:absolute;top:23827;left:135"><nobr>terlo al margine. Questo effetto pu`o essere raggiunto facilmente mettendolo in una posizione ben</nobr></div>
+<div style="position:absolute;top:23845;left:135"><nobr>precisa rispetto all’intestazione. In plain TEX bisognerebbe usare un cumulo di \hbox to 0pt,</nobr></div>
+<div style="position:absolute;top:23864;left:135"><nobr>\vbox to 0pt, \hskip,\vskip, \hss e \vss, ma fortunatamente l’ambiente picture di L<font style="font-size:8px">A</font>TEX d`a</nobr></div>
+<div style="position:absolute;top:23881;left:135"><nobr>la possibilit`a di farlo in un modo pi`u pulito. Per non disturbare il normale layout dell’intestazione,</nobr></div>
+<div style="position:absolute;top:23899;left:135"><nobr>si pu`o mettere il testo in un ambiente picture di dimensione zero. Generalmente questo `e il modo</nobr></div>
+<div style="position:absolute;top:23917;left:135"><nobr>migliore di posizionare oggetti in punti fissi della pagina, dopodiché si possono usare anche le</nobr></div>
+<div style="position:absolute;top:23935;left:135"><nobr>normali intestazioni. Si veda anche la sezione <font color="#ff0000"><a href="#21">20 </a></font>per un altro esempio di questa tecnica.</nobr></div>
+<div style="position:absolute;top:23975;left:135"><nobr>\lhead{\setlength{\unitlength}{\baselineskip}%</nobr></div>
+<div style="position:absolute;top:23993;left:135"><nobr>\begin{picture}(0,0)</nobr></div>
+<div style="position:absolute;top:24011;left:151"><nobr>\put(-2,-3){\makebox(0,0)[r]{\firstxmark}}</nobr></div>
+<div style="position:absolute;top:24054;left:445"><nobr>19</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:24153;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=20><b>Page 20</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:24322;left:151"><nobr>\end{picture}\leftmark}</nobr></div>
+<div style="position:absolute;top:24360;left:135"><nobr>Questa soluzione, naturalmente, pu`o essere usata per il pi`e di pagina. Basta assicurarsi di mettere</nobr></div>
+<div style="position:absolute;top:24378;left:135"><nobr>l’ambiente picture all’inizio per le voci sul lato sinistro e alla fine per quelle sul lato destro.</nobr></div>
+<div style="position:absolute;top:24402;left:135"><nobr>Per finire si potrebbe voler mettere “(Seguito...)” nel testo piuttosto che nell’intestazione o nel</nobr></div>
+<div style="position:absolute;top:24420;left:135"><nobr>margine. In quel caso bisogna usare il pacchetto afterpage. Si pu`o anche decidere di avere un</nobr></div>
+<div style="position:absolute;top:24438;left:135"><nobr>ambiente separato per questo.</nobr></div>
+<div style="position:absolute;top:24479;left:135"><nobr>\newenvironment{continued}{\par</nobr></div>
+<div style="position:absolute;top:24497;left:151"><nobr>\extramarks{}{Segue nella pagina successiva\ldots}</nobr></div>
+<div style="position:absolute;top:24515;left:151"><nobr>\afterpage{\noindent\firstxmark\vspace{1ex}}</nobr></div>
+<div style="position:absolute;top:24533;left:151"><nobr>}{\extramarks{(Seguito\ldots)}{}\par}</nobr></div>
+<div style="position:absolute;top:24567;left:135"><nobr>`E un po’ pericoloso usare \firstxmark fuori dalla routine del layout di pagina, ma sembra che</nobr></div>
+<div style="position:absolute;top:24589;left:135"><nobr>con \afterpage funzioni. Se si ha bisogno delle informazioni pi`u avanti all’interno della pagina,</nobr></div>
+<div style="position:absolute;top:24607;left:135"><nobr>bisogna registrare lo stato delle marche in una variabile opportuna. Questo pu`o essere fatto in</nobr></div>
+<div style="position:absolute;top:24625;left:135"><nobr>uno dei campi di fancyhdr. Per esempio, se si vuole aggiungere qualcosa dopo il brano che `e stato</nobr></div>
+<div style="position:absolute;top:24642;left:135"><nobr>interrotto, si pu`o fare cos`ı:</nobr></div>
+<div style="position:absolute;top:24683;left:135"><nobr>\newcommand{\mysaved}{}</nobr></div>
+<div style="position:absolute;top:24719;left:135"><nobr>\newenvironment{continued}{\par</nobr></div>
+<div style="position:absolute;top:24737;left:151"><nobr>\extramarks{}{Segue nella pagina successiva\ldots}</nobr></div>
+<div style="position:absolute;top:24755;left:151"><nobr>}{\extramarks{(Seguito\ldots)}{}\par\vspace{1ex}\mysaved}</nobr></div>
+<div style="position:absolute;top:24773;left:135"><nobr>\lhead{\leftmark}</nobr></div>
+<div style="position:absolute;top:24791;left:135"><nobr>\chead{\ifthenelse{\equal{\lastxmark}{}}</nobr></div>
+<div style="position:absolute;top:24809;left:151"><nobr>{\gdef\mysaved{}}</nobr></div>
+<div style="position:absolute;top:24826;left:151"><nobr>{\gdef\mysaved{\noindent[Segue dalla pagina precedente]}}}</nobr></div>
+<div style="position:absolute;top:24865;left:135"><nobr>Se si vuole includere una marca o altre informazioni variabili nel testo salvato, bisogna usare \xdef</nobr></div>
+<div style="position:absolute;top:24882;left:135"><nobr>invece di \gdef.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:24934;left:135"><nobr>19 Animazioni</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:24977;left:135"><nobr>Se si stampa nello stesso punto di ogni pagina una figura che cambia di poco da una pagina</nobr></div>
+<div style="position:absolute;top:24995;left:135"><nobr>all’altra, si pu`o ottenere un effetto simile ad un’animazione scorrendo rapidamente le pagine. Con</nobr></div>
+<div style="position:absolute;top:25013;left:135"><nobr>fancyhdr `e facile farlo. Per semplicit`a si assuma che ogni immagine sia un file PostScript (EPS) di</nobr></div>
+<div style="position:absolute;top:25031;left:135"><nobr>nome img〈n〉.ps, dove 〈n〉 `e il numero di pagina, e si utilizzi il pacchetto graphics o graphicx<font color="#ff0000" style="font-size:8px"><a href="#20">12</a></font>.</nobr></div>
+<div style="position:absolute;top:25049;left:135"><nobr>Per mettere l’animazione nell’angolo in basso a destra, si proceda in questo modo:</nobr></div>
+<div style="position:absolute;top:25090;left:135"><nobr>\rfoot{\setlength{\unitlength}{1mm}</nobr></div>
+<div style="position:absolute;top:25108;left:151"><nobr>\begin{picture}(0,0)</nobr></div>
+<div style="position:absolute;top:25126;left:166"><nobr>\put(5,0){\includegraphics{img\thepage.ps}}</nobr></div>
+<div style="position:absolute;top:25143;left:151"><nobr>\end{picture}}</nobr></div>
+<div style="position:absolute;top:25182;left:135"><nobr>Si noti che il parametro \unitlength va modificato localmente nel campo di fancyhdr in modo da</nobr></div>
+<div style="position:absolute;top:25199;left:135"><nobr>evitare interferenze indesiderate con il suo valore all’interno del testo.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:25223;left:146"><nobr>12<font style="font-size:9px">Se si usa una versione non aggiornata di L</font>A<font style="font-size:9px">TEX si pu`o usare il pacchetto epsf o epsfig.</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:25316;left:445"><nobr>20</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:25415;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=21><b>Page 21</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:25578;left:135"><nobr>20 Indici stile rubrica</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:25622;left:135"><nobr>Alcune guide stradali e bibbie di lusso hanno il cosiddetto thumb-index, cio`e dei segni sul bordo</nobr></div>
+<div style="position:absolute;top:25640;left:135"><nobr>delle pagine che indicano dove si trovano i capitoli. Si pu`o ottenere questo effetto stampando</nobr></div>
+<div style="position:absolute;top:25658;left:135"><nobr>riquadri neri sul margine delle pagine. La posizione verticale va determinata in base al numero</nobr></div>
+<div style="position:absolute;top:25676;left:135"><nobr>del capitolo, o in base a qualche altro contatore. Dal momento che la posizione `e indipendente</nobr></div>
+<div style="position:absolute;top:25694;left:135"><nobr>dal contenuto della pagina, questi riquadri devono far parte dell’intestazione in una picture di</nobr></div>
+<div style="position:absolute;top:25712;left:135"><nobr>dimensioni zero, come descritto nella precedente sezione.</nobr></div>
+<div style="position:absolute;top:25736;left:135"><nobr>Naturalmente bisogna prestare attenzione alla stampa in fronte/retro, inoltre si potrebbe volere</nobr></div>
+<div style="position:absolute;top:25754;left:135"><nobr>una pagina di indice con tutti i riquadri posizionati correttamente. Sono richieste un po’ di rego-</nobr></div>
+<div style="position:absolute;top:25772;left:135"><nobr>lazioni di fino per ottenere dei riquadri distanziati verticalmente. Nel documento che ho dovuto</nobr></div>
+<div style="position:absolute;top:25790;left:135"><nobr>redigere c’erano 12 sezioni, perci`o le ho posizionate a 18 mm l’una dall’altra, cio`e riquadri larghi</nobr></div>
+<div style="position:absolute;top:25808;left:135"><nobr>9 mm separati da 9 mm di spazio. Per evitare calcoli le ho costruite in un ambiente picture con</nobr></div>
+<div style="position:absolute;top:25827;left:135"><nobr>\unitlength uguale a 18 mm. Ho messo i numeri di pagina nei lati esterni dell’intestazione e ad</nobr></div>
+<div style="position:absolute;top:25844;left:135"><nobr>essi ho collegato i riquadri. In questo esempio i numeri di sezione sono utilizzati per posizionare i</nobr></div>
+<div style="position:absolute;top:25862;left:135"><nobr>riquadri, ma potete sostituirli con qualsiasi valore numerico. Si rimanda alla figura <font color="#ff0000"><a href="#21">6 </a></font>per la pagina</nobr></div>
+<div style="position:absolute;top:25879;left:135"><nobr>di riepilogo e alla figura <font color="#ff0000"><a href="#22">7 </a></font>per il codice.</nobr></div>
+<div style="position:absolute;top:25919;left:580"><nobr>1</nobr></div>
+<div style="position:absolute;top:25958;left:306"><nobr>1 Introduzione</nobr></div>
+<div style="position:absolute;top:25996;left:306"><nobr>2 Il primo anno</nobr></div>
+<div style="position:absolute;top:26034;left:306"><nobr>3 Specializzazione</nobr></div>
+<div style="position:absolute;top:26139;left:302"><nobr>Figura 6: Pagina di riepilogo del thumb-index.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:26202;left:135"><nobr>21 Posizionamento degli oggetti flottanti</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:26246;left:135"><nobr>Gli oggetti flottanti sono elementi della pagina che “fluttuano” rispetto al resto del documento. Gli</nobr></div>
+<div style="position:absolute;top:26264;left:135"><nobr>oggetti flottanti standard sono le tabelle e le figure, ma con il pachetto float se ne possono facilmente</nobr></div>
+<div style="position:absolute;top:26282;left:135"><nobr>creare di nuovi, come gli algoritmi. Perlopi`u questi oggetti funzionano in modo soddisfacente, ma</nobr></div>
+<div style="position:absolute;top:26300;left:135"><nobr>a volte L<font style="font-size:8px">A</font>TEX sembra intestardirsi e non fa quello che gli si chiede. Questa sezione descrive come</nobr></div>
+<div style="position:absolute;top:26318;left:135"><nobr>si pu`o influenzare L<font style="font-size:8px">A</font>TEX in modo che faccia come gli si dice. Ci potrebbero essere, comunque,</nobr></div>
+<div style="position:absolute;top:26336;left:135"><nobr>alcuni casi patologici in cui `e impossibile convincere L<font style="font-size:8px">A</font>TEX a comportarsi bene. Nel seguito si</nobr></div>
+<div style="position:absolute;top:26354;left:135"><nobr>adopereranno le figure come esempio, ma tutto ci`o pu`o applicarsi anche ad altri oggetti flottanti.</nobr></div>
+<div style="position:absolute;top:26378;left:135"><nobr>I problemi pi`u frequenti con gli oggetti flottanti sono:</nobr></div>
+<div style="position:absolute;top:26414;left:153"><nobr>1. Si desidera un oggetto in una certa posizione nel testo, ma L<font style="font-size:8px">A</font>TEX lo sposta, solitamente nella</nobr></div>
+<div style="position:absolute;top:26432;left:172"><nobr>pagina successiva.</nobr></div>
+<div style="position:absolute;top:26462;left:153"><nobr>2. Da un certo punto in avanti, L<font style="font-size:8px">A</font>TEX sposta tutti gli oggetti flottanti alla fine del documento</nobr></div>
+<div style="position:absolute;top:26480;left:172"><nobr>o alla fine del capitolo.</nobr></div>
+<div style="position:absolute;top:26510;left:153"><nobr>3. L<font style="font-size:8px">A</font>TEX si lamenta del fatto che ci sono troppi oggetti flottanti (Too many floats).</nobr></div>
+<div style="position:absolute;top:26578;left:445"><nobr>21</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:26677;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=22><b>Page 22</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:11px;font-family:Times">
+<div style="position:absolute;top:26974;left:135"><nobr>\setlength{\unitlength}{18mm}</nobr></div>
+<div style="position:absolute;top:26990;left:135"><nobr>\newcommand{\blob}{\rule[-.2\unitlength]{2\unitlength}{.5\unitlength}}</nobr></div>
+<div style="position:absolute;top:27023;left:135"><nobr>\newcommand\rblob{\thepage</nobr></div>
+<div style="position:absolute;top:27039;left:149"><nobr>\begin{picture}(0,0)</nobr></div>
+<div style="position:absolute;top:27056;left:163"><nobr>\put(1,-\value{section}){\blob}</nobr></div>
+<div style="position:absolute;top:27072;left:149"><nobr>\end{picture}}</nobr></div>
+<div style="position:absolute;top:27105;left:135"><nobr>\newcommand\lblob{%</nobr></div>
+<div style="position:absolute;top:27121;left:149"><nobr>\begin{picture}(0,0)</nobr></div>
+<div style="position:absolute;top:27138;left:163"><nobr>\put(-3,-\value{section}){\blob}</nobr></div>
+<div style="position:absolute;top:27154;left:149"><nobr>\end{picture}%</nobr></div>
+<div style="position:absolute;top:27171;left:149"><nobr>\thepage}</nobr></div>
+<div style="position:absolute;top:27204;left:135"><nobr>\pagestyle{fancy}</nobr></div>
+<div style="position:absolute;top:27220;left:135"><nobr>\cfoot{}</nobr></div>
+<div style="position:absolute;top:27253;left:135"><nobr>\newcounter{line}</nobr></div>
+<div style="position:absolute;top:27269;left:135"><nobr>\newcommand{\secname}[1]{\addtocounter{line}{1}%</nobr></div>
+<div style="position:absolute;top:27286;left:149"><nobr>\put(1,-\value{line}){\blob}</nobr></div>
+<div style="position:absolute;top:27302;left:149"><nobr>\put(-7.5,-\value{line}){\Large \arabic{line}}</nobr></div>
+<div style="position:absolute;top:27319;left:149"><nobr>\put(-7,-\value{line}){\Large #1}}</nobr></div>
+<div style="position:absolute;top:27352;left:135"><nobr>\newcommand{\overview}{\thepage</nobr></div>
+<div style="position:absolute;top:27368;left:149"><nobr>\begin{picture}(0,0)</nobr></div>
+<div style="position:absolute;top:27384;left:163"><nobr>\secname{Introduzione}</nobr></div>
+<div style="position:absolute;top:27401;left:163"><nobr>\secname{Il primo anno}</nobr></div>
+<div style="position:absolute;top:27417;left:163"><nobr>\secname{Specializzazione}</nobr></div>
+<div style="position:absolute;top:27434;left:135"><nobr>...etc...</nobr></div>
+<div style="position:absolute;top:27450;left:149"><nobr>\end{picture}}</nobr></div>
+<div style="position:absolute;top:27483;left:135"><nobr>\begin{document}</nobr></div>
+<div style="position:absolute;top:27500;left:135"><nobr>\fancyhead[R]{\overview}\mbox{}\newpage % Questo produce la pagina di riepilogo</nobr></div>
+<div style="position:absolute;top:27516;left:135"><nobr>\fancyhead[R]{} % Qui si puo’ mettere altro &quot;front matter&quot;</nobr></div>
+<div style="position:absolute;top:27532;left:135"><nobr>\clearpage</nobr></div>
+<div style="position:absolute;top:27549;left:135"><nobr>\fancyhead[RE]{\rightmark}</nobr></div>
+<div style="position:absolute;top:27565;left:135"><nobr>\fancyhead[RO]{\rblob}</nobr></div>
+<div style="position:absolute;top:27582;left:135"><nobr>\fancyhead[LE]{\lblob}</nobr></div>
+<div style="position:absolute;top:27598;left:135"><nobr>\fancyhead[LO]{{\leftmark}</nobr></div>
+<div style="position:absolute;top:27615;left:135"><nobr>...</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:27660;left:334"><nobr>Figura 7: Codice per il thumb-index.</nobr></div>
+<div style="position:absolute;top:27840;left:445"><nobr>22</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:27939;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=23><b>Page 23</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:28107;left:135"><nobr>Nei primi due casi bisogna prima controllare se all’oggetto `e stato fornito un corretto parametro</nobr></div>
+<div style="position:absolute;top:28125;left:135"><nobr>di posizionamento (“placement”). Ad esempio, \begin{figure}[htp] specifica che la figura pu`o</nobr></div>
+<div style="position:absolute;top:28143;left:135"><nobr>essere posizionata: qui (“Here”) (cio`e nel punto del testo dove viene invocato il comando), nella</nobr></div>
+<div style="position:absolute;top:28161;left:135"><nobr>parte superiore (“Top”) di una pagina (che potrebbe essere la stessa pagina dove viene invocato il</nobr></div>
+<div style="position:absolute;top:28179;left:135"><nobr>comando), oppure in una pagina (“Page”) separata di soli oggetti flottanti. Si pu`o anche specificare</nobr></div>
+<div style="position:absolute;top:28198;left:135"><nobr>[b] per la parte inferiore (“Bottom”) di una pagina. L’ordine delle lettere `e irrilevante, non si pu`o</nobr></div>
+<div style="position:absolute;top:28214;left:135"><nobr>costringere L<font style="font-size:8px">A</font>TEX a provare prima in fondo ad una pagina e poi in cima specificando [bt].</nobr></div>
+<div style="position:absolute;top:28239;left:135"><nobr>Se L<font style="font-size:8px">A</font>TEX non mette gli oggetti flottanti dove ci si aspettava, la causa `e solitamente una delle</nobr></div>
+<div style="position:absolute;top:28257;left:135"><nobr>seguenti:</nobr></div>
+<div style="position:absolute;top:28289;left:153"><nobr>1. L’oggetto era troppo grande per quella pagina. In questo caso deve essere spostato nella</nobr></div>
+<div style="position:absolute;top:28307;left:172"><nobr>pagina successiva, o anche oltre. Se non si `e specificato [t] o [b] come parametro di posi-</nobr></div>
+<div style="position:absolute;top:28325;left:172"><nobr>zionamento, L<font style="font-size:8px">A</font>TEX deve tenerlo in memoria finché ne ha abbastanza per una pagina di soli</nobr></div>
+<div style="position:absolute;top:28343;left:172"><nobr>oggetti flottanti. Per questo motivo, `e meglio non specificare solo [h]. Se si vuole dare a</nobr></div>
+<div style="position:absolute;top:28361;left:172"><nobr>L<font style="font-size:8px">A</font>TEX la possibilit`a di mettere l’oggetto in una pagina di soli oggetti mobili, bisogna anche</nobr></div>
+<div style="position:absolute;top:28379;left:172"><nobr>specificare [p].</nobr></div>
+<div style="position:absolute;top:28407;left:153"><nobr>2. Il posizionamento violerebbe i vincoli imposti dai parametri di L<font style="font-size:8px">A</font>TEX riguardanti il posizio-</nobr></div>
+<div style="position:absolute;top:28425;left:172"><nobr>namento degli oggetti flottanti. Questa `e una delle cause pi`u frequenti e pu`o essere corretta</nobr></div>
+<div style="position:absolute;top:28443;left:172"><nobr>facilmente cambiando i parametri. Eccone un elenco:</nobr></div>
+<div style="position:absolute;top:28477;left:315"><nobr>Contatori – modificabili con \setcounter</nobr></div>
+<div style="position:absolute;top:28497;left:184"><nobr>topnumber</nobr></div>
+<div style="position:absolute;top:28495;left:343"><nobr>Numero massimo di oggetti in cima alla pagina</nobr></div>
+<div style="position:absolute;top:28495;left:707"><nobr>2</nobr></div>
+<div style="position:absolute;top:28515;left:184"><nobr>bottomnumber</nobr></div>
+<div style="position:absolute;top:28513;left:343"><nobr>Numero massimo di oggetti in fondo alla pagina</nobr></div>
+<div style="position:absolute;top:28513;left:707"><nobr>1</nobr></div>
+<div style="position:absolute;top:28533;left:184"><nobr>totalnumber</nobr></div>
+<div style="position:absolute;top:28531;left:343"><nobr>Numero massimo di oggetti su una pagina</nobr></div>
+<div style="position:absolute;top:28531;left:707"><nobr>3</nobr></div>
+<div style="position:absolute;top:28550;left:309"><nobr>Comandi – modificabili con \renewcommand</nobr></div>
+<div style="position:absolute;top:28570;left:184"><nobr>\topfraction</nobr></div>
+<div style="position:absolute;top:28568;left:343"><nobr>Massima frazione della parte superiore della pagina</nobr></div>
+<div style="position:absolute;top:28586;left:343"><nobr>allocabile ad oggetti flottanti</nobr></div>
+<div style="position:absolute;top:28568;left:701"><nobr>0.7</nobr></div>
+<div style="position:absolute;top:28605;left:184"><nobr>\bottomfraction</nobr></div>
+<div style="position:absolute;top:28604;left:343"><nobr>Massima frazione della parte inferiore della pagina</nobr></div>
+<div style="position:absolute;top:28622;left:343"><nobr>allocabile ad oggetti flottanti</nobr></div>
+<div style="position:absolute;top:28604;left:701"><nobr>0.3</nobr></div>
+<div style="position:absolute;top:28641;left:184"><nobr>\textfraction</nobr></div>
+<div style="position:absolute;top:28640;left:343"><nobr>Minima frazione della pagina da allocare al testo</nobr></div>
+<div style="position:absolute;top:28640;left:701"><nobr>0.2</nobr></div>
+<div style="position:absolute;top:28659;left:184"><nobr>\floatpagefraction Minima frazione di una pagina di soli oggetti flottanti</nobr></div>
+<div style="position:absolute;top:28676;left:343"><nobr>da allocare ad essi</nobr></div>
+<div style="position:absolute;top:28658;left:701"><nobr>0.5</nobr></div>
+<div style="position:absolute;top:28710;left:135"><nobr>Possono essercene altri nel caso di oggetti flottanti larghi due colonne in documenti a due colonne.</nobr></div>
+<div style="position:absolute;top:28735;left:135"><nobr>Nella colonna di destra sono rappresentati i valori predefiniti per le classi L<font style="font-size:8px">A</font>TEX standard. Altre</nobr></div>
+<div style="position:absolute;top:28753;left:135"><nobr>classi potrebbero usare valori diversi. Come si pu`o notare, con i valori predefiniti, un oggetto non</nobr></div>
+<div style="position:absolute;top:28771;left:135"><nobr>pu`o comparire in fondo ad una pagina se la sua altezza `e maggiore del 30% dell’altezza della</nobr></div>
+<div style="position:absolute;top:28789;left:135"><nobr>pagina. Quindi se si specifica [hb] per un oggetto che `e pi`u alto di questa misura, verr`a spostato</nobr></div>
+<div style="position:absolute;top:28807;left:135"><nobr>in una pagina di soli oggetti flottanti. Tuttavia, se `e alto meno del 50% dell’altezza della pagina,</nobr></div>
+<div style="position:absolute;top:28824;left:135"><nobr>dovr`a aspettare finché qualche altro oggetto viene inserito, prima che una pagina di questo tipo</nobr></div>
+<div style="position:absolute;top:28842;left:135"><nobr>possa essere riempita in modo da soddisfare il parametro \floatpagefraction. Se ci si imbatte</nobr></div>
+<div style="position:absolute;top:28860;left:135"><nobr>in comportamenti di questo tipo, si possono facilmente aggiustare i parametri, ad esempio:</nobr></div>
+<div style="position:absolute;top:28894;left:135"><nobr>\renewcommand{\textfraction}{0.05}</nobr></div>
+<div style="position:absolute;top:28912;left:135"><nobr>\renewcommand{\topfraction}{0.95}</nobr></div>
+<div style="position:absolute;top:28930;left:135"><nobr>\renewcommand{\bottomfraction}{0.95}</nobr></div>
+<div style="position:absolute;top:28948;left:135"><nobr>\renewcommand{\floatpagefraction}{0.35}</nobr></div>
+<div style="position:absolute;top:28966;left:135"><nobr>\setcounter{totalnumber}{5}</nobr></div>
+<div style="position:absolute;top:28997;left:135"><nobr>Bisogna stare attenti a non rendere \floatpagefraction troppo piccolo, altrimenti si otterranno</nobr></div>
+<div style="position:absolute;top:29015;left:135"><nobr>tante piccole pagine di soli oggetti flottanti.</nobr></div>
+<div style="position:absolute;top:29039;left:135"><nobr>Si pu`o costringere L<font style="font-size:8px">A</font>TEX ad ignorare gran parte dei parametri per uno specifico oggetto includendo</nobr></div>
+<div style="position:absolute;top:29057;left:135"><nobr>un punto esclamativo (!) tra i parametri di posizionamento, ad esempio</nobr></div>
+<div style="position:absolute;top:29102;left:445"><nobr>23</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:29201;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=24><b>Page 24</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:29370;left:135"><nobr>\begin{figure}[!htb]</nobr></div>
+<div style="position:absolute;top:29403;left:135"><nobr>Oggetti flottanti che contengono [t] tra i parametri possono essere posizionati prima del punto in</nobr></div>
+<div style="position:absolute;top:29421;left:135"><nobr>cui ne viene richiesto l’inserimento (ma sulla stessa pagina). Questo `e il comportamento normale</nobr></div>
+<div style="position:absolute;top:29439;left:135"><nobr>di L<font style="font-size:8px">A</font>TEX, ma ad alcuni questo non piace. Ci sono diversi modi di impedirlo:</nobr></div>
+<div style="position:absolute;top:29473;left:153"><nobr>1. Certamente cancellare [t] risolver`a, ma generalmente questo non `e desiderabile, in quanto</nobr></div>
+<div style="position:absolute;top:29491;left:172"><nobr>si potrebbe voler posizionare l’oggetto in cima alla pagina successiva.</nobr></div>
+<div style="position:absolute;top:29520;left:153"><nobr>2. Usare il pacchetto flafter, che fa in modo che gli oggetti flottanti non siano mai posizionati</nobr></div>
+<div style="position:absolute;top:29538;left:170"><nobr>“prematuramente”.</nobr></div>
+<div style="position:absolute;top:29566;left:153"><nobr>3. Usare il comando \suppressfloats[t]<font color="#ff0000" style="font-size:8px"><a href="#24">13</a></font>. Questo comando far`a in modo che gli oggeti flot-</nobr></div>
+<div style="position:absolute;top:29584;left:172"><nobr>tanti posizionati nella parte superiore di questa pagina siano spostati in quella successiva.</nobr></div>
+<div style="position:absolute;top:29602;left:172"><nobr>Questo pu`o essere fatto anche per il parametro [b] o senza parametro per tutti gli oggetti</nobr></div>
+<div style="position:absolute;top:29620;left:172"><nobr>di questa pagina.</nobr></div>
+<div style="position:absolute;top:29654;left:135"><nobr>Se nonostante tutti questi tentativi L<font style="font-size:8px">A</font>TEX sposta ancora gli oggetti alla fine del documento o di</nobr></div>
+<div style="position:absolute;top:29672;left:135"><nobr>un capitolo, si pu`o usare un comando \clearpage. Esso comincer`a una nuova pagina, e vi inserir`a</nobr></div>
+<div style="position:absolute;top:29690;left:135"><nobr>tutti gli oggetti flottanti in coda prima di continuare. Se non si desidera avere un’interruzione di</nobr></div>
+<div style="position:absolute;top:29708;left:135"><nobr>pagina, si pu`o usare il pacchetto afterpage e il seguente comando:</nobr></div>
+<div style="position:absolute;top:29743;left:135"><nobr>\afterpage{clearpage}</nobr></div>
+<div style="position:absolute;top:29776;left:135"><nobr>In questo modo, L<font style="font-size:8px">A</font>TEX aspetter`a fino alla fine della pagina corrente e poi scaricher`a tutti gli oggetti</nobr></div>
+<div style="position:absolute;top:29794;left:135"><nobr>flottanti in coda. In alcune circostanze patologiche, comunque, afterpage potrebbe fornire risultati</nobr></div>
+<div style="position:absolute;top:29812;left:135"><nobr>inaspettati.</nobr></div>
+<div style="position:absolute;top:29837;left:135"><nobr>Per finire, se si vuole un oggetto flottante solo dove `e stato specificato, senza che L<font style="font-size:8px">A</font>TEX lo sposti</nobr></div>
+<div style="position:absolute;top:29855;left:135"><nobr>da qualche altra parte, si pu`o usare il pacchetto float e inserire il comando:</nobr></div>
+<div style="position:absolute;top:29890;left:135"><nobr>\restylefloat{figure}</nobr></div>
+<div style="position:absolute;top:29923;left:135"><nobr>nel preambolo. Si pu`o ora specificare [H] come parametro di posizionamento, che significa “QUI e</nobr></div>
+<div style="position:absolute;top:29941;left:135"><nobr>soltanto QUI”. Questo, comunque, potrebbe causare un’interruzione di pagina indesiderata<a href="#24"></a><font color="#ff0000" style="font-size:8px"><a href="#24">14</a></font>. Se</nobr></div>
+<div style="position:absolute;top:29959;left:135"><nobr>la si vuole evitare, cio`e lasciare che L<font style="font-size:8px">A</font>TEX sposti l’oggetto solo se non ci sta sulla pagina, si usi il</nobr></div>
+<div style="position:absolute;top:29977;left:135"><nobr>pacchetto afterpage e il seguente comando:</nobr></div>
+<div style="position:absolute;top:30012;left:135"><nobr>\afterpage{\clearpage \begin{figure}[H] \ldots \end{figure}}</nobr></div>
+<div style="position:absolute;top:30045;left:135"><nobr>Il fatto che L<font style="font-size:8px">A</font>TEX si lamenti che ci sono troppi oggetti flottanti (Too many floats) `e solitamente</nobr></div>
+<div style="position:absolute;top:30063;left:135"><nobr>causato da uno dei problemi sopracitati: oggetti impossibili da sistemare e L<font style="font-size:8px">A</font>TEX che di conseguenza</nobr></div>
+<div style="position:absolute;top:30081;left:135"><nobr>ne raccoglie troppi in coda. Le soluzioni fornite sopra, specialmente quelle contenenti \clearpage,</nobr></div>
+<div style="position:absolute;top:30099;left:135"><nobr>di solito funzionano. In alcuni casi ci sono veramente troppi oggetti flottanti, in quanto L<font style="font-size:8px">A</font>TEX ha</nobr></div>
+<div style="position:absolute;top:30117;left:135"><nobr>un numero limitato di “scatole” in cui memorizzare gli oggetti flottanti. Il pacchetto morefloats pu`o</nobr></div>
+<div style="position:absolute;top:30134;left:135"><nobr>essere usato per aumentare questo numero. Se ancora non bastano, bisogna modificare una copia</nobr></div>
+<div style="position:absolute;top:30152;left:135"><nobr>privata di questo file, ma ci potrebbe ancora essere qualche limite che non pu`o essere oltrepassato.</nobr></div>
+<div style="position:absolute;top:30170;left:135"><nobr>A questo punto l’unica cosa che rimane da fare `e cambiare il documento.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:30221;left:135"><nobr>22 Oggetti flottanti su pi`u pagine</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:30265;left:135"><nobr>Gli oggetti flottanti di L<font style="font-size:8px">A</font>TEX non possono essere spezzati su pi`u pagine. Qualche volta, comunque,</nobr></div>
+<div style="position:absolute;top:30283;left:135"><nobr>sorge la necessit`a di disporre tabelle o figure che non stanno su una pagina. La soluzione pi`u</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:30305;left:146"><nobr>13<font style="font-size:9px">Questo comando e il parametro di posizionamento [!] non sono definiti in L</font>A<font style="font-size:9px">TEX2.09.</font></nobr></div>
+<div style="position:absolute;top:30319;left:146"><nobr>14<font style="font-size:9px">Esisteva uno stile here.sty con lo stesso effetto, ma questo `e incompatibile con L</font>A<font style="font-size:9px">TEX 2ε</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:30364;left:445"><nobr>24</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:30463;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=25><b>Page 25</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:30631;left:135"><nobr>semplice `e quella di suddividerle in pi`u ambienti table o figure, ma questo causa diversi effetti</nobr></div>
+<div style="position:absolute;top:30649;left:135"><nobr>indesiderati:</nobr></div>
+<div style="position:absolute;top:30684;left:157"><nobr>• Dove si divide? Questo `e generalmente pi`u difficile per le tabelle che per le figure.</nobr></div>
+<div style="position:absolute;top:30714;left:157"><nobr>• Come tenerle unite?</nobr></div>
+<div style="position:absolute;top:30744;left:157"><nobr>• Bisognerebbe avere una sola voce nell’elenco delle figure/tabelle.</nobr></div>
+<div style="position:absolute;top:30781;left:135"><nobr>Anche se questi problemi non sempre sono completamente risolvibili, ecco un paio di suggerimenti:</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:30827;left:135"><nobr>22.1 Tabelle</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:30863;left:135"><nobr>Per tabelle pi`u lunghe di una pagina si pu`o usare il pacchetto longtable. Questo pacchetto definisce</nobr></div>
+<div style="position:absolute;top:30881;left:135"><nobr>un ambiente longtable che `e una specie di fusione tra table e tabular. Ha approssimativamente</nobr></div>
+<div style="position:absolute;top:30899;left:135"><nobr>la stessa sintassi dell’ambiente tabular, ma gli aggiunge alcune funzionalit`a di table, come le</nobr></div>
+<div style="position:absolute;top:30917;left:135"><nobr>didascalie. Le longtable saranno automaticamente spezzate quando non ci stanno su una pagina,</nobr></div>
+<div style="position:absolute;top:30935;left:135"><nobr>e saranno immesse nell’elenco delle tabelle se si fornisce una didascalia. Esse non saranno flottanti,</nobr></div>
+<div style="position:absolute;top:30953;left:135"><nobr>comunque, e non possono essere usate all’interno di un ambiente flottante. Questo potrebbe signi-</nobr></div>
+<div style="position:absolute;top:30971;left:135"><nobr>ficare che un altro ambiente table, che `e stato definito prima della longtable, verr`a spostato pi`u</nobr></div>
+<div style="position:absolute;top:30989;left:135"><nobr>avanti, e quindi la numerazione potrebbe risultarne alterata. Inoltre, se la longtable comincia</nobr></div>
+<div style="position:absolute;top:31007;left:135"><nobr>troppo in basso nella pagina, non `e una vista piacevole. Se l’intenzione `e quella di far cominciare</nobr></div>
+<div style="position:absolute;top:31025;left:135"><nobr>la longtable all’inizio di una pagina, la cosa migliore da fare `e quella di includerla in un comando</nobr></div>
+<div style="position:absolute;top:31044;left:135"><nobr>\afterpage (fornito dal pacchetto afterpage). Dal momento che una longtable `e grande per defi-</nobr></div>
+<div style="position:absolute;top:31061;left:135"><nobr>nizione, `e meglio metterla in un file separato, e usare \input all’interno del comando \afterpage:</nobr></div>
+<div style="position:absolute;top:31116;left:135"><nobr>\afterpage{\input{miatabella}}</nobr></div>
+<div style="position:absolute;top:31155;left:135"><nobr>\afterpage{\clearpage\input{miatabella}}</nobr></div>
+<div style="position:absolute;top:31194;left:135"><nobr>La seconda forma ha il vantaggio che alcuni degli oggetti flottanti pendenti potranno essere</nobr></div>
+<div style="position:absolute;top:31211;left:135"><nobr>stampati.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:31258;left:135"><nobr>22.2 Figure</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:31294;left:135"><nobr>Non esiste una soluzione equivalente tipo longfigure, perci`o le figure vanno spezzate a cura del-</nobr></div>
+<div style="position:absolute;top:31312;left:135"><nobr>l’autore. Generalmente questo `e il problema minore. Comunque, il problema che si pone adesso `e</nobr></div>
+<div style="position:absolute;top:31330;left:135"><nobr>come tenerle unite, cio`e come distribuire i pezzi su pi`u pagine, e ottenere una sola voce nell’elenco</nobr></div>
+<div style="position:absolute;top:31347;left:135"><nobr>delle figure.</nobr></div>
+<div style="position:absolute;top:31372;left:135"><nobr>Bisogna spezzare la figura in pi`u parti, e mettere ogni pezzo in un diverso ambiente figure.</nobr></div>
+<div style="position:absolute;top:31390;left:135"><nobr>Per tenerli insieme `e meglio usare l’argomento [p], in modo che saranno disposti su pagine di soli</nobr></div>
+<div style="position:absolute;top:31408;left:135"><nobr>oggetti flottanti. Dato che sono pi`u grandi di una pagina, questo `e appropriato. Alla prima parte si</nobr></div>
+<div style="position:absolute;top:31426;left:135"><nobr>attribuir`a quindi una didascalia (\caption), mentre le parti successive ne saranno prive. Se si vuole</nobr></div>
+<div style="position:absolute;top:31444;left:135"><nobr>aggiungere testo a mo’ di didascalia, inseritelo come testo normale, anziché come \caption, in</nobr></div>
+<div style="position:absolute;top:31462;left:135"><nobr>modo che non sar`a inserito nell’elenco delle figure. Potrebbe anche essere desiderabile l’utilizzo del</nobr></div>
+<div style="position:absolute;top:31479;left:135"><nobr>comando \clearpage, proprio come per le longtable, racchiudendolo nel comando \afterpage.</nobr></div>
+<div style="position:absolute;top:31497;left:135"><nobr>Ad esempio:</nobr></div>
+<div style="position:absolute;top:31535;left:135"><nobr>\afterpage{\clearpage\input{miafigura}}</nobr></div>
+<div style="position:absolute;top:31570;left:135"><nobr>dove miafigura.tex contiene:</nobr></div>
+<div style="position:absolute;top:31626;left:445"><nobr>25</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:31725;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=26><b>Page 26</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:31894;left:135"><nobr>\begin{figure}[p]</nobr></div>
+<div style="position:absolute;top:31912;left:135"><nobr>\includegraphics{miafigura1.eps}</nobr></div>
+<div style="position:absolute;top:31930;left:135"><nobr>\caption{Questa \‘e una figura spezzata su pi\‘u pagine.}</nobr></div>
+<div style="position:absolute;top:31948;left:135"><nobr>\label{fig:xxx}</nobr></div>
+<div style="position:absolute;top:31966;left:135"><nobr>\end{figure}</nobr></div>
+<div style="position:absolute;top:31984;left:135"><nobr>\begin{figure}[p]</nobr></div>
+<div style="position:absolute;top:32002;left:135"><nobr>\includegraphics{miafigura2.eps}</nobr></div>
+<div style="position:absolute;top:32020;left:135"><nobr>\begin{center}</nobr></div>
+<div style="position:absolute;top:32038;left:135"><nobr>Figura~\ref{fig:xxx} (continua)</nobr></div>
+<div style="position:absolute;top:32055;left:135"><nobr>\end{center}</nobr></div>
+<div style="position:absolute;top:32073;left:135"><nobr>\end{figure}</nobr></div>
+<div style="position:absolute;top:32109;left:135"><nobr>Bisogna accertarsi che l’ultima parte sia grande abbastanza, altrimenti L<font style="font-size:8px">A</font>TEX potrebbe decidere</nobr></div>
+<div style="position:absolute;top:32126;left:135"><nobr>di posticiparla fino a che ha raccolto abbastanza oggetti flottanti. Questo si pu`o fare rendendo</nobr></div>
+<div style="position:absolute;top:32144;left:135"><nobr>la figura grande abbastanza (ad esempio aggiungendo un po’ di \vspace), oppure aggiustando il</nobr></div>
+<div style="position:absolute;top:32162;left:135"><nobr>parametro \floatpagefraction.</nobr></div>
+<div style="position:absolute;top:32187;left:135"><nobr>Se si vuole far cominciare la figura spezzata in una pagina a sinistra (in una pagina pari) si pu`o</nobr></div>
+<div style="position:absolute;top:32205;left:135"><nobr>introdurre una condizione (fornita dal pacchetto ifthen) nel comando \afterpage:</nobr></div>
+<div style="position:absolute;top:32242;left:135"><nobr>\afterpage{\clearpage</nobr></div>
+<div style="position:absolute;top:32260;left:135"><nobr>\ifthenelse{\isodd{\value{page}}{\afterpage{\input{miafigura}}} % pagina dispari</nobr></div>
+<div style="position:absolute;top:32278;left:166"><nobr>{\input{miafigura}}}} % pagina pari</nobr></div>
+<div style="position:absolute;top:32313;left:135"><nobr>Se ci sono troppi oggetti flottanti nella pagina che viene saltata, comunque, pu`o darsi che la figura</nobr></div>
+<div style="position:absolute;top:32331;left:135"><nobr>non cominci sulla pagina pari.</nobr></div>
+<div style="position:absolute;top:32888;left:445"><nobr>26</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:32987;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=27><b>Page 27</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:33150;left:135"><nobr>23 Contatti</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:33194;left:135"><nobr>Piet van Oostrum</nobr></div>
+<div style="position:absolute;top:33212;left:135"><nobr>Dept. of Computer Science</nobr></div>
+<div style="position:absolute;top:33230;left:135"><nobr>Utrecht University</nobr></div>
+<div style="position:absolute;top:33248;left:135"><nobr>P.O. Box 80.089</nobr></div>
+<div style="position:absolute;top:33266;left:135"><nobr>3508 TB Utrecht, The Netherlands</nobr></div>
+<div style="position:absolute;top:33284;left:135"><nobr>Telefono: +31 30 2531806 Telefax: +31 30 2513791</nobr></div>
+<div style="position:absolute;top:33302;left:135"><nobr>E-mail: piet@cs.ruu.nl</nobr></div>
+<div style="position:absolute;top:33320;left:135"><nobr>WWW: http://www.cs.ruu.nl/people/piet</nobr></div>
+<div style="position:absolute;top:34150;left:445"><nobr>27</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:34249;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=28><b>Page 28</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:34435;left:135"><nobr>Indice analitico</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:34470;left:135"><nobr>\afterpage, <font color="#ff0000"><a href="#25">25</a></font></nobr></div>
+<div style="position:absolute;top:34488;left:135"><nobr>afterpage.sty, <font color="#ff0000"><a href="#17">17</a></font><a href="#17"></a>, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:34505;left:135"><nobr>animazioni, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:34537;left:135"><nobr>bibbie, <font color="#ff0000"><a href="#21">21</a></font></nobr></div>
+<div style="position:absolute;top:34555;left:135"><nobr>Bibliografia, <font color="#ff0000"><a href="#10">10</a></font></nobr></div>
+<div style="position:absolute;top:34574;left:135"><nobr>\bottomfraction, <font color="#ff0000"><a href="#23">23</a></font></nobr></div>
+<div style="position:absolute;top:34592;left:135"><nobr>bottomnumber, <font color="#ff0000"><a href="#23">23</a></font></nobr></div>
+<div style="position:absolute;top:34625;left:135"><nobr>\cfoot, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:34643;left:135"><nobr>\chaptermark, <font color="#ff0000"><a href="#9">9</a></font><a href="#9"></a>, <font color="#ff0000"><a href="#10">10</a></font></nobr></div>
+<div style="position:absolute;top:34661;left:135"><nobr>\chaptername, <font color="#ff0000"><a href="#9">9</a></font></nobr></div>
+<div style="position:absolute;top:34679;left:135"><nobr>\chead, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:34697;left:135"><nobr>\cleardoublepage, <font color="#ff0000"><a href="#15">15</a></font></nobr></div>
+<div style="position:absolute;top:34714;left:135"><nobr>\clearpage, <font color="#ff0000"><a href="#15">15</a></font>, <font color="#ff0000"><a href="#17">17</a></font></nobr></div>
+<div style="position:absolute;top:34746;left:135"><nobr>dizionario, <font color="#ff0000"><a href="#11">11</a></font></nobr></div>
+<div style="position:absolute;top:34778;left:135"><nobr>epsf, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:34796;left:135"><nobr>epsfig, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:34815;left:135"><nobr>\extramarks, <font color="#ff0000"><a href="#18">18</a></font>, <font color="#ff0000"><a href="#19">19</a></font></nobr></div>
+<div style="position:absolute;top:34848;left:135"><nobr>\fancyfoot, <font color="#ff0000"><a href="#7">7</a></font></nobr></div>
+<div style="position:absolute;top:34866;left:135"><nobr>\fancyhead, <font color="#ff0000"><a href="#7">7</a></font></nobr></div>
+<div style="position:absolute;top:34884;left:135"><nobr>\fancyhf, <font color="#ff0000"><a href="#7">7</a></font></nobr></div>
+<div style="position:absolute;top:34901;left:135"><nobr>\firstleftmark, <font color="#ff0000"><a href="#11">11</a></font><a href="#11"></a>, <font color="#ff0000"><a href="#18">18</a></font></nobr></div>
+<div style="position:absolute;top:34919;left:135"><nobr>\firstxmark, <font color="#ff0000"><a href="#18">18</a></font></nobr></div>
+<div style="position:absolute;top:34937;left:135"><nobr>fixmarks.sty, <font color="#ff0000"><a href="#12">12</a></font></nobr></div>
+<div style="position:absolute;top:34954;left:135"><nobr>float page, <font color="#ff0000"><a href="#15">15</a></font></nobr></div>
+<div style="position:absolute;top:34973;left:135"><nobr>\floatpagefraction, <font color="#ff0000"><a href="#23">23</a></font>, <font color="#ff0000"><a href="#26">26</a></font></nobr></div>
+<div style="position:absolute;top:34991;left:135"><nobr>\footruleskip, <font color="#ff0000"><a href="#13">13</a></font></nobr></div>
+<div style="position:absolute;top:35009;left:135"><nobr>\footrulewidth, <font color="#ff0000"><a href="#6">6</a></font>, <font color="#ff0000"><a href="#9">9</a></font><a href="#9"></a>, <font color="#ff0000"><a href="#13">13</a></font></nobr></div>
+<div style="position:absolute;top:35027;left:135"><nobr>\footskip, <font color="#ff0000"><a href="#12">12</a></font></nobr></div>
+<div style="position:absolute;top:35058;left:135"><nobr>graphics, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:35076;left:135"><nobr>graphicx, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:35110;left:135"><nobr>\headheight, <font color="#ff0000"><a href="#12">12</a></font></nobr></div>
+<div style="position:absolute;top:35128;left:135"><nobr>\headrulewidth, <font color="#ff0000"><a href="#6">6</a></font>, <font color="#ff0000"><a href="#9">9</a></font><a href="#9"></a>, <font color="#ff0000"><a href="#13">13</a></font></nobr></div>
+<div style="position:absolute;top:35159;left:135"><nobr>ifthen, <font color="#ff0000"><a href="#11">11</a></font></nobr></div>
+<div style="position:absolute;top:35177;left:135"><nobr>interruzione di pagina, <font color="#ff0000"><a href="#19">19</a></font></nobr></div>
+<div style="position:absolute;top:35211;left:135"><nobr>lastpage.sty, <font color="#ff0000"><a href="#16">16</a></font></nobr></div>
+<div style="position:absolute;top:35228;left:135"><nobr>\lastrightmark, <font color="#ff0000"><a href="#18">18</a></font></nobr></div>
+<div style="position:absolute;top:35246;left:135"><nobr>\lastxmark, <font color="#ff0000"><a href="#18">18</a></font></nobr></div>
+<div style="position:absolute;top:35264;left:135"><nobr>\leftmark, <font color="#ff0000"><a href="#8">8</a></font>, <font color="#ff0000"><a href="#9">9</a></font></nobr></div>
+<div style="position:absolute;top:35282;left:135"><nobr>\lfoot, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:35300;left:135"><nobr>\lhead, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:35317;left:135"><nobr>linee multiple, <font color="#ff0000"><a href="#12">12</a></font></nobr></div>
+<div style="position:absolute;top:35335;left:135"><nobr>longtable, <font color="#ff0000"><a href="#25">25</a></font></nobr></div>
+<div style="position:absolute;top:35369;left:135"><nobr>\maketitle, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:34470;left:478"><nobr>\MakeUppercase, <font color="#ff0000"><a href="#10">10</a></font></nobr></div>
+<div style="position:absolute;top:34487;left:478"><nobr>margine, <font color="#ff0000"><a href="#19">19</a></font></nobr></div>
+<div style="position:absolute;top:34506;left:478"><nobr>\marginparsep, <font color="#ff0000"><a href="#13">13</a></font></nobr></div>
+<div style="position:absolute;top:34524;left:478"><nobr>\marginparwidth, <font color="#ff0000"><a href="#13">13</a></font></nobr></div>
+<div style="position:absolute;top:34557;left:478"><nobr>nofm.sty, <font color="#ff0000"><a href="#16">16</a></font></nobr></div>
+<div style="position:absolute;top:34589;left:478"><nobr>Overfull \vbox ..., <font color="#ff0000"><a href="#12">12</a></font></nobr></div>
+<div style="position:absolute;top:34623;left:478"><nobr>\pagenumbering, <font color="#ff0000"><a href="#17">17</a></font></nobr></div>
+<div style="position:absolute;top:34639;left:478"><nobr>pagine vuote, <font color="#ff0000"><a href="#16">16</a></font></nobr></div>
+<div style="position:absolute;top:34659;left:478"><nobr>picture, <font color="#ff0000"><a href="#19">19</a></font>, <font color="#ff0000"><a href="#20">20</a></font></nobr></div>
+<div style="position:absolute;top:34691;left:478"><nobr>\rfoot, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:34709;left:478"><nobr>\rhead, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:34727;left:478"><nobr>\rightmark, <font color="#ff0000"><a href="#8">8</a></font>, <font color="#ff0000"><a href="#9">9</a></font></nobr></div>
+<div style="position:absolute;top:34760;left:478"><nobr>\sectionmark, <font color="#ff0000"><a href="#9">9</a></font></nobr></div>
+<div style="position:absolute;top:34777;left:478"><nobr>Segue. . . , <font color="#ff0000"><a href="#18">18</a></font></nobr></div>
+<div style="position:absolute;top:34795;left:478"><nobr>stile di pagina</nobr></div>
+<div style="position:absolute;top:34813;left:508"><nobr>cambiamenti, <font color="#ff0000"><a href="#17">17</a></font></nobr></div>
+<div style="position:absolute;top:34832;left:508"><nobr>empty, <font color="#ff0000"><a href="#15">15</a></font></nobr></div>
+<div style="position:absolute;top:34850;left:508"><nobr>fancy, <font color="#ff0000"><a href="#5">5</a></font></nobr></div>
+<div style="position:absolute;top:34868;left:508"><nobr>plain, <font color="#ff0000"><a href="#8">8</a></font>, <font color="#ff0000"><a href="#14">14</a></font></nobr></div>
+<div style="position:absolute;top:34886;left:478"><nobr>\subsectionmark, <font color="#ff0000"><a href="#9">9</a></font></nobr></div>
+<div style="position:absolute;top:34919;left:478"><nobr>\textfraction, <font color="#ff0000"><a href="#23">23</a></font></nobr></div>
+<div style="position:absolute;top:34936;left:478"><nobr>\thechapter, <font color="#ff0000"><a href="#9">9</a></font></nobr></div>
+<div style="position:absolute;top:34954;left:478"><nobr>\thispagestyle, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:34971;left:478"><nobr>thumb-index, <font color="#ff0000"><a href="#21">21</a></font></nobr></div>
+<div style="position:absolute;top:34990;left:478"><nobr>\topfraction, <font color="#ff0000"><a href="#23">23</a></font></nobr></div>
+<div style="position:absolute;top:35008;left:478"><nobr>topnumber, <font color="#ff0000"><a href="#23">23</a></font></nobr></div>
+<div style="position:absolute;top:35026;left:478"><nobr>totalnumber, <font color="#ff0000"><a href="#23">23</a></font></nobr></div>
+<div style="position:absolute;top:35044;left:478"><nobr>twoside, <font color="#ff0000"><a href="#6">6</a></font></nobr></div>
+<div style="position:absolute;top:35077;left:478"><nobr>\uppercase, <font color="#ff0000"><a href="#10">10</a></font></nobr></div>
+<div style="position:absolute;top:35412;left:445"><nobr>28</nobr></div>
+</span></font>
+<!-- t55153r21a9c31312e31268n23u1l0m0k0 -->
+</body>
+</html>

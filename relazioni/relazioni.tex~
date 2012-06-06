@@ -764,7 +764,7 @@ valutare l'andamento della funzione d'onda quando si è molto distanti dalla buc
 Ciò è dovuto anche alle condizioni al bordo utilizzate: utilizzando la periodicità al bordo, la funzione d'onda interferisce poco dopo lo scattering
 con sè stessa. Inoltre, non è possibile diminuire le dimensioni del pacchetto e della buca, perchè così facendo,
 gli errori di discretizzazione darebbero problemi.
-\begin{figure}[hp]
+\begin{figure}[h]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
@@ -788,6 +788,54 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca5.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca6.png}}
- \caption{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.(continua)} 
+ \caption{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.} 
  \end{figure}
+ \subsection{Effetto tunnel}
+ Si studia il fenomeno dell'effetto tunnel analizzando il comportamento del sistema per una barriera di potenziale ``orizzontale'' di larghezza variabile.
+ \subsubsection{Barriera larga}
+ Si è cercato di studiare quantitativamente il fenomeno dell'effetto tunnel. Qualitativamente, perchè in questo caso non si conosce il valore dell'energia.
+ D'altronde, è possibile studiare come varia la situazione modificando i parametri che entrano in gioco nell'effetto tunnel: l'altezza della barriera di potenziale e la larghezza della stessa.
+ In entrambi i casi è stato fissato il potenziale a $1$, come nel caso dello scattering.
+ La larghezza della barriera è stata posta uguale a 20 (nelle unità di misura del problema).
+\begin{figure}[hp]
+ \centering
+ \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel1.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel2.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel3.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel4.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel5.png}}
+ \caption{Effetto tunnel contro una barrieri di potenziale larga 20.} 
+ \end{figure}
+ 
+ 
+ \subsubsection{Barriera stretta}
+ In questo caso, si è accorciata la larghezza della barriera di potenziale. Ora esso è molto più stretta rispetto alle dimensioni spaziali del pacchetto d'onda.
+ L'altezza della barriera è sempre pari a 1.
+\begin{figure}[hp]
+ \centering
+ \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel1.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel3.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel2.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel4.png}}
+  \caption{Effetto tunnel contro una barrieri di potenziale larga 1.} 
+ \end{figure}
+ \subsection{Diffrazione da doppia fenditura}
+ Questa parte mira a simulare l'esperimento della doppia fenditura, di grande importanza storica per lo sviluppo della meccanica quantistica.\\
+ Per fare ciò si è inserita una barriera di potenziale molto alta ( $V = 100$) con due fenditure larghe 5. La barriera è stata posta orizzontalmente, come la barriera di potenziale nel caso dell'effetto tunnel.
+ A causa del valore di $V$ è stato necessario eseguire molti più calcoli rispetto ai casi precedenti per avere una buona precisione. Infatti in questo caso
+ è stato necessario porre $\delta t = 0.1$ (invece che $\delta t = 0.5 $ nei casi precedenti) e aumentare l'ordine dello sviluppo in serie fino a 30.
+ Questo è causato proprio dal fatto che gli autovalori dell'hamiltoniana sono molto più elevati, a causa della barriera di potenziale.
+\begin{figure}[hp]
+ \centering
+ \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura1.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura2.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura3.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura4.png}}
+ \caption{Diffrazione da una doppia fenditura.} 
+ \end{figure}
+\begin{figure}[hp]
+\centering 
+ \includegraphics[width=0.4\columnwidth]{fenditura5.png}
+ \end{figure}
+ 
 \end{document}

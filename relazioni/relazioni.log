@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  5 JUN 2012 18:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  6 JUN 2012 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -856,38 +856,124 @@ File: scattering_buca6.png Graphic file (type png)
 Package pdftex.def Info: scattering_buca6.png used on input line 790.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
  [28 <./scattering1.png> <./scattering2.png>]
-[29 <./scattering3.png> <./scattering4.png> <./scattering5.png>] [30 <./scatter
-ing_buca1.png> <./scattering_buca2.png> <./scattering_buca3.png> <./scattering_
-buca4.png> <./scattering_buca5.png> <./scattering_buca6.png>] (./relazioni.aux)
- ) 
+<notunnel1.png, id=193, 225.09094pt x 225.84375pt>
+File: notunnel1.png Graphic file (type png)
+ <use notunnel1.png>
+Package pdftex.def Info: notunnel1.png used on input line 802.
+(pdftex.def)             Requested size: 167.2989pt x 167.8661pt.
+
+<notunnel2.png, id=194, 226.59656pt x 226.59656pt>
+File: notunnel2.png Graphic file (type png)
+ <use notunnel2.png>
+Package pdftex.def Info: notunnel2.png used on input line 803.
+(pdftex.def)             Requested size: 167.2989pt x 167.29848pt.
+
+<notunnel3.png, id=195, 225.09094pt x 225.84375pt>
+File: notunnel3.png Graphic file (type png)
+ <use notunnel3.png>
+Package pdftex.def Info: notunnel3.png used on input line 804.
+(pdftex.def)             Requested size: 167.2989pt x 167.8661pt.
+
+<notunnel4.png, id=196, 224.33812pt x 225.09094pt>
+File: notunnel4.png Graphic file (type png)
+ <use notunnel4.png>
+Package pdftex.def Info: notunnel4.png used on input line 805.
+(pdftex.def)             Requested size: 167.2989pt x 167.8664pt.
+
+<notunnel5.png, id=197, 225.84375pt x 226.59656pt>
+File: notunnel5.png Graphic file (type png)
+ <use notunnel5.png>
+Package pdftex.def Info: notunnel5.png used on input line 806.
+(pdftex.def)             Requested size: 167.2989pt x 167.86552pt.
+
+<tunnel1.png, id=198, 224.33812pt x 225.09094pt>
+File: tunnel1.png Graphic file (type png)
+ <use tunnel1.png>
+Package pdftex.def Info: tunnel1.png used on input line 816.
+(pdftex.def)             Requested size: 167.2989pt x 167.8664pt.
+
+<tunnel3.png, id=199, 223.58531pt x 224.33812pt>
+File: tunnel3.png Graphic file (type png)
+ <use tunnel3.png>
+Package pdftex.def Info: tunnel3.png used on input line 817.
+(pdftex.def)             Requested size: 167.2989pt x 167.86636pt.
+
+<tunnel2.png, id=200, 225.09094pt x 226.59656pt>
+File: tunnel2.png Graphic file (type png)
+ <use tunnel2.png>
+Package pdftex.def Info: tunnel2.png used on input line 818.
+(pdftex.def)             Requested size: 167.2989pt x 168.42566pt.
+
+<tunnel4.png, id=201, 225.09094pt x 225.09094pt>
+File: tunnel4.png Graphic file (type png)
+ <use tunnel4.png>
+Package pdftex.def Info: tunnel4.png used on input line 819.
+(pdftex.def)             Requested size: 167.2989pt x 167.30655pt.
+ [29 <./scattering3.png> <./scattering4.png> <./scattering5.png>] [30 <./scatte
+ring_buca1.png> <./scattering_buca2.png> <./scattering_buca3.png> <./scattering
+_buca4.png> <./scattering_buca5.png> <./scattering_buca6.png>] [31 <./notunnel1
+.png> <./notunnel2.png> <./notunnel3.png> <./notunnel4.png> <./notunnel5.png>]
+<fenditura1.png, id=217, 225.84375pt x 225.84375pt>
+File: fenditura1.png Graphic file (type png)
+ <use fenditura1.png>
+Package pdftex.def Info: fenditura1.png used on input line 830.
+(pdftex.def)             Requested size: 167.2989pt x 167.30783pt.
+
+<fenditura2.png, id=218, 225.84375pt x 226.59656pt>
+File: fenditura2.png Graphic file (type png)
+ <use fenditura2.png>
+Package pdftex.def Info: fenditura2.png used on input line 831.
+(pdftex.def)             Requested size: 167.2989pt x 167.86552pt.
+
+<fenditura3.png, id=219, 223.58531pt x 224.33812pt>
+File: fenditura3.png Graphic file (type png)
+ <use fenditura3.png>
+Package pdftex.def Info: fenditura3.png used on input line 832.
+(pdftex.def)             Requested size: 167.2989pt x 167.86636pt.
+
+<fenditura4.png, id=220, 223.58531pt x 225.84375pt>
+File: fenditura4.png Graphic file (type png)
+ <use fenditura4.png>
+Package pdftex.def Info: fenditura4.png used on input line 833.
+(pdftex.def)             Requested size: 167.2989pt x 168.99297pt.
+
+<fenditura5.png, id=221, 225.09094pt x 225.84375pt>
+File: fenditura5.png Graphic file (type png)
+ <use fenditura5.png>
+Package pdftex.def Info: fenditura5.png used on input line 838.
+(pdftex.def)             Requested size: 209.12683pt x 209.83607pt.
+
+[32 <./tunnel1.png> <./tunnel3.png> <./tunnel2.png> <./tunnel4.png>] [33 <./fen
+ditura1.png> <./fenditura2.png> <./fenditura3.png> <./fenditura4.png>] [34 <./f
+enditura5.png>] (./relazioni.aux) ) 
 Here is how much of TeX's memory you used:
- 5439 strings out of 493629
- 75198 string characters out of 3148778
+ 5509 strings out of 493629
+ 76359 string characters out of 3148778
  143777 words of memory out of 3000000
- 8587 multiletter control sequences out of 15000+200000
+ 8643 multiletter control sequences out of 15000+200000
  16089 words of font info for 64 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  38i,11n,43p,367b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></
-usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pf
-b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relazioni.pdf (31 pages, 740777 bytes).
+</usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
+12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
+0.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on relazioni.pdf (35 pages, 849964 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
+ 291 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 

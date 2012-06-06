@@ -9,25 +9,25 @@
 #include <gsl/gsl_const_mksa.h>
 #include "varie.h"
 
-#define N_SERIES 25
+#define N_SERIES 40
 #define R_MIN 0
-#define R_MAX 20
-#define V_MAX -1
+#define R_MAX 1
+#define V_MAX 1
 //#define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
 #define NORM  0.1
 #define PI 3.14159
-#define SIGMA 20
+#define SIGMA 10
 
-#define D_T 0.5
-#define R_PDF 30
+#define D_T 0.1
+
 /** 
  * width and heigth of the matrix 
  * ad ogni elemento della matrice corrisponde un pixel
  */
-const int W = 150;
-const int H = 150;
+const int W = 100;
+const int H = 100;
 /* reticular pass */
-double a = 1;
+
 /* matrix for the wave function */
 gsl_matrix_complex* psi ;	
 /* for displaying */
@@ -37,19 +37,8 @@ size_t time;
 double kinetic_constant; 
 double harmonic_constant;
 gsl_matrix_complex *temp;
-//gsl_matrix_complex *matrix_sum;
 gsl_matrix_complex *step;
-//gsl_matrix_complex *sub_psi;
-//gsl_matrix_complex *ham_psi;
-/*	
-double factorial( int n){
-	int i ;
-	double result = 1;
-	for( i = 1 ; i < n+1; i++)
-		result *=  (double) i;
-	return ( result);
-	}
-*/
+
 /* Calcola la norma quadra di Psi. Nota che è ~ \int | \psi |^2, non il prodotto di matrici*/
 double matrix_complex_norm ( gsl_matrix_complex *input){
 	int w = (int) input->size1;
@@ -66,25 +55,56 @@ double matrix_complex_norm ( gsl_matrix_complex *input){
 }
 /* Ho aggiunto un E^ikx */
 gsl_complex circular_step_pdf( double x , double y ){
-		return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA*a,50,x)*gaussPdf(SIGMA*a,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA*a,50,x)*
-		gaussPdf(SIGMA*a,0,y));
-	}
-/*
-double V_step_tunnel (double x , double y ){
-	}
-*/
+		return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA,20,x)*gaussPdf(SIGMA,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA,20,x)*
+		gaussPdf(SIGMA,0,y));
+}
+
+
 double potential( int i ,int j  ){
 	//return 0.0;
 	//return( (W/2/PI)*(W/2/PI)*sin( 2*PI/W*i)*sin( 2*PI/W*i)+(H/2/PI)*(H/2/PI)*cos( 2*PI/H*j)*cos( 2*PI/H*j));
-	return ( harmonic_constant*a*a*(i*i+j*j));
+	//return ( harmonic_constant*(i*i+j*j));
 	//return (10);
+/* Buca sferica*/
 	/*
 	if ( i*i + j*j < R_MAX*R_MAX )
 		return V_MAX;
 	else
 		return 0.0 ;
 	*/
+/*Barriera di potenziale orizzontale*/
+ /* if( abs(i) < R_MAX)
+    return V_MAX;
+  else
+    return 0.0;
+*/
+/* Punti ~reticolo*/
+
+if ( (( abs(i) == W/8) && (j == 0)))
+    return 1e2;
+else if ( (( abs(j) == H/8) && (i == 0)))
+    return 1e2;
+else if ( i ==0 && j == 0)
+    return 1e2;
+else
+  return 0;
+
+/* Diffrazione doppia fenditura*/
+/*
+  if( i == 0){
+    if (abs(j) < 5)
+      return 1e2;
+    else if(abs(j) > 10)
+      return 1e2;
+    else
+      return 0;
+  }
+  else
+    return 0;
+*/
+  
 }
+
 
 void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double x , double y ) ) {
 	int i , j ;
@@ -92,7 +112,7 @@ void init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( double
 	int h = (int) input ->size2;
 	for ( i = 0 ; i < w ; i++){
 		for ( j = 0 ; j < h ; j++ ) {
-		    gsl_matrix_complex_set(input,i,j, pdf(a*(i-w/2),a*(j-h/2) ) );
+		    gsl_matrix_complex_set(input,i,j, pdf((i-w/2),(j-h/2) ) );
 		}
 	}
 	gsl_matrix_complex_scale( input,gsl_complex_rect(1.0/matrix_complex_norm(input),0));
@@ -136,7 +156,6 @@ void  hamiltonian ( gsl_matrix_complex* in , gsl_matrix_complex * out){
 			    gsl_complex_mul_real(gsl_matrix_complex_get(in,i,j),potential((i)%h -h/2,(j)%w-w/2) ) ) );
 		}
 	}
-		//gsl_matrix_complex_scale(out, gsl_complex_rect(50.0/matrix_complex_norm(in),0));
 }
 	
 	/**
@@ -146,7 +165,6 @@ void  hamiltonian ( gsl_matrix_complex* in , gsl_matrix_complex * out){
 void compute ( gsl_matrix_complex *input ){
 	int i;
 	/* Matrix_equal( in, out) */
-	//matrix_equal( input, matrix_sum);
 	matrix_equal(input, temp);
 	  for (i = 1; i < N_SERIES ; i++ ){
 	/* hamiltonian calcola H |temp > e la salva in step
@@ -158,18 +176,9 @@ void compute ( gsl_matrix_complex *input ){
 		matrix_equal(step ,temp);
 		gsl_matrix_complex_add( input, step);
 		}
-	/* Calcola se la differenza di psi è uguale all'hamiltoniana */
-	/*matrix_equal(input,sub_psi);
-	gsl_matrix_complex_sub( sub_psi,matrix_sum);
-	gsl_matrix_complex_scale(sub_psi, gsl_complex_rect(1.0/ (double) D_T,0));
-	hamiltonian(input, ham_psi);
-	gsl_matrix_complex_add(sub_psi, ham_psi);
-	//printf("%e\n", matrix_complex_norm(sub_psi));
-	matrix_equal( matrix_sum, input);
-	printf("%e \n", matrix_complex_norm(input));
-	*/
-	//matrix_equal(matrix_sum,input);
+	
 	//gsl_matrix_complex_scale(input, gsl_complex_rect(1.0/matrix_complex_norm(input),0));
+	/*Stampa la differenza fra la norma e l'unità→ per controllare l'unitarietà dell'operatore*/
 	//printf("%e \n", matrix_complex_norm(input) - 1);
 	}
 
@@ -201,9 +210,11 @@ void displayF()
         if(modeView == 1)
             color = d2rgb(gsl_complex_abs(tmp)/ NORM);
         if(modeView == 2)
-            color = d2rgb( tmp.dat[0]/NORM) ;
+            color = d2rgb( tmp.dat[0]*NORM) ;
         if(modeView == 3)
-            color = d2rgb( tmp.dat[1]/NORM);
+            color = d2rgb( tmp.dat[1]*NORM);
+	if(modeView == 4)
+	    color = d2rgb (gsl_complex_arg(tmp)*NORM);
         data[3*k+0] = color.r;
         data[3*k+1] = color.g;
         data[3*k+2] = color.b;
@@ -243,22 +254,20 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
             break;
         case '3':
             modeView = 3;
+	case '4':
+	    modeView = 4;
             break;
     }
 }
 int main (int argc, char *argv[]){
-	kinetic_constant = 2;
-	harmonic_constant = 5e-4;
-	temp = gsl_matrix_complex_alloc (W,H) ;
-	//matrix_sum = gsl_matrix_complex_alloc(W,H);
-	step = gsl_matrix_complex_alloc(W,H);
-	//sub_psi = gsl_matrix_complex_alloc(W,H);
-	//ham_psi = gsl_matrix_complex_alloc(W,H);
-	psi = gsl_matrix_complex_alloc(W,H);
-	init_wave_function( psi , circular_step_pdf );
-	time = modeView = isActive = 1;
-	//printf("%e \n", factorial(4.0));
-		glutInit(&argc, argv);
+    kinetic_constant = 2;
+    harmonic_constant = 5e-4;
+    temp = gsl_matrix_complex_alloc (W,H) ;
+    step = gsl_matrix_complex_alloc(W,H);
+    psi = gsl_matrix_complex_alloc(W,H);
+    init_wave_function( psi , circular_step_pdf );
+    time = modeView = isActive = 1;
+    glutInit(&argc, argv);
     glutInitWindowSize((int)W,(int)H);
     glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE );
     glutCreateWindow("Schrodinger"); 

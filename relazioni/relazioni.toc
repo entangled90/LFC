@@ -31,3 +31,7 @@
 \contentsline {subsubsection}{Particella libera}{26}
 \contentsline {subsubsection}{Muro di potenziale sferico}{28}
 \contentsline {subsection}{\numberline {3.2.2}Buca di potenziale sferico}{28}
+\contentsline {subsection}{\numberline {3.2.3}Effetto tunnel}{29}
+\contentsline {subsubsection}{Barriera larga}{29}
+\contentsline {subsubsection}{Barriera stretta}{32}
+\contentsline {subsection}{\numberline {3.2.4}Diffrazione da doppia fenditura}{32}

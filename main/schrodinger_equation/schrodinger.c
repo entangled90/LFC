@@ -9,14 +9,15 @@
 #include <gsl/gsl_const_mksa.h>
 #include "varie.h"
 
-#define N_SERIES 40
+#define N_SERIES 30
 #define R_MIN 0
-#define R_MAX 1
-#define V_MAX 1
+#define R_MAX 10
+#define V_MAX -1
 //#define H_BAR (GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR)
 #define NORM  0.1
 #define PI 3.14159
-#define SIGMA 10
+#define SIGMA 5
+#define RETICOLO 10
 
 #define D_T 0.1
 
@@ -24,8 +25,8 @@
  * width and heigth of the matrix 
  * ad ogni elemento della matrice corrisponde un pixel
  */
-const int W = 100;
-const int H = 100;
+const int W = 150;
+const int H = 150;
 /* reticular pass */
 
 /* matrix for the wave function */
@@ -34,8 +35,8 @@ gsl_matrix_complex* psi ;
 int isActive, modeView;
 size_t time;
 /* Physical parameters*/
-double kinetic_constant; 
-double harmonic_constant;
+const double kinetic_constant = 2; 
+const double harmonic_constant = 1e-4;
 gsl_matrix_complex *temp;
 gsl_matrix_complex *step;
 
@@ -53,32 +54,35 @@ double matrix_complex_norm ( gsl_matrix_complex *input){
 	}
 	return (sqrt(norm_squared));
 }
-/* Ho aggiunto un E^ikx */
+
 gsl_complex circular_step_pdf( double x , double y ){
-		return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA,20,x)*gaussPdf(SIGMA,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA,20,x)*
+		  /*Momento verso il basso*/
+  return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA,20,x)*gaussPdf(SIGMA,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA,20,x)*
 		gaussPdf(SIGMA,0,y));
+  /*Gaussiana nell'origine*/
+  //return gsl_complex_rect ( gaussPdf(SIGMA,0,x)*gaussPdf(SIGMA,0,y),gaussPdf(SIGMA,0,x)*gaussPdf(SIGMA,0,y));
+  
 }
 
 
 double potential( int i ,int j  ){
-	//return 0.0;
-	//return( (W/2/PI)*(W/2/PI)*sin( 2*PI/W*i)*sin( 2*PI/W*i)+(H/2/PI)*(H/2/PI)*cos( 2*PI/H*j)*cos( 2*PI/H*j));
-	//return ( harmonic_constant*(i*i+j*j));
-	//return (10);
-/* Buca sferica*/
-	/*
+ // return 0.0;
+ //  return ( harmonic_constant*(i*i+j*j));
+/** Buca sferica*/
+/*	
 	if ( i*i + j*j < R_MAX*R_MAX )
 		return V_MAX;
 	else
 		return 0.0 ;
-	*/
-/*Barriera di potenziale orizzontale*/
- /* if( abs(i) < R_MAX)
+*/	
+/**Barriera di potenziale orizzontale*/
+ /*
+  * if( abs(i) < R_MAX)
     return V_MAX;
   else
     return 0.0;
 */
-/* Punti ~reticolo*/
+/**Punti ~reticolo*/
 
 if ( (( abs(i) == W/8) && (j == 0)))
     return 1e2;
@@ -88,8 +92,7 @@ else if ( i ==0 && j == 0)
     return 1e2;
 else
   return 0;
-
-/* Diffrazione doppia fenditura*/
+/** Diffrazione doppia fenditura*/
 /*
   if( i == 0){
     if (abs(j) < 5)
@@ -101,6 +104,18 @@ else
   }
   else
     return 0;
+*/
+/** ~ Potenziale periodico */
+//return ( 1e-1*(sin (2*PI*RETICOLO*i/(double) W) + sin( 2*PI*RETICOLO*j/(double) H)) );
+/** ~ Potenziale periodico  con oscillatore ~*/
+//return ( 1e-2*( abs(i)*sin (2*PI*RETICOLO*i/(double) W) + abs(j)*sin( 2*PI*RETICOLO*j/(double) H)) );
+/** Reticolo di atomi ~*/
+/*
+ * if ( ( ( i%RETICOLO) == 0) && ( (j%RETICOLO== 0))){
+    return (1e1);
+  }
+else
+  return (1e-1*(sin (2*PI*RETICOLO*i/(double) W) + sin( 2*PI*RETICOLO*j/(double) H)) );
 */
   
 }
@@ -210,9 +225,9 @@ void displayF()
         if(modeView == 1)
             color = d2rgb(gsl_complex_abs(tmp)/ NORM);
         if(modeView == 2)
-            color = d2rgb( tmp.dat[0]*NORM) ;
+            color = d2rgb( GSL_REAL(tmp)*NORM) ;
         if(modeView == 3)
-            color = d2rgb( tmp.dat[1]*NORM);
+            color = d2rgb( GSL_IMAG(tmp)*NORM);
 	if(modeView == 4)
 	    color = d2rgb (gsl_complex_arg(tmp)*NORM);
         data[3*k+0] = color.r;
@@ -260,9 +275,7 @@ void keyboardF(unsigned char key, int mouseX, int mouseY)
     }
 }
 int main (int argc, char *argv[]){
-    kinetic_constant = 2;
-    harmonic_constant = 5e-4;
-    temp = gsl_matrix_complex_alloc (W,H) ;
+     temp = gsl_matrix_complex_alloc (W,H) ;
     step = gsl_matrix_complex_alloc(W,H);
     psi = gsl_matrix_complex_alloc(W,H);
     init_wave_function( psi , circular_step_pdf );

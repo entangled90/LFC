@@ -831,11 +831,21 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura4.png}}
+ \includegraphics[width=0.5\columnwidth]{fenditura5.png}
  \caption{Diffrazione da una doppia fenditura.} 
  \end{figure}
-\begin{figure}[hp]
-\centering 
- \includegraphics[width=0.5\columnwidth]{fenditura5.png}
- \end{figure}
- 
+ \subsection{Equazione del calore}
+ Dopo aver risolto l'equazione di Schr\"{o}dinger si è deciso di risolvere anche l'equazione del calore, vista la notevole similitudine tra l'equazione di Schr\"{o}dinger nel caso libero
+ e l'equazione del calore.
+ \begin{align}
+  \mbox{Schr\"{o}dinger libera} \qquad i \p{}{t} \psi(x,y,t) \ & = \ - a \ \nabla^2 \psi (x,y,t) \\
+  \mbox{Equazione del calore} \qquad \p{}{t} \psi(x,y,t) \ & = \ - k \ \nabla^2 \psi (x,y,t)
+ \end{align}
+Come si può vedere l'unica differenza risiede nel fatto che l'equazione di Schr\"{o}dinger è complessa e ha una ``i'' insieme alla derivata temporale.
+Ciò è proprio quello che permette alle soluzioni di avere un carattere ondulatorio, mentre l'equazione del calore produce soluzioni dal carattere diffusivo.
+Inoltre, proprio per questo motivo, l'equazione del calore risulta molto più stabile rispetto all'equazione di Schr\"{o}dinger. Infatti, i parametri dell'algoritmo utilizzati questa volta sono:
+$$
+ N_{max} = 2 \qquad \delta t = 1 \qquad  
+$$
+ Per questo motivo, inoltre è stato possibile aumentare la dimensione del reticolo fino a 500x500, mantenendo la stessa velocità di esecuzione.
 \end{document}

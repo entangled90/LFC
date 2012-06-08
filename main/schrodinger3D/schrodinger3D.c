@@ -12,15 +12,17 @@
 #include <gsl/gsl_complex_math.h>
 #include "varie.h"
 
-
-#define N 200
-#define N_SERIES 25
+/**
+ * N DEVE ESSERE MULTIPLO DI 100. altrimenti ci sono problemi con la visualizzazione
+ */
+#define N 100
+#define N_SERIES 20
 #define R_MIN 0
-#define R_MAX 3
+#define R_MAX 5
 #define V_MAX 1
 #define NORM  0.1
 #define PI 3.14159
-#define SIGMA 1
+#define SIGMA 10
 #define RETICOLO 10
 
 #define D_T 0.5
@@ -35,7 +37,10 @@ const double kinetic_constant = 2;
 const double harmonic_constant = 1e-4;
 gsl_matrix_complex *temp;
 gsl_matrix_complex *step;
+int gl_time_prec;
+int timediff;
 double normalization;
+float angle_prec;
 /* Calcola la norma quadra di Psi. Nota che è ~ \int | \psi |^2, non il prodotto di matrici*/
 double matrix_complex_norm ( gsl_matrix_complex *input){
 	int w = (int) input->size1;
@@ -436,9 +441,13 @@ void display()
 
   glm::mat4 model;
 
-  if(rotate)
-    model = glm::rotate(glm::mat4(1.0f), (float) glutGet(GLUT_ELAPSED_TIME) / (float) N, glm::vec3(0.0f, 0.0f, 1.0f));
-  else
+  if(rotate){
+    timediff = GLUT_ELAPSED_TIME-gl_time_prec; 
+    angle_prec += (float) (timediff*360.0)/ 40000.0f;
+    model = glm::rotate(glm::mat4(1.0f), angle_prec, glm::vec3(0.0f, 0.0f, 1.0f));
+    fprintf(stderr,"%d\n",timediff);
+  }
+    else
     model = glm::mat4(1.0f);  
 
   glm::mat4 view = glm::lookAt(glm::vec3(0.0, z_axis_value, 1.8), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 0.0, 2.0));
@@ -508,6 +517,7 @@ void special(int key, int x, int y)
       break;
     case GLUT_KEY_F3:
       rotate = !rotate;
+      angle_prec = 0.0;
       break;
     case GLUT_KEY_F4:
       polygonoffset = !polygonoffset;
@@ -590,6 +600,9 @@ void keyboard(unsigned char key, int x, int y)
 	  if(z_axis_value>-3.0)
 	    z_axis_value*=1.2;
             break;
+	case 'i':
+	  normalization =1;
+      
     }
 }
 
@@ -600,6 +613,9 @@ int main(int argc, char* argv[]) {
   initial_max =init_wave_function( psi , circular_step_pdf );
   normalization = 1;
   z_axis_value = -1.0;
+  gl_time_prec = 0;
+  timediff=0;
+  angle_prec = 0.0f;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGBA|GLUT_DEPTH|GLUT_DOUBLE);
   glutInitWindowSize(width, height);
@@ -628,6 +644,7 @@ int main(int argc, char* argv[]) {
     glutIdleFunc(display);
     glutSpecialFunc(special);
     glutKeyboardFunc(keyboard);
+    gl_time_prec = glutGet(GLUT_ELAPSED_TIME);
     glutMainLoop();
   }
 

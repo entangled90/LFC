@@ -142,10 +142,6 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 %%% CERCA COME RIPORTARE L' INTESTAZIONE SE CAMBI Pagina
 %%% LOgaritmo
 \subsubsection{Newton-Cotes I: Logaritmo}
-\begin{figure}
-\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
-\caption{Errori per Newton-Cotes I: Logaritmo}
-\end{figure}
 \begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
@@ -170,13 +166,14 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{longtable}
 %% LOG 222222222222222
 \end{center}
+\begin{figure}[H]
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
+\caption{Errori per Newton-Cotes I: Logaritmo}
+\end{figure}
+
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
 \subsubsection{Newton-Cotes II: Logaritmo}
-\begin{figure}
-\includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_log.eps}
-\caption{Errori per Newton-Cotes II: Logaritmo}
-\end{figure}
 
   \begin{center}
   \begin{longtable}[h]{lcr}
@@ -233,7 +230,7 @@ Numero intervalli & quadratura gaussiana \\
 \end{longtable}
 \end{center}
 \subsubsection{Newton-Cotes I: Polinomio}
-\begin{figure}
+\begin{figure}[H]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
 \caption{Errori per Newton-Cotes I: Polinomio}
 \end{figure}
@@ -268,7 +265,7 @@ Si può notare che in questo caso la differenza fra l'errore stimato e l'errore 
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
 \subsubsection{Newton-Cotes II: Polinomio}
-\begin{figure}
+\begin{figure}[H]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
 \caption{Errori per Newton-Cotes II: Polinomio}
 \end{figure}
@@ -692,6 +689,8 @@ $$
 nella simulazione è stato posto $\mu = 4$.
 \pagebreak
 \section{Equazione di Schr\"{o}dinger}
+\textit{Si è cercato di risolvere l'equazione di Schr\"{o}dinger fornendo anche una rappresentazione grafica della soluzione sia in 2D che in 3D.
+Le librerie grafiche utilizzate sono openGL e il codice relativo ad esse è un fork dell'implementazione di Luca Cassia.}\\ \\
 L'equazione di Schr\"{o}dinger per una particella in un potenziale armonico è un problema molto più complicato dei precedenti già trattati.
 In primo luogo si ha a che fare con equazioni differenziali alle derivate parziali invece che con equazioni differenziali ordinarie.
 Inoltre, si passa da un sistema che ha un basso numero di gradi di libertà (nel caso precedente 2) a un sistema che (teoricamente) ha infiniti gradi di libertà.
@@ -837,6 +836,10 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \includegraphics[width=0.5\columnwidth]{fenditura5.png}
  \caption{Diffrazione da una doppia fenditura.} 
  \end{figure}
+ 
+ 
+ 
+ 
  \subsection{Equazione del calore}
  Dopo aver risolto l'equazione di Schr\"{o}dinger si è deciso di risolvere anche l'equazione del calore, vista la notevole similitudine tra l'equazione di Schr\"{o}dinger nel caso libero
  e l'equazione del calore.
@@ -851,4 +854,6 @@ $$
  N_{max} = 2 \qquad \delta t = 1 \qquad  
 $$
  Per questo motivo, inoltre è stato possibile aumentare la dimensione del reticolo fino a 500x500, mantenendo la stessa velocità di esecuzione.
-\end{document}
+
+ 
+ \end{document}

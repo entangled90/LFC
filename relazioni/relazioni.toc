@@ -8,11 +8,11 @@
 \contentsline {subsection}{\numberline {1.1.4}Utilizzo}{5}{subsection.1.1.4}
 \contentsline {subsubsection}{Newton-Cotes I: Logaritmo}{5}{subsubsection*.3}
 \contentsline {subsubsection}{Newton-Cotes II: Logaritmo}{6}{subsubsection*.4}
-\contentsline {subsubsection}{Quadrature gaussiane: Logaritmo}{6}{subsubsection*.5}
-\contentsline {subsubsection}{Newton-Cotes I: Polinomio}{7}{subsubsection*.6}
-\contentsline {subsubsection}{Newton-Cotes II: Polinomio}{8}{subsubsection*.7}
-\contentsline {subsubsection}{Quadrature gaussiane: Polinomio}{9}{subsubsection*.8}
-\contentsline {section}{\numberline {1.2}Metodi Monte Carlo}{10}{section.1.2}
+\contentsline {subsubsection}{Quadrature gaussiane: Logaritmo}{7}{subsubsection*.5}
+\contentsline {subsubsection}{Newton-Cotes I: Polinomio}{8}{subsubsection*.6}
+\contentsline {subsubsection}{Newton-Cotes II: Polinomio}{9}{subsubsection*.7}
+\contentsline {subsubsection}{Quadrature gaussiane: Polinomio}{10}{subsubsection*.8}
+\contentsline {section}{\numberline {1.2}Metodi Monte Carlo}{11}{section.1.2}
 \contentsline {subsubsection}{Generatori di numeri pseudocasuali}{12}{subsubsection*.9}
 \contentsline {subsubsection}{Confronto tra le distribuzioni}{13}{subsubsection*.10}
 \contentsline {chapter}{\numberline {2}Oscillatore armonico}{16}{chapter.2}

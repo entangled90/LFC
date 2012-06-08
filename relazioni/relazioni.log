@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  7 JUN 2012 22:23
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  8 JUN 2012 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -385,13 +385,21 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip70
 )
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count128
+\float@exts=\toks37
+\float@box=\box33
+\@float@everytoks=\toks38
+\@floatcapt=\box34
+)
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 21.
+less on input line 22.
 
-\c@prop=\count128
-\c@thm=\count129
-\c@dfn=\count130
+\c@prop=\count129
+\c@thm=\count130
+\c@dfn=\count131
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/08 v3.8m The Babel package
 
@@ -400,7 +408,7 @@ Language: italian 2008/03/14 v1.2t Italian support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count131
+\babel@savecnt=\count132
 \U@D=\dimen146
 )
 Package babel Info: Making " an active character on input line 94.
@@ -441,17 +449,17 @@ File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 fontencoding LGR patched
 ) (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
+\scratchcounter=\count133
 \scratchdimen=\dimen147
-\scratchbox=\box33
-\nofMPsegments=\count133
-\nofMParguments=\count134
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count135
+\scratchbox=\box35
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count136
 \MPscratchDim=\dimen148
-\MPnumerator=\count136
-\makeMPintoPDFobject=\count137
-\everyMPtoPDFconversion=\toks38
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks40
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -501,7 +509,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box34
+\AtBeginShipoutBox=\box36
 Package hyperref Info: Link coloring OFF on input line 4.
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -509,7 +517,7 @@ Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count138
+\c@section@level=\count139
 )
 LaTeX Info: Redefining \ref on input line 4.
 LaTeX Info: Redefining \pageref on input line 4.
@@ -563,6 +571,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 Underfull \vbox (badness 10000) detected at line 136
  []
 
+
+Underfull \vbox (badness 10000) detected at line 166
+ []
+
+[5]
 Package epstopdf Info: Source file: <plot_trap_log.eps>
 (epstopdf)                    date: 2012-06-03 18:19:50
 (epstopdf)                    size: 23529 bytes
@@ -571,54 +584,29 @@ Package epstopdf Info: Source file: <plot_trap_log.eps>
 (epstopdf)                    size: 7867 bytes
 (epstopdf)             Command: <repstopdf --outfile=plot_trap_log-eps-converte
 d-to.pdf plot_trap_log.eps>
-(epstopdf)             \includegraphics on input line 146.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
-<plot_trap_log-eps-converted-to.pdf, id=134, 505.89pt x 722.7pt>
+ <plot_trap_log-eps-converted-to.pdf, id=142, 505.89pt x 722.7pt>
 File: plot_trap_log-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plot_trap_log-eps-converted-to.pdf>
 Package pdftex.def Info: plot_trap_log-eps-converted-to.pdf used on input line 
-146.
+170.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) detected at line 170
+Underfull \vbox (badness 10000) detected at line 200
  []
 
-[5]
-Package epstopdf Info: Source file: <plot_simp_log.eps>
-(epstopdf)                    date: 2012-06-03 18:19:52
-(epstopdf)                    size: 22921 bytes
-(epstopdf)             Output file: <plot_simp_log-eps-converted-to.pdf>
-(epstopdf)                    date: 2012-06-03 18:33:06
-(epstopdf)                    size: 6932 bytes
-(epstopdf)             Command: <repstopdf --outfile=plot_simp_log-eps-converte
-d-to.pdf plot_simp_log.eps>
-(epstopdf)             \includegraphics on input line 177.
-Package epstopdf Info: Output file is already uptodate.
- <plot_simp_log-eps-converted-to.pdf, id=143, 505.89pt x 722.7pt>
-File: plot_simp_log-eps-converted-to.pdf Graphic file (type pdf)
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}
+) has been already used, duplicate ignored
 
-<use plot_simp_log-eps-converted-to.pdf>
-Package pdftex.def Info: plot_simp_log-eps-converted-to.pdf used on input line 
-177.
-(pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) detected at line 203
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.200 \end{longtable}
+                      <./plot_trap_log-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) detected at line 230
  []
 
-
-Underfull \vbox (badness 10000) detected at line 233
- []
-
-[6]
 Package epstopdf Info: Source file: <plot_trap_poly.eps>
 (epstopdf)                    date: 2012-06-03 18:20:30
 (epstopdf)                    size: 23518 bytes
@@ -627,25 +615,27 @@ Package epstopdf Info: Source file: <plot_trap_poly.eps>
 (epstopdf)                    size: 7583 bytes
 (epstopdf)             Command: <repstopdf --outfile=plot_trap_poly-eps-convert
 ed-to.pdf plot_trap_poly.eps>
-(epstopdf)             \includegraphics on input line 237.
+(epstopdf)             \includegraphics on input line 234.
 Package epstopdf Info: Output file is already uptodate.
- <plot_trap_poly-eps-converted-to.pdf, id=153, 505.89pt x 722.7pt>
+<plot_trap_poly-eps-converted-to.pdf, id=156, 505.89pt x 722.7pt>
 File: plot_trap_poly-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plot_trap_poly-eps-converted-to.pdf>
 Package pdftex.def Info: plot_trap_poly-eps-converted-to.pdf used on input line
- 237.
+ 234.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) detected at line 264
+ [7]
+Underfull \vbox (badness 10000) detected at line 261
  []
 
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}
+) has been already used, duplicate ignored
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--270
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.261 \end{longtable}
+                      <./plot_trap_poly-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 263--267
 
  []
 
@@ -657,33 +647,35 @@ Package epstopdf Info: Source file: <plot_simp_poly.eps>
 (epstopdf)                    size: 7396 bytes
 (epstopdf)             Command: <repstopdf --outfile=plot_simp_poly-eps-convert
 ed-to.pdf plot_simp_poly.eps>
-(epstopdf)             \includegraphics on input line 272.
+(epstopdf)             \includegraphics on input line 269.
 Package epstopdf Info: Output file is already uptodate.
-<plot_simp_poly-eps-converted-to.pdf, id=154, 505.89pt x 722.7pt>
+<plot_simp_poly-eps-converted-to.pdf, id=176, 505.89pt x 722.7pt>
 File: plot_simp_poly-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plot_simp_poly-eps-converted-to.pdf>
 Package pdftex.def Info: plot_simp_poly-eps-converted-to.pdf used on input line
- 272.
+ 269.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
- [7]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) detected at line 299
+Underfull \vbox (badness 10000) detected at line 296
  []
 
-[8 <./plot_trap_log-eps-converted-to.pdf>]
-Underfull \vbox (badness 10000) detected at line 326
+[9pdfTeX warning (ext4): destination with the same identifier (name{figure.1.3}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.296 \end{longtable}
+                      <./plot_simp_poly-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) detected at line 323
  []
 
-[9] [10 <./plot_simp_log-eps-converted-to.pdf>] [11 <./plot_trap_poly-eps-conve
-rted-to.pdf>] [12 <./plot_simp_poly-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 412--414
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 409--411
 
  []
 
+[12]
 Package epstopdf Info: Source file: <importanza_integrale.eps>
 (epstopdf)                    date: 2012-04-05 17:26:44
 (epstopdf)                    size: 23886 bytes
@@ -693,29 +685,31 @@ Package epstopdf Info: Source file: <importanza_integrale.eps>
 (epstopdf)                    size: 9071 bytes
 (epstopdf)             Command: <repstopdf --outfile=importanza_integrale-eps-c
 onverted-to.pdf importanza_integrale.eps>
-(epstopdf)             \includegraphics on input line 416.
+(epstopdf)             \includegraphics on input line 413.
 Package epstopdf Info: Output file is already uptodate.
-<importanza_integrale-eps-converted-to.pdf, id=213, 505.89pt x 722.7pt>
+ <importanza_integrale-eps-converted-to.pdf, id=206, 505.89pt x 722.7pt>
 File: importanza_integrale-eps-converted-to.pdf Graphic file (type pdf)
 
 <use importanza_integrale-eps-converted-to.pdf>
 Package pdftex.def Info: importanza_integrale-eps-converted-to.pdf used on inpu
-t line 416.
+t line 413.
 (pdftex.def)             Requested size: 250.95476pt x 358.51505pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) detected at line 433
+Underfull \vbox (badness 10000) detected at line 430
  []
 
 
-Overfull \vbox (6.53406pt too high) has occurred while \output is active []
+Overfull \vbox (19.52809pt too high) has occurred while \output is active []
 
 
-[13]
-Underfull \vbox (badness 10000) detected at line 450
+[13pdfTeX warning (ext4): destination with the same identifier (name{figure.1.4
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.430   \end{longtable}
+                        <./importanza_integrale-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) detected at line 447
  []
 
 Package epstopdf Info: Source file: <importanza_noise.eps>
@@ -726,28 +720,29 @@ Package epstopdf Info: Source file: <importanza_noise.eps>
 (epstopdf)                    size: 8968 bytes
 (epstopdf)             Command: <repstopdf --outfile=importanza_noise-eps-conve
 rted-to.pdf importanza_noise.eps>
-(epstopdf)             \includegraphics on input line 464.
+(epstopdf)             \includegraphics on input line 461.
 Package epstopdf Info: Output file is already uptodate.
 <importanza_noise-eps-converted-to.pdf, id=220, 505.89pt x 722.7pt>
 File: importanza_noise-eps-converted-to.pdf Graphic file (type pdf)
 
 <use importanza_noise-eps-converted-to.pdf>
 Package pdftex.def Info: importanza_noise-eps-converted-to.pdf used on input li
-ne 464.
+ne 461.
 (pdftex.def)             Requested size: 250.95476pt x 358.51505pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[14] [15pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.1.5}) has been already used, duplicate ignored
 
-Overfull \vbox (60.74211pt too high) has occurred while \output is active []
-
-
-[14 <./importanza_integrale-eps-converted-to.pdf>] [15 <./importanza_noise-eps-
-converted-to.pdf>]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.466 \chapter
+              {Oscillatore armonico} <./importanza_noise-eps-converted-to.pdf>]
 Capitolo 2.
 
-Overfull \hbox (50.45251pt too wide) detected at line 495
+Overfull \hbox (50.45251pt too wide) detected at line 492
 \OML/cmm/m/it/10.95 C\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.
 95 l \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 k\OMS/cmsy/m/n/10.95 j\OT1/cmr
 /m/n/10.95 )  =  \OMS/cmsy/m/n/10.95 h\OML/cmm/m/it/10.95 x[] x[]\OMS/cmsy/m/n/
@@ -758,15 +753,15 @@ Overfull \hbox (50.45251pt too wide) detected at line 495
 [16
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 516.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 513.
 
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 516.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 513.
 
-Overfull \hbox (26.72336pt too wide) in paragraph at lines 530--534
+Overfull \hbox (26.72336pt too wide) in paragraph at lines 527--531
 []\OT1/cmr/m/n/10.95 si estrae una nuo-va con-fi-gu-ra-zio-ne del si-ste-ma $[]
 $: es-so cor-ri-spon-de a $[] + [] []$. 
  []
@@ -780,16 +775,22 @@ Package epstopdf Info: Source file: <action_cold.eps>
 (epstopdf)                    size: 30832 bytes
 (epstopdf)             Command: <repstopdf --outfile=action_cold-eps-converted-
 to.pdf action_cold.eps>
-(epstopdf)             \includegraphics on input line 548.
+(epstopdf)             \includegraphics on input line 545.
 Package epstopdf Info: Output file is already uptodate.
- <action_cold-eps-converted-to.pdf, id=256, 505.89pt x 722.7pt>
+ <action_cold-eps-converted-to.pdf, id=249, 505.89pt x 722.7pt>
 File: action_cold-eps-converted-to.pdf Graphic file (type pdf)
 
 <use action_cold-eps-converted-to.pdf>
 Package pdftex.def Info: action_cold-eps-converted-to.pdf used on input line 54
-8.
+5.
 (pdftex.def)             Requested size: 250.95476pt x 358.51505pt.
- [18 <./action_cold-eps-converted-to.pdf>]
+ [18pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.551 
+       <./action_cold-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <gamma_t.eps>
 (epstopdf)                    date: 2012-06-04 15:36:55
 (epstopdf)                    size: 42182 bytes
@@ -798,13 +799,14 @@ Package epstopdf Info: Source file: <gamma_t.eps>
 (epstopdf)                    size: 24486 bytes
 (epstopdf)             Command: <repstopdf --outfile=gamma_t-eps-converted-to.p
 df gamma_t.eps>
-(epstopdf)             \includegraphics on input line 564.
+(epstopdf)             \includegraphics on input line 561.
 Package epstopdf Info: Output file is already uptodate.
- <gamma_t-eps-converted-to.pdf, id=270, 505.89pt x 722.7pt>
+
+<gamma_t-eps-converted-to.pdf, id=263, 505.89pt x 722.7pt>
 File: gamma_t-eps-converted-to.pdf Graphic file (type pdf)
 
 <use gamma_t-eps-converted-to.pdf>
-Package pdftex.def Info: gamma_t-eps-converted-to.pdf used on input line 564.
+Package pdftex.def Info: gamma_t-eps-converted-to.pdf used on input line 561.
 (pdftex.def)             Requested size: 292.77629pt x 418.26204pt.
 Package epstopdf Info: Source file: <harmonic_giusto.eps>
 (epstopdf)                    date: 2012-06-05 18:03:20
@@ -814,279 +816,347 @@ Package epstopdf Info: Source file: <harmonic_giusto.eps>
 (epstopdf)                    size: 7128 bytes
 (epstopdf)             Command: <repstopdf --outfile=harmonic_giusto-eps-conver
 ted-to.pdf harmonic_giusto.eps>
-(epstopdf)             \includegraphics on input line 572.
+(epstopdf)             \includegraphics on input line 569.
 Package epstopdf Info: Output file is already uptodate.
 
-<harmonic_giusto-eps-converted-to.pdf, id=271, 505.89pt x 722.7pt>
+<harmonic_giusto-eps-converted-to.pdf, id=264, 505.89pt x 722.7pt>
 File: harmonic_giusto-eps-converted-to.pdf Graphic file (type pdf)
 
 <use harmonic_giusto-eps-converted-to.pdf>
 Package pdftex.def Info: harmonic_giusto-eps-converted-to.pdf used on input lin
-e 572.
+e 569.
 (pdftex.def)             Requested size: 209.12683pt x 298.75702pt.
- [19 <./gamma_t-eps-converted-to.pdf>] [20 <./harmonic_giusto-eps-converted-to.
-pdf>]
+ [19pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.571 
+       <./gamma_t-eps-converted-to.pdf>] [20 <./harmonic_giusto-eps-converted-t
+o.pdf>]
 Capitolo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 626--628
+Underfull \hbox (badness 10000) in paragraph at lines 623--625
 
  []
 
 [21
 
-] <pendolo_limite.png, id=303, 376.40625pt x 375.65344pt>
+] <pendolo_limite.png, id=296, 376.40625pt x 375.65344pt>
 File: pendolo_limite.png Graphic file (type png)
 
 <use pendolo_limite.png>
-Package pdftex.def Info: pendolo_limite.png used on input line 648.
+Package pdftex.def Info: pendolo_limite.png used on input line 645.
 (pdftex.def)             Requested size: 209.12683pt x 208.71367pt.
- [22 <./pendolo_limite.png>]
-<sovra1.png, id=310, 376.40625pt x 375.65344pt>
+ [22pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.661 \end{align*}
+                   <./pendolo_limite.png>]
+<sovra1.png, id=303, 376.40625pt x 375.65344pt>
 File: sovra1.png Graphic file (type png)
  <use sovra1.png>
-Package pdftex.def Info: sovra1.png used on input line 675.
+Package pdftex.def Info: sovra1.png used on input line 672.
 (pdftex.def)             Requested size: 292.77629pt x 292.21175pt.
 
-<van_der_pol.png, id=311, 376.40625pt x 376.40625pt>
+<van_der_pol.png, id=304, 376.40625pt x 376.40625pt>
 File: van_der_pol.png Graphic file (type png)
  <use van_der_pol.png>
-Package pdftex.def Info: van_der_pol.png used on input line 684.
+Package pdftex.def Info: van_der_pol.png used on input line 681.
 (pdftex.def)             Requested size: 250.95476pt x 250.96176pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23 <./sovra1.png>] [24 <./van_der_pol.png>]
-<free1.png, id=325, 149.05687pt x 149.8097pt>
+[23 <./sovra1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 693--698
+
+ []
+
+[24pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.706 $$
+         <./van_der_pol.png>] <free1.png, id=318, 149.05687pt x 149.8097pt>
 File: free1.png Graphic file (type png)
- <use free1.png>
-Package pdftex.def Info: free1.png used on input line 736.
+
+<use free1.png>
+Package pdftex.def Info: free1.png used on input line 735.
 (pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
-Underfull \hbox (badness 1215) in paragraph at lines 736--736
+Underfull \hbox (badness 1215) in paragraph at lines 735--735
 []\OT1/cmr/m/n/9 (a) $\OML/cmm/m/it/9  \OT1/cmr/m/n/9 (0)$: il pac-chet-to ^^Re
  gaus-sia-
  []
 
-<free2.png, id=326, 149.05687pt x 149.8097pt>
+<free2.png, id=319, 149.05687pt x 149.8097pt>
 File: free2.png Graphic file (type png)
  <use free2.png>
-Package pdftex.def Info: free2.png used on input line 737.
+Package pdftex.def Info: free2.png used on input line 736.
 (pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
-<free3.png, id=327, 151.3153pt x 150.5625pt>
+<free3.png, id=320, 151.3153pt x 150.5625pt>
 File: free3.png Graphic file (type png)
  <use free3.png>
-Package pdftex.def Info: free3.png used on input line 738.
+Package pdftex.def Info: free3.png used on input line 737.
 (pdftex.def)             Requested size: 151.31493pt x 150.56212pt.
 
-<free4.png, id=328, 150.5625pt x 150.5625pt>
+<free4.png, id=321, 150.5625pt x 150.5625pt>
 File: free4.png Graphic file (type png)
  <use free4.png>
-Package pdftex.def Info: free4.png used on input line 739.
+Package pdftex.def Info: free4.png used on input line 738.
 (pdftex.def)             Requested size: 150.56212pt x 150.56212pt.
 
-Underfull \hbox (badness 4556) in paragraph at lines 739--739
+Underfull \hbox (badness 4556) in paragraph at lines 738--738
 []\OT1/cmr/m/n/9 (d) La fun-zio-ne d'on-da ini-zia a
  []
 
-<free_crystal.png, id=329, 149.05687pt x 149.8097pt>
+<free_crystal.png, id=322, 149.05687pt x 149.8097pt>
 File: free_crystal.png Graphic file (type png)
  <use free_crystal.png>
-Package pdftex.def Info: free_crystal.png used on input line 740.
+Package pdftex.def Info: free_crystal.png used on input line 739.
 (pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
-<free5.png, id=330, 149.8097pt x 149.8097pt>
+<free5.png, id=323, 149.8097pt x 149.8097pt>
 File: free5.png Graphic file (type png)
  <use free5.png>
-Package pdftex.def Info: free5.png used on input line 741.
+Package pdftex.def Info: free5.png used on input line 740.
 (pdftex.def)             Requested size: 149.80931pt x 149.80931pt.
- [25] [26 <./free1.png> <./free2.png> <./free3.png> <./free4.png> <./free_cryst
-al.png> <./free5.png>] <scattering1.png, id=350, 450.18187pt x 450.9347pt>
+ [25] [26pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.3.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.744 \subsubsection
+                    {Muro di potenziale sferico} <./free1.png> <./free2.png> <.
+/free3.png> <./free4.png> <./free_crystal.png> <./free5.png>]
+<scattering1.png, id=343, 450.18187pt x 450.9347pt>
 File: scattering1.png Graphic file (type png)
  <use scattering1.png>
-Package pdftex.def Info: scattering1.png used on input line 758.
+Package pdftex.def Info: scattering1.png used on input line 757.
 (pdftex.def)             Requested size: 167.2989pt x 167.57945pt.
 
-<scattering2.png, id=351, 450.9347pt x 450.9347pt>
+<scattering2.png, id=344, 450.9347pt x 450.9347pt>
 File: scattering2.png Graphic file (type png)
  <use scattering2.png>
-Package pdftex.def Info: scattering2.png used on input line 759.
+Package pdftex.def Info: scattering2.png used on input line 758.
 (pdftex.def)             Requested size: 167.2989pt x 167.29735pt.
 
-<scattering3.png, id=352, 451.6875pt x 450.9347pt>
+<scattering3.png, id=345, 451.6875pt x 450.9347pt>
 File: scattering3.png Graphic file (type png)
  <use scattering3.png>
-Package pdftex.def Info: scattering3.png used on input line 772.
+Package pdftex.def Info: scattering3.png used on input line 771.
 (pdftex.def)             Requested size: 167.2989pt x 167.02213pt.
 
-<scattering4.png, id=353, 450.18187pt x 451.6875pt>
+<scattering4.png, id=346, 450.18187pt x 451.6875pt>
 File: scattering4.png Graphic file (type png)
  <use scattering4.png>
-Package pdftex.def Info: scattering4.png used on input line 773.
+Package pdftex.def Info: scattering4.png used on input line 772.
 (pdftex.def)             Requested size: 167.2989pt x 167.8592pt.
 
-<scattering5.png, id=354, 452.4403pt x 452.4403pt>
+<scattering5.png, id=347, 452.4403pt x 452.4403pt>
 File: scattering5.png Graphic file (type png)
  <use scattering5.png>
-Package pdftex.def Info: scattering5.png used on input line 774.
+Package pdftex.def Info: scattering5.png used on input line 773.
 (pdftex.def)             Requested size: 167.2989pt x 167.29674pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<scattering_buca1.png, id=355, 375.65344pt x 375.65344pt>
+<scattering_buca1.png, id=348, 375.65344pt x 375.65344pt>
 File: scattering_buca1.png Graphic file (type png)
 
 <use scattering_buca1.png>
-Package pdftex.def Info: scattering_buca1.png used on input line 788.
+Package pdftex.def Info: scattering_buca1.png used on input line 787.
 (pdftex.def)             Requested size: 167.2989pt x 167.29994pt.
 
-<scattering_buca2.png, id=356, 376.40625pt x 377.91188pt>
+<scattering_buca2.png, id=349, 376.40625pt x 377.91188pt>
 File: scattering_buca2.png Graphic file (type png)
 
 <use scattering_buca2.png>
-Package pdftex.def Info: scattering_buca2.png used on input line 789.
+Package pdftex.def Info: scattering_buca2.png used on input line 788.
 (pdftex.def)             Requested size: 167.2989pt x 167.97131pt.
 
-<scattering_buca3.png, id=357, 376.40625pt x 376.40625pt>
+<scattering_buca3.png, id=350, 376.40625pt x 376.40625pt>
 File: scattering_buca3.png Graphic file (type png)
 
 <use scattering_buca3.png>
-Package pdftex.def Info: scattering_buca3.png used on input line 790.
+Package pdftex.def Info: scattering_buca3.png used on input line 789.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
 
-<scattering_buca4.png, id=358, 376.40625pt x 376.40625pt>
+<scattering_buca4.png, id=351, 376.40625pt x 376.40625pt>
 File: scattering_buca4.png Graphic file (type png)
 
 <use scattering_buca4.png>
-Package pdftex.def Info: scattering_buca4.png used on input line 791.
+Package pdftex.def Info: scattering_buca4.png used on input line 790.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
 
-<scattering_buca5.png, id=359, 376.40625pt x 376.40625pt>
+<scattering_buca5.png, id=352, 376.40625pt x 376.40625pt>
 File: scattering_buca5.png Graphic file (type png)
 
 <use scattering_buca5.png>
-Package pdftex.def Info: scattering_buca5.png used on input line 792.
+Package pdftex.def Info: scattering_buca5.png used on input line 791.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
 
-<scattering_buca6.png, id=360, 376.40625pt x 376.40625pt>
+<scattering_buca6.png, id=353, 376.40625pt x 376.40625pt>
 File: scattering_buca6.png Graphic file (type png)
 
 <use scattering_buca6.png>
-Package pdftex.def Info: scattering_buca6.png used on input line 793.
+Package pdftex.def Info: scattering_buca6.png used on input line 792.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
- [27 <./scattering1.png> <./scattering2.png>]
-<notunnel1.png, id=369, 225.09094pt x 225.84375pt>
+ [27pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.797  \subsubsection{Barriera larga}
+                                      <./scattering1.png> <./scattering2.png>]
+<notunnel1.png, id=362, 225.09094pt x 225.84375pt>
 File: notunnel1.png Graphic file (type png)
  <use notunnel1.png>
-Package pdftex.def Info: notunnel1.png used on input line 805.
+Package pdftex.def Info: notunnel1.png used on input line 804.
 (pdftex.def)             Requested size: 167.2989pt x 167.8661pt.
 
-<notunnel2.png, id=370, 226.59656pt x 226.59656pt>
+<notunnel2.png, id=363, 226.59656pt x 226.59656pt>
 File: notunnel2.png Graphic file (type png)
  <use notunnel2.png>
-Package pdftex.def Info: notunnel2.png used on input line 806.
+Package pdftex.def Info: notunnel2.png used on input line 805.
 (pdftex.def)             Requested size: 167.2989pt x 167.29848pt.
 
-<notunnel3.png, id=371, 225.09094pt x 225.84375pt>
+<notunnel3.png, id=364, 225.09094pt x 225.84375pt>
 File: notunnel3.png Graphic file (type png)
  <use notunnel3.png>
-Package pdftex.def Info: notunnel3.png used on input line 807.
+Package pdftex.def Info: notunnel3.png used on input line 806.
 (pdftex.def)             Requested size: 167.2989pt x 167.8661pt.
 
-<notunnel4.png, id=372, 224.33812pt x 225.09094pt>
+<notunnel4.png, id=365, 224.33812pt x 225.09094pt>
 File: notunnel4.png Graphic file (type png)
  <use notunnel4.png>
-Package pdftex.def Info: notunnel4.png used on input line 808.
+Package pdftex.def Info: notunnel4.png used on input line 807.
 (pdftex.def)             Requested size: 167.2989pt x 167.8664pt.
 
-<notunnel5.png, id=373, 225.84375pt x 226.59656pt>
+<notunnel5.png, id=366, 225.84375pt x 226.59656pt>
 File: notunnel5.png Graphic file (type png)
  <use notunnel5.png>
-Package pdftex.def Info: notunnel5.png used on input line 809.
+Package pdftex.def Info: notunnel5.png used on input line 808.
 (pdftex.def)             Requested size: 167.2989pt x 167.86552pt.
 
-<tunnel1.png, id=374, 224.33812pt x 225.09094pt>
+<tunnel1.png, id=367, 224.33812pt x 225.09094pt>
 File: tunnel1.png Graphic file (type png)
  <use tunnel1.png>
-Package pdftex.def Info: tunnel1.png used on input line 819.
+Package pdftex.def Info: tunnel1.png used on input line 818.
 (pdftex.def)             Requested size: 167.2989pt x 167.8664pt.
 
-<tunnel3.png, id=375, 223.58531pt x 224.33812pt>
+<tunnel3.png, id=368, 223.58531pt x 224.33812pt>
 File: tunnel3.png Graphic file (type png)
  <use tunnel3.png>
-Package pdftex.def Info: tunnel3.png used on input line 820.
+Package pdftex.def Info: tunnel3.png used on input line 819.
 (pdftex.def)             Requested size: 167.2989pt x 167.86636pt.
 
-<tunnel2.png, id=376, 225.09094pt x 226.59656pt>
+<tunnel2.png, id=369, 225.09094pt x 226.59656pt>
 File: tunnel2.png Graphic file (type png)
  <use tunnel2.png>
-Package pdftex.def Info: tunnel2.png used on input line 821.
+Package pdftex.def Info: tunnel2.png used on input line 820.
 (pdftex.def)             Requested size: 167.2989pt x 168.42566pt.
 
-<tunnel4.png, id=377, 225.09094pt x 225.09094pt>
+<tunnel4.png, id=370, 225.09094pt x 225.09094pt>
 File: tunnel4.png Graphic file (type png)
  <use tunnel4.png>
-Package pdftex.def Info: tunnel4.png used on input line 822.
+Package pdftex.def Info: tunnel4.png used on input line 821.
 (pdftex.def)             Requested size: 167.2989pt x 167.30655pt.
- [28 <./scattering3.png> <./scattering4.png> <./scattering5.png>] [29 <./scatte
-ring_buca1.png> <./scattering_buca2.png> <./scattering_buca3.png> <./scattering
-_buca4.png> <./scattering_buca5.png> <./scattering_buca6.png>] [30 <./notunnel1
-.png> <./notunnel2.png> <./notunnel3.png> <./notunnel4.png> <./notunnel5.png>]
-<fenditura1.png, id=413, 225.84375pt x 225.84375pt>
+ [28pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.824 ...bsection{Diffrazione da doppia fenditura}
+                                                   <./scattering3.png> <./scatt
+ering4.png> <./scattering5.png>] [29pdfTeX warning (ext4): destination with the
+ same identifier (name{figure.3.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.824 ...bsection{Diffrazione da doppia fenditura}
+                                                   <./scattering_buca1.png> <./
+scattering_buca2.png> <./scattering_buca3.png> <./scattering_buca4.png> <./scat
+tering_buca5.png> <./scattering_buca6.png>] [30pdfTeX warning (ext4): destinati
+on with the same identifier (name{figure.3.7}) has been already used, duplicate
+ ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.824 ...bsection{Diffrazione da doppia fenditura}
+                                                   <./notunnel1.png> <./notunne
+l2.png> <./notunnel3.png> <./notunnel4.png> <./notunnel5.png>]
+<fenditura1.png, id=406, 225.84375pt x 225.84375pt>
 File: fenditura1.png Graphic file (type png)
  <use fenditura1.png>
-Package pdftex.def Info: fenditura1.png used on input line 833.
+Package pdftex.def Info: fenditura1.png used on input line 832.
 (pdftex.def)             Requested size: 167.2989pt x 167.30783pt.
 
-<fenditura2.png, id=414, 225.84375pt x 226.59656pt>
+<fenditura2.png, id=407, 225.84375pt x 226.59656pt>
 File: fenditura2.png Graphic file (type png)
  <use fenditura2.png>
-Package pdftex.def Info: fenditura2.png used on input line 834.
+Package pdftex.def Info: fenditura2.png used on input line 833.
 (pdftex.def)             Requested size: 167.2989pt x 167.86552pt.
 
-<fenditura3.png, id=415, 223.58531pt x 224.33812pt>
+<fenditura3.png, id=408, 223.58531pt x 224.33812pt>
 File: fenditura3.png Graphic file (type png)
  <use fenditura3.png>
-Package pdftex.def Info: fenditura3.png used on input line 835.
+Package pdftex.def Info: fenditura3.png used on input line 834.
 (pdftex.def)             Requested size: 167.2989pt x 167.86636pt.
 
-<fenditura4.png, id=416, 223.58531pt x 225.84375pt>
+<fenditura4.png, id=409, 223.58531pt x 225.84375pt>
 File: fenditura4.png Graphic file (type png)
  <use fenditura4.png>
-Package pdftex.def Info: fenditura4.png used on input line 836.
+Package pdftex.def Info: fenditura4.png used on input line 835.
 (pdftex.def)             Requested size: 167.2989pt x 168.99297pt.
 
-<fenditura5.png, id=417, 225.09094pt x 225.84375pt>
+<fenditura5.png, id=410, 225.09094pt x 225.84375pt>
 File: fenditura5.png Graphic file (type png)
  <use fenditura5.png>
-Package pdftex.def Info: fenditura5.png used on input line 837.
+Package pdftex.def Info: fenditura5.png used on input line 836.
 (pdftex.def)             Requested size: 209.12683pt x 209.83607pt.
 
 
-LaTeX Warning: Float too large for page by 2.89354pt on input line 839.
+LaTeX Warning: Float too large for page by 2.89354pt on input line 838.
 
-[31 <./tunnel1.png> <./tunnel3.png> <./tunnel2.png> <./tunnel4.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 854.
- [32]
-[33 <./fenditura1.png> <./fenditura2.png> <./fenditura3.png> <./fenditura4.png>
- <./fenditura5.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 854.
+[31pdfTeX warning (ext4): destination with the same identifier (name{figure.3.8
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.839  \subsection{Equazione del calore}
+                                         <./tunnel1.png> <./tunnel3.png> <./tun
+nel2.png> <./tunnel4.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 853.
+ [32] [33pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.3.9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.853 \end{document}
+                     <./fenditura1.png> <./fenditura2.png> <./fenditura3.png> <
+./fenditura4.png> <./fenditura5.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 853.
  (./relazioni.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 854.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 854.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 853.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 853.
 Package rerunfilecheck Info: File `relazioni.out' has not changed.
 (rerunfilecheck)             Checksum: 88CA31443876598BE0994F1196DABE0F;1319.
  ) 
 Here is how much of TeX's memory you used:
- 8929 strings out of 493629
- 128125 string characters out of 3148778
- 224478 words of memory out of 3000000
- 11906 multiletter control sequences out of 15000+200000
+ 8980 strings out of 493629
+ 128663 string characters out of 3148778
+ 223818 words of memory out of 3000000
+ 11955 multiletter control sequences out of 15000+200000
  16089 words of font info for 64 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 31i,11n,43p,367b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,11n,43p,367b,496s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
@@ -1103,10 +1173,10 @@ ts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relazioni.pdf (34 pages, 857775 bytes).
+Output written on relazioni.pdf (34 pages, 855886 bytes).
 PDF statistics:
- 535 PDF objects out of 1000 (max. 8388607)
- 418 compressed objects within 5 object streams
- 136 named destinations out of 1000 (max. 500000)
- 368 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 528 PDF objects out of 1000 (max. 8388607)
+ 413 compressed objects within 5 object streams
+ 135 named destinations out of 1000 (max. 500000)
+ 363 words of extra memory for PDF output out of 10000 (max. 10000000)
 

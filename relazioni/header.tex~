@@ -16,7 +16,7 @@
 \usepackage{subfigure}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\textit{\slshape \rightmark}}
+%\fancyhead[LE,RO]{\slshape \rightmark}
 \fancyhead[LO,RE]{\slshape \leftmark}
 \fancyfoot[C]{\thepage}
 %\titleformat{\chapter}%

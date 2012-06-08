@@ -13,8 +13,8 @@
 #include "varie.h"
 
 
-#define N 100
-#define N_SERIES 30
+#define N 200
+#define N_SERIES 25
 #define R_MIN 0
 #define R_MAX 3
 #define V_MAX 1
@@ -23,13 +23,14 @@
 #define SIGMA 1
 #define RETICOLO 10
 
-#define D_T 0.1
+#define D_T 0.5
 
 
 
 
 gsl_matrix_complex* psi ;
 double initial_max ;
+double z_axis_value;
 const double kinetic_constant = 2; 
 const double harmonic_constant = 1e-4;
 gsl_matrix_complex *temp;
@@ -64,12 +65,11 @@ double potential( int i ,int j  ){
   //return 0.0;
  //  return ( harmonic_constant*(i*i+j*j));
 /** Buca sferica*/
-/*	
+	
 	if ( i*i + j*j < R_MAX*R_MAX )
 		return V_MAX;
 	else
 		return 0.0 ;
-*/
 	/**Barriera di potenziale orizzontale*/
  /*
   if( abs(i) < R_MAX)
@@ -299,12 +299,12 @@ void setupTexture()
   );
 
   // Create an array for 101 * 101 vertices
-  point vertices[101][101];
+  point vertices[N+1][N+1];
 
-  for(int i = 0; i < 101; i++) {
-    for(int j = 0; j < 101; j++) {
-      vertices[i][j].x = (j - 50) / 50.0;
-      vertices[i][j].y = (i - 50) / 50.0;
+  for(int i = 0; i < N+11; i++) {
+    for(int j = 0; j < N+1; j++) {
+      vertices[i][j].x = (j - N/2) / (double) N;
+      vertices[i][j].y = (i - N/2) / (double) N;
     }
   }
 
@@ -313,38 +313,38 @@ void setupTexture()
   glBufferData(GL_ARRAY_BUFFER, sizeof vertices, vertices, GL_STATIC_DRAW);
 
   // Create an array of indices into the vertex array that traces both horizontal and vertical lines
-  GLushort indices[100 * 101 * 6];
+  GLushort indices[N * (N+1) * 6];
   int i = 0;
 
-  for(int y = 0; y < 100; y++) {
-    for(int x = 0; x < 100; x++) {
-      indices[i++] = y * 101 + x;
-      indices[i++] = y * 101 + x + 1;
+  for(int y = 0; y < N; y++) {
+    for(int x = 0; x < N; x++) {
+      indices[i++] = y * (N+1)+ x;
+      indices[i++] = y * (N+1) + x + 1;
     }
   }
 
-  for(int x = 0; x < 101; x++) {
-    for(int y = 0; y < 100; y++) {
-      indices[i++] = y * 101 + x;
-      indices[i++] = (y + 1) * 101 + x;
+  for(int x = 0; x < N+1; x++) {
+    for(int y = 0; y < N; y++) {
+      indices[i++] = y * (N+1)+ x;
+      indices[i++] = (y + 1) * (N+1)+ x;
     }
   }
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[1]);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, 100 * 101 * 4 * sizeof *indices, indices, GL_STATIC_DRAW);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, N * (N+1) * 4 * sizeof *indices, indices, GL_STATIC_DRAW);
 
   // Create another array of indices that describes all the triangles needed to create a completely filled surface
   i = 0;
 
-  for(int y = 0; y < 101; y++) {
-    for(int x = 0; x < 100; x++) {
-      indices[i++] = y * 101 + x;
-      indices[i++] = y * 101 + x + 1;
-      indices[i++] = (y + 1) * 101 + x + 1;
+  for(int y = 0; y < N+1; y++) {
+    for(int x = 0; x < N; x++) {
+      indices[i++] = y * (N+1) + x;
+      indices[i++] = y * (N+1) + x + 1;
+      indices[i++] = (y + 1) * (N+1) + x + 1;
 
-      indices[i++] = y * 101 + x;
-      indices[i++] = (y + 1) * 101 + x + 1;
-      indices[i++] = (y + 1) * 101 + x;
+      indices[i++] = y * (N+1) + x;
+      indices[i++] = (y + 1) * (N+1) + x + 1;
+      indices[i++] = (y + 1) * (N+1) + x;
     }
   }
 
@@ -437,11 +437,11 @@ void display()
   glm::mat4 model;
 
   if(rotate)
-    model = glm::rotate(glm::mat4(1.0f), float(glutGet(GLUT_ELAPSED_TIME) / 100.0), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::rotate(glm::mat4(1.0f), (float) glutGet(GLUT_ELAPSED_TIME) / (float) N, glm::vec3(0.0f, 0.0f, 1.0f));
   else
     model = glm::mat4(1.0f);  
 
-  glm::mat4 view = glm::lookAt(glm::vec3(0.0, -2.0, 2.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 0.0, 1.0));
+  glm::mat4 view = glm::lookAt(glm::vec3(0.0, z_axis_value, 1.8), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 0.0, 2.0));
   glm::mat4 projection = glm::perspective(45.0f, 1.0f*640/480, 0.1f, 10.0f);
 
   glm::mat4 vertex_transform = projection * view * model;
@@ -477,7 +477,7 @@ void display()
   glVertexAttribPointer(attribute_coord2d, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[2]);
-  glDrawElements(GL_TRIANGLES, 100 * 100 * 6, GL_UNSIGNED_SHORT, 0);
+  glDrawElements(GL_TRIANGLES, N * N * 6, GL_UNSIGNED_SHORT, 0);
 
   glPolygonOffset(0, 0);
   glDisable(GL_POLYGON_OFFSET_FILL);
@@ -487,7 +487,7 @@ void display()
   glUniform4fv(uniform_color, 1, bright);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[1]);
-  glDrawElements(GL_LINES, 100 * 101 * 4, GL_UNSIGNED_SHORT, 0);
+  glDrawElements(GL_LINES, N * (N+1) * 4, GL_UNSIGNED_SHORT, 0);
 
   /* Stop using the vertex buffer object */
   glDisableVertexAttribArray(attribute_coord2d);
@@ -573,12 +573,22 @@ void keyboard(unsigned char key, int x, int y)
         case 'q': case 'Q': case 27:
             free_resources();
             exit(EXIT_SUCCESS);
+	    break;
         case ' ':
             active =! active;
+	    break;
 	case 'm':
 	    normalization*=1.3;
+	    break;
 	case 'l':
-	    normalization*=0.8;
+	    normalization/=1.3;
+	    break;
+	case 'w':
+	    z_axis_value/=1.2;
+	    break;
+	case 's':
+	  if(z_axis_value>-3.0)
+	    z_axis_value*=1.2;
             break;
     }
 }
@@ -589,6 +599,7 @@ int main(int argc, char* argv[]) {
   temp = gsl_matrix_complex_alloc(N,N);
   initial_max =init_wave_function( psi , circular_step_pdf );
   normalization = 1;
+  z_axis_value = -1.0;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGBA|GLUT_DEPTH|GLUT_DOUBLE);
   glutInitWindowSize(width, height);

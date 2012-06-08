@@ -142,9 +142,10 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 %%% CERCA COME RIPORTARE L' INTESTAZIONE SE CAMBI Pagina
 %%% LOgaritmo
 \subsubsection{Newton-Cotes I: Logaritmo}
-\begin{center}
+\begin{figure}[h]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
-\end{center}
+\caption{Errori per Newton-Cotes I: Logaritmo}
+\end{figure}
 \begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
@@ -172,9 +173,10 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
 \subsubsection{Newton-Cotes II: Logaritmo}
-\begin{center}
+\begin{figure}[h]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_log.eps}
-\end{center}
+\caption{Errori per Newton-Cotes II: Logaritmo}
+\end{figure}
 
   \begin{center}
   \begin{longtable}[h]{lcr}
@@ -231,9 +233,10 @@ Numero intervalli & quadratura gaussiana \\
 \end{longtable}
 \end{center}
 \subsubsection{Newton-Cotes I: Polinomio}
-\begin{center}
+\begin{figure}[h]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
-\end{center}
+\caption{Errori per Newton-Cotes I: Polinomio}
+\end{figure}
 
 \begin{center}
 % POLI 111111111111111111
@@ -265,9 +268,10 @@ Si può notare che in questo caso la differenza fra l'errore stimato e l'errore 
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
 \subsubsection{Newton-Cotes II: Polinomio}
-\begin{center}
+\begin{figure}[h]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
-\end{center}
+\caption{Errori per Newton-Cotes II: Polinomio}
+\end{figure}
 
 \begin{center}
 \begin{longtable}[h]{lcr}
@@ -534,7 +538,6 @@ Dato che ad ogni passo del Metropolis viene modificata solo una coordinata, è p
 \begin{equation*}
 \Delta S_E \ = \ a[\mathcal{L}(x_{i-1},x'_{i})+\mathcal{L}(x'_{i},x_{i+1})-\mathcal{L}(x_{i-1},x_{i})-\mathcal{L}(x_{i},x_{i+1})]    
 \end{equation*}
-
 \subsubsection{Inizializzazione e termalizzazione dell'algoritmo}
 Prima che l'algoritmo Metropolis riesca a generare configurazioni del sistema con la \emph{pdf} voluta, è necessario che entri in regime asintotico.
 È possibile stimare il tempo di termalizzazione dell'algoritmo graficando l'andamento dell'azione euclidea $S_E$ in funzione del tempo markoviano.\\

@@ -15,7 +15,6 @@ int main(){
 	int k = 0;
 	int l = 0;
 	int length = N_SWEEP*Nx;
-	double action;
 	double *x;
 	double *xnew;
 	double O[Nx-1];
@@ -51,7 +50,6 @@ int main(){
 	    printf("Valore inserito non corretto\n");
 	    exit(EXIT_FAILURE);
 	}
-	action=efirst_action(x,Nx);
 	for ( j = 0; j< N_SWEEP; j++){
 		ranlxd(xnew,Nx);
 		/*Sweep completo */

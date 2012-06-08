@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  8 JUN 2012 11:23
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2012.5.27)  8 JUN 2012 15:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -870,25 +870,20 @@ Package pdftex.def Info: van_der_pol.png used on input line 681.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23 <./sovra1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 693--698
-
- []
-
-[24pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
-}) has been already used, duplicate ignored
+[23 <./sovra1.png>] [24pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.706 $$
+l.712 $$
          <./van_der_pol.png>] <free1.png, id=318, 149.05687pt x 149.8097pt>
 File: free1.png Graphic file (type png)
 
 <use free1.png>
-Package pdftex.def Info: free1.png used on input line 735.
+Package pdftex.def Info: free1.png used on input line 733.
 (pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
-Underfull \hbox (badness 1215) in paragraph at lines 735--735
+Underfull \hbox (badness 1215) in paragraph at lines 733--733
 []\OT1/cmr/m/n/9 (a) $\OML/cmm/m/it/9  \OT1/cmr/m/n/9 (0)$: il pac-chet-to ^^Re
  gaus-sia-
  []
@@ -896,72 +891,72 @@ Underfull \hbox (badness 1215) in paragraph at lines 735--735
 <free2.png, id=319, 149.05687pt x 149.8097pt>
 File: free2.png Graphic file (type png)
  <use free2.png>
-Package pdftex.def Info: free2.png used on input line 736.
+Package pdftex.def Info: free2.png used on input line 734.
 (pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
 <free3.png, id=320, 151.3153pt x 150.5625pt>
 File: free3.png Graphic file (type png)
  <use free3.png>
-Package pdftex.def Info: free3.png used on input line 737.
+Package pdftex.def Info: free3.png used on input line 735.
 (pdftex.def)             Requested size: 151.31493pt x 150.56212pt.
 
 <free4.png, id=321, 150.5625pt x 150.5625pt>
 File: free4.png Graphic file (type png)
  <use free4.png>
-Package pdftex.def Info: free4.png used on input line 738.
+Package pdftex.def Info: free4.png used on input line 736.
 (pdftex.def)             Requested size: 150.56212pt x 150.56212pt.
 
-Underfull \hbox (badness 4556) in paragraph at lines 738--738
+Underfull \hbox (badness 4556) in paragraph at lines 736--736
 []\OT1/cmr/m/n/9 (d) La fun-zio-ne d'on-da ini-zia a
  []
 
 <free_crystal.png, id=322, 149.05687pt x 149.8097pt>
 File: free_crystal.png Graphic file (type png)
  <use free_crystal.png>
-Package pdftex.def Info: free_crystal.png used on input line 739.
+Package pdftex.def Info: free_crystal.png used on input line 737.
 (pdftex.def)             Requested size: 149.0565pt x 149.80931pt.
 
 <free5.png, id=323, 149.8097pt x 149.8097pt>
 File: free5.png Graphic file (type png)
  <use free5.png>
-Package pdftex.def Info: free5.png used on input line 740.
+Package pdftex.def Info: free5.png used on input line 738.
 (pdftex.def)             Requested size: 149.80931pt x 149.80931pt.
  [25] [26pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.3.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.744 \subsubsection
+l.742 \subsubsection
                     {Muro di potenziale sferico} <./free1.png> <./free2.png> <.
 /free3.png> <./free4.png> <./free_crystal.png> <./free5.png>]
 <scattering1.png, id=343, 450.18187pt x 450.9347pt>
 File: scattering1.png Graphic file (type png)
  <use scattering1.png>
-Package pdftex.def Info: scattering1.png used on input line 757.
+Package pdftex.def Info: scattering1.png used on input line 755.
 (pdftex.def)             Requested size: 167.2989pt x 167.57945pt.
 
 <scattering2.png, id=344, 450.9347pt x 450.9347pt>
 File: scattering2.png Graphic file (type png)
  <use scattering2.png>
-Package pdftex.def Info: scattering2.png used on input line 758.
+Package pdftex.def Info: scattering2.png used on input line 756.
 (pdftex.def)             Requested size: 167.2989pt x 167.29735pt.
 
 <scattering3.png, id=345, 451.6875pt x 450.9347pt>
 File: scattering3.png Graphic file (type png)
  <use scattering3.png>
-Package pdftex.def Info: scattering3.png used on input line 771.
+Package pdftex.def Info: scattering3.png used on input line 769.
 (pdftex.def)             Requested size: 167.2989pt x 167.02213pt.
 
 <scattering4.png, id=346, 450.18187pt x 451.6875pt>
 File: scattering4.png Graphic file (type png)
  <use scattering4.png>
-Package pdftex.def Info: scattering4.png used on input line 772.
+Package pdftex.def Info: scattering4.png used on input line 770.
 (pdftex.def)             Requested size: 167.2989pt x 167.8592pt.
 
 <scattering5.png, id=347, 452.4403pt x 452.4403pt>
 File: scattering5.png Graphic file (type png)
  <use scattering5.png>
-Package pdftex.def Info: scattering5.png used on input line 773.
+Package pdftex.def Info: scattering5.png used on input line 771.
 (pdftex.def)             Requested size: 167.2989pt x 167.29674pt.
 
 
@@ -971,116 +966,116 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: scattering_buca1.png Graphic file (type png)
 
 <use scattering_buca1.png>
-Package pdftex.def Info: scattering_buca1.png used on input line 787.
+Package pdftex.def Info: scattering_buca1.png used on input line 785.
 (pdftex.def)             Requested size: 167.2989pt x 167.29994pt.
 
 <scattering_buca2.png, id=349, 376.40625pt x 377.91188pt>
 File: scattering_buca2.png Graphic file (type png)
 
 <use scattering_buca2.png>
-Package pdftex.def Info: scattering_buca2.png used on input line 788.
+Package pdftex.def Info: scattering_buca2.png used on input line 786.
 (pdftex.def)             Requested size: 167.2989pt x 167.97131pt.
 
 <scattering_buca3.png, id=350, 376.40625pt x 376.40625pt>
 File: scattering_buca3.png Graphic file (type png)
 
 <use scattering_buca3.png>
-Package pdftex.def Info: scattering_buca3.png used on input line 789.
+Package pdftex.def Info: scattering_buca3.png used on input line 787.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
 
 <scattering_buca4.png, id=351, 376.40625pt x 376.40625pt>
 File: scattering_buca4.png Graphic file (type png)
 
 <use scattering_buca4.png>
-Package pdftex.def Info: scattering_buca4.png used on input line 790.
+Package pdftex.def Info: scattering_buca4.png used on input line 788.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
 
 <scattering_buca5.png, id=352, 376.40625pt x 376.40625pt>
 File: scattering_buca5.png Graphic file (type png)
 
 <use scattering_buca5.png>
-Package pdftex.def Info: scattering_buca5.png used on input line 791.
+Package pdftex.def Info: scattering_buca5.png used on input line 789.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
 
 <scattering_buca6.png, id=353, 376.40625pt x 376.40625pt>
 File: scattering_buca6.png Graphic file (type png)
 
 <use scattering_buca6.png>
-Package pdftex.def Info: scattering_buca6.png used on input line 792.
+Package pdftex.def Info: scattering_buca6.png used on input line 790.
 (pdftex.def)             Requested size: 167.2989pt x 167.3021pt.
  [27pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.797  \subsubsection{Barriera larga}
+l.795  \subsubsection{Barriera larga}
                                       <./scattering1.png> <./scattering2.png>]
 <notunnel1.png, id=362, 225.09094pt x 225.84375pt>
 File: notunnel1.png Graphic file (type png)
  <use notunnel1.png>
-Package pdftex.def Info: notunnel1.png used on input line 804.
+Package pdftex.def Info: notunnel1.png used on input line 802.
 (pdftex.def)             Requested size: 167.2989pt x 167.8661pt.
 
 <notunnel2.png, id=363, 226.59656pt x 226.59656pt>
 File: notunnel2.png Graphic file (type png)
  <use notunnel2.png>
-Package pdftex.def Info: notunnel2.png used on input line 805.
+Package pdftex.def Info: notunnel2.png used on input line 803.
 (pdftex.def)             Requested size: 167.2989pt x 167.29848pt.
 
 <notunnel3.png, id=364, 225.09094pt x 225.84375pt>
 File: notunnel3.png Graphic file (type png)
  <use notunnel3.png>
-Package pdftex.def Info: notunnel3.png used on input line 806.
+Package pdftex.def Info: notunnel3.png used on input line 804.
 (pdftex.def)             Requested size: 167.2989pt x 167.8661pt.
 
 <notunnel4.png, id=365, 224.33812pt x 225.09094pt>
 File: notunnel4.png Graphic file (type png)
  <use notunnel4.png>
-Package pdftex.def Info: notunnel4.png used on input line 807.
+Package pdftex.def Info: notunnel4.png used on input line 805.
 (pdftex.def)             Requested size: 167.2989pt x 167.8664pt.
 
 <notunnel5.png, id=366, 225.84375pt x 226.59656pt>
 File: notunnel5.png Graphic file (type png)
  <use notunnel5.png>
-Package pdftex.def Info: notunnel5.png used on input line 808.
+Package pdftex.def Info: notunnel5.png used on input line 806.
 (pdftex.def)             Requested size: 167.2989pt x 167.86552pt.
 
 <tunnel1.png, id=367, 224.33812pt x 225.09094pt>
 File: tunnel1.png Graphic file (type png)
  <use tunnel1.png>
-Package pdftex.def Info: tunnel1.png used on input line 818.
+Package pdftex.def Info: tunnel1.png used on input line 816.
 (pdftex.def)             Requested size: 167.2989pt x 167.8664pt.
 
 <tunnel3.png, id=368, 223.58531pt x 224.33812pt>
 File: tunnel3.png Graphic file (type png)
  <use tunnel3.png>
-Package pdftex.def Info: tunnel3.png used on input line 819.
+Package pdftex.def Info: tunnel3.png used on input line 817.
 (pdftex.def)             Requested size: 167.2989pt x 167.86636pt.
 
 <tunnel2.png, id=369, 225.09094pt x 226.59656pt>
 File: tunnel2.png Graphic file (type png)
  <use tunnel2.png>
-Package pdftex.def Info: tunnel2.png used on input line 820.
+Package pdftex.def Info: tunnel2.png used on input line 818.
 (pdftex.def)             Requested size: 167.2989pt x 168.42566pt.
 
 <tunnel4.png, id=370, 225.09094pt x 225.09094pt>
 File: tunnel4.png Graphic file (type png)
  <use tunnel4.png>
-Package pdftex.def Info: tunnel4.png used on input line 821.
+Package pdftex.def Info: tunnel4.png used on input line 819.
 (pdftex.def)             Requested size: 167.2989pt x 167.30655pt.
  [28pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.824 ...bsection{Diffrazione da doppia fenditura}
+l.822 ...bsection{Diffrazione da doppia fenditura}
                                                    <./scattering3.png> <./scatt
 ering4.png> <./scattering5.png>] [29pdfTeX warning (ext4): destination with the
  same identifier (name{figure.3.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.824 ...bsection{Diffrazione da doppia fenditura}
+l.822 ...bsection{Diffrazione da doppia fenditura}
                                                    <./scattering_buca1.png> <./
 scattering_buca2.png> <./scattering_buca3.png> <./scattering_buca4.png> <./scat
 tering_buca5.png> <./scattering_buca6.png>] [30pdfTeX warning (ext4): destinati
@@ -1089,63 +1084,63 @@ on with the same identifier (name{figure.3.7}) has been already used, duplicate
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.824 ...bsection{Diffrazione da doppia fenditura}
+l.822 ...bsection{Diffrazione da doppia fenditura}
                                                    <./notunnel1.png> <./notunne
 l2.png> <./notunnel3.png> <./notunnel4.png> <./notunnel5.png>]
 <fenditura1.png, id=406, 225.84375pt x 225.84375pt>
 File: fenditura1.png Graphic file (type png)
  <use fenditura1.png>
-Package pdftex.def Info: fenditura1.png used on input line 832.
+Package pdftex.def Info: fenditura1.png used on input line 830.
 (pdftex.def)             Requested size: 167.2989pt x 167.30783pt.
 
 <fenditura2.png, id=407, 225.84375pt x 226.59656pt>
 File: fenditura2.png Graphic file (type png)
  <use fenditura2.png>
-Package pdftex.def Info: fenditura2.png used on input line 833.
+Package pdftex.def Info: fenditura2.png used on input line 831.
 (pdftex.def)             Requested size: 167.2989pt x 167.86552pt.
 
 <fenditura3.png, id=408, 223.58531pt x 224.33812pt>
 File: fenditura3.png Graphic file (type png)
  <use fenditura3.png>
-Package pdftex.def Info: fenditura3.png used on input line 834.
+Package pdftex.def Info: fenditura3.png used on input line 832.
 (pdftex.def)             Requested size: 167.2989pt x 167.86636pt.
 
 <fenditura4.png, id=409, 223.58531pt x 225.84375pt>
 File: fenditura4.png Graphic file (type png)
  <use fenditura4.png>
-Package pdftex.def Info: fenditura4.png used on input line 835.
+Package pdftex.def Info: fenditura4.png used on input line 833.
 (pdftex.def)             Requested size: 167.2989pt x 168.99297pt.
 
 <fenditura5.png, id=410, 225.09094pt x 225.84375pt>
 File: fenditura5.png Graphic file (type png)
  <use fenditura5.png>
-Package pdftex.def Info: fenditura5.png used on input line 836.
+Package pdftex.def Info: fenditura5.png used on input line 834.
 (pdftex.def)             Requested size: 209.12683pt x 209.83607pt.
 
 
-LaTeX Warning: Float too large for page by 2.89354pt on input line 838.
+LaTeX Warning: Float too large for page by 2.89354pt on input line 836.
 
 [31pdfTeX warning (ext4): destination with the same identifier (name{figure.3.8
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.839  \subsection{Equazione del calore}
-                                         <./tunnel1.png> <./tunnel3.png> <./tun
-nel2.png> <./tunnel4.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 853.
- [32] [33pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.3.9}) has been already used, duplicate ignored
+l.837 
+       <./tunnel1.png> <./tunnel3.png> <./tunnel2.png> <./tunnel4.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 857.
+
+[32] [33pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.3.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.853 \end{document}
-                     <./fenditura1.png> <./fenditura2.png> <./fenditura3.png> <
-./fenditura4.png> <./fenditura5.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 853.
+l.857  \end{document}
+                      <./fenditura1.png> <./fenditura2.png> <./fenditura3.png> 
+<./fenditura4.png> <./fenditura5.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 857.
  (./relazioni.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 853.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 853.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 857.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 857.
 Package rerunfilecheck Info: File `relazioni.out' has not changed.
 (rerunfilecheck)             Checksum: 88CA31443876598BE0994F1196DABE0F;1319.
  ) 
@@ -1173,7 +1168,7 @@ ts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relazioni.pdf (34 pages, 855886 bytes).
+Output written on relazioni.pdf (34 pages, 853728 bytes).
 PDF statistics:
  528 PDF objects out of 1000 (max. 8388607)
  413 compressed objects within 5 object streams

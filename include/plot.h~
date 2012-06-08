@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "varie.h"
 
 void plot(const char* data1,const char* data2,const char* data3 ){
     FILE *pipe = popen("gnuplot -persist","w");
@@ -66,40 +67,63 @@ void plot_harmonic (const char* data1, const char* out){
 void fit( const char * input ,const char * output, double mean , double sigma){
     double width;
     int* freq;
-	int n = 100;
-	int i ;
-	double tmp;
-	double max;
-	double min ;
-	int n_events = 1;
-	freq =  malloc(n*sizeof(int));
-	/* EX funzione binning */
-	for(i=0;i<n;i++)
-        freq[i]=0;
+    int n = 100;
+    int i ;
+ //   double mean;
+  //  double sigma;
+    float tmp;
+    double max;
+    double min ;
+    int n_events = 1;
+    freq =  malloc(n*sizeof(int));
+  /* EX funzione binning */
+    for(i=0;i<n;i++)
+      freq[i]=0;
     FILE* f=fopen(input,"r");
-	fscanf(f,"%lf \n",&tmp);
+	fscanf(f,"%e\n",&tmp);
 	max = tmp;
 	min = tmp;
-    while(fscanf(f,"%lf \n",&tmp) == 1){
-		n_events++;
+    while(fscanf(f,"%e\n",&tmp) == 1){
+      n_events++;
 		if(tmp>max)
 			max = tmp;
-		if ( tmp < min)
+		if (tmp < min)
 			min = tmp;
-        
-	}
-	width=(max-min)/(double)n;
-	while(fscanf(f,"%lf \n",&tmp) == 1){
-		for(i=0;i<n;i++)
-			if(tmp>min+i*width && tmp<=min+(i+1)*width)
-                freq[i]++;
-	}
+    }
+    fclose(f);
+    f=fopen(input,"r");
+    width=(max-min)/(double)n;
+    while( fscanf(f,"%e\n",&tmp) == 1){
+      for(i=0;i<n;i++){
+	  if( (tmp>min+i*width) && (tmp<=min+(i+1)*width) ){
+	  freq[i]++;
+	  }
+	  }
+	  
+    }
 	fclose(f);
+    /*
+	mean = 0.0;    
+    for ( i = 0; i<n ; i++){
+	  mean += freq[i]*(min+width*i);
+	}
+    mean /= (double) n_events;
+    printf("mean %e\n",mean);
+    
+    sigma= 0.0;
+    for ( i = 0; i<n ; i++){
+	  sigma += (freq[i]*(min+width*i)-mean)*(freq[i]*(min+width*i)-mean);
+	}
+    sigma /= (double) n_events;
+    printf("sigma:%e\n",sigma);
+    */
     f=fopen("bin.dat","w");
-    for(i=0;i<n;i++)
-            fprintf(f,"%lf\t%d\t%lf\n",min+(i+0.5)*width,freq[i],sqrt((double)freq[i]));
+    for(i=0;i<n;i++){
+        fprintf(f,"%lf\t%d\n",min+(i+0.5)*width,freq[i] );//,sqrt((double)freq[i]));
+    }
     fclose(f);
     free(freq);
+}
 	/* Fine ex funzione binning */
     FILE *pipe = popen("gnuplot -persist","w");
 	fprintf(pipe, "reset\n");
@@ -114,12 +138,11 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 	fprintf(pipe, "set output '%s'\n",output);
 	fprintf(pipe, "m= %lf\n",mean);
 	fprintf(pipe, "s= %lf\n", sigma);
-	fprintf(pipe, "a =%lf\n",n_events*width);
 	fprintf(pipe, "pi=3.14159265\n");
-	//fprintf(pipe, "A = %lf \n", n_events*width);
-	fprintf(pipe, "f(x)=a*exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
+	fprintf(pipe, "A = %lf \n",1.5);
+	fprintf(pipe, "f(x)=A*exp(-0.5*((x-m)/s)**2)/(2.50662827*s)\n");
 // 	//printf("A vale %lf \n ", n_events*width);
-	fprintf(pipe, "fit f(x) 'bin.dat' via s,m,a\n");
+	fprintf(pipe, "fit f(x) 'bin.dat' via A,s,m\n");
 	fprintf(pipe, "n=100\t#number of intervals\n");
 	fprintf(pipe, "max= %lf \t#max value\n", max);
 	fprintf(pipe, "min= %lf \t#min value\n",min);
@@ -132,10 +155,10 @@ void fit( const char * input ,const char * output, double mean , double sigma){
 	fprintf(pipe, "set style fill solid 0.5\t#fillstyle\n");
 	fprintf(pipe, "set tics out nomirror\n");
 	fprintf(pipe, "ti = sprintf(\"Gaussian Fit:\\n { /Symbol m } = %%f; {/Symbol s} = %%f\", m, s)\n");
-	fprintf(pipe, "plot '%s' u (hist($1,width)):(1.0) smooth freq w boxes lc rgb '#00ff00' title 'Binned data',f(x) w l ls 1 title ti\n",input);
+	fprintf(pipe, "plot '%s' u (hist($1,width)):(1.0) smooth freq w boxes lc rgb '#00ff00' title 'Binned data',f(x) w l ls 1 title ti\n",input);	
 	fclose(pipe);
     system("rm fit.log");
-    system("rm bin.dat");
+   // system("rm bin.dat");
 }
 
 

@@ -19,8 +19,7 @@
 #define SIGMA 5
 #define RETICOLO 10
 
-#define D_T 0.1
-
+#define D_T 0.7
 /** 
  * width and heigth of the matrix 
  * ad ogni elemento della matrice corrisponde un pixel
@@ -66,7 +65,7 @@ gsl_complex circular_step_pdf( double x , double y ){
 
 
 double potential( int i ,int j  ){
- // return 0.0;
+  return 0.0;
  //  return ( harmonic_constant*(i*i+j*j));
 /** Buca sferica*/
 /*	
@@ -83,7 +82,7 @@ double potential( int i ,int j  ){
     return 0.0;
 */
 /**Punti ~reticolo*/
-
+/*
 if ( (( abs(i) == W/8) && (j == 0)))
     return 1e2;
 else if ( (( abs(j) == H/8) && (i == 0)))
@@ -92,6 +91,7 @@ else if ( i ==0 && j == 0)
     return 1e2;
 else
   return 0;
+*/
 /** Diffrazione doppia fenditura*/
 /*
   if( i == 0){

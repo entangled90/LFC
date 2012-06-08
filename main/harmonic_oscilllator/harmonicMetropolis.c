@@ -145,17 +145,17 @@ int main(int argc, char *argv[]){
 	/* Stampa su file i valori medi dell'energia */
 		FILE *fp_energy = fopen("../../data/harmonic/energy.dat","a");
 		FILE *fp_energy_variance = fopen("../../data/harmonic/energy_variance.dat","a");
-			fprintf(fp_energy,"%14.10e \n", energy_time_clustered->mean);
-			fprintf(fp_energy_variance,"%14.10e \n", sqrt(deltaE_variance));
+			fprintf(fp_energy,"%e\n", energy_time_clustered->mean);
+			fprintf(fp_energy_variance,"%14.10e\n", sqrt(deltaE_variance));
 		for ( i = 0 ; i< K_MAX-K_START ; i++){
-			printf("Energy clustered : %14.10e \n", energy_clustered[i].mean);
+			printf("Energy clustered : %14.10e\n", energy_clustered[i].mean);
 		}
 		printf("Delta E medio: \t %14.10e \t Dev. std: \t %e \n", energy_time_clustered->mean, sqrt(deltaE_variance));
 		printf("Elemento di matrice medio: %14.10e\tDev. std:%e \n", matrix_time_clustered->mean, sqrt(matrix_element_variance));
 
 		FILE *fp_matrix_element = fopen("../../data/harmonic/matrix_element.dat","a");
 		FILE *fp_matrix_variance = fopen("../../data/harmonic/matrix_variance.dat","a");
-		fprintf(fp_matrix_element,"%14.10e\n", matrix_time_clustered->mean);
+		fprintf(fp_matrix_element,"%e\n", matrix_time_clustered->mean);
 		fprintf (fp_matrix_variance,"%14.10e\n", sqrt(matrix_element_variance));
 		
 	/* File che contiene i valori della correlazione per i valori | l -k| */
@@ -181,9 +181,9 @@ int main(int argc, char *argv[]){
 		plot_harmonic("../../data/harmonic/harmonic.dat","../../data/harmonic/harmonic.eps");
 		plot_harmonic("../../data/harmonic/harm_dev_std_bin.dat","../../data/harmonic/harm_dev_std_bin.eps");
 		//plot_harmonic("../data/harmonic/energy.dat","../data/harmonic/energy.eps");
-		fit("../../data/harmonic/energy.dat", "../../data/harmonic/energy_histogram.eps" ,energy_time_clustered->mean, deltaE_variance);
+		fit("../../data/harmonic/energy.dat", "../../data/harmonic/energy_histogram.eps",energy_time_clustered->mean, deltaE_variance);
 		fit("../../data/harmonic/energy_variance.dat", "../../data/harmonic/energy_variance_histogram.eps", deltaE_variance, 1e-5);
-		fit("../../data/harmonic/matrix_element.dat", "../../data/harmonic/matrix_element_histogram.eps", matrix_time_clustered->mean, matrix_element_variance);
-		fit("../../data/harmonic/matrix_variance.dat", "../../data/harmonic/matrix_variance_histogram.eps", matrix_element_variance, 1e-5);
+		//fit("../../data/harmonic/matrix_element.dat", "../../data/harmonic/matrix_element_histogram.eps", matrix_time_clustered->mean, matrix_element_variance);
+		//fit("../../data/harmonic/matrix_variance.dat", "../../data/harmonic/matrix_variance_histogram.eps" , matrix_element_variance, 1e-5);
 		return(EXIT_SUCCESS);
 	}

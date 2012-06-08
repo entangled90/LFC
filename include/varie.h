@@ -5,6 +5,9 @@
 #include "struct.h"
 extern float meanOfFloatArray(float*, int);
 extern double meanOfDoubleArray (double*,int);
+extern double meanOfIntegerArray (int*,int);
+extern double varianceOfDoubleArray (double * , int);
+extern double varianceOfIntegerArray (int * , int);
 extern double flatPdf(double , double, double);
 extern double gaussPdf(double, double,double);
 extern double gaussMomentPdf(double , double , int * , double);

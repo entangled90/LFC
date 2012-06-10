@@ -1,0 +1,19 @@
+\BOOKMARK [0][-]{chapter.1}{Integrazione numerica}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Metodi deterministici}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Newton-Cotes}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Newton-Cotes:2\260ordine}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Quadrature gaussiane}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Utilizzo}{section.1.1}% 6
+\BOOKMARK [1][-]{section.1.2}{Metodi Monte Carlo}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Oscillatore armonico}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Integrali di cammino}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Algoritmo Metropolis}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Analisi risultati: binning e cluster Jackknife}{section.2.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Equazioni differenziali}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Runge-Kutta IV}{chapter.3}% 13
+\BOOKMARK [0][-]{chapter.4}{Equazione di Schr\366dinger}{}% 14
+\BOOKMARK [1][-]{subsection.4.0.1}{Cenni teorici}{chapter.4}% 15
+\BOOKMARK [2][-]{subsection.4.0.2}{Buca di potenziale sferico}{subsection.4.0.1}% 16
+\BOOKMARK [2][-]{subsection.4.0.3}{Effetto tunnel}{subsection.4.0.1}% 17
+\BOOKMARK [2][-]{subsection.4.0.4}{Diffrazione da doppia fenditura}{subsection.4.0.1}% 18
+\BOOKMARK [1][-]{section.4.1}{Equazione del calore}{chapter.4}% 19

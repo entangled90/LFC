@@ -173,7 +173,7 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
 \subsubsection{Newton-Cotes II: Logaritmo}
-\begin{figure}[H]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth,angle = -90]{plot_simp_log.eps}
 \caption{Errori per Newton-Cotes II: Logaritmo}
@@ -417,7 +417,7 @@ Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dat
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\columnwidth,angle=-90]{importanza_integrale.eps}
+\includegraphics[width=0.6\columnwidth,angle=-90]{importanza_integrale.eps}
 \caption{Confronto tra il valore dell'integrale con le diverse distribuzioni.}
 \end{figure}
 \begin{center}
@@ -464,9 +464,9 @@ $$
  Per questo motivo ci aspettiamo che nel grafico i punti siano allineati all'incirca su rette orizzontali. Il valore dell'ordinata indica, dunque,
  il coefficiente dell'andamento asintotico dell'errore. Da ciò possiamo dedurre che la distribuzione $P_{root}$, avendo come valore di $A$ minore,
  è quella che fornisce un valore dell'integrale più preciso.
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.6\columnwidth,angle=-90]{importanza_noise.eps}
+\includegraphics[width=0.5\columnwidth,angle=-90]{importanza_noise.eps}
 \caption{Andamento asintotico del ``rumore''.}
 \end{figure}
 
@@ -496,7 +496,7 @@ $$
 $$
 Si dimostra che:
 $$
- C( | l -k|) \ = \  \langle x_l \ x_k \rangle \ = \ 2 | \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  |^2 \ \ \exp{\left( - \frac{N a}{2} \left( \tilde{E_1}-\tilde{E_0} \right) x \right)} \cosh \left[ a \left( \frac{N}{2} - | l - k | \right) (\tilde{E_0} -\tilde{E_1}) \right]  
+ C( | l -k|) =  \langle x_lx_k \rangle = 2 | \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  |^2 \ \exp{\left( - \frac{N a}{2} \left( \tilde{E_1}-\tilde{E_0} \right) x \right)} \cosh \left[ a \left( \frac{N}{2} - | l - k | \right) (\tilde{E_0} -\tilde{E_1}) \right]  
 $$
 $$ 
 \langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle  = \frac{1}{\sqrt{2  m \bar{\omega}}}

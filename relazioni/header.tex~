@@ -1,11 +1,11 @@
-\documentclass[a4paper,11pt]{report} 
+\documentclass[a4paper,10pt]{report} 
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath} % AMS Math Package
 \usepackage{amsthm} % Theorem Formatting
 \usepackage{amssymb}	% Math symbols such as \mathbb
 \usepackage{graphicx} % Allows for eps images
 %\usepackage{multicol} % Allows for multiple columns
-\usepackage[dvips,letterpaper,margin=2in,bottom=2in]{geometry}
+%\usepackage[dvips,letterpaper,margin=2in,bottom=2in]{geometry}
 %\usepackage{geometry}
 \usepackage{booktabs}
 \usepackage{enumerate}

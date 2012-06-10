@@ -108,8 +108,10 @@ Tale cambio di variabile è:
 $$
 	x' \ = \ 2 \frac{x - x_{min} }{x_{max}-x_{min}} - 1 \qquad dx'  \ = \ 2 \frac{dx}{x_{max}-x_{min}}
 $$
-
-
+Una stima dell'errore di integrazione in questo caso è dato dalla formula seguente:
+$$
+E_n  \ = \  \int_a^b \frac{ f^{(2n)}(\xi (x))}{2n!} \prod_{i=0}^{n-1} (x-x_i)^2 \ dx \ \leq \ \mbox{max} \left[f^{(2n)}\right] \frac{1}{2n!}\ h^{2n}  
+$$
 \subsection{Utilizzo}
 Il programma ``integral'' si occupa di utilizzare le librerie appena discusse per stimare il valore dell'integrale di una funzione, confrontando i
 tre metodi discussi sopra. Per testare le routine ho utilizzato come funzioni da integrare:
@@ -161,10 +163,10 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{longtable}
 %% LOG 222222222222222
 \end{center}
-\begin{figure*}[H]
+\begin{figure*}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
-\caption{\tiny{Errori per Newton-Cotes I: Logaritmo.In rosso l'errore calcolato e in verde quello stimato}}
+\caption{\small{Errori per Newton-Cotes I: Logaritmo.In rosso l'errore calcolato e in verde quello stimato}}
 \end{figure*}
 
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
@@ -173,7 +175,7 @@ Da questo confronto si nota come l'errore scala come previsto analiticamente e r
 \begin{figure*}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth,angle = -90]{plot_simp_log.eps}
-\caption{\tiny{Errori per Newton-Cotes II: Logaritmo}}
+\caption{\small{Errori per Newton-Cotes II: Logaritmo}}
 \end{figure*}
 
   \begin{center}
@@ -232,9 +234,9 @@ Numero intervalli & quadratura gaussiana \\
 \end{center}
 
 \subsubsection{Newton-Cotes I: Polinomio}
-\begin{figure*}[H]
+\begin{figure*}[!h]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
-\caption{\tiny{Errori per Newton-Cotes I: Polinomio}}
+\caption{\small{Errori per Newton-Cotes I: Polinomio}}
 \end{figure*}
 
 \begin{center}
@@ -267,10 +269,10 @@ Si può notare che in questo caso la differenza fra l'errore stimato e l'errore 
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
 \subsubsection{Newton-Cotes II: Polinomio}
-\begin{figure*}[H]
+\begin{figure*}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
-\caption{\tiny{Errori per Newton-Cotes II: Polinomio}}
+\caption{\small{Errori per Newton-Cotes II: Polinomio}}
 \end{figure*}
 
 \begin{center}
@@ -298,7 +300,7 @@ Numero intervalli & Newton-Cotes II & Stima analitica errore  \\
 \bottomrule
 \end{longtable}
 \end{center}
-anche in questo caso l'andamento è simile alla funzione logaritmica, anche se l'errore inizia ad oscillare ad un valore di $10^{-13}/10^{-14}$.  
+anche in questo caso l'andamento è simile alla funzione logaritmica, anche se l'errore inizia ad oscillare ad un valore di $10^{-13}/10^{-14}$. \\ 
 \subsubsection{Quadrature gaussiane: Polinomio}
 \begin{center}
 \begin{longtable}[h]{lr}
@@ -331,7 +333,8 @@ Dall'analisi di questi dati è possibile trarre alcune conclusioni riguardo i di
 Inoltre, si nota come l'errore scali nella maniera prevista fino a quando diventa troppo ``piccolo'' e inizia ad oscillare attorno a zero.
 Questo può essere dovuto alla precisione con cui sono salvati i numeri nel calcolatore, nonostante siano state usate variabili di tipo \emph{double} in tutto il codice.
 In ogni caso, si può notare come gli errori abbiano un andamento asintotico in accordo con la previsione teorica prima che si facciano sentire gli errori di approssimazione del calcolatore.\\
-Nel caso delle quadrature ga
+Nel caso delle quadrature gaussiane la stima analitica dell'errore non è stata effettuata, dato che esso è risultato essere molto ridotto anche per un numero esiguo di punti considerati.
+Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere causato dalla mancanza di precisione del calcolare, già menzionata sopra.
  
 %%
 %% COMPLETA LA RIFLESSIONE
@@ -416,7 +419,7 @@ Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dat
 \begin{figure*}[h]
 \centering
 \includegraphics[width=0.6\columnwidth,angle=-90]{importanza_integrale.eps}
-\caption{\tiny{Confronto tra il valore dell'integrale con le diverse distribuzioni.}}
+\caption{\small{Confronto tra il valore dell'integrale con le diverse distribuzioni.}}
 \end{figure*}
 \begin{center}
  \begin{longtable}[htb]{lccr}
@@ -462,10 +465,10 @@ $$
  Per questo motivo ci aspettiamo che nel grafico i punti siano allineati all'incirca su rette orizzontali. Il valore dell'ordinata indica, dunque,
  il coefficiente dell'andamento asintotico dell'errore. Da ciò possiamo dedurre che la distribuzione $P_{root}$, avendo come valore di $A$ minore,
  è quella che fornisce un valore dell'integrale più preciso.
-\begin{figure*}[H]
+\begin{figure*}[hb]
 \centering
-\includegraphics[width=0.5\columnwidth,angle=-90]{importanza_noise.eps}
-\caption{\tiny{Andamento asintotico del ``rumore''.}}
+\includegraphics[width=0.46\columnwidth,angle=-90]{importanza_noise.eps}
+\caption{\small{Andamento asintotico del ``rumore''.}}
 \end{figure*}
 
 
@@ -542,32 +545,39 @@ Dato che ad ogni passo del Metropolis viene modificata solo una coordinata, è p
 \begin{equation*}
 \Delta S_E \ = \ a[\mathcal{L}(x_{i-1},x'_{i})+\mathcal{L}(x'_{i},x_{i+1})-\mathcal{L}(x_{i-1},x_{i})-\mathcal{L}(x_{i},x_{i+1})]    
 \end{equation*}
+Nel nostro caso tutte le costanti sono state messe uguali ad uno:
+$$ a=1 \quad m = 1 \quad \omega = 1 \quad  \hbar = 1 \quad \delta = 1 $$
+Inoltre, è stato scelto di fissare il numero di \emph{sweeps} a un milione.
 \subsubsection{Inizializzazione e termalizzazione dell'algoritmo}
 Prima che l'algoritmo Metropolis riesca a generare configurazioni del sistema con la \emph{pdf} voluta, è necessario che entri in regime asintotico.
 È possibile stimare il tempo di termalizzazione dell'algoritmo graficando l'andamento dell'azione euclidea $S_E$ in funzione del tempo markoviano.\\
 In questo caso si è scelto di inizializzare il la configurazione di partenza in modo che tutte le variabili fossero inizializzate a zero: ossia è stato fatta una
-\emph{cold start}.
-\begin{center}
-  \begin{figure*}[h]
-    \includegraphics[width=0.6\columnwidth,angle = -90]{action_cold.eps}
-    \caption{\tiny{Andamento dell'azione euclidea in funzione del numero di sweeps.}}
-    \end{figure*}
-\end{center}
-Come si vede nel grafico, l'azione parte da zero e cresce velocemente. Dopo circa cento \emph{sweeps} si può vedere come l'algoritmo sia già in un regime asintotico.
+\emph{cold start}. Tuttavia, per verificare la correttezza dell'algoritmo si è anche provato a inizializzare il sistema in una configurazione casuale,
+con ciascuna coordinata $x_i$ compresa fra $-500$ e $500$. La scelta di utilizzare una inizializzaione a freddo è dovuta al fatto che il tempo di termalizzazione in questo caso è molto minore:
+esso risulta essere di circa $150-200$ contro i $1000$ \emph{sweeps} necessari per la \emph{hot start}.
+
+\begin{figure*}[!h]
+  \centering
+  \subfigure[Azione fredda]{\includegraphics[width=0.6\columnwidth,angle = -90]{action_cold.eps}}
+  \subfigure[Azione calda]{\includegraphics[width=0.6\columnwidth,angle = -90]{action_hot.eps}}
+  \caption{\small{Andamento dell'azione euclidea in funzione del numero di sweeps.}}
+  \label{fig:initialisation}
+\end{figure*}
+Come si vede in figura \ref{fig:initialisation} l'azione parte da zero e cresce velocemente. Dopo circa cento \emph{sweeps} si può vedere come l'algoritmo sia già in un regime asintotico.
 All'interno del programma è stato scelto come tempo di termalizzazione 200. Gli \emph{sweeps} di termalizzazione non sono stati utilizzati per calcolare alcune grandezza.
 
-\subsection{Analisi risultati: binning e cluster Jackknife}
+\section{Analisi risultati: binning e cluster Jackknife}
 Data la natura dell'algoritmo Metropolis, durante l'analisi dati è necessario considerare che le diverse configurazioni estratte non sono scorrelate l'una dall'altra.
 Per tenere conto di questo fenomeno, è stato necessario dividere l'insieme delle configurazioni in intervalli tali
 che la loro ``lunghezza'' in tempo markoviano sia molto maggiore del tempo di decorrelazione $\tau_{corr}$. Esso viene ricavato da una stima approssimativa
 della funzione di autocorrelazione così definita:
 $$
-\Gamma(t) \ = \  \frac{ \sum_{i=0}^t <O(t_i)O(t_i + t)> - <O(t_i)><O(t_i)>}{\sum_{i=0}^t <{O(t_i)}^2> - <O(t_i)>^2} \ \simeq \ \exp{\left(-\frac{t}{\tau_{corr}}\right)}
+\Gamma(t) \ = \  \frac{ \sum_{i=0}^t <O(t_i)O(t_i + t)> - <O(t_i)>^2}{\sum_{i=0}^t <{O(t_i)}^2> - <O(t_i)>^2} \ \simeq \ \exp{\left(-\frac{t}{\tau_{corr}}\right)}
 $$
 \begin{figure*}[ht]
 \centering
   \includegraphics[width= 0.7\columnwidth,angle = -90]{gamma_t.eps}
-  \caption{\tiny{Funzione di autocorellazione per ogni valore di $|l-k|$}}
+  \caption{\small{Funzione di autocorellazione per ogni valore di $|l-k|$}}
   \end{figure*}
 Dal grafico si può stimare $\tau_{corr}$ approssimativamente: esso risulta essere circa $4-5$. La larghezza degli intervalli è stata scelta pari a cento.\\
 Per ogni intervallo è stata calcolata la media e la varianza del correlatore per ogni valore di $|l-k|$. In questo modo esse risultano essere scorrelate fra gli intervalli ed è così possibile utilizzare
@@ -575,7 +585,7 @@ la tecnica del \emph{cluster jackknife} per calcolare gli errori sulle grandezze
 \begin{figure*}[h]
  \centering
  \includegraphics[width= 0.7\columnwidth,angle= -90]{harmonic_giusto.eps}
- \caption{\tiny{Grafico del correlatore $<x_l x_k>$}}
+ \caption{\small{Grafico del correlatore $<x_l x_k>$ da cui estrarremo tutte le informazioni del sistema}}
  \end{figure*}
 
 Definiamo $ a_i$ come il valore della grandezza primaria nell'intervallo $i$. Indicando con $\bar{a}$ la media tra tutti gli $a_i$, definiamo $a_i$ \emph{clusterized} come:
@@ -589,31 +599,49 @@ dimostrare:
 $$
  \sigma_f^2 \simeq \frac{ N_{bin} - 1}{N_{bin}} \sum_i \left( f^i - \bar{f} \right)^2
 $$
-nel limite in cui $N_{bin} \rightarrow \infty$. Inoltre, è possibile calcolare la varianza di un'altra funzione secondaria, dipendente da $f(a)$.
+nel limite in cui $N_{bin} \rightarrow \infty$. Inoltre, è possibile calcolare la varianza di un'altra funzione secondaria,
+dipendente da $f(a)$.\\
 Nel programma, abbiamo considerato dapprima $ a = C( | l -k|) $ e $f(a) = \Delta E$.
 In seguito, per calcolare l'elemento di matrice $ W_{01} =\langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle $, abbiamo posto $a = \Delta E$ e $f(a) = W_{01}$.
-Con questo metodo  è stato possibile, dunque, calcolare le incertezze anche sulle grandezze che ci eravamo posti l'obiettivo di misurare con questa simulazione numerica.
+Con questo metodo  è stato possibile, dunque, calcolare le incertezze anche sulle grandezze che ci eravamo posti l'obiettivo di misurare con questa simulazione numerica.\\
 Come ulteriore test dell'algoritmo, sono state eseguite circa 4000 simulazioni.
 Così facendo è stato possibile avere un'idea della distribuzione di $\Delta E$, $\sigma_{\Delta E}$, $W_{01}$, $\sigma_{W_{01}}$.\\
 Ci aspettiamo che con il numero di simulazioni numeriche eseguite, i valori delle grandezze sopra citate abbiano una distribuzione gaussiana.
 Nel caso di $\Delta E $ e $W_{01}$, i grafici sono stati fittati con una gaussiana,
-da cui sono stati estratti il valor medio $\mu$ e la deviazione standard $\sigma$. 
+da cui sono stati estratti il valor medio $\mu$ e la deviazione standard $\sigma$. Il valore del $\tilde{\chi}^2$ è stato calcolato ponendo come errore
+per ogni entrata dell'istogramma, radice  del numero di conteggi.
 %\ref{fig:fit_metropolis}.
 \begin{figure*}
 \centering
  \includegraphics[width=\columnwidth]{fit-energy.pdf}
- \caption{\tiny{Fit per il valore di $\Delta E$}}
+ \caption{\small{Fit per il valore di $\Delta E$}}
  \end{figure*}
-\begin{figure*}
+$$ 
+  \Delta E = 0.962 \quad \sigma_{E} = 0.006 \quad \tilde{\chi}^2 = 1.16
+$$
+ 
+ \begin{figure*}
 \centering
 \includegraphics[width=\columnwidth]{fit-matrix.pdf}
- \caption{\tiny{Fit per il valore di $W_{01}$}}
+ \caption{\small{Fit per il valore di $W_{01}$}}
  \end{figure*}
+$$
+  W_{01} = 0.669 \quad \sigma_{W_{01}} = 0.004 \quad \tilde{\chi}^2 = 1.06
+$$
+Dal valore del $\tilde{\chi}^2$ possiamo affermare che i dati sono distribuiti gaussianamente.\\
+ Inoltre, è stato disegno l'istogramma relativo anche alle varianze associate alle due grandezze,
+da cui si può notare che anch'esse hanno una distribuzione gaussiana. In questo caso, però, non stato eseguito alcun \emph{fit} data la scarsa importanza
+dei risultati che avremmo ottenuto da esso.
+\begin{center}
+\begin{figure*}[!h]
 
- %{\tiny{Fit degli istogrammi. Le simulazioni sono state circa 4000}}
+ \subfigure[Istogramma relativo alla varianza di $\Delta E$]{\includegraphics[width = 0.38\columnwidth,angle= -90]{energy_variance_histogram.eps}}
+ \subfigure[Istogramma relativo alla varianza di $W_{01}$]{\includegraphics[width = 0.38\columnwidth,angle= -90]{matrix_variance_histogram.eps}}
 
+ \end{figure*}
+\end{center}
  
-\chapter{Equazioni differenziali}
+\chapter{Equazioni differenziali ordinarie}
 La maggior parte delle equazioni differenziali è difficilmente risolubile, in alcuni casi è possibile trovare la soluzione come sviluppo in serie di potenze o
 in serie di Fourier, ma raramente si è in grado di conoscere la formula analitica della soluzione. Questo vale per equazioni differenziali ordinarie (ODE)
 e la situazione è addirittura peggiore per equazioni differenziali alle derivate parziali (PDE).\\
@@ -621,10 +649,9 @@ In questo capitolo ci si occuperà della soluzione numerica di equazioni differe
 Storicamente il primo metodo studiato è quello di Eulero, che si rivela essere poco preciso, ma soprattutto facilmente migliorabile con 
 il metodo \emph{ Runge-Kutta IV}.
 \section{Runge-Kutta IV}
-
 Questo metodo di soluzione numeri prevede che si discretizzi il tempo con un passo $h$.È possibile dimostrare che l'errore,
 inteso come scostamento tra la soluzione esatta dell'equazione e la soluzione numerica ad un dato istante temporale $n$, ha un andamento asintotico
-pari a $h^5 n$.
+pari a $h^4 n$.
 L'algoritmo permette di calcolare la soluzione al tempo $t_{n+1}$ a partire dall'istante $t_n$. Da ciò deriva la necessità di avere come condizione
 iniziale il valore della soluzione ad un dato istante per poterla evolvere nel tempo.
 \begin{align}
@@ -658,13 +685,13 @@ $$
 $$
 Sono state risolte le equazioni del pendolo smorzato, con una forzante sinusoidale e l'oscillatore di van der Pol.\\
 L'algoritmo è stato implementato in due programmi diversi: il primo si limita a stampare su file i valori di $x$,$\dot x$ per ogni istante, mentre
-il secondo utilizza le librerie \emph{openGL} per stampare direttamente a schermo la soluzione in tempo reale.
-Nell'ultimo programma, inoltre è possibile aumentare o diminuire la lunghezza della ``scia'' per velocizzare l'esecuzione del programma.
+il secondo utilizza le librerie openGL per stampare direttamente a schermo la soluzione in tempo reale.
+Nell'ultimo programma, inoltre è possibile aumentare o diminuire la lunghezza della ``scia'' con i tasti ``e'' e ``t'', per velocizzare l'esecuzione del programma.
 \subsubsection{Pendolo smorzato con forzante}
 \begin{figure*}[!h]
   \centering
   \includegraphics[width = 0.5\columnwidth]{pendolo_limite.png}
-  \caption{\tiny{Pendolo smorzato con forzante esterna nel caso di ciclo limite. $B = 0.5$, $Q= 0.5$ $\omega_{ext} = \tfrac{2}{3}$}}
+  \caption{\small{Pendolo smorzato con forzante esterna nel caso di ciclo limite. $B = 0.5$, $Q= 0.5$ $\omega_{ext} = \tfrac{2}{3}$}}
   \end{figure*}
 
 
@@ -700,19 +727,22 @@ Q & = 1.4 \\
 \begin{figure*}[!h]
   \centering
   \includegraphics[width = 0.6\columnwidth]{van_der_pol.png}
-  \caption{\tiny{Oscillatore di van der Pol. Si può notare il ciclo limite}}
+  \caption{\small{Oscillatore di van der Pol. Si può notare il ciclo limite}}
+  \label{fig:vanderpol}
   \end{figure*}
 
 Un'altro sistema studiato è l'oscillatore di \emph{van der Pol}.
 $$
 \frac{d^2x}{dt^2}-\mu(1-x^2)\frac{dx}{dt}+x = 0
 $$
-nella simulazione è stato posto $\mu = 4$.
-\chapter{Equazione di Schr\"{o}dinger}
+nella simulazione è stato posto $\mu = 4$.\\
+Dalla figura \ref{fig:vanderpol} si nota la presenza, anche in questo caso, di un ciclo limite.
+\chapter{Equazioni differenziali alle derivate parziali}
+\section{Equazione di Schr\"{o}dinger}
 \begin{figure*}[H]
 \centering
 \includegraphics[width=0.6\columnwidth]{doppiafenditura.png}
-\caption{\tiny{Diffrazione da una doppia fenditura}}
+\caption{\small{Diffrazione da una doppia fenditura}}
 \end{figure*}
 
 L'equazione di Schr\"{o}dinger per una particella in un potenziale armonico è un problema molto più complicato dei precedenti già trattati.
@@ -728,7 +758,7 @@ $$
 $$
 \ket{\psi(t)} = e^{ -i \mathcal{H} t} \ket{\psi(0)}
 $$
-La difficoltà però risiede nel calcolare l'esponenziale dell'hamiltoniana,tenendo presente che gli autovettori dell'hamiltoniana non sono noti.
+La difficoltà però risiede nel calcolare l'esponenziale dell'hamiltoniana, tenendo presente che gli autovettori dell'hamiltoniana non sono noti.
 \subsubsection{Algoritmo}
 L'algoritmo consiste sostanzialmente nel cercare di risolvere l'equazione precedente, approssimando in maniera opportuna l'esponenziale.
 In questo caso, abbiamo discretizzato lo spazio, creando un reticolo. È naturale ora associare alla funzione d'onda $ \braket{x,y}{\Psi(t)}$ una
@@ -740,7 +770,11 @@ $$
 $$
 in questo modo, si può cercare un compromesso fra l'ordine dello sviluppo in serie e il valore del passo reticolare temporale $\delta t$.\\
 Ad ogni passo dell'algoritmo, si calcola l'approssimazione di $ exp \left( -i \mathcal{H} \delta t \right)$ fino all'ordine desiderato e poi si
-sostituisce $ \psi(t)$ con $\psi(t+\delta t) = exp \left( -i \mathcal{H} \delta t \right) \psi(t)$.
+sostituisce $ \psi(t)$ con $\psi(t+\delta t) = exp \left( -i \mathcal{H} \delta t \right) \psi(t)$.\\
+Per valutare la correttezza dell'algoritmo si è valutata inoltre l'unitarietà dell'operatore di evoluzione temporale ad ogni passo dell'algoritmo stampando su terminale il valore della norma
+della matrice. La norma della funzione d'onda è stata inizialmente posta uguale ad uno. L'operatore di evoluzione temporale risulta unitario, nel senso che dopo una decina di minuti di simulazione,
+la norma della funzione rimane inalterata: la norma differisce dall'unità a meno di fattori pari a $10^{-15/16}$. 
+
 \emph{Nelle prossime sezioni le simulazioni verranno visualizzate in 2D. È possibile anche visualizzare la soluzione in 3D con l'apposito programma.}
 \subsubsection{Particella libera}
 In questo caso l'hamiltoniana diventa semplicemente:
@@ -751,9 +785,6 @@ Nonostante si conoscano gli autovettori di questa hamiltoniana, si è analizzato
 Si è raggiunto un compromesso fra velocità dell'evoluzione della funzione d'onda e precisione dell'evoluzione, arrestando la serie all'ordine 25, con un $\delta t$ pari a 0.5.
 Le unità di misura utilizzate nel sistema sono sostanzialmente arbitrarie, e sono state inglobate in una costante unica.
 Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
-Si è valutata inoltre l'unitarietà dell'operatore di evoluzione temporale ad ogni passo dell'algoritmo stampando su terminale il valore della norma
-della matrice. La norma della funzione d'onda è stata inizialmente posta uguale ad uno. L'operatore di evoluzione temporale risulta unitario, nel senso che dopo una decina di minuti di simulazione,
-la norma della funzione rimane inalterata: la norma differisce dall'unità a meno di fattori pari a $10^{-15/16}$. 
 
   \begin{figure*}[hp]
   \centering
@@ -761,13 +792,13 @@ la norma della funzione rimane inalterata: la norma differisce dall'unità a men
     \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
     \subfigure[Lo ``spread'' aumenta ancora. Si notano gli effetti delle condizioni al bordo]{\includegraphics{free3.png}}
     \subfigure[La funzione d'onda inizia a intereferire con sè stessa.]{\includegraphics{free4.png}}
-    \caption{\tiny{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}}
+    \caption{\small{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}}
     \end{figure*}
 \begin{figure*}[h]
  \centering
  \subfigure{\includegraphics{free_crystal.png}}
  \subfigure{\includegraphics{free5.png}}
- \caption{\tiny{Particella libera(continua)}}
+ \caption{\small{Particella libera(continua)}}
  \end{figure*}
 
   \subsubsection{Muro di potenziale sferico}
@@ -788,7 +819,7 @@ dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering5.png}}
- \caption{\tiny{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.}}
+ \caption{\small{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.}}
  \end{figure*}
  In questo caso, si intende visualizzare lo scattering del pacchetto d'onda contro questo potenziale sferico.
 Per questo motivo, è stato necessario utilizzare un griglia più grande, rispetto a prima,
@@ -813,13 +844,13 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca4.png}}
- \caption{\tiny{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
+ \caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
  \end{figure*}
 \begin{figure*}
 \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca5.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca6.png}}
- \caption{\tiny{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
+ \caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
  \end{figure*}
  \subsection{Effetto tunnel}
  Si studia il fenomeno dell'effetto tunnel analizzando il comportamento del sistema per una barriera di potenziale ``orizzontale'' di larghezza variabile.
@@ -835,7 +866,7 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel5.png}}
- \caption{\tiny{Effetto tunnel contro una barrieri di potenziale larga 20.}}
+ \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 20.}}
  \end{figure*}
  
  
@@ -848,7 +879,7 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel4.png}}
-  \caption{\tiny{Effetto tunnel contro una barrieri di potenziale larga 1.}}
+  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 1.}}
   \end{figure*}
  \subsection{Diffrazione da doppia fenditura}
  Questa parte mira a simulare l'esperimento della doppia fenditura, di grande importanza storica per lo sviluppo della meccanica quantistica.\\
@@ -863,7 +894,7 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura4.png}}
  \includegraphics[width=0.5\columnwidth]{fenditura5.png}
- \caption{\tiny{Diffrazione da una doppia fenditura}}
+ \caption{\small{Diffrazione da una doppia fenditura}}
  \end{figure*}
  
  \pagebreak
@@ -886,10 +917,10 @@ $$
  Inoltre, per risolvere questo problema sono state adottate condizioni al bordo differenti dall'equazione di Schr\"{o}dinger, data la diversa natura del problema fisico.
  In questo caso, infatti, abbiamo posto il bordo ad una temperatura fissata. Questa situazione rappresenta il caso in cui l'ambiente ha una temperatura fissata e scambia energia con il sistema.
  La distribuzione iniziale del calore è un ``step function'' bidimensionale.
- \begin{figure*}[H]
+ \begin{figure*}[hbp]
   \centering
   \subfigure{\includegraphics[width=0.4\columnwidth]{heat1.png}}
   \subfigure{\includegraphics[width=0.4\columnwidth]{heat2.png}}
-  \caption{\tiny{Evoluzione della distribuzione della temperatura nel tempo}}
+  \caption{\small{Evoluzione della distribuzione della temperatura nel tempo}}
  \end{figure*}
  \end{document}

@@ -17,20 +17,20 @@
 /**
  * N DEVE ESSERE MULTIPLO DI 100. altrimenti ci sono problemi con la visualizzazione
  */
-#define N 100
+#define N 200
 #define N_SERIES 30
 #define R_MIN 0
 #define R_MAX 10
 #define V_MAX -1
 #define NORM  0.1
 #define PI 3.14159
-#define SIGMA 10
+#define VARIANCE 10
 #define RETICOLO 10
 
-#define D_T 0.1
+#define D_T 0.4
 
 /**
-/**NOTA BENE
+ *NOTA BENE
  * è necessario modificare i parametri dell'algoritmo (N_SERIES e D_T) a seconda del potenziale scelto.
  * Per potenziali che danno un contributo piccolo agli autovalori dell'hamiltoniana si può porre N_SERIES ~25 e D_T 0.5
  * Nel caso di potenziali più grandi (in questo caso essenzialmente quelli che valgono ~10/100 (es i muri,diffrazione ecc)
@@ -70,11 +70,11 @@ double matrix_complex_norm ( gsl_matrix_complex *input){
 
 gsl_complex circular_step_pdf( double x , double y ){
 		  /*Momento verso il basso*/
-  return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA,20,x)*gaussPdf(SIGMA,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA,20,x)*
-		gaussPdf(SIGMA,0,y));
+  return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(VARIANCE,20,x)*gaussPdf(VARIANCE,0,y),40*cos(-1e2*x)*gaussPdf(VARIANCE,20,x)*
+		gaussPdf(VARIANCE,0,y));
   
   /*Gaussiana nell'origine*/
-//  return gsl_complex_rect ( gaussPdf(SIGMA,N/12,x)*gaussPdf(SIGMA,0,y),gaussPdf(SIGMA,0,x)*gaussPdf(SIGMA,0,y));
+//  return gsl_complex_rect ( gaussPdf(VARIANCE,N/12,x)*gaussPdf(VARIANCE,0,y),gaussPdf(VARIANCE,0,x)*gaussPdf(VARIANCE,0,y));
   
 }
 
@@ -83,12 +83,12 @@ double potential( int i ,int j  ){
   // return 0.0;
   // return ( -harmonic_constant*(i*i+j*j) );
 /** Buca sferica*/
-/*
+
 	if ( i*i + j*j < R_MAX*R_MAX )
 		return  V_MAX;
 	else
 		return 0.0 ;
-*/
+
 	/**Barriera di potenziale orizzontale*/
 	/*
   if( abs(i) < R_MAX)
@@ -99,17 +99,16 @@ double potential( int i ,int j  ){
 /**Punti ~reticolo*/
 /*
 if ( (( abs(i) == N/8) && (j == 0)))
-    return 1e2;
+    return 1e1;
 else if ( (( abs(j) == N/8) && (i == 0)))
-    return 1e2;
+    return 1e1;
 else if ( i ==0 && j == 0)
-    return 1e2;
+    return 1e1;
 else
   return 0;
 */
-
 /** Diffrazione doppia fenditura*/
-
+/*
   if( i == 0){
     if (abs(j) < 5)
       return 1e2;
@@ -120,7 +119,7 @@ else
   }
   else
     return 0;
-
+*/
   /** ~ Potenziale periodico */
 //return ( 1e-1*(sin (2*PI*RETICOLO*i/(double) N) + sin( 2*PI*RETICOLO*j/(double) N)) );
 /** ~ Potenziale periodico  con oscillatore ~*/

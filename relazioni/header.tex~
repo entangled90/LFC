@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{report} 
+\documentclass[a4paper,11pt]{report} 
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath} % AMS Math Package
 \usepackage{amsthm} % Theorem Formatting

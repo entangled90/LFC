@@ -13,27 +13,27 @@
 \contentsline {subsubsection}{Newton-Cotes II: Polinomio}{8}{subsubsection*.7}
 \contentsline {subsubsection}{Quadrature gaussiane: Polinomio}{8}{subsubsection*.8}
 \contentsline {section}{\numberline {1.2}Metodi Monte Carlo}{9}{section.1.2}
-\contentsline {subsubsection}{Generatori di numeri pseudocasuali}{10}{subsubsection*.9}
-\contentsline {subsubsection}{Confronto tra le distribuzioni}{11}{subsubsection*.10}
-\contentsline {chapter}{\numberline {2}Oscillatore armonico}{14}{chapter.2}
-\contentsline {section}{\numberline {2.1}Integrali di cammino}{14}{section.2.1}
-\contentsline {section}{\numberline {2.2}Algoritmo Metropolis}{15}{section.2.2}
-\contentsline {subsubsection}{Implementazione dell'algoritmo Metropolis all'oscillatore armonico}{15}{subsubsection*.11}
-\contentsline {subsubsection}{Inizializzazione e termalizzazione dell'algoritmo}{16}{subsubsection*.12}
-\contentsline {subsection}{\numberline {2.2.1}Analisi risultati: binning e cluster Jackknife}{16}{subsection.2.2.1}
-\contentsline {chapter}{\numberline {3}Equazioni differenziali ordinarie}{21}{chapter.3}
-\contentsline {section}{\numberline {3.1}Runge-Kutta IV}{21}{section.3.1}
-\contentsline {subsubsection}{Pendolo smorzato con forzante}{22}{subsubsection*.13}
-\contentsline {subsubsection}{Oscillatore di van der Pol}{23}{subsubsection*.14}
-\contentsline {chapter}{\numberline {4}Equazioni differenziali alle derivate parziali}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Equazione di Schr\"{o}dinger}{25}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Cenni teorici}{25}{subsection.4.1.1}
-\contentsline {subsubsection}{Algoritmo}{25}{subsubsection*.15}
-\contentsline {subsubsection}{Particella libera}{26}{subsubsection*.16}
-\contentsline {subsubsection}{Muro di potenziale sferico}{26}{subsubsection*.17}
-\contentsline {subsection}{\numberline {4.1.2}Buca di potenziale sferico}{28}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Effetto tunnel}{28}{subsection.4.1.3}
-\contentsline {subsubsection}{Barriera larga}{30}{subsubsection*.18}
-\contentsline {subsubsection}{Barriera stretta}{30}{subsubsection*.19}
-\contentsline {subsection}{\numberline {4.1.4}Diffrazione da doppia fenditura}{31}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}Equazione del calore}{35}{section.4.2}
+\contentsline {subsubsection}{Generatori di numeri pseudocasuali}{12}{subsubsection*.9}
+\contentsline {subsubsection}{Confronto tra le distribuzioni}{13}{subsubsection*.10}
+\contentsline {chapter}{\numberline {2}Oscillatore armonico}{16}{chapter.2}
+\contentsline {section}{\numberline {2.1}Integrali di cammino}{16}{section.2.1}
+\contentsline {section}{\numberline {2.2}Algoritmo Metropolis}{17}{section.2.2}
+\contentsline {subsubsection}{Implementazione dell'algoritmo Metropolis all'oscillatore armonico}{17}{subsubsection*.11}
+\contentsline {subsubsection}{Inizializzazione e termalizzazione dell'algoritmo}{18}{subsubsection*.12}
+\contentsline {section}{\numberline {2.3}Analisi risultati: binning e cluster Jackknife}{19}{section.2.3}
+\contentsline {chapter}{\numberline {3}Equazioni differenziali ordinarie}{24}{chapter.3}
+\contentsline {section}{\numberline {3.1}Runge-Kutta IV}{24}{section.3.1}
+\contentsline {subsubsection}{Pendolo smorzato con forzante}{25}{subsubsection*.13}
+\contentsline {subsubsection}{Oscillatore di van der Pol}{27}{subsubsection*.14}
+\contentsline {chapter}{\numberline {4}Equazioni differenziali alle derivate parziali}{28}{chapter.4}
+\contentsline {section}{\numberline {4.1}Equazione di Schr\"{o}dinger}{28}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Cenni teorici}{28}{subsection.4.1.1}
+\contentsline {subsubsection}{Algoritmo}{28}{subsubsection*.15}
+\contentsline {subsubsection}{Particella libera}{29}{subsubsection*.16}
+\contentsline {subsubsection}{Muro di potenziale sferico}{29}{subsubsection*.17}
+\contentsline {subsection}{\numberline {4.1.2}Buca di potenziale sferico}{31}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Effetto tunnel}{31}{subsection.4.1.3}
+\contentsline {subsubsection}{Barriera larga}{31}{subsubsection*.18}
+\contentsline {subsubsection}{Barriera stretta}{34}{subsubsection*.19}
+\contentsline {subsection}{\numberline {4.1.4}Diffrazione da doppia fenditura}{34}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}Equazione del calore}{37}{section.4.2}

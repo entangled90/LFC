@@ -102,6 +102,7 @@ void fit( const char * input ,const char * output, int cases ){
 	  
     }
 	fclose(f);
+	/* Necessario per la creazione del file che gnuplot può fittare, diviso negli opportuni intervalli*/
    switch(cases){
      case 1:
      f=fopen("bin-energy.dat","w");
@@ -110,7 +111,10 @@ void fit( const char * input ,const char * output, int cases ){
      f=fopen("bin-matrix.dat","w");
    }
     for(i=0;i<n;i++){
-        fprintf(f,"%lf\t%d\n",min+(i+0.5)*width,freq[i] );//,sqrt((double)freq[i]));
+      tmp = sqrt( (double) freq[i]);
+      if (tmp == 0)
+	tmp =1;
+        fprintf(f,"%lf\t%d\t%lf\n",min+(i+0.5)*width,freq[i],tmp);
     }
     fclose(f);
     free(freq);

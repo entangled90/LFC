@@ -9,11 +9,12 @@
 \BOOKMARK [1][-]{section.2.1}{Integrali di cammino}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.2}{Algoritmo Metropolis}{chapter.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.1}{Analisi risultati: binning e cluster Jackknife}{section.2.2}% 11
-\BOOKMARK [0][-]{chapter.3}{Equazioni differenziali}{}% 12
+\BOOKMARK [0][-]{chapter.3}{Equazioni differenziali ordinarie}{}% 12
 \BOOKMARK [1][-]{section.3.1}{Runge-Kutta IV}{chapter.3}% 13
-\BOOKMARK [0][-]{chapter.4}{Equazione di Schr\366dinger}{}% 14
-\BOOKMARK [1][-]{subsection.4.0.1}{Cenni teorici}{chapter.4}% 15
-\BOOKMARK [2][-]{subsection.4.0.2}{Buca di potenziale sferico}{subsection.4.0.1}% 16
-\BOOKMARK [2][-]{subsection.4.0.3}{Effetto tunnel}{subsection.4.0.1}% 17
-\BOOKMARK [2][-]{subsection.4.0.4}{Diffrazione da doppia fenditura}{subsection.4.0.1}% 18
-\BOOKMARK [1][-]{section.4.1}{Equazione del calore}{chapter.4}% 19
+\BOOKMARK [0][-]{chapter.4}{Equazioni differenziali alle derivate parziali}{}% 14
+\BOOKMARK [1][-]{section.4.1}{Equazione di Schr\366dinger}{chapter.4}% 15
+\BOOKMARK [2][-]{subsection.4.1.1}{Cenni teorici}{section.4.1}% 16
+\BOOKMARK [2][-]{subsection.4.1.2}{Buca di potenziale sferico}{section.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.1.3}{Effetto tunnel}{section.4.1}% 18
+\BOOKMARK [2][-]{subsection.4.1.4}{Diffrazione da doppia fenditura}{section.4.1}% 19
+\BOOKMARK [1][-]{section.4.2}{Equazione del calore}{chapter.4}% 20

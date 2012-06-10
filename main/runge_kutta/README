@@ -1,0 +1,8 @@
+
+Per compilare il programma 
+necessario questo pacchetto:
+local/freeglut 2.8.0-1
+    Provides functionality for small OpenGL programs
+
+Questo è il suo nome su "ArchLinux", su altre distribuzioni e su mac os è simile.
+Questo è dovuto al fatto che sono state utilizzate librerie openGL per renderizzare i risultati dell'algoritmo.

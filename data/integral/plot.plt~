@@ -1,0 +1,12 @@
+set border linewidth 1.5
+set style line 1 lc rgb '#0060ad' lt 1 lw 2 pt 7 ps 1.5;
+set grid
+set title 'Campionamento importanza'
+set xlabel 'log N'
+set ylabel 'Valore integrale'
+unset key
+set logscale x
+set logscale y
+set term postscript enhanced color landscape lw 1 'Verdana,10'
+set output 'plot.eps'
+plot 'trap.dat' with linespoints,'simp.dat' with linespoints

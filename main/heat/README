@@ -1,0 +1,9 @@
+Per la compilazione è necessario includere i seguenti pacchetti:
+local/freeglut 2.8.0-1
+    Provides functionality for small OpenGL programs
+local/gsl 1.15-2
+    The GNU Scientific Library (GSL) is a modern numerical library for C and C++
+    programmers
+
+Essi sono necessari per la renderizzazione grafica dei risultati e per 
+l'utilizzo di matrici.

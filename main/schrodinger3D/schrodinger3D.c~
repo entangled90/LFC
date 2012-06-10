@@ -18,18 +18,28 @@
  * N DEVE ESSERE MULTIPLO DI 100. altrimenti ci sono problemi con la visualizzazione
  */
 #define N 100
-#define N_SERIES 40
+#define N_SERIES 30
 #define R_MIN 0
 #define R_MAX 10
 #define V_MAX -1
 #define NORM  0.1
 #define PI 3.14159
 #define SIGMA 10
-#define RETICOLO 1
+#define RETICOLO 10
 
 #define D_T 0.1
 
-
+/**
+/**NOTA BENE
+ * è necessario modificare i parametri dell'algoritmo (N_SERIES e D_T) a seconda del potenziale scelto.
+ * Per potenziali che danno un contributo piccolo agli autovalori dell'hamiltoniana si può porre N_SERIES ~25 e D_T 0.5
+ * Nel caso di potenziali più grandi (in questo caso essenzialmente quelli che valgono ~10/100 (es i muri,diffrazione ecc)
+ * è necessario porre N_SERIES ~30/40 e D_T= 0.1
+ * In ogni caso è possibile controllare l'unitarietà dell'operatore di evoluzione temporale facendo stampare la norma della matrice
+ * decommentando l'istruzione
+ * printf("%e \n", matrix_complex_norm(input) - 1);
+ * all'ultima riga della funzione "compute()"
+ */
 
 
 gsl_matrix_complex* psi ;
@@ -60,11 +70,11 @@ double matrix_complex_norm ( gsl_matrix_complex *input){
 
 gsl_complex circular_step_pdf( double x , double y ){
 		  /*Momento verso il basso*/
-  /*return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA,20,x)*gaussPdf(SIGMA,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA,20,x)*
+  return gsl_complex_rect ( 40*sin(-1e2*x)*gaussPdf(SIGMA,20,x)*gaussPdf(SIGMA,0,y),40*cos(-1e2*x)*gaussPdf(SIGMA,20,x)*
 		gaussPdf(SIGMA,0,y));
-  */
+  
   /*Gaussiana nell'origine*/
-  return gsl_complex_rect ( gaussPdf(SIGMA,N/12,x)*gaussPdf(SIGMA,N/12,y),gaussPdf(SIGMA,N/12,x)*gaussPdf(SIGMA,N/12,y));
+//  return gsl_complex_rect ( gaussPdf(SIGMA,N/12,x)*gaussPdf(SIGMA,0,y),gaussPdf(SIGMA,0,x)*gaussPdf(SIGMA,0,y));
   
 }
 
@@ -75,7 +85,7 @@ double potential( int i ,int j  ){
 /** Buca sferica*/
 /*
 	if ( i*i + j*j < R_MAX*R_MAX )
-		return  harmonic_constant*(i*i+j*j)+V_MAX;
+		return  V_MAX;
 	else
 		return 0.0 ;
 */
@@ -99,7 +109,7 @@ else
 */
 
 /** Diffrazione doppia fenditura*/
-/*
+
   if( i == 0){
     if (abs(j) < 5)
       return 1e2;
@@ -110,11 +120,11 @@ else
   }
   else
     return 0;
-*/
+
   /** ~ Potenziale periodico */
 //return ( 1e-1*(sin (2*PI*RETICOLO*i/(double) N) + sin( 2*PI*RETICOLO*j/(double) N)) );
 /** ~ Potenziale periodico  con oscillatore ~*/
-return ( 1e0*(-cos(2*PI*RETICOLO*i/(double) N) -cos( 2*PI*RETICOLO*j/(double) N)) );
+//return ( 1e0*(-cos(2*PI*RETICOLO*i/(double) N) -cos( 2*PI*RETICOLO*j/(double) N)) );
 /** Reticolo di atomi ~*/
 /*
  if ( ( ( i%RETICOLO) == 0) && ( (j%RETICOLO== 0))){
@@ -206,7 +216,7 @@ void compute ( gsl_matrix_complex *input ){
 	
 	//gsl_matrix_complex_scale(input, gsl_complex_rect(1.0/matrix_complex_norm(input),0));
 	/*Stampa la differenza fra la norma e l'unità→ per controllare l'unitarietà dell'operatore*/
-	printf("%e \n", matrix_complex_norm(input) - 1);
+	//printf("%e \n", matrix_complex_norm(input) - 1);
 	}
 /**
  *  ROBA OPENGL per il 3D!
@@ -244,14 +254,16 @@ struct point {
 GLbyte graph[N][N];
 unsigned char *frame = NULL;
 
-void saveToFile(unsigned char *frame)
+void savePPM(unsigned char *frame)
 {
     FILE *f = fopen("image.ppm", "wb");
     fprintf(f, "P6\n%d %d\n255\n", width, height);
-    fwrite(frame, 1, 3 * width * height, f);
+    int i,j;
+    for(i = height-1; i >= 0; i--)
+        for(j = 0; j < width; j++)
+            fwrite(&frame[(i*width+j)*3], sizeof(unsigned char), 3, f);
     fclose(f);
 }
-
 void setupTexture()
 {
   // Create our datapoints, store it as bytes
@@ -438,10 +450,9 @@ void display()
   }
   
 #ifdef PIPE
-
       frame = (unsigned char*)malloc(3*width*height*sizeof(unsigned char));
       glReadPixels(0,0,width,height,GL_RGB,GL_UNSIGNED_BYTE,frame);
-      fwrite(frame, sizeof(char), 3*(complexSurface->size), stdout);
+      fwrite(frame, sizeof(char), 3*(N*N), stdout);
       free(frame);
 #endif
   glUseProgram(program);
@@ -542,8 +553,8 @@ void special(int key, int x, int y)
     case GLUT_KEY_F8:
       frame = (unsigned char*)malloc(3*width*height*sizeof(float));
       glReadPixels(0,0,width,height,GL_RGB,GL_UNSIGNED_BYTE,frame);
-      saveToFile(frame);
-      free(frame);
+     savePPM(frame);
+     free(frame);
       break;
     case GLUT_KEY_F11:
       glutFullScreenToggle();

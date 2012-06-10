@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <varie.h>
 extern void init_int_var( rtn_int_var rtn){
 	rtn.int_flat = 0.0;
 	rtn.var_flat = 0.0;
@@ -42,6 +43,14 @@ extern double variance_cluster_jk ( cluster_jk *c){
 	return (tmp);
 	}
 
+	/* NB: la lunghezza di vector deve essere uguale a input->n_conf */
+extern void clusterize( cluster_jk *input , double *vector){
+		int i = 0;
+		input->mean =meanOfDoubleArray( vector, input->n_conf);
+		for ( i = 0 ; i < input->n_conf ; i++){
+			(input->a)[i] = input->mean + ( vector[i]-input->mean )/(double)(input->n_conf-1);
+		}
+}
 	
 
 

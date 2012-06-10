@@ -181,9 +181,7 @@ int main(int argc, char *argv[]){
 		plot_harmonic("../../data/harmonic/harmonic.dat","../../data/harmonic/harmonic.eps");
 		plot_harmonic("../../data/harmonic/harm_dev_std_bin.dat","../../data/harmonic/harm_dev_std_bin.eps");
 		//plot_harmonic("../data/harmonic/energy.dat","../data/harmonic/energy.eps");
-		fit("../../data/harmonic/energy.dat", "../../data/harmonic/energy_histogram.eps",energy_time_clustered->mean, deltaE_variance);
-		fit("../../data/harmonic/energy_variance.dat", "../../data/harmonic/energy_variance_histogram.eps", deltaE_variance, 1e-5);
-		//fit("../../data/harmonic/matrix_element.dat", "../../data/harmonic/matrix_element_histogram.eps", matrix_time_clustered->mean, matrix_element_variance);
-		//fit("../../data/harmonic/matrix_variance.dat", "../../data/harmonic/matrix_variance_histogram.eps" , matrix_element_variance, 1e-5);
+		fit("../../data/harmonic/energy.dat", "../../data/harmonic/energy_histogram.eps",1);
+		fit("../../data/harmonic/matrix_element.dat", "../../data/harmonic/matrix_element_histogram.eps",2);
 		return(EXIT_SUCCESS);
 	}

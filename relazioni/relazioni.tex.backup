@@ -143,9 +143,6 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 %%% LOgaritmo
 \subsubsection{Newton-Cotes I: Logaritmo}
 \begin{center}
-\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
-\end{center}
-\begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
 Log &  \\
@@ -169,12 +166,20 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{longtable}
 %% LOG 222222222222222
 \end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
+\caption{Errori per Newton-Cotes I: Logaritmo}
+\end{figure}
+
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
 \subsubsection{Newton-Cotes II: Logaritmo}
-\begin{center}
-\includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_log.eps}
-\end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\columnwidth,angle = -90]{plot_simp_log.eps}
+\caption{Errori per Newton-Cotes II: Logaritmo}
+\end{figure}
 
   \begin{center}
   \begin{longtable}[h]{lcr}
@@ -230,10 +235,12 @@ Numero intervalli & quadratura gaussiana \\
 \bottomrule
 \end{longtable}
 \end{center}
+\centering
 \subsubsection{Newton-Cotes I: Polinomio}
-\begin{center}
+\begin{figure}[H]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
-\end{center}
+\caption{Errori per Newton-Cotes I: Polinomio}
+\end{figure}
 
 \begin{center}
 % POLI 111111111111111111
@@ -265,9 +272,11 @@ Si può notare che in questo caso la differenza fra l'errore stimato e l'errore 
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
 \subsubsection{Newton-Cotes II: Polinomio}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
-\end{center}
+\caption{Errori per Newton-Cotes II: Polinomio}
+\end{figure}
 
 \begin{center}
 \begin{longtable}[h]{lcr}
@@ -409,7 +418,8 @@ Le diverse distribuzioni sono state confrontate nel calcolare il secondo e il qu
 Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dato che è più simile alle funzioni integrande.\\
 
 \begin{figure}[h]
-\includegraphics[width=0.6\columnwidth,angle=-90]{importanza_integrale.eps}
+\centering
+\includegraphics[width=0.8\columnwidth,angle=-90]{importanza_integrale.eps}
 \caption{Confronto tra il valore dell'integrale con le diverse distribuzioni.}
 \end{figure}
 \begin{center}
@@ -457,6 +467,7 @@ $$
  il coefficiente dell'andamento asintotico dell'errore. Da ciò possiamo dedurre che la distribuzione $P_{root}$, avendo come valore di $A$ minore,
  è quella che fornisce un valore dell'integrale più preciso.
 \begin{figure}[h]
+\centering
 \includegraphics[width=0.6\columnwidth,angle=-90]{importanza_noise.eps}
 \caption{Andamento asintotico del ``rumore''.}
 \end{figure}
@@ -534,7 +545,6 @@ Dato che ad ogni passo del Metropolis viene modificata solo una coordinata, è p
 \begin{equation*}
 \Delta S_E \ = \ a[\mathcal{L}(x_{i-1},x'_{i})+\mathcal{L}(x'_{i},x_{i+1})-\mathcal{L}(x_{i-1},x_{i})-\mathcal{L}(x_{i},x_{i+1})]    
 \end{equation*}
-
 \subsubsection{Inizializzazione e termalizzazione dell'algoritmo}
 Prima che l'algoritmo Metropolis riesca a generare configurazioni del sistema con la \emph{pdf} voluta, è necessario che entri in regime asintotico.
 È possibile stimare il tempo di termalizzazione dell'algoritmo graficando l'andamento dell'azione euclidea $S_E$ in funzione del tempo markoviano.\\
@@ -555,9 +565,10 @@ Per tenere conto di questo fenomeno, è stato necessario dividere l'insieme dell
 che la loro ``lunghezza'' in tempo markoviano sia molto maggiore del tempo di decorrelazione $\tau_{corr}$. Esso viene ricavato da una stima approssimativa
 della funzione di autocorrelazione così definita:
 $$
-\Gamma(t) \ = \  \frac{ \sum_{i=0}^t <O(t_i)O(t_i + t)> - <O(t_i)><O(t_i + t)>}{\sum_{i=0}^t <{O(t_i)}^2> - <O(t_i)>^2} \ \simeq \ \exp{\left(-\frac{t}{\tau_{corr}}\right)}
+\Gamma(t) \ = \  \frac{ \sum_{i=0}^t <O(t_i)O(t_i + t)> - <O(t_i)><O(t_i)>}{\sum_{i=0}^t <{O(t_i)}^2> - <O(t_i)>^2} \ \simeq \ \exp{\left(-\frac{t}{\tau_{corr}}\right)}
 $$
 \begin{figure}[ht]
+\centering
   \includegraphics[width= 0.7\columnwidth,angle = -90]{gamma_t.eps}
   \caption{Funzione di autocorellazione per ogni valore di $|l-k|$}
 \end{figure}
@@ -567,6 +578,7 @@ la tecnica del \emph{cluster jackknife} per calcolare gli errori sulle grandezze
 \begin{figure}[h]
  \centering
  \includegraphics[width= 0.5\columnwidth,angle= -90]{harmonic_giusto.eps}
+ \caption{Grafico del correlatore $<x_l x_k>$}
 \end{figure}
 
 Definiamo $ a_i$ come il valore della grandezza primaria nell'intervallo $i$. Indicando con $\bar{a}$ la media tra tutti gli $a_i$, definiamo $a_i$ \emph{clusterized} come:
@@ -585,12 +597,21 @@ Nel programma, abbiamo considerato dapprima $ a = C( | l -k|) $ e $f(a) = \Delta
 In seguito, per calcolare l'elemento di matrice $ W_{01} =\langle \tilde{E_0} | \hat{x} | \tilde{E_1} \rangle $, abbiamo posto $a = \Delta E$ e $f(a) = W_{01}$.
 Con questo metodo  è stato possibile, dunque, calcolare le incertezze anche sulle grandezze che ci eravamo posti l'obiettivo di misurare con questa simulazione numerica.
 Come ulteriore test dell'algoritmo, sono state eseguite circa 4000 simulazioni.
-Così facendo è stato possibile avere un'idea della distribuzione di $\Delta E$, $\sigma_{\Delta E}$, $W_{01}$, $\sigma_{W_{01}}$
-
-
-
-
-
+Così facendo è stato possibile avere un'idea della distribuzione di $\Delta E$, $\sigma_{\Delta E}$, $W_{01}$, $\sigma_{W_{01}}$.\\
+Ci aspettiamo che con il numero di simulazioni numeriche eseguite, i valori delle grandezze sopra citate abbiano una distribuzione gaussiana.
+Nel caso di $\Delta E $ e $W_{01}$, i grafici sono stati fittati con una gaussiana,
+da cui sono stati estratti il valor medio $\mu$ e la deviazione standard $\sigma$. 
+%\ref{fig:fit_metropolis}.
+\begin{figure}
+\centering
+ \includegraphics[width=\columnwidth]{fit-energy.pdf}
+ \caption{Fit per il valore di $\Delta E$}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{fit-matrix.pdf}
+ \caption{Fit per il valore di $W_{01}$} \caption{Fit degli istogrammi. Le simulazioni sono state circa 4000}
+\end{figure}
 
 \chapter{Equazioni differenziali}
 La maggior parte delle equazioni differenziali è difficilmente risolubile, in alcuni casi è possibile trovare la soluzione come sviluppo in serie di potenze o
@@ -688,7 +709,7 @@ $$
 $$
 nella simulazione è stato posto $\mu = 4$.
 \pagebreak
-\section{Equazione di Schr\"{o}dinger}
+\chapter{Equazione di Schr\"{o}dinger}
 L'equazione di Schr\"{o}dinger per una particella in un potenziale armonico è un problema molto più complicato dei precedenti già trattati.
 In primo luogo si ha a che fare con equazioni differenziali alle derivate parziali invece che con equazioni differenziali ordinarie.
 Inoltre, si passa da un sistema che ha un basso numero di gradi di libertà (nel caso precedente 2) a un sistema che (teoricamente) ha infiniti gradi di libertà.
@@ -754,6 +775,9 @@ dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (
  \centering
  \subfigure[Pacchetto d'onda gaussiano distante dalla buca]{\includegraphics[width=0.4\columnwidth]{scattering1.png}}
  \subfigure[Pacchetto si scontra con la buca]{\includegraphics[width=0.4\columnwidth]{scattering2.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering3.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
+ \subfigure{\includegraphics[width=0.4\columnwidth]{scattering5.png}}
  \caption{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.} 
  \end{figure}
  In questo caso, si intende visualizzare lo scattering del pacchetto d'onda contro questo potenziale sferico.
@@ -764,13 +788,6 @@ valutare l'andamento della funzione d'onda quando si è molto distanti dalla buc
 Ciò è dovuto anche alle condizioni al bordo utilizzate: utilizzando la periodicità al bordo, la funzione d'onda interferisce poco dopo lo scattering
 con sè stessa. Inoltre, non è possibile diminuire le dimensioni del pacchetto e della buca, perchè così facendo,
 gli errori di discretizzazione darebbero problemi.
-\begin{figure}[h]
- \centering
- \subfigure{\includegraphics[width=0.4\columnwidth]{scattering3.png}}
- \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
- \subfigure{\includegraphics[width=0.4\columnwidth]{scattering5.png}}
- \caption{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.(continua)} 
- \end{figure}
 \subsection{Buca di potenziale sferico}
 Il problema è simile al caso precedente, ma ora trattiamo una buca di potenziale invece che un ``muro''.
 $$
@@ -780,7 +797,7 @@ V(x,y) \ = \ \begin{sistem}
              \end{sistem}
 $$
 Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la simulazione.
-\begin{figure}[hp]
+\begin{figure}[h]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca2.png}}
@@ -831,11 +848,27 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura4.png}}
+ \includegraphics[width=0.5\columnwidth]{fenditura5.png}
  \caption{Diffrazione da una doppia fenditura.} 
  \end{figure}
-\begin{figure}[hp]
-\centering 
- \includegraphics[width=0.5\columnwidth]{fenditura5.png}
- \end{figure}
  
-\end{document}
+ 
+ 
+ 
+ \subsection{Equazione del calore}
+ Dopo aver risolto l'equazione di Schr\"{o}dinger si è deciso di risolvere anche l'equazione del calore, vista la notevole similitudine tra l'equazione di Schr\"{o}dinger nel caso libero
+ e l'equazione del calore.
+ \begin{align}
+  \mbox{Schr\"{o}dinger libera} \qquad i \p{}{t} \psi(x,y,t) \ & = \ - a \ \nabla^2 \psi (x,y,t) \\
+  \mbox{Equazione del calore} \qquad \p{}{t} \psi(x,y,t) \ & = \ - k \ \nabla^2 \psi (x,y,t)
+ \end{align}
+Come si può vedere l'unica differenza risiede nel fatto che l'equazione di Schr\"{o}dinger è complessa e ha una ``i'' insieme alla derivata temporale.
+Ciò è proprio quello che permette alle soluzioni di avere un carattere ondulatorio, mentre l'equazione del calore produce soluzioni dal carattere diffusivo.
+Inoltre, proprio per questo motivo, l'equazione del calore risulta molto più stabile rispetto all'equazione di Schr\"{o}dinger. Infatti, i parametri dell'algoritmo utilizzati questa volta sono:
+$$
+ N_{max} = 2 \qquad \delta t = 1 \qquad  
+$$
+ Per questo motivo, inoltre è stato possibile aumentare la dimensione del reticolo fino a 500x500, mantenendo la stessa velocità di esecuzione.
+
+ 
+ \end{document}

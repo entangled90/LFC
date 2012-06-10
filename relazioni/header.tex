@@ -1,12 +1,12 @@
-\documentclass[a4paper,11pt]{report} 
+\documentclass[a4paper,10pt]{report} 
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath} % AMS Math Package
 \usepackage{amsthm} % Theorem Formatting
 \usepackage{amssymb}	% Math symbols such as \mathbb
 \usepackage{graphicx} % Allows for eps images
 %\usepackage{multicol} % Allows for multiple columns
-%\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}
-\usepackage{geometry}
+%\usepackage[dvips,letterpaper,margin=2in,bottom=2in]{geometry}
+%\usepackage{geometry}
 \usepackage{booktabs}
 \usepackage{enumerate}
 \usepackage{verbatim}
@@ -17,6 +17,10 @@
 \usepackage{hyperref}
 \usepackage{float}
 \pagestyle{fancy}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{verbatim} % commenti estesi
 \fancyhf{}
 %\fancyhead[LE,RO]{\slshape \rightmark}
 \fancyhead[LO,RE]{\slshape \leftmark}
@@ -67,10 +71,6 @@
 \newtheorem{dfn}{Definition}
 \theoremstyle{remark}
 \newtheorem*{rmk}{Remark}
-\usepackage[italian]{babel}
-\usepackage{graphicx}
-\usepackage{latexsym}
-\usepackage{verbatim} % commenti estesi
 \newcommand{\p}[2]{ \frac{ \partial #1}{ \partial #2}} %derivata partiale
 \newcommand{\lap}{\nabla^2} %laplaciano
 \newcommand{\ham}{\mathcal{H}} % Simbolo dell'hamiltoniana

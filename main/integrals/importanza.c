@@ -22,13 +22,14 @@
 
 
 	/*
-	 * Funzioni
+	 * Funzione da integrare
 	 */
 double integrand (double x ){
 	return(gaussMomentPdf(gaussianVariance,gaussianMean,nMoment,x));
 }
 
 int main (){
+  /* Estremi di integrazione */
 	double min =-100 ;
 	double max= 100;
 	int N = Nstart;
@@ -45,19 +46,13 @@ int main (){
 		printf("I punti usati sono %d \n",N);
 		momentIndex = 2;
 		for(i=0; i < MaxMoment/2; i++){
-			
+			/* Calcola i valori di tutti gli integrali per le varie pdf e li salva nell'array di strutture result*/
 			result[(MaxMoment/2)*j+i] = campionamentoImportanza(min,max,N,integrand);
-			//result[(MaxMoment/2)*j+i].Npnt = N;
-
 			printf("Il momento  numero %d : %lf \t %lf \t %lf \t \n",momentIndex,
 					result[(MaxMoment/2)*j+i].int_flat, result[(MaxMoment/2)*j+i].int_gauss,result[(MaxMoment/2)*j+i].int_root);
-
 			printf("Errori: \t");
-
 			printf("\t %lf \t %lf \t %lf \n",sqrt(result[(MaxMoment/2)*j+i].var_flat),sqrt(result[(MaxMoment/2)*j+i].var_gauss),		sqrt(result[(MaxMoment/2)*j+i].var_root));
-
 			printf("\n");
-
 			momentIndex+=2;
 			}
 		N*=2;

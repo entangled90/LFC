@@ -37,6 +37,7 @@ int main (int argc, char *argv[]) {
 	int n ;
 	int choice = 0;
 	double maxf1,maxf4;
+	/* Necessari per il corretto funzionamento del programma*/
 	if ( argc < 4 ){
 		n = N_BIN_DEFAULT;
 		printf("ATTENZIONE: il programma va lanciato con la sintassi: integral xMin xMax N_Bin\n");
@@ -72,6 +73,7 @@ int main (int argc, char *argv[]) {
 			return (EXIT_FAILURE);
 			break;
 	}
+	/* Calcolo integrali con il numero di punti inserito in tutti e 3 i modi */
 	double integral_trap = partition(xMin,xMax, n, 1, integrand );
 	double integral_simp = partition(xMin,xMax, n, 2, integrand );
 	double integral_quad = partition(xMin,xMax, n,3,integrand);
@@ -80,6 +82,10 @@ int main (int argc, char *argv[]) {
 	printf("%e \t %e \t %e \t %e\n", integral_true , integral_trap, integral_simp,integral_quad );
 	printf("Err. Trap \t Err. Simp \t Err.Gauss\n%e \t %e \t %e \n ", (integral_true - integral_trap) , (integral_true - integral_simp), integral_true-integral_quad );
 	printf("\n");
+/* Nel caso viene passato un'ulteriore argomento al programma, esso ciclerà dal numero di punti inserito come 3° argomento, fino al
+ * numero di punti inserito come 4° argomento.
+ * Necessario per valutare l'andamento asintotico degli algoritmi
+ */
 	if(argc == 5){
 		int n_loops = atoi(argv[4]);
 		FILE *fp_trap = fopen("../../data/integral/trap.dat","w");

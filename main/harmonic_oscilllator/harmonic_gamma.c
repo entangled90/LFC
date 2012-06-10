@@ -25,7 +25,7 @@ int main(){
 	FILE *fp = fopen("../../data/harmonic/action.dat","w");
 	printf("Inserire \"1\" per azione fredda, \"2\" per azione calda\n");
 	scanf("%d",&l);
-	/* Cold initialisation */
+	/*initialisation */
 	x=  malloc(length*sizeof(double));
 	xnew =  malloc(Nx*sizeof(double));
 	/*Inizializzazione a zero degli array */
@@ -55,7 +55,6 @@ int main(){
 		/*Sweep completo */
 		for ( i = 0 ; i< Nx; i++){
 			xnew[i] = x[j*Nx+i]+ 2*DELTA*(xnew[i]-0.5);
-			//action += edelta_action(x,xnew[i],i);
 			metropolis(x +j*Nx,i,xnew+i);
 		}
 		if( j < 2000)
@@ -75,7 +74,6 @@ int main(){
 				for( l = 0 ; l< CORR_SIZE ; l++){
 					O_mix[k-1][l] += correlation (&x[j*Nx],k)*correlation (&x[(j-l)*Nx],k )/(double) (N_SWEEP-THERM_CONST);
 				}
-				//printf(" %lf \t %lf \n ", O2[k-1],O_mix[k-1][0]);
 			}
 		}
 		

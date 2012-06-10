@@ -79,7 +79,7 @@
 	}
 
 	double root_exp_pdf(double x){
-	    return 2/sqrt(PI)*exp(-x)*sqrt(x);
+	    return 2*exp(-fabs(x))*sqrt(fabs(x))/sqrt(PI);
 	}
 	
 	/* Momento n-esimo di una gaussiana */
@@ -206,14 +206,7 @@
 			x[i] = 0.0;
 		}
 	}
-	/* NB: la lunghezza di vector deve essere uguale a input->n_conf */
-	extern void clusterize( cluster_jk *input , double *vector){
-		int i = 0;
-		input->mean =meanOfDoubleArray( vector, input->n_conf);
-		for ( i = 0 ; i < input->n_conf ; i++){
-			(input->a)[i] = input->mean + ( vector[i]-input->mean )/(double)(input->n_conf-1);
-		}
-	}
+	
 	
 	extern void vector_copy (double *vector_input, double *vector_output, int length){
 		int i;

@@ -1,0 +1,8 @@
+
+Per compilare i programmi nella cartelle "runge-kutta" e "schrodinger" è necessario questo pacchetto:
+local/gsl 1.15-2
+    The GNU Scientific Library (GSL) is a modern numerical library for C and C++
+    programmers
+
+Questo è il suo nome su "ArchLinux", su altre distribuzioni e su mac os è simile.
+Sono state utilizzate le librerie gsl per le matrici e i numeri complessi

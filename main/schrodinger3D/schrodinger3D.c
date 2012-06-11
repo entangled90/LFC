@@ -1,6 +1,3 @@
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -67,21 +64,10 @@ double normalization;
 
 
 
-
-void savePPM(unsigned char *frame)
-{
-    FILE *f = fopen("image.ppm", "wb");
-    fprintf(f, "P6\n%d %d\n255\n", width, height);
-    int i,j;
-    for(i = height-1; i >= 0; i--)
-        for(j = 0; j < width; j++)
-            fwrite(&frame[(i*width+j)*3], sizeof(unsigned char), 3, f);
-    fclose(f);
-}
-
 void setupTexture()
 {
     int i,j,x,y;
+    double tmp;
     // Create our datapoints, store it as bytes
     for(i = 0; i < N; i++) {
         for(j = 0; j < N; j++) {
@@ -96,6 +82,9 @@ void setupTexture()
 	  case 2:
 	    z = GSL_IMAG(gsl_matrix_complex_get(psi,i,j));
 	    break;
+	  case 3:
+	  tmp = gsl_complex_arg(gsl_matrix_complex_get(psi,i,j));
+		z = (tmp - ((int) (tmp/(2*PI)))*(2*PI))/(2*PI)/5;
 	  }
 	graph[i][j] = roundf(z * amplitude * 127 + 128);
 	}
@@ -360,11 +349,9 @@ void special(int key, int x, int y)
             setupTexture();
             break;
         case GLUT_KEY_F8:
-            frame = (unsigned char*)malloc(3*width*height*sizeof(unsigned char));
-            glReadPixels(0,0,width,height,GL_RGB,GL_UNSIGNED_BYTE,frame);
-            savePPM(frame);
-            free(frame);
-            break;
+            mode = 3;
+			setupTexture();
+             break;
         case GLUT_KEY_LEFT:
             texture_offset_x -= 0.03;
             break;

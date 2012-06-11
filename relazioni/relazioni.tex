@@ -508,7 +508,7 @@ $$
 $$
 Nel nostro caso, si è posto $ N \ = \ 32 $, ma l'algoritmo è indipendente da $N$.\\
 Ciò che viene calcolato dall'algoritmo sono i valor medi $\langle x_l \ x_k \rangle $ per ogni valore di $ | l - k| $ e i relativi errori.
-Da essi siamo in grado di estrarre il valore di $ \langle E_0 | \hat{x} | E_1 \rangle $ e $ \tilde{E_1}-\tilde{E_0} $.
+Da essi siamo in grado di estrarre il valore di $ \langle E_0 | \hat{x} | E_1 \rangle $ e $\Delta E = \tilde{E_1}-\tilde{E_0} $.
 Gli errori sulle grandezze secondarie sono stati calcolati con il metodo \emph{cluster jackknife}.
 \section{Algoritmo Metropolis}
 Per calcolare $\langle x_l \ x_k \rangle $ con un metodo Monte Carlo è necessario riuscire ad estrarre numeri casuali secondo la \emph{pdf} $ e^{-S_E}$, opportunamente normalizzata.
@@ -585,7 +585,7 @@ la tecnica del \emph{cluster jackknife} per calcolare gli errori sulle grandezze
 \begin{figure}[h]
  \centering
  \includegraphics[width= 0.7\columnwidth,angle= -90]{harmonic_giusto.eps}
- \caption{\small{Grafico del correlatore $<x_l x_k>$ da cui estrarremo tutte le informazioni del sistema}}
+ \caption{\small{Grafico del correlatore $<x_l x_k>$ da cui si estrarranno tutte le informazioni del sistema}}
  \end{figure}
 
 Definiamo $ a_i$ come il valore della grandezza primaria nell'intervallo $i$. Indicando con $\bar{a}$ la media tra tutti gli $a_i$, definiamo $a_i$ \emph{clusterized} come:
@@ -750,7 +750,7 @@ In primo luogo si ha a che fare con equazioni differenziali alle derivate parzia
 Inoltre, si passa da un sistema che ha un basso numero di gradi di libertà (nel caso precedente 2) a un sistema che (teoricamente) ha infiniti gradi di libertà.
 Nella risoluzione di questo problema si è scelto di discretizzare lo spazio (bidimensionale in questo caso) e confinare il problema in una regione finita di spazio.
 \subsection{Cenni teorici}
-Nel nostro caso si è trattata l'equazione di Schr\"odinger indipendente dal tempo. L'hamiltoniana è quella ``standard'' bidimensionale.
+Nel nostro caso si è trattata l'equazione di Schr\"odinger bidimensionale con potenziale indipendente dal tempo. L'hamiltoniana non presenta alcune termine di \emph{spin} ed è data da:
 $$
 \mathcal{H} = \frac{\hat{p_x}^2+\hat{p_y}^2}{2m} + V(x,y) \quad \longrightarrow \quad i \p{}{t}\ket{\psi(t)} \ = \ \mathcal{H} \ket{\psi(t)}
 $$
@@ -759,11 +759,11 @@ $$
 \ket{\psi(t)} = e^{ -i \mathcal{H} t} \ket{\psi(0)}
 $$
 La difficoltà però risiede nel calcolare l'esponenziale dell'hamiltoniana, tenendo presente che gli autovettori dell'hamiltoniana non sono noti.
-\subsubsection{Algoritmo}
+\subsection{Algoritmo}
 L'algoritmo consiste sostanzialmente nel cercare di risolvere l'equazione precedente, approssimando in maniera opportuna l'esponenziale.
 In questo caso, abbiamo discretizzato lo spazio, creando un reticolo. È naturale ora associare alla funzione d'onda $ \braket{x,y}{\Psi(t)}$ una
 matrice complessa. Ad ogni entrata della matrice corrisponderà il valore della funzione d'onda in quel punto del reticolo.\\
-Si decide di approssimare l'esponenziale, usandone la definizio di sviluppo in serie, ma fermandosi ad un certo ordine. È possibile scegliere l'ordine a cui fermarsi nello sviluppo,
+Si è deciso di approssimare l'esponenziale, usandone la definizio di sviluppo in serie, ma fermandosi ad un certo ordine. È possibile scegliere l'ordine a cui fermarsi nello sviluppo,
 stimando l'autovalore massimo dell'hamiltoniana $ \lambda_{max}$. Così facendo, infatti si ha che:
 $$
 \left| exp \left( - i \mathcal{H} \delta t \right) - \sum_{i=0}^n \frac{\lambda_{max} \delta t)^{n}}{n!} \right| \ \simeq \frac{\left(\lambda_{max} \delta t\right)^{n+1}}{(n+1)!} 
@@ -776,7 +776,7 @@ della matrice. La norma della funzione d'onda è stata inizialmente posta uguale
 la norma della funzione rimane inalterata: la norma differisce dall'unità a meno di fattori pari a $10^{-15/16}$.\\
 
 \emph{Nelle prossime sezioni le simulazioni verranno visualizzate in 2D. È possibile anche visualizzare la soluzione in 3D con l'apposito programma.}
-\subsubsection{Particella libera}
+\subsection{Particella libera}
 In questo caso l'hamiltoniana diventa semplicemente:
 $$
 \mathcal{H} = \frac{\hat{p_x}^2+\hat{p_y}^2}{2m}
@@ -789,7 +789,11 @@ Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
   \begin{figure}[!h]
   \centering
     \subfigure[$\psi(0)$: il pacchetto è gaussiano e monocromatico, con momento diretto verticalmente verso il basso.]{\includegraphics{free1.png}}
-    \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
+   \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
+ 
+\end{figure}
+ \begin{figure}[!h]
+  \centering
     \subfigure[Lo ``spread'' aumenta ancora. Si notano gli effetti delle condizioni al bordo]{\includegraphics{free3.png}}
     \subfigure[La funzione d'onda inizia a intereferire con sè stessa.]{\includegraphics{free4.png}}
     \caption{\small{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}}
@@ -798,9 +802,10 @@ Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
  \centering
  \subfigure{\includegraphics{free_crystal.png}}
  \subfigure{\includegraphics{free5.png}}
- \caption{\small{Particella libera(continua)}}
+\caption{\small{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}}
  \end{figure}
-
+ 
+\subsection{Scattering}
   \subsubsection{Muro di potenziale sferico}
 In questo caso l'hamiltoniana utilizzata è quella completa, fornita all'inizio del capitolo. Anche in questo caso valgono le considerazioni precedenti e sono stati utilizzati gli stessi parametri di prima.
 In questo caso il potenziale utilizzato è il seguente:
@@ -812,10 +817,18 @@ V(x,y) \ = \ \begin{sistem}
 $$
 dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (o elemeti della matrice).
 
-\begin{figure}[!hp]
+\begin{figure}[!h]
  \centering
+ 
  \subfigure[Pacchetto d'onda gaussiano distante dalla buca]{\includegraphics[width=0.4\columnwidth]{scattering1.png}}
  \subfigure[Pacchetto si scontra con la buca]{\includegraphics[width=0.4\columnwidth]{scattering2.png}}
+\caption{\small{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.}}
+ 
+\end{figure}
+
+\begin{figure}[!h]
+ \centering
+  
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering5.png}}
@@ -829,7 +842,7 @@ valutare l'andamento della funzione d'onda quando si è molto distanti dalla buc
 Ciò è dovuto anche alle condizioni al bordo utilizzate: utilizzando la periodicità al bordo, la funzione d'onda interferisce poco dopo lo scattering
 con sè stessa. Inoltre, non è possibile diminuire le dimensioni del pacchetto e della buca, perchè così facendo,
 gli errori di discretizzazione darebbero problemi.
-\subsection{Buca di potenziale sferico}
+\subsubsection{Buca di potenziale sferico}
 Il problema è simile al caso precedente, ma ora trattiamo una buca di potenziale invece che un ``muro''.
 $$
 V(x,y) \ = \ \begin{sistem}
@@ -838,19 +851,32 @@ V(x,y) \ = \ \begin{sistem}
              \end{sistem}
 $$
 Per questo valore di potenziale, il comportamento del sistema è molto diverso dal caso precedente, in cui il potenziale era positivo. Si
-può vedere, però, che diminuendo il valore del potenziale, il sistema evolve in maniera simile al caso precedente. Questo è ciò che ci aspettavamo,
+può vedere, però, che diminuendo il valore del potenziale, il sistema evolve in maniera simile al caso precedente. Questo è ciò che ci si aspettava,
 dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo quadro del potenziale, nel caso esso sia uniforme. 
 
 \begin{figure}[!hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca2.png}}
+\caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
+
+\end{figure}
+\begin{figure}[!h]
+ \centering
+  
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca4.png}}
+\caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
+
+\end{figure}
+\begin{figure}[H]
+ \centering
+  
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca5.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca6.png}}
  \caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
  \end{figure}
+
  \subsection{Effetto tunnel}
  Si studia il fenomeno dell'effetto tunnel analizzando il comportamento del sistema per una barriera di potenziale ``orizzontale'' di larghezza variabile.
  \subsubsection{Barriera larga}
@@ -859,10 +885,15 @@ dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo q
  In entrambi i casi è stato fissato il potenziale a $1$, come nel caso dello scattering.
  La larghezza della barriera è stata posta uguale a 20 (nelle unità di misura del problema). Come si può vedere in figura
  \ref{fig:notunnel} , la larghezza e l'altezza della buca fanno si che la probabilità che avvenga l'effetto tunnel è molto bassa.
-\begin{figure}[hp]
+\begin{figure}[!h]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel2.png}}
+ \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 20.}}
+
+\end{figure}
+\begin{figure}[!h]
+ \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel5.png}}
@@ -875,22 +906,30 @@ dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo q
  In questo caso, si è accorciata la larghezza della barriera di potenziale fino al valore di 2. Ora esso è molto più stretta rispetto alle dimensioni spaziali del pacchetto d'onda, mentre l'altezza della barriera è sempre pari a 1. In questo caso, invece, 
 si può vedere dalla figura \ref{fig:tunnel} come il pacchetto d'onda si divida in un pacchetto riflesso e un pacchetto trasmesso. Si può così vedere in maniera
 apprezzabile l'effetto tunnel.
-\begin{figure}[hp]
+\begin{figure}[!h]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel3.png}}
+  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 2.}}
+
+ \end{figure}
+ 
+ \begin{figure}[!h]
+ \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel4.png}}
   \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 2.}}
 \label{fig:tunnel}
   \end{figure}
+  \pagebreak
+
  \subsection{Diffrazione da doppia fenditura}
  Questa parte mira a simulare l'esperimento della doppia fenditura, di grande importanza storica per lo sviluppo della meccanica quantistica.\\
  Per fare ciò si è inserita una barriera di potenziale molto alta ( $V = 100$) con due fenditure larghe 5. La barriera è stata posta orizzontalmente, come la barriera di potenziale nel caso dell'effetto tunnel.
  A causa del valore di $V$ è stato necessario eseguire molti più calcoli rispetto ai casi precedenti per avere una buona precisione. Infatti in questo caso
  è stato necessario porre $\delta t = 0.1$ (invece che $\delta t = 0.5 $ nei casi precedenti) e aumentare l'ordine dello sviluppo in serie fino a 30.
  Questo è causato proprio dal fatto che gli autovalori dell'hamiltoniana sono molto più elevati, a causa della barriera di potenziale.
-\begin{figure}[hp]
+\begin{figure}[!h]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura2.png}}

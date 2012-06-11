@@ -28,12 +28,13 @@
 \contentsline {chapter}{\numberline {4}Equazioni differenziali alle derivate parziali}{28}{chapter.4}
 \contentsline {section}{\numberline {4.1}Equazione di Schr\"{o}dinger}{28}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Cenni teorici}{29}{subsection.4.1.1}
-\contentsline {subsubsection}{Algoritmo}{29}{subsubsection*.15}
-\contentsline {subsubsection}{Particella libera}{30}{subsubsection*.16}
-\contentsline {subsubsection}{Muro di potenziale sferico}{30}{subsubsection*.17}
-\contentsline {subsection}{\numberline {4.1.2}Buca di potenziale sferico}{30}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Effetto tunnel}{31}{subsection.4.1.3}
-\contentsline {subsubsection}{Barriera larga}{32}{subsubsection*.18}
-\contentsline {subsubsection}{Barriera stretta}{32}{subsubsection*.19}
-\contentsline {subsection}{\numberline {4.1.4}Diffrazione da doppia fenditura}{32}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.2}Algoritmo}{29}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Particella libera}{30}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Scattering}{30}{subsection.4.1.4}
+\contentsline {subsubsection}{Muro di potenziale sferico}{30}{subsubsection*.15}
+\contentsline {subsubsection}{Buca di potenziale sferico}{33}{subsubsection*.16}
+\contentsline {subsection}{\numberline {4.1.5}Effetto tunnel}{34}{subsection.4.1.5}
+\contentsline {subsubsection}{Barriera larga}{34}{subsubsection*.17}
+\contentsline {subsubsection}{Barriera stretta}{34}{subsubsection*.18}
+\contentsline {subsection}{\numberline {4.1.6}Diffrazione da doppia fenditura}{35}{subsection.4.1.6}
 \contentsline {section}{\numberline {4.2}Equazione del calore}{38}{section.4.2}

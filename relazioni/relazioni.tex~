@@ -1,7 +1,7 @@
 \input{header.tex}
 \begin{document}
 \input{title.tex}
-\maketitle
+%\maketitle
 \tableofcontents
 \chapter{Integrazione numerica}
 Si vuole calcolare il valore dell'integrale definito di una funzione reale di variabile reale in una dimensione:

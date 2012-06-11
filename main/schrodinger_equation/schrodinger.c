@@ -28,6 +28,17 @@ const int W = 150;
 const int H = 150;
 /* reticular pass */
 
+/**
+ *NOTA BENE
+ * è necessario modificare i parametri dell'algoritmo (N_SERIES e D_T) a seconda del potenziale scelto.
+ * Per potenziali che danno un contributo piccolo agli autovalori dell'hamiltoniana si può porre N_SERIES ~25 e D_T 0.5
+ * Nel caso di potenziali più grandi (in questo caso essenzialmente quelli che valgono ~10/100 (es i muri,diffrazione ecc)
+ * è necessario porre N_SERIES ~30/40 e D_T= 0.1
+ * In ogni caso è possibile controllare l'unitarietà dell'operatore di evoluzione temporale facendo stampare la norma della matrice
+ * decommentando l'istruzione
+ * printf("%e \n", matrix_complex_norm(input) - 1);
+ * all'ultima riga della funzione "compute()"
+ */
 /* matrix for the wave function */
 gsl_matrix_complex* psi ;	
 /* for displaying */

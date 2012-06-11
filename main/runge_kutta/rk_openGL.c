@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "color.h"
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 #define H 0.001
 /* Friction coefficient */
 #define Q 0.3
@@ -177,10 +177,11 @@ void keyboardF(unsigned char key, int x, int y)
         case 'p': case 'P': case ' ':
             ACTIVE=!ACTIVE;
             break;
-        case 'f': case 'F':
+        /*case 'f': case 'F':
             glutFullScreenToggle();
             break;
-        case 'r': case 'R':
+        */
+	case 'r': case 'R':
             init();
             break;
         case 't':
@@ -201,10 +202,11 @@ void specialKeyboardF(int key, int x, int y)
 {
     switch(key)
     {
-        case GLUT_KEY_F11:
+        /*case GLUT_KEY_F11:
             glutFullScreenToggle();
             break;
-        case GLUT_KEY_UP:
+      */  
+      case GLUT_KEY_UP:
             glTranslatef(0,-ds,0);
             b.y+=ds;
             break;

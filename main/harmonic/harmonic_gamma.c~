@@ -44,7 +44,8 @@ int main(){
 	  case 2:
 	    ranlxd(x,Nx);
 	    for( i = 0; i< Nx; i++)
-	      x[i] = (2*(x[i]-0.5)*500;
+	      x[i] = 100; 
+	      //(2*(x[i]-0.5))*500;
 	    break;
 	  default:
 	    printf("Valore inserito non corretto\n");

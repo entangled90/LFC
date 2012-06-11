@@ -15,6 +15,19 @@
 #include <gsl/gsl_complex_math.h>
 #include "varie.h"
 
+#define N 100
+#define VARIANCE 20
+#define N_SERIES 30
+#define R_MIN 0
+#define R_MAX 10
+#define V_MAX -1
+#define PI 3.14159
+#define SIGMA 5
+#define RETICOLO 10
+
+#define D_T 0.7
+
+
 
 /* Calcola la norma quadra di Psi. Nota che è ~ \int | \psi |^2, non il prodotto di matrici*/
 double matrix_complex_norm ( gsl_matrix_complex *input){
@@ -112,8 +125,8 @@ double init_wave_function (gsl_matrix_complex *input , gsl_complex (*pdf) ( doub
 	gsl_matrix_complex_scale( input,gsl_complex_rect(1.0/matrix_complex_norm(input),0));
 	// deve ritornare il massimo della funzione d'onda!
 	double max = 0;
-	for( i = 0; i < N; i++) {
-	  for( j = 0; j < N; j++) {
+	for( i = 0; i < w; i++) {
+	  for( j = 0; j < w; j++) {
 	    double z = 0;
 	    z = gsl_complex_abs(gsl_matrix_complex_get(input,i,j));
 	    if(fabs(z)>max)

@@ -8,7 +8,6 @@ Si vuole calcolare il valore dell'integrale definito di una funzione reale di va
 $$
  	I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx
 $$
-%% BRUTTO
 I metodo di integrazione numerica implementati si suddividono in metodi deterministici e  metodi Monte Carlo.
 \section{Metodi deterministici}
 Le prime routine di integrazione deterministica sono un'implementazione delle formule di Newton-Cotes (al primo e secondo ordine) e del metodo delle quadrature gaussiane.\\
@@ -138,6 +137,12 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 \end{center}
 
 \subsubsection{Newton-Cotes I: Logaritmo}
+\begin{figure*}[!h]
+\centering
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
+\caption{\small{Errori per Newton-Cotes I: Logaritmo.In rosso l'errore calcolato e in verde quello stimato}}
+\end{figure*}
+
 \begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
@@ -162,11 +167,6 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{longtable}
 %% LOG 222222222222222
 \end{center}
-\begin{figure*}[!h]
-\centering
-\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
-\caption{\small{Errori per Newton-Cotes I: Logaritmo.In rosso l'errore calcolato e in verde quello stimato}}
-\end{figure*}
 
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
@@ -239,6 +239,7 @@ Numero intervalli & quadratura gaussiana \\
 \end{figure*}
 
 \begin{center}
+
 % POLI 111111111111111111
 \begin{longtable}[h]{lcr}
 \toprule
@@ -333,7 +334,7 @@ Inoltre, si nota come l'errore scali nella maniera prevista fino a quando divent
 Questo può essere dovuto alla precisione con cui sono salvati i numeri nel calcolatore, nonostante siano state usate variabili di tipo \emph{double} in tutto il codice.
 In ogni caso, si può notare come gli errori abbiano un andamento asintotico in accordo con la previsione teorica prima che si facciano sentire gli errori di approssimazione del calcolatore.\\
 Nel caso delle quadrature gaussiane la stima analitica dell'errore non è stata effettuata, dato che esso è risultato essere molto ridotto anche per un numero esiguo di punti considerati.
-Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere causato dalla mancanza di precisione del calcolare, già menzionata sopra.
+Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere causato dalla mancanza di precisione del calcolatore, già menzionata sopra.
  
 %%
 %% COMPLETA LA RIFLESSIONE
@@ -344,8 +345,7 @@ Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere 
 Per metodi Monte Carlo si intendono algoritmi basati sulla generazione di dati in modo non deterministico.
 Generalmente vengono utilizzate sequenze di numeri \emph{casuali} o \emph{pseudocasuali} che verranno analizzate e 
 manipolate opportunamente all'interno dell'algoritmo in modo da ottenere una risposta statisticamente significativa al problema.\\
-Il metodo più generale per l'integrazione Monte Carlo consiste nell'utilizzare un generatore di numeri \emph{pseudocasuali} con distribuzione
-di probabilità piatta. La formula che restituisce il valore dell'integrale è:
+Il metodo più generale per l'integrazione Monte Carlo consiste nell'utilizzare un generatore di numeri \emph{pseudocasuali} con distribuzione di probabilità piatta. La formula che restituisce il valore dell'integrale è:
 $$
     I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx \ \simeq \ \frac{1}{n} \sum_i \ f(x_i) \ + \ o\left(\frac{1}{\sqrt{n}}\right)
 $$
@@ -353,7 +353,7 @@ dove gli $x_i$ sono estratti tra $x_{min}$ e $x_{max}$. $n$ indica il numero di 
 Questo metodo ha lo svantaggio di ritornare valori poco precisi nel caso la funzione integranda sia estremamente piccata intorno a un punto e
 zero nel resto dell'intervallo. Questo deriva dal fatto che il generatore estrae numeri in maniera ``cieca'', senza tenere conto della funzione.\\
 È possibile migliorare questo aspetto, attraverso il metodo del campionamento di importanza. Esso consiste nel generare numeri secondo una distribuzione
-di probabilità nota $g(x)$ e il più possibile simile alla funzione integranda. 
+di probabilità nota $g(x)$, positiva e normalizzata a uno, e il più possibile simile alla funzione integranda. 
 $$
  I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx \ = \ \int \frac{f(x)}{g(x)} \left( g(x) dx \right) \ \simeq \ \frac{1}{n} \sum_i \ \frac{f(x_i)}{g(x_i)} 
 $$
@@ -413,7 +413,8 @@ Le diverse distribuzioni sono state confrontate nel calcolare il secondo e il qu
 \mu_2(x) \ &= \ \int_{-\infty}^{+\infty} x^2 \frac{1}{\sqrt{\pi}} e^{-x^2}  = \frac{1}{2}\\
 \mu_4(x) \ &= \ \int_{-\infty}^{+\infty} x^4  \frac{1}{\sqrt{\pi}} e^{-x^2} = \frac{3}{4}
 \end{align*}
-Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dato che è più simile alle funzioni integrande.\\ \\ \\
+Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dato che è più simile alle funzioni integrande nell'intorno dell'origine,
+anche se l'andamento delle code della distribuzione è diverso.\\ \\ \\
 
 \begin{figure*}[h]
 \centering
@@ -440,7 +441,7 @@ Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dat
 \begin{center}
  \begin{longtable}[ht]{lccr}
   \toprule
-  Valore $\mu_2$ & 0.75 & & \\
+  Valore $\mu_4$ & 0.75 & & \\
   \midrule
   N & $P_{flat}$ & $P_{gauss} $  & $P_{root}$ \\
   \midrule
@@ -466,7 +467,7 @@ $$
  è quella che fornisce un valore dell'integrale più preciso.
 \begin{figure*}[hb]
 \centering
-\includegraphics[width=0.46\columnwidth,angle=-90]{importanza_noise.eps}
+\includegraphics[width=0.5\columnwidth,angle=-90]{importanza_noise.eps}
 \caption{\small{Andamento asintotico del ``rumore''.}}
 \end{figure*}
 
@@ -856,7 +857,7 @@ dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo q
  Si è cercato di studiare quantitativamente il fenomeno dell'effetto tunnel. Qualitativamente, perchè in questo caso non si conosce il valore dell'energia.
  D'altronde, è possibile studiare come varia la situazione modificando i parametri che entrano in gioco nell'effetto tunnel: l'altezza della barriera di potenziale e la larghezza della stessa.
  In entrambi i casi è stato fissato il potenziale a $1$, come nel caso dello scattering.
- La larghezza della barriera è stata posta uguale a 20 (nelle unità di misura del problema).
+ La larghezza della barriera è stata posta uguale a 20 (nelle unità di misura del problema). Come si può vedere in figura \ref{fig:notunnel}, la larghezza e l'altezza della buca fanno si che la probabilità che avvenga l'effetto tunnel è molto bassa.
 \begin{figure*}[hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel1.png}}
@@ -865,19 +866,22 @@ dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo q
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel5.png}}
  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 20.}}
- \end{figure*}
+\label{fig:notunnel} 
+\end{figure*}
  
  
  \subsubsection{Barriera stretta}
- In questo caso, si è accorciata la larghezza della barriera di potenziale. Ora esso è molto più stretta rispetto alle dimensioni spaziali del pacchetto d'onda.
- L'altezza della barriera è sempre pari a 1.
+ In questo caso, si è accorciata la larghezza della barriera di potenziale fino al valore di 2. Ora esso è molto più stretta rispetto alle dimensioni spaziali del pacchetto d'onda, mentre l'altezza della barriera è sempre pari a 1. In questo caso, invece, 
+si può vedere dalla figura \ref{fig:tunnel}come il pacchetto d'onda si divida in un pacchetto riflesso e un pacchetto trasmesso. Si può così vedere in maniera
+apprezzabile l'effetto tunnel.
 \begin{figure*}[hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel4.png}}
-  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 1.}}
+  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 2.}}
+\ref:
   \end{figure*}
  \subsection{Diffrazione da doppia fenditura}
  Questa parte mira a simulare l'esperimento della doppia fenditura, di grande importanza storica per lo sviluppo della meccanica quantistica.\\

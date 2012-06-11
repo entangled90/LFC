@@ -1,8 +1,7 @@
 \input{header.tex}
-\title{Relazioni di Laboratorio di Fisica Computazionale}
-\author{Carlo Sana}
 \begin{document}
-\maketitle
+\input{title.tex}
+%\maketitle
 \tableofcontents
 \chapter{Integrazione numerica}
 Si vuole calcolare il valore dell'integrale definito di una funzione reale di variabile reale in una dimensione:
@@ -773,7 +772,7 @@ Ad ogni passo dell'algoritmo, si calcola l'approssimazione di $ exp \left( -i \m
 sostituisce $ \psi(t)$ con $\psi(t+\delta t) = exp \left( -i \mathcal{H} \delta t \right) \psi(t)$.\\
 Per valutare la correttezza dell'algoritmo si è valutata inoltre l'unitarietà dell'operatore di evoluzione temporale ad ogni passo dell'algoritmo stampando su terminale il valore della norma
 della matrice. La norma della funzione d'onda è stata inizialmente posta uguale ad uno. L'operatore di evoluzione temporale risulta unitario, nel senso che dopo una decina di minuti di simulazione,
-la norma della funzione rimane inalterata: la norma differisce dall'unità a meno di fattori pari a $10^{-15/16}$. 
+la norma della funzione rimane inalterata: la norma differisce dall'unità a meno di fattori pari a $10^{-15/16}$.\\
 
 \emph{Nelle prossime sezioni le simulazioni verranno visualizzate in 2D. È possibile anche visualizzare la soluzione in 3D con l'apposito programma.}
 \subsubsection{Particella libera}
@@ -786,7 +785,7 @@ Si è raggiunto un compromesso fra velocità dell'evoluzione della funzione d'on
 Le unità di misura utilizzate nel sistema sono sostanzialmente arbitrarie, e sono state inglobate in una costante unica.
 Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
 
-  \begin{figure*}[hp]
+  \begin{figure*}[!h]
   \centering
     \subfigure[$\psi(0)$: il pacchetto è gaussiano e monocromatico, con momento diretto verticalmente verso il basso.]{\includegraphics{free1.png}}
     \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
@@ -794,7 +793,7 @@ Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
     \subfigure[La funzione d'onda inizia a intereferire con sè stessa.]{\includegraphics{free4.png}}
     \caption{\small{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}}
     \end{figure*}
-\begin{figure*}[h]
+\begin{figure*}[!h]
  \centering
  \subfigure{\includegraphics{free_crystal.png}}
  \subfigure{\includegraphics{free5.png}}
@@ -812,7 +811,7 @@ V(x,y) \ = \ \begin{sistem}
 $$
 dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (o elemeti della matrice).
 
-\begin{figure*}[hp]
+\begin{figure*}[!hp]
  \centering
  \subfigure[Pacchetto d'onda gaussiano distante dalla buca]{\includegraphics[width=0.4\columnwidth]{scattering1.png}}
  \subfigure[Pacchetto si scontra con la buca]{\includegraphics[width=0.4\columnwidth]{scattering2.png}}
@@ -837,17 +836,16 @@ V(x,y) \ = \ \begin{sistem}
               0 \quad \mbox{altrimenti}
              \end{sistem}
 $$
-Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la simulazione.
-\begin{figure*}[h]
+Per questo valore di potenziale, il comportamento del sistema è molto diverso dal caso precedente, in cui il potenziale era positivo. Si
+può vedere, però, che diminuendo il valore del potenziale, il sistema evolve in maniera simile al caso precedente. Questo è ciò che ci aspettavamo,
+dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo quadro del potenziale, nel caso esso sia uniforme. 
+
+\begin{figure*}[!hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca4.png}}
- \caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
- \end{figure*}
-\begin{figure*}
-\centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca5.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca6.png}}
  \caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
@@ -891,6 +889,12 @@ Inoltre, la griglia è stata ridotta da 600x600 a 500x500, per velocizzare la si
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura2.png}}
+ \caption{\small{Diffrazione da una doppia fenditura}}
+ 
+ \end{figure*}
+
+ \begin{figure*}[!h]
+\centering   
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura4.png}}
  \includegraphics[width=0.5\columnwidth]{fenditura5.png}
@@ -913,7 +917,7 @@ Inoltre, proprio per questo motivo, l'equazione del calore risulta molto più st
 $$
  N_{max} = 2 \qquad \delta t = 1 \qquad  
 $$
- Per questo motivo, inoltre è stato possibile aumentare la dimensione del reticolo fino a 500x500, mantenendo la stessa velocità di esecuzione.\\
+ Per questo motivo, inoltre è stato possibile aumentare la dimensione del reticolo fino a 400x400, mantenendo la stessa velocità di esecuzione.\\
  Inoltre, per risolvere questo problema sono state adottate condizioni al bordo differenti dall'equazione di Schr\"{o}dinger, data la diversa natura del problema fisico.
  In questo caso, infatti, abbiamo posto il bordo ad una temperatura fissata. Questa situazione rappresenta il caso in cui l'ambiente ha una temperatura fissata e scambia energia con il sistema.
  La distribuzione iniziale del calore è un ``step function'' bidimensionale.

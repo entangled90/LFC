@@ -8,7 +8,6 @@ Si vuole calcolare il valore dell'integrale definito di una funzione reale di va
 $$
  	I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx
 $$
-%% BRUTTO
 I metodo di integrazione numerica implementati si suddividono in metodi deterministici e  metodi Monte Carlo.
 \section{Metodi deterministici}
 Le prime routine di integrazione deterministica sono un'implementazione delle formule di Newton-Cotes (al primo e secondo ordine) e del metodo delle quadrature gaussiane.\\
@@ -138,6 +137,12 @@ Questa risulta essere una sovrastima della stima dell'errore. Tali valori sono s
 \end{center}
 
 \subsubsection{Newton-Cotes I: Logaritmo}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
+\caption{\small{Errori per Newton-Cotes I: Logaritmo.In rosso l'errore calcolato e in verde quello stimato}}
+\end{figure}
+
 \begin{center}
 \begin{longtable}[h]{lcr}
 \toprule
@@ -162,20 +167,15 @@ Numero intervalli & Newton-Cotes I & Stima analitica errore  \\
 \end{longtable}
 %% LOG 222222222222222
 \end{center}
-\begin{figure*}[!h]
-\centering
-\includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_log.eps}
-\caption{\small{Errori per Newton-Cotes I: Logaritmo.In rosso l'errore calcolato e in verde quello stimato}}
-\end{figure*}
 
 Da questo confronto si nota come l'errore scala come previsto analiticamente e rimane sempre inferiore alla stima fatta analiticamente.
 
 \subsubsection{Newton-Cotes II: Logaritmo}
-\begin{figure*}[!h]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth,angle = -90]{plot_simp_log.eps}
 \caption{\small{Errori per Newton-Cotes II: Logaritmo}}
-\end{figure*}
+\end{figure}
 
   \begin{center}
   \begin{longtable}[h]{lcr}
@@ -233,12 +233,13 @@ Numero intervalli & quadratura gaussiana \\
 \end{center}
 
 \subsubsection{Newton-Cotes I: Polinomio}
-\begin{figure*}[!h]
+\begin{figure}[!h]
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_trap_poly.eps}
 \caption{\small{Errori per Newton-Cotes I: Polinomio}}
-\end{figure*}
+\end{figure}
 
 \begin{center}
+
 % POLI 111111111111111111
 \begin{longtable}[h]{lcr}
 \toprule
@@ -268,11 +269,11 @@ Si può notare che in questo caso la differenza fra l'errore stimato e l'errore 
 In ogni caso l'errore stimato è sempre maggiore dell'errore di integrazione.\\
 %%% POLINOMIO 2222222222222222222
 \subsubsection{Newton-Cotes II: Polinomio}
-\begin{figure*}[!h]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth,angle=-90]{plot_simp_poly.eps}
 \caption{\small{Errori per Newton-Cotes II: Polinomio}}
-\end{figure*}
+\end{figure}
 
 \begin{center}
 \begin{longtable}[h]{lcr}
@@ -333,7 +334,7 @@ Inoltre, si nota come l'errore scali nella maniera prevista fino a quando divent
 Questo può essere dovuto alla precisione con cui sono salvati i numeri nel calcolatore, nonostante siano state usate variabili di tipo \emph{double} in tutto il codice.
 In ogni caso, si può notare come gli errori abbiano un andamento asintotico in accordo con la previsione teorica prima che si facciano sentire gli errori di approssimazione del calcolatore.\\
 Nel caso delle quadrature gaussiane la stima analitica dell'errore non è stata effettuata, dato che esso è risultato essere molto ridotto anche per un numero esiguo di punti considerati.
-Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere causato dalla mancanza di precisione del calcolare, già menzionata sopra.
+Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere causato dalla mancanza di precisione del calcolatore, già menzionata sopra.
  
 %%
 %% COMPLETA LA RIFLESSIONE
@@ -344,8 +345,7 @@ Infatti l'ordine di grandezza dell'errore è sufficientemente piccolo da essere 
 Per metodi Monte Carlo si intendono algoritmi basati sulla generazione di dati in modo non deterministico.
 Generalmente vengono utilizzate sequenze di numeri \emph{casuali} o \emph{pseudocasuali} che verranno analizzate e 
 manipolate opportunamente all'interno dell'algoritmo in modo da ottenere una risposta statisticamente significativa al problema.\\
-Il metodo più generale per l'integrazione Monte Carlo consiste nell'utilizzare un generatore di numeri \emph{pseudocasuali} con distribuzione
-di probabilità piatta. La formula che restituisce il valore dell'integrale è:
+Il metodo più generale per l'integrazione Monte Carlo consiste nell'utilizzare un generatore di numeri \emph{pseudocasuali} con distribuzione di probabilità piatta. La formula che restituisce il valore dell'integrale è:
 $$
     I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx \ \simeq \ \frac{1}{n} \sum_i \ f(x_i) \ + \ o\left(\frac{1}{\sqrt{n}}\right)
 $$
@@ -353,7 +353,7 @@ dove gli $x_i$ sono estratti tra $x_{min}$ e $x_{max}$. $n$ indica il numero di 
 Questo metodo ha lo svantaggio di ritornare valori poco precisi nel caso la funzione integranda sia estremamente piccata intorno a un punto e
 zero nel resto dell'intervallo. Questo deriva dal fatto che il generatore estrae numeri in maniera ``cieca'', senza tenere conto della funzione.\\
 È possibile migliorare questo aspetto, attraverso il metodo del campionamento di importanza. Esso consiste nel generare numeri secondo una distribuzione
-di probabilità nota $g(x)$ e il più possibile simile alla funzione integranda. 
+di probabilità nota $g(x)$, positiva e normalizzata a uno, e il più possibile simile alla funzione integranda. 
 $$
  I \ = \ \int_{x_{min}}^{x_{max}} f(x) \, dx \ = \ \int \frac{f(x)}{g(x)} \left( g(x) dx \right) \ \simeq \ \frac{1}{n} \sum_i \ \frac{f(x_i)}{g(x_i)} 
 $$
@@ -413,13 +413,14 @@ Le diverse distribuzioni sono state confrontate nel calcolare il secondo e il qu
 \mu_2(x) \ &= \ \int_{-\infty}^{+\infty} x^2 \frac{1}{\sqrt{\pi}} e^{-x^2}  = \frac{1}{2}\\
 \mu_4(x) \ &= \ \int_{-\infty}^{+\infty} x^4  \frac{1}{\sqrt{\pi}} e^{-x^2} = \frac{3}{4}
 \end{align*}
-Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dato che è più simile alle funzioni integrande.\\ \\ \\
+Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dato che è più simile alle funzioni integrande nell'intorno dell'origine,
+anche se l'andamento delle code della distribuzione è diverso.\\ \\ \\
 
-\begin{figure*}[h]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.6\columnwidth,angle=-90]{importanza_integrale.eps}
 \caption{\small{Confronto tra il valore dell'integrale con le diverse distribuzioni.}}
-\end{figure*}
+\end{figure}
 \begin{center}
  \begin{longtable}[htb]{lccr}
   \toprule
@@ -440,7 +441,7 @@ Si può prevedere che la distribuzione $P_{root}$ fornisca un errore minore, dat
 \begin{center}
  \begin{longtable}[ht]{lccr}
   \toprule
-  Valore $\mu_2$ & 0.75 & & \\
+  Valore $\mu_4$ & 0.75 & & \\
   \midrule
   N & $P_{flat}$ & $P_{gauss} $  & $P_{root}$ \\
   \midrule
@@ -464,11 +465,11 @@ $$
  Per questo motivo ci aspettiamo che nel grafico i punti siano allineati all'incirca su rette orizzontali. Il valore dell'ordinata indica, dunque,
  il coefficiente dell'andamento asintotico dell'errore. Da ciò possiamo dedurre che la distribuzione $P_{root}$, avendo come valore di $A$ minore,
  è quella che fornisce un valore dell'integrale più preciso.
-\begin{figure*}[hb]
+\begin{figure}[hb]
 \centering
-\includegraphics[width=0.46\columnwidth,angle=-90]{importanza_noise.eps}
+\includegraphics[width=0.5\columnwidth,angle=-90]{importanza_noise.eps}
 \caption{\small{Andamento asintotico del ``rumore''.}}
-\end{figure*}
+\end{figure}
 
 
 \chapter{Oscillatore armonico}
@@ -555,13 +556,13 @@ In questo caso si è scelto di inizializzare il la configurazione di partenza in
 con ciascuna coordinata $x_i$ compresa fra $-500$ e $500$. La scelta di utilizzare una inizializzaione a freddo è dovuta al fatto che il tempo di termalizzazione in questo caso è molto minore:
 esso risulta essere di circa $150-200$ contro i $1000$ \emph{sweeps} necessari per la \emph{hot start}.
 
-\begin{figure*}[!h]
+\begin{figure}[!h]
   \centering
   \subfigure[Azione fredda]{\includegraphics[width=0.6\columnwidth,angle = -90]{action_cold.eps}}
   \subfigure[Azione calda]{\includegraphics[width=0.6\columnwidth,angle = -90]{action_hot.eps}}
   \caption{\small{Andamento dell'azione euclidea in funzione del numero di sweeps.}}
   \label{fig:initialisation}
-\end{figure*}
+\end{figure}
 Come si vede in figura \ref{fig:initialisation} l'azione parte da zero e cresce velocemente. Dopo circa cento \emph{sweeps} si può vedere come l'algoritmo sia già in un regime asintotico.
 All'interno del programma è stato scelto come tempo di termalizzazione 200. Gli \emph{sweeps} di termalizzazione non sono stati utilizzati per calcolare alcune grandezza.
 
@@ -573,19 +574,19 @@ della funzione di autocorrelazione così definita:
 $$
 \Gamma(t) \ = \  \frac{ \sum_{i=0}^t <O(t_i)O(t_i + t)> - <O(t_i)>^2}{\sum_{i=0}^t <{O(t_i)}^2> - <O(t_i)>^2} \ \simeq \ \exp{\left(-\frac{t}{\tau_{corr}}\right)}
 $$
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
   \includegraphics[width= 0.7\columnwidth,angle = -90]{gamma_t.eps}
   \caption{\small{Funzione di autocorellazione per ogni valore di $|l-k|$}}
-  \end{figure*}
+  \end{figure}
 Dal grafico si può stimare $\tau_{corr}$ approssimativamente: esso risulta essere circa $4-5$. La larghezza degli intervalli è stata scelta pari a cento.\\
 Per ogni intervallo è stata calcolata la media e la varianza del correlatore per ogni valore di $|l-k|$. In questo modo esse risultano essere scorrelate fra gli intervalli ed è così possibile utilizzare
 la tecnica del \emph{cluster jackknife} per calcolare gli errori sulle grandezze derivate.\\
-\begin{figure*}[h]
+\begin{figure}[h]
  \centering
  \includegraphics[width= 0.7\columnwidth,angle= -90]{harmonic_giusto.eps}
  \caption{\small{Grafico del correlatore $<x_l x_k>$ da cui estrarremo tutte le informazioni del sistema}}
- \end{figure*}
+ \end{figure}
 
 Definiamo $ a_i$ come il valore della grandezza primaria nell'intervallo $i$. Indicando con $\bar{a}$ la media tra tutti gli $a_i$, definiamo $a_i$ \emph{clusterized} come:
 $$
@@ -610,20 +611,20 @@ Nel caso di $\Delta E $ e $W_{01}$, i grafici sono stati fittati con una gaussia
 da cui sono stati estratti il valor medio $\mu$ e la deviazione standard $\sigma$. Il valore del $\tilde{\chi}^2$ è stato calcolato ponendo come errore
 per ogni entrata dell'istogramma, radice  del numero di conteggi.
 %\ref{fig:fit_metropolis}.
-\begin{figure*}
+\begin{figure}
 \centering
  \includegraphics[width=\columnwidth]{fit-energy.pdf}
  \caption{\small{Fit per il valore di $\Delta E$}}
- \end{figure*}
+ \end{figure}
 $$ 
   \Delta E = 0.962 \quad \sigma_{E} = 0.006 \quad \tilde{\chi}^2 = 1.16
 $$
  
- \begin{figure*}
+ \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{fit-matrix.pdf}
  \caption{\small{Fit per il valore di $W_{01}$}}
- \end{figure*}
+ \end{figure}
 $$
   W_{01} = 0.669 \quad \sigma_{W_{01}} = 0.004 \quad \tilde{\chi}^2 = 1.06
 $$
@@ -632,12 +633,12 @@ Dal valore del $\tilde{\chi}^2$ possiamo affermare che i dati sono distribuiti g
 da cui si può notare che anch'esse hanno una distribuzione gaussiana. In questo caso, però, non stato eseguito alcun \emph{fit} data la scarsa importanza
 dei risultati che avremmo ottenuto da esso.
 \begin{center}
-\begin{figure*}[!h]
+\begin{figure}[!h]
 
  \subfigure[Istogramma relativo alla varianza di $\Delta E$]{\includegraphics[width = 0.38\columnwidth,angle= -90]{energy_variance_histogram.eps}}
  \subfigure[Istogramma relativo alla varianza di $W_{01}$]{\includegraphics[width = 0.38\columnwidth,angle= -90]{matrix_variance_histogram.eps}}
 
- \end{figure*}
+ \end{figure}
 \end{center}
  
 \chapter{Equazioni differenziali ordinarie}
@@ -687,11 +688,11 @@ L'algoritmo è stato implementato in due programmi diversi: il primo si limita a
 il secondo utilizza le librerie openGL per stampare direttamente a schermo la soluzione in tempo reale.
 Nell'ultimo programma, inoltre è possibile aumentare o diminuire la lunghezza della ``scia'' con i tasti ``e'' e ``t'', per velocizzare l'esecuzione del programma.
 \subsubsection{Pendolo smorzato con forzante}
-\begin{figure*}[!h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width = 0.5\columnwidth]{pendolo_limite.png}
   \caption{\small{Pendolo smorzato con forzante esterna nel caso di ciclo limite. $B = 0.5$, $Q= 0.5$ $\omega_{ext} = \tfrac{2}{3}$}}
-  \end{figure*}
+  \end{figure}
 
 
 Come detto precedentemente, si è risolto questo sistema newtoniano analiticamente non integrabile. L'equazione del moto è la seguente:
@@ -714,21 +715,21 @@ B \ & = 0.3\\
 Q & = 1.4 \\
 \omega_{ext} &= \tfrac{2}{3}
 \end{align*}
-\begin{figure*}[!h]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.7\columnwidth]{sovra1.png}
 % \subfigure{\includegraphics[width=0.5\columnwidth]{Q=2_lungo.eps}}
  %\includegraphics[width=0.3\columnwidth]{B=3_lungo-lungo.eps}
-\end{figure*}
+\end{figure}
 
 
 \subsubsection{Oscillatore di van der Pol}
-\begin{figure*}[!h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width = 0.6\columnwidth]{van_der_pol.png}
   \caption{\small{Oscillatore di van der Pol. Si può notare il ciclo limite}}
   \label{fig:vanderpol}
-  \end{figure*}
+  \end{figure}
 
 Un'altro sistema studiato è l'oscillatore di \emph{van der Pol}.
 $$
@@ -738,11 +739,11 @@ nella simulazione è stato posto $\mu = 4$.\\
 Dalla figura \ref{fig:vanderpol} si nota la presenza, anche in questo caso, di un ciclo limite.
 \chapter{Equazioni differenziali alle derivate parziali}
 \section{Equazione di Schr\"{o}dinger}
-\begin{figure*}[H]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\columnwidth]{doppiafenditura.png}
 \caption{\small{Diffrazione da una doppia fenditura}}
-\end{figure*}
+\end{figure}
 
 L'equazione di Schr\"{o}dinger per una particella in un potenziale armonico è un problema molto più complicato dei precedenti già trattati.
 In primo luogo si ha a che fare con equazioni differenziali alle derivate parziali invece che con equazioni differenziali ordinarie.
@@ -785,20 +786,20 @@ Si è raggiunto un compromesso fra velocità dell'evoluzione della funzione d'on
 Le unità di misura utilizzate nel sistema sono sostanzialmente arbitrarie, e sono state inglobate in una costante unica.
 Le condizioni al contorno utilizzato sono di periodicità ai bordi.\\
 
-  \begin{figure*}[!h]
+  \begin{figure}[!h]
   \centering
     \subfigure[$\psi(0)$: il pacchetto è gaussiano e monocromatico, con momento diretto verticalmente verso il basso.]{\includegraphics{free1.png}}
     \subfigure[Ora $\psi$ non ha più simmetria sferica. Si può notare lo ``spread'' del pacchetto.]{\includegraphics{free2.png}}
     \subfigure[Lo ``spread'' aumenta ancora. Si notano gli effetti delle condizioni al bordo]{\includegraphics{free3.png}}
     \subfigure[La funzione d'onda inizia a intereferire con sè stessa.]{\includegraphics{free4.png}}
     \caption{\small{Evoluzione di un pacchetto gaussiano libero, con periodicità ai bordi.}}
-    \end{figure*}
-\begin{figure*}[!h]
+    \end{figure}
+\begin{figure}[!h]
  \centering
  \subfigure{\includegraphics{free_crystal.png}}
  \subfigure{\includegraphics{free5.png}}
  \caption{\small{Particella libera(continua)}}
- \end{figure*}
+ \end{figure}
 
   \subsubsection{Muro di potenziale sferico}
 In questo caso l'hamiltoniana utilizzata è quella completa, fornita all'inizio del capitolo. Anche in questo caso valgono le considerazioni precedenti e sono stati utilizzati gli stessi parametri di prima.
@@ -811,7 +812,7 @@ V(x,y) \ = \ \begin{sistem}
 $$
 dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (o elemeti della matrice).
 
-\begin{figure*}[!hp]
+\begin{figure}[!hp]
  \centering
  \subfigure[Pacchetto d'onda gaussiano distante dalla buca]{\includegraphics[width=0.4\columnwidth]{scattering1.png}}
  \subfigure[Pacchetto si scontra con la buca]{\includegraphics[width=0.4\columnwidth]{scattering2.png}}
@@ -819,7 +820,7 @@ dove $r$ è il raggio dal centro della finestra ed è misurato in \emph{pixel} (
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering5.png}}
  \caption{\small{Scattering di un pacchetto gaussiano monocromatico con un muro di potenziale sferico.}}
- \end{figure*}
+ \end{figure}
  In questo caso, si intende visualizzare lo scattering del pacchetto d'onda contro questo potenziale sferico.
 Per questo motivo, è stato necessario utilizzare un griglia più grande, rispetto a prima,
 che passa da 200x200 a 600x600. Così facendo l'algoritmo diventa più lento di un fattore dieci circa.
@@ -840,7 +841,7 @@ Per questo valore di potenziale, il comportamento del sistema è molto diverso d
 può vedere, però, che diminuendo il valore del potenziale, il sistema evolve in maniera simile al caso precedente. Questo è ciò che ci aspettavamo,
 dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo quadro del potenziale, nel caso esso sia uniforme. 
 
-\begin{figure*}[!hp]
+\begin{figure}[!hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca2.png}}
@@ -849,15 +850,16 @@ dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo q
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca5.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{scattering_buca6.png}}
  \caption{\small{Scattering di un pacchetto gaussiano monocromatico con una buca di potenziale sferico.}}
- \end{figure*}
+ \end{figure}
  \subsection{Effetto tunnel}
  Si studia il fenomeno dell'effetto tunnel analizzando il comportamento del sistema per una barriera di potenziale ``orizzontale'' di larghezza variabile.
  \subsubsection{Barriera larga}
  Si è cercato di studiare quantitativamente il fenomeno dell'effetto tunnel. Qualitativamente, perchè in questo caso non si conosce il valore dell'energia.
  D'altronde, è possibile studiare come varia la situazione modificando i parametri che entrano in gioco nell'effetto tunnel: l'altezza della barriera di potenziale e la larghezza della stessa.
  In entrambi i casi è stato fissato il potenziale a $1$, come nel caso dello scattering.
- La larghezza della barriera è stata posta uguale a 20 (nelle unità di misura del problema).
-\begin{figure*}[hp]
+ La larghezza della barriera è stata posta uguale a 20 (nelle unità di misura del problema). Come si può vedere in figura
+ \ref{fig:notunnel} , la larghezza e l'altezza della buca fanno si che la probabilità che avvenga l'effetto tunnel è molto bassa.
+\begin{figure}[hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel2.png}}
@@ -865,41 +867,44 @@ dato che quando non ci sono stati legati, la sezione d'urto dipende dal modulo q
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel4.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{notunnel5.png}}
  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 20.}}
- \end{figure*}
+\label{fig:notunnel} 
+\end{figure}
  
  
  \subsubsection{Barriera stretta}
- In questo caso, si è accorciata la larghezza della barriera di potenziale. Ora esso è molto più stretta rispetto alle dimensioni spaziali del pacchetto d'onda.
- L'altezza della barriera è sempre pari a 1.
-\begin{figure*}[hp]
+ In questo caso, si è accorciata la larghezza della barriera di potenziale fino al valore di 2. Ora esso è molto più stretta rispetto alle dimensioni spaziali del pacchetto d'onda, mentre l'altezza della barriera è sempre pari a 1. In questo caso, invece, 
+si può vedere dalla figura \ref{fig:tunnel} come il pacchetto d'onda si divida in un pacchetto riflesso e un pacchetto trasmesso. Si può così vedere in maniera
+apprezzabile l'effetto tunnel.
+\begin{figure}[hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel2.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{tunnel4.png}}
-  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 1.}}
-  \end{figure*}
+  \caption{\small{Effetto tunnel contro una barrieri di potenziale larga 2.}}
+\label{fig:tunnel}
+  \end{figure}
  \subsection{Diffrazione da doppia fenditura}
  Questa parte mira a simulare l'esperimento della doppia fenditura, di grande importanza storica per lo sviluppo della meccanica quantistica.\\
  Per fare ciò si è inserita una barriera di potenziale molto alta ( $V = 100$) con due fenditure larghe 5. La barriera è stata posta orizzontalmente, come la barriera di potenziale nel caso dell'effetto tunnel.
  A causa del valore di $V$ è stato necessario eseguire molti più calcoli rispetto ai casi precedenti per avere una buona precisione. Infatti in questo caso
  è stato necessario porre $\delta t = 0.1$ (invece che $\delta t = 0.5 $ nei casi precedenti) e aumentare l'ordine dello sviluppo in serie fino a 30.
  Questo è causato proprio dal fatto che gli autovalori dell'hamiltoniana sono molto più elevati, a causa della barriera di potenziale.
-\begin{figure*}[hp]
+\begin{figure}[hp]
  \centering
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura1.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura2.png}}
  \caption{\small{Diffrazione da una doppia fenditura}}
  
- \end{figure*}
+ \end{figure}
 
- \begin{figure*}[!h]
+ \begin{figure}[!h]
 \centering   
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura3.png}}
  \subfigure{\includegraphics[width=0.4\columnwidth]{fenditura4.png}}
  \includegraphics[width=0.5\columnwidth]{fenditura5.png}
  \caption{\small{Diffrazione da una doppia fenditura}}
- \end{figure*}
+ \end{figure}
  
  \pagebreak
  
@@ -921,10 +926,10 @@ $$
  Inoltre, per risolvere questo problema sono state adottate condizioni al bordo differenti dall'equazione di Schr\"{o}dinger, data la diversa natura del problema fisico.
  In questo caso, infatti, abbiamo posto il bordo ad una temperatura fissata. Questa situazione rappresenta il caso in cui l'ambiente ha una temperatura fissata e scambia energia con il sistema.
  La distribuzione iniziale del calore è un ``step function'' bidimensionale.
- \begin{figure*}[hbp]
+ \begin{figure}[hbp]
   \centering
   \subfigure{\includegraphics[width=0.4\columnwidth]{heat1.png}}
   \subfigure{\includegraphics[width=0.4\columnwidth]{heat2.png}}
   \caption{\small{Evoluzione della distribuzione della temperatura nel tempo}}
- \end{figure*}
+ \end{figure}
  \end{document}

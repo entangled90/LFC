@@ -1,20 +1,5 @@
 
 
-/**
- * N DEVE ESSERE MULTIPLO DI 100. altrimenti ci sono problemi con la visualizzazione
- */
-#define N 200
-#define N_SERIES 30
-#define R_MIN 0
-#define R_MAX 10
-#define V_MAX -1
-#define NORM  0.1
-#define PI 3.141592653589
-#define VARIANCE 50
-#define RETICOLO 10
-
-#define D_T 0.4
-
 
 #include <stdio.h>
 #include <stdlib.h>

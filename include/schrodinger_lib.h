@@ -15,6 +15,12 @@
 #include <gsl/gsl_complex_math.h>
 #include "varie.h"
 
+
+/**
+ * N DEVE ESSERE MULTIPLO DI 100. altrimenti ci sono problemi con la visualizzazione
+ */
+
+
 #define N 100
 #define VARIANCE 20
 #define N_SERIES 30

@@ -42,7 +42,7 @@ VPATH = $(MDIR)/random:$(MDIR)/start:$(MDIR)/extras:$(MDIR)/derivative:$(MDIR)/i
 
 # additional include directories
 
-INCPATH = ../..//include 
+INCPATH = ../../include 
 
 # additional libraries to be included 
  

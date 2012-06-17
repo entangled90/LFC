@@ -23,7 +23,7 @@ MAIN = integral importanza  buffon
 
 RANDOM =ranlxs ranlxd gauss pdf
 
-START = start 
+START = start utils
 
 EXTRAS = varie my_struct
 

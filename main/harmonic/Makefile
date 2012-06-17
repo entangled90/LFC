@@ -20,9 +20,10 @@ all: rmxeq mkdep mkxeq rmpmk
 # main programs and required modules 
 
 MAIN =  harmonicMetropolis harmonic_gamma
+
 RANDOM =ranlxs ranlxd gauss pdf
 
-START = start 
+START = start utils
 
 EXTRAS = varie my_struct
 
